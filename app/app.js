@@ -5,7 +5,6 @@ var homeApp = angular.module('myApp', [
     'ngRoute',
     'myApp.movie',
     'myApp.tvshow',
-    'myApp.version',
     'myApp.actors'
 ]);
 
