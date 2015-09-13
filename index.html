@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="app/styles/app.css">
+    <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+<ul class="menu">
+    <li><a href="#/movies">Movies</a></li>
+    <li><a href="#/tvshows">Tv-Shows</a></li>
+    <li><a href="#/actors">Actors</a></li>
+</ul>
+<div ng-view></div>
+
+<div>Angular seed app: <span app-version></span></div>
+
+<!-- Compiled files -->
+<script src="app/bower_components/angular/angular.js"></script>
+<script src="app/bower_components/angular-route/angular-route.js"></script>
+
+<!-- Main application -->
+<script src="app/app.js"></script>
+
+<!-- Movie component-->
+<script src="app/components/movie/scripts/movie.js"></script>
+<!-- Tv show component-->
+<script src="app/components/tvshow/scripts/tvshows.js"></script>
+<!-- Actor component-->
+<script src="app/components/actor/scripts/actor.js"></script>
+
+<!-- Route providers -->
+<script src="app/components/actor/scripts/actorRouteProvider.js"></script>
+<script src="app/components/home/scripts/homeRouteProvider.js"></script>
+<script src="app/components/movie/scripts/movieRouteProvider.js"></script>
+<script src="app/components/tvshow/scripts/tvshowsRouteProvider.js"></script>
+
+</body>
+</html>
