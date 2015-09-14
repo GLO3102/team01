@@ -1,12 +1,10 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.movie',
-  'myApp.tvshow',
-  'myApp.version'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/home'});
-}]);
+var homeApp = angular.module('myApp', [
+    'ngRoute',
+    'myApp.movie',
+    'myApp.tvshow',
+    'myApp.actors'
+]);
+
