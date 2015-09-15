@@ -1,6 +1,6 @@
 actorApp.
     config(['$routeProvider', function ($routeProvider) {
 
-        $routeProvider.when('/actors', {"templateUrl": "components/actor/views/actors.html"}).otherwise({redirectTo: '/'});
+        $routeProvider.when('/actor', {"templateUrl": "components/actor/views/actor.html"}).otherwise({redirectTo: '/'});
 
     }]);
