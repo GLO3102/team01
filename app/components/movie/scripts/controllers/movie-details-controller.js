@@ -1,7 +1,7 @@
 /**
  * Created by Antoine on 2015-09-14.
  */
-movieApp.controller("movie-detail-controller", function () {
+movieApp.controller("movie-detail-controller", function ($scope) {
     $scope.movie = {
         "wrapperType": "track",
         "kind": "feature-movie",

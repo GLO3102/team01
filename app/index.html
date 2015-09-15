@@ -5,7 +5,9 @@
     <title>My AngularJS App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="app/styles/app.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/detail-view.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -17,27 +19,31 @@
     </ul>
     <div ng-view></div>
 
-    <div>Angular seed app: <span app-version></span></div>
-
     <!-- Compiled files -->
-    <script src="app/bower_components/angular/angular.js"></script>
-    <script src="app/bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
 
     <!-- Main application -->
-    <script src="app/app.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Commons component -->
+    <script src="components/commons/scripts/filters/video-preview-filter.js"></script>
 
     <!-- Movie component-->
-    <script src="app/components/movie/scripts/movie.js"></script>
+    <script src="components/movie/scripts/movie.js"></script>
+    <script src="components/movie/scripts/controllers/movie-details-controller.js"></script>
     <!-- Tv show component-->
-    <script src="app/components/tvshow/scripts/tvshows.js"></script>
+    <script src="components/tvshow/scripts/tvshows.js"></script>
     <!-- Actor component-->
-    <script src="app/components/actor/scripts/actor.js"></script>
+    <script src="components/actor/scripts/actor.js"></script>
 
     <!-- Route providers -->
-    <script src="app/components/actor/scripts/actorRouteProvider.js"></script>
-    <script src="app/components/home/scripts/homeRouteProvider.js"></script>
-    <script src="app/components/movie/scripts/movieRouteProvider.js"></script>
-    <script src="app/components/tvshow/scripts/tvshowsRouteProvider.js"></script>
+    <script src="components/actor/scripts/actorRouteProvider.js"></script>
+    <script src="components/home/scripts/homeRouteProvider.js"></script>
+    <script src="components/movie/scripts/movieRouteProvider.js"></script>
+    <script src="components/tvshow/scripts/tvshowsRouteProvider.js"></script>
+
+
 </div>
 </body>
 </html>

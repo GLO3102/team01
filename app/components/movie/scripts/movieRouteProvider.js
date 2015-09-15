@@ -2,10 +2,10 @@ movieApp.
     config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider
-            .when('/movies', {"templateUrl": "app/components/movie/views/movie.html"})
-            .when("/movies/{movieId}",
+            .when('/movies', {"templateUrl": "components/movie/views/movie.html"})
+            .when("/movies/:movieId",
                 {
-                    templateUrl: "app/components/views/movieDetail.html",
+                    templateUrl: "components/movie/views/movieDetail.html",
                     controller: "movie-detail-controller"
                 });
     }]);
