@@ -1,7 +1,7 @@
 <div class="panel">
     <div class="panel-body">
         <div class="detail header">
-            <h2>{{movie.trackName}} <a class="btn btn-default" href="{{movie.trackViewUrl}}">iTunes</a></h2>
+            <h2>{{movie.trackName}} <a class="btn btn-default" href="{{movie.trackViewUrl}}">iTunes</a><a class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"></a></h2>
         </div>
         <div class="detail body">
             <div class="row detail section">
@@ -14,7 +14,7 @@
                         <li><h3>{{movie.trackName}}</h3></li>
                         <li><label>Duration </label> <span>{{movie.trackTimeMillis}}</span></li>
                         <li><label>Genre</label> <span>{{movie.primaryGenreName}}</span></li>
-                        <li><labSel>Release date</labSel> <span>{{movie.releaseDate | date:medium}}</span></li>
+                        <li><label>Release date</label> <span>{{movie.releaseDate | date:medium}}</span></li>
                         <li><label>Director</label> <span>{{movie.artistName}}</span></li>
                         <li><label>Rating</label> <span>{{movie.contentAdvisoryRating}}</span></li>
                         <li><label>Description</label>
