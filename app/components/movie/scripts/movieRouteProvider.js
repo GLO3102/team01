@@ -4,7 +4,7 @@ movieApp.
         $routeProvider
             .when('/movies',
                 {
-                    "templateUrl": "components/movie/views/movie.html",
+                    templateUrl: "components/movie/views/movie.html",
                     controller: "movie-dashboard-controller"
                 })
             .when("/movies/:movieId",

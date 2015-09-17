@@ -41,10 +41,10 @@ tvShowApp.controller("tvshow-dashboard-controller", function ($scope, tvshowSele
         "radioStationUrl": "https://itunes.apple.com/station/idra.336977484"
     };
 
-    $scope.tvhsows = [staticTvShow];
+    $scope.tvshows = [staticTvShow];
 
     $scope.selectTvShow = function (selectedTvShow) {
-        tvshowSelectionService.setSelectedTvShow($scope.thvshows[0]);
+        tvshowSelectionService.setSelectedTvShow($scope.tvshows[0]);
     };
 
 });

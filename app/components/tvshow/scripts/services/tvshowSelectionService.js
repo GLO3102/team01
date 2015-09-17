@@ -2,7 +2,7 @@
  * Created by Jean-Sebastien on 2015-09-17.
  */
 
-tvShowAppApp.service("tvshowelectionService", function ($rootScope) {
+tvShowApp.service("tvshowSelectionService", function ($rootScope) {
     var tvshow = {};
 
     var getSelectedTvShow = function () {

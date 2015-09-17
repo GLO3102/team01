@@ -2,8 +2,14 @@ tvShowApp.
     config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider
-            .when('/tv-shows',
+            .when('/tvshows',
                 {
-                    "templateUrl": "components/tvshow/views/tvshows.html"
-                });
+                    templateUrl: "components/tvshow/views/tvshow.html",
+                    controller: "tvshow-dashboard-controller"
+                })
+            .when("/tvshows/:tvshowId",
+            {
+                templateUrl: "components/tvshow/views/tvshowDetail.html",
+                controller: "tvshow-detail-controller"
+            });
     }]);
