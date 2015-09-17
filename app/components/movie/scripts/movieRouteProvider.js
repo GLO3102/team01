@@ -1,6 +1,15 @@
 movieApp.
     config(['$routeProvider', function ($routeProvider) {
 
-        $routeProvider.when('/movie', {"templateUrl": "components/movie/views/movie.html"}).otherwise({redirectTo: '/'});
-
+        $routeProvider
+            .when('/movies',
+                {
+                    "templateUrl": "components/movie/views/movie.html",
+                    controller: "movie-dashboard-controller"
+                })
+            .when("/movies/:movieId",
+                {
+                    templateUrl: "components/movie/views/movieDetail.html",
+                    controller: "movie-detail-controller"
+                });
     }]);
