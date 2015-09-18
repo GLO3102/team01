@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,30 +6,47 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/detail-view.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-<div ng-app="myApp">
+<div ng-app="uMovie">
     <ul class="menu">
-        <li><a href="#/movie">Movies</a></li>
-        <li><a href="#/tvshow">Tv-Shows</a></li>
-        <li><a href="#/actor">Actors</a></li>
+        <li><a href="#/movies">Movies</a></li>
+        <li><a href="#/tvshows">Tv-Shows</a></li>
+        <li><a href="#/actors">Actors</a></li>
     </ul>
     <div ng-view></div>
 
-    <div>Angular seed app: <span app-version></span></div>
-
     <!-- Compiled files -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/slick-carousel/slick/slick.js"></script>
+    <script src="bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>
+
 
     <!-- Main application -->
     <script src="app.js"></script>
 
+    <!-- Commons component -->
+    <script src="components/commons/scripts/filters/video-preview-filter.js"></script>
+
+    <!--Home -->
+    <script src="components/home/scripts/controller/home-controller.js"></script>
     <!-- Movie component-->
     <script src="components/movie/scripts/movie.js"></script>
+    <script src="components/movie/scripts/services/movieSelectionService.js"></script>
+    <script src="components/movie/scripts/controllers/movie-dashboard-controller.js"></script>
+    <script src="components/movie/scripts/controllers/movie-details-controller.js"></script>
     <!-- Tv show component-->
     <script src="components/tvshow/scripts/tvshow.js"></script>
+    <script src="components/tvshow/scripts/services/tvshowSelectionService.js"></script>
+    <script src="components/tvshow/scripts/controllers/tvshow-dashboard-controller.js"></script>
+    <script src="components/tvshow/scripts/controllers/tvshow-details-controller.js"></script>
     <!-- Actor component-->
     <script src="components/actor/scripts/actor.js"></script>
 
@@ -38,7 +54,8 @@
     <script src="components/actor/scripts/actorRouteProvider.js"></script>
     <script src="components/home/scripts/homeRouteProvider.js"></script>
     <script src="components/movie/scripts/movieRouteProvider.js"></script>
-    <script src="components/tvshow/scripts/tvshowRouteProvider.js"></script>
+    <script src="components/tvshow/scripts/tvshowsRouteProvider.js"></script>
+
 </div>
 </body>
 </html>

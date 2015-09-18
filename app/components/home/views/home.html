@@ -1,1 +1,25 @@
-<p>You're a lucky bastard!</p>
+<div style="background-color: black">
+    <div>
+        <div class="col-md-1"></div>
+        <div id="featured" class="col-md-10">
+            <slick infinite=true slides-to-show=3 slides-to-scroll=1 init-onload="true" autoplay="true"
+                   autoplay-speed="5000" data="featured" variable-width="true">
+                <div ng-repeat="feature in featured">
+                    <img ng-src="{{feature.artworkUrl100}}">
+                </div>
+            </slick>
+        </div>
+    </div>
+    <div>
+        <h3 class="col-md-12">Watchlist</h3>
+        <div class="col-md-1"></div>
+        <div id="watchlist" class="col-md-10">
+            <slick infinite=false slides-to-show=3 slides-to-scroll=1 init-onload="true" autoplay="true"
+                   autoplay-speed="5000" data="featured" variable-width="true">
+                <div ng-repeat="movie in watchlist">
+                    <img ng-src="{{movie.artworkUrl100}}">
+                </div>
+            </slick>
+        </div>
+    </div>
+</div>
