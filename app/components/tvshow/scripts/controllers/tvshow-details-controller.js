@@ -4,5 +4,7 @@
 tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelectionService) {
 
     $scope.tvshow = tvshowSelectionService.getSelectedTvShow();
+    $scope.tvshowEpisodes = tvshowSelectionService.getSelectedTvShowEpisodes();
+
 
 });
