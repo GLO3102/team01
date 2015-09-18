@@ -1,0 +1,16 @@
+.search-bar{
+  display: inline-block;
+}
+
+#avatar{
+  width: 25px;
+}
+
+.dropdown{
+  list-style-type: none;
+}
+
+/*A garder SVP MS venir me voir avant de supprimer :D yay un commentaire utile*/
+/*.container-fluid{
+  padding-top: 15px;
+}*/
