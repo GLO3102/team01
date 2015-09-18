@@ -7,7 +7,7 @@
         <div class="detail body">
             <div class="row detail section">
                 <div class="detail preview">
-                    <iframe class="" src="{{tvshowEpisodes.results[0].previewUrl | trusted}}"
+                    <iframe class="" ng-src="{{tvshowEpisodes.results[0].previewUrl | trusted}}"
                             allowfullscreen
                             seamless width="100%" height="100%"></iframe>
                 </div>
@@ -30,7 +30,7 @@
                     <h3>Episodes :</h3>
 
                     <div ng-repeat="episode in tvshowEpisodes.results" class="row">
-                        <span class="col-md-1"> <img src="{{episode.artworkUrl30}}"></span>
+                        <span class="col-md-1"> <img ng-src="{{episode.artworkUrl30}}"></span>
                         <!--<span class="col-md-2"> <iframe class="" autoplay="true" src="{{episode.previewUrl | trusted}}"-->
                         <!--seamless></iframe></span>-->
                         <span class="col-md-3">{{episode.trackNumber}} {{episode.trackName}}</span>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="detail poster col-md-4">
-                    <img src="{{tvshow.artworkUrl100}}">
+                    <img ng-src="{{tvshow.artworkUrl100}}">
                 </div>
             </div>
             <div class="row">
