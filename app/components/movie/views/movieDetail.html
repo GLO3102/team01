@@ -20,13 +20,21 @@
                         <li><label>Description</label>
                             <p>{{movie.longDescription}}</p></li>
                     </ul>
-                    <h4 class="detail price">Price <span>{{movie.trackPrice}}$ {{movie.currency}}</span></h4>
+                    <div class="btn-group" data-toggle="buttons">
+
+                            <button class="btn"  ng-click="showHdPrice(false, this)">SD Price</button>
+                            <button class="btn" ng-click="showHdPrice(true, this)">HD Price</button>
+
+                    </div>
+                    {{showHdPrice}}
+                    <h4 class="detail price" ng-hide="isHdPriceSelected">Price SD <span>{{movie.trackPrice}}$ {{movie.currency}}</span></h4>
+                    <h4 class="detail price" ng-show="isHdPriceSelected">Price HD <span>{{movie.trackHdPrice}}$ {{movie.currency}}</span></h4>
                 </div>
             </div>
             <div class="row detail section">
                 <div class="detail comments">
                     No comments
-                    <div class="comments" ng-repeat="comment in movie.comments">
+                    <div class="comments" ng-repeat="comment in comments">
                     </div>
                 </div>
                 <div class="detail poster">

@@ -5,4 +5,10 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
 
     $scope.movie = movieSelectionService.getSelectedMovie();
 
+    $scope.isHdPriceSelected = true;
+
+    $scope.showHdPrice = function(priceButtonState){
+        $scope.isHdPriceSelected = priceButtonState;
+    };
+
 });

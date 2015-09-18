@@ -52,7 +52,7 @@
 
 .detail.poster {
     display: inline;
-    height: 20em;a
+    height: 20em;
 }
 
 .detail.poster img {
@@ -105,8 +105,8 @@
     .detail.poster img {
         image-rendering: auto;
         height: inherit;
-        margin-left: 0%;
-        margin-right: 0%;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
