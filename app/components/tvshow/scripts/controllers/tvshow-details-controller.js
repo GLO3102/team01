@@ -116,9 +116,9 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
                     ]
                 }
             }
-            $scope.tvshowEpisodes = selectTvshowEpisodes;
-            $scope.tvshow = selectedTvShow;
         }
+        $scope.tvshowEpisodes = selectTvshowEpisodes;
+        $scope.tvshow = selectedTvShow;
     }
 
     $scope.initTvShowDetail();

@@ -38,7 +38,6 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
                 "radioStationUrl": "https://itunes.apple.com/station/idra.265727087"
             };
         }
-
         $scope.movie = selectedMovie;
     };
 
