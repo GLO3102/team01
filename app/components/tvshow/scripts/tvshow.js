@@ -1,3 +1,3 @@
 'use strict';
 
-var tvShowApp = angular.module('myApp.tvshow', ['ngRoute']);
+var tvShowApp = angular.module('uMovie.tvshow', ['ngRoute']);

@@ -1,2 +1,2 @@
 
-var actorApp = angular.module('myApp.actor', ['ngRoute']);
+var actorApp = angular.module('uMovie.actor', ['ngRoute']);
