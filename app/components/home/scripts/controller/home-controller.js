@@ -12,6 +12,7 @@ homeApp.controller("home-controller", function ($scope) {
             "collectionViewUrl": "https://itunes.apple.com/us/tv-season/house-season-4/id264406410?uo=4",
             "artworkUrl60": "http://is2.mzstatic.com/image/thumb/Features/1f/ae/27/dj.mixiblll.jpg/60x60bb-85.jpg",
             "artworkUrl100": "http://is1.mzstatic.com/image/thumb/Features/1f/ae/27/dj.mixiblll.jpg/500x500bb-85.jpg",
+            "previewUrl": "n8EfNllqS_A",
             "collectionPrice": 24.99,
             "collectionHdPrice": 29.99,
             "collectionExplicitness": "notExplicit",
@@ -36,6 +37,7 @@ homeApp.controller("home-controller", function ($scope) {
             "collectionViewUrl": "https://itunes.apple.com/us/tv-season/house-season-8/id459644267?uo=4",
             "artworkUrl60": "http://is5.mzstatic.com/image/thumb/Features/36/17/85/dj.vwqvqlji.jpg/60x60bb-85.jpg",
             "artworkUrl100": "http://is3.mzstatic.com/image/thumb/Features/36/17/85/dj.vwqvqlji.jpg/500x500bb-85.jpg",
+            "previewUrl": "egF9z9tsKuM",
             "collectionPrice": 29.99,
             "collectionHdPrice": 34.99,
             "collectionExplicitness": "notExplicit",
@@ -56,7 +58,7 @@ homeApp.controller("home-controller", function ($scope) {
             "trackName": "Man of Steel (2013)",
             "trackCensoredName": "Man of Steel (2013)",
             "trackViewUrl": "https://itunes.apple.com/us/movie/man-of-steel-2013/id684580963?uo=4",
-            "previewUrl": "http://a1404.v.phobos.apple.com/us/r1000/045/Video6/v4/2e/6f/c1/2e6fc1b3-1f4f-66e8-39b2-0914a36a2811/mzvf_4915892594692619099.640x354.h264lc.D2.p.m4v",
+            "previewUrl": "https://www.youtube.com/T6DJcgm3wNY",
             "artworkUrl30": "http://is5.mzstatic.com/image/thumb/Video6/v4/00/5b/f9/005bf939-272d-aaf3-af57-605505d68487/mza_637886889651437942.jpg/30x30bb-85.jpg",
             "artworkUrl60": "http://is2.mzstatic.com/image/thumb/Video6/v4/00/5b/f9/005bf939-272d-aaf3-af57-605505d68487/mza_637886889651437942.jpg/60x60bb-85.jpg",
             "artworkUrl100": "http://is5.mzstatic.com/image/thumb/Video6/v4/00/5b/f9/005bf939-272d-aaf3-af57-605505d68487/mza_637886889651437942.jpg/500x500bb-85.jpg",
@@ -86,7 +88,7 @@ homeApp.controller("home-controller", function ($scope) {
             "trackName": "Gravity",
             "trackCensoredName": "Gravity",
             "trackViewUrl": "https://itunes.apple.com/us/movie/gravity/id708338403?uo=4",
-            "previewUrl": "http://a83.v.phobos.apple.com/us/r1000/046/Video/v4/3b/72/9f/3b729fb4-e5fb-6f4e-9b5a-365dc170d2a5/mzvf_5998961187827480997.640x362.h264lc.D2.p.m4v",
+            "previewUrl": "OiTiKOy59o4",
             "artworkUrl30": "http://is5.mzstatic.com/image/thumb/Video3/v4/a6/2e/52/a62e521f-f4e2-21eb-5008-e4c62adb5566/pr_source.lsr/30x30bb-85.jpg",
             "artworkUrl60": "http://is2.mzstatic.com/image/thumb/Video3/v4/a6/2e/52/a62e521f-f4e2-21eb-5008-e4c62adb5566/pr_source.lsr/60x60bb-85.jpg",
             "artworkUrl100": "http://is4.mzstatic.com/image/thumb/Video3/v4/a6/2e/52/a62e521f-f4e2-21eb-5008-e4c62adb5566/pr_source.lsr/500x500bb-85.jpg",
@@ -120,7 +122,7 @@ homeApp.controller("home-controller", function ($scope) {
             "collectionArtistViewUrl": "https://itunes.apple.com/us/artist/warner-bros.-entertainment/id199257486?uo=4",
             "collectionViewUrl": "https://itunes.apple.com/us/movie/the-matrix/id271469518?uo=4",
             "trackViewUrl": "https://itunes.apple.com/us/movie/the-matrix/id271469518?uo=4",
-            "previewUrl": "http://a295.v.phobos.apple.com/us/r1000/153/Video7/v4/29/5a/8a/295a8ab2-81db-471d-210c-b70ac770e58b/mzvf_3460590593288106358.640x480.h264lc.D2.p.m4v",
+            "previewUrl": "m8e-FF8MsqU",
             "artworkUrl30": "http://is1.mzstatic.com/image/thumb/Video/v4/8c/04/07/8c0407cb-c004-3d20-bf2d-c0fc9f8a44ca/mza_8289062276287852134.jpg/30x30bb-85.jpg",
             "artworkUrl60": "http://is3.mzstatic.com/image/thumb/Video/v4/8c/04/07/8c0407cb-c004-3d20-bf2d-c0fc9f8a44ca/mza_8289062276287852134.jpg/60x60bb-85.jpg",
             "artworkUrl100": "http://is5.mzstatic.com/image/thumb/Video/v4/8c/04/07/8c0407cb-c004-3d20-bf2d-c0fc9f8a44ca/mza_8289062276287852134.jpg/500x500bb-85.jpg",
@@ -159,7 +161,7 @@ homeApp.controller("home-controller", function ($scope) {
             "collectionArtistViewUrl": "https://itunes.apple.com/us/artist/warner-bros.-entertainment/id199257486?uo=4",
             "collectionViewUrl": "https://itunes.apple.com/us/movie/the-matrix-reloaded/id283218560?uo=4",
             "trackViewUrl": "https://itunes.apple.com/us/movie/the-matrix-reloaded/id283218560?uo=4",
-            "previewUrl": "http://a705.v.phobos.apple.com/us/r1000/034/Video/c8/b3/9e/mzm.crvvzdgt..640x358.h264lc.d2.p.m4v",
+            "previewUrl": "m8e-FF8MsqU",
             "artworkUrl30": "http://is2.mzstatic.com/image/thumb/Features/13/57/25/dj.whlmbvea.jpg/30x30bb-85.jpg",
             "artworkUrl60": "http://is2.mzstatic.com/image/thumb/Features/13/57/25/dj.whlmbvea.jpg/60x60bb-85.jpg",
             "artworkUrl100": "http://is4.mzstatic.com/image/thumb/Features/13/57/25/dj.whlmbvea.jpg/500x500bb-85.jpg",
@@ -198,7 +200,7 @@ homeApp.controller("home-controller", function ($scope) {
             "collectionArtistViewUrl": "https://itunes.apple.com/us/artist/warner-bros.-entertainment/id199257486?uo=4",
             "collectionViewUrl": "https://itunes.apple.com/us/movie/the-matrix-revolutions/id271469065?uo=4",
             "trackViewUrl": "https://itunes.apple.com/us/movie/the-matrix-revolutions/id271469065?uo=4",
-            "previewUrl": "http://a1990.v.phobos.apple.com/us/r1000/039/Video/fe/1e/dd/mzm.sdwsyxun..640x356.h264lc.d2.p.m4v",
+            "previewUrl": "psNlHckYlVs",
             "artworkUrl30": "http://is1.mzstatic.com/image/thumb/Music/91/8b/f5/mzi.hdgwndzg.jpg/30x30bb-85.jpg",
             "artworkUrl60": "http://is3.mzstatic.com/image/thumb/Music/91/8b/f5/mzi.hdgwndzg.jpg/60x60bb-85.jpg",
             "artworkUrl100": "http://is3.mzstatic.com/image/thumb/Music/91/8b/f5/mzi.hdgwndzg.jpg/500x500bb-85.jpg",
@@ -343,10 +345,203 @@ homeApp.controller("home-controller", function ($scope) {
             "contentAdvisoryRating": "G",
             "longDescription": "\"There's no place like home...\" Entirely remastered, the colorful characters and unforgettable songs of Oz come alive as never before. This magical cinematic event finds Kansas farm girl Judy Garland (\"A Star is Born,\" \"Meet Me in St. Louis\") caught in a tornado and magically transported to the Land of Oz. Needing help to return home, she is told to follow the Yellow Brick Road and find the powerful Wizard (Frank Morgan). On her perilous journey, she is befriended by the Scarecrow (Ray Bolger), the Tin Man (Jack Haley), and the Cowardly Lion (Bert Lahr) who help her battle the Wicked Witch of the West (Margaret Hamilton) and her flying monkeys. Based on the classic book by Frank L. Baum, \"The Wizard of Oz\" is a dazzling motion picture achievement, featuring unforgettable songs (including Oscar-winner \"Over the Rainbow\"), scenery, and costumes. The film had 5 Academy Award nominations, and Garland was awarded a special Oscar for her outstanding performance.",
             "radioStationUrl": "https://itunes.apple.com/station/idra.320384447"
+        },
+        {
+            "wrapperType": "track",
+            "kind": "feature-movie",
+            "collectionId": 343647202,
+            "trackId": 271469518,
+            "artistName": "Larry Wachowski & Andy Wachowski",
+            "collectionName": "4 Film Favorites: The Matrix / V for Vendetta / Constantine / Blade",
+            "trackName": "The Matrix",
+            "collectionCensoredName": "4 Film Favorites: The Matrix / V for Vendetta / Constantine / Blade",
+            "trackCensoredName": "The Matrix",
+            "collectionArtistId": 199257486,
+            "collectionArtistViewUrl": "https://itunes.apple.com/us/artist/warner-bros.-entertainment/id199257486?uo=4",
+            "collectionViewUrl": "https://itunes.apple.com/us/movie/the-matrix/id271469518?uo=4",
+            "trackViewUrl": "https://itunes.apple.com/us/movie/the-matrix/id271469518?uo=4",
+            "previewUrl": "http://a295.v.phobos.apple.com/us/r1000/153/Video7/v4/29/5a/8a/295a8ab2-81db-471d-210c-b70ac770e58b/mzvf_3460590593288106358.640x480.h264lc.D2.p.m4v",
+            "artworkUrl30": "http://is1.mzstatic.com/image/thumb/Video/v4/8c/04/07/8c0407cb-c004-3d20-bf2d-c0fc9f8a44ca/mza_8289062276287852134.jpg/30x30bb-85.jpg",
+            "artworkUrl60": "http://is3.mzstatic.com/image/thumb/Video/v4/8c/04/07/8c0407cb-c004-3d20-bf2d-c0fc9f8a44ca/mza_8289062276287852134.jpg/60x60bb-85.jpg",
+            "artworkUrl100": "http://is5.mzstatic.com/image/thumb/Video/v4/8c/04/07/8c0407cb-c004-3d20-bf2d-c0fc9f8a44ca/mza_8289062276287852134.jpg/500x500bb-85.jpg",
+            "collectionPrice": 9.99,
+            "trackPrice": 9.99,
+            "trackRentalPrice": 2.99,
+            "collectionHdPrice": 14.99,
+            "trackHdPrice": 14.99,
+            "trackHdRentalPrice": 3.99,
+            "releaseDate": "1999-03-31T08:00:00Z",
+            "collectionExplicitness": "notExplicit",
+            "trackExplicitness": "notExplicit",
+            "discCount": 1,
+            "discNumber": 1,
+            "trackCount": 4,
+            "trackNumber": 1,
+            "trackTimeMillis": 8178720,
+            "country": "USA",
+            "currency": "USD",
+            "primaryGenreName": "Sci-Fi & Fantasy",
+            "contentAdvisoryRating": "R",
+            "longDescription": "Breaking box office records as the biggest Easter opening ever, this special effects-driven tale follows Keanu Reeves (\"Speed,\" \"Devil's Advocate\") and Oscar, Golden Globe and Emmy-nominee Laurence Fishburne (\"What's Love Got to Do with It?\") on an explosive futuristic sci-fi adventure about a man who comes to believe that his everyday world is the product of a complex computer-driven digital matrix that feeds on humans. In his dangerous quest to find out the truth, he must figure out who is real and who he can trust. From the producer of the top boxoffice franchise, \"Lethal Weapon.\"",
+            "radioStationUrl": "https://itunes.apple.com/station/idra.271469518"
+        },
+        {
+            "wrapperType": "track",
+            "kind": "feature-movie",
+            "collectionId": 426284587,
+            "trackId": 283218560,
+            "artistName": "Andy Wachowski",
+            "collectionName": "Matrix Collection",
+            "trackName": "The Matrix Reloaded",
+            "collectionCensoredName": "Matrix Collection",
+            "trackCensoredName": "The Matrix Reloaded",
+            "collectionArtistId": 199257486,
+            "collectionArtistViewUrl": "https://itunes.apple.com/us/artist/warner-bros.-entertainment/id199257486?uo=4",
+            "collectionViewUrl": "https://itunes.apple.com/us/movie/the-matrix-reloaded/id283218560?uo=4",
+            "trackViewUrl": "https://itunes.apple.com/us/movie/the-matrix-reloaded/id283218560?uo=4",
+            "previewUrl": "http://a705.v.phobos.apple.com/us/r1000/034/Video/c8/b3/9e/mzm.crvvzdgt..640x358.h264lc.d2.p.m4v",
+            "artworkUrl30": "http://is2.mzstatic.com/image/thumb/Features/13/57/25/dj.whlmbvea.jpg/30x30bb-85.jpg",
+            "artworkUrl60": "http://is2.mzstatic.com/image/thumb/Features/13/57/25/dj.whlmbvea.jpg/60x60bb-85.jpg",
+            "artworkUrl100": "http://is4.mzstatic.com/image/thumb/Features/13/57/25/dj.whlmbvea.jpg/500x500bb-85.jpg",
+            "collectionPrice": 9.99,
+            "trackPrice": 9.99,
+            "trackRentalPrice": 2.99,
+            "collectionHdPrice": 14.99,
+            "trackHdPrice": 14.99,
+            "trackHdRentalPrice": 3.99,
+            "releaseDate": "2003-05-22T07:00:00Z",
+            "collectionExplicitness": "notExplicit",
+            "trackExplicitness": "notExplicit",
+            "discCount": 1,
+            "discNumber": 1,
+            "trackCount": 3,
+            "trackNumber": 2,
+            "trackTimeMillis": 8294752,
+            "country": "USA",
+            "currency": "USD",
+            "primaryGenreName": "Action & Adventure",
+            "contentAdvisoryRating": "R",
+            "longDescription": "Neo, Morpheus, Trinity and the evil Agent Smith are back, and the battle for the human race continues! Written and directed by the acclaimed Wachowski brothers and from action producer Joel Silver (\"Swordfish,\" the \"Lethal Weapon\" and \"Die Hard\" series), this is the highly anticipated sequel to the runaway box-office smash hit ($171+ million) and record-selling DVD \"The Matrix.\" Starring Keanu Reeves (\"Hard Ball,\" \"The Devil's Advocate\"), Oscar-nominated Laurence Fishburne (\"Biker Boyz,\" \"What's Love Got to Do With It\"), Carrie-Anne Moss (\"Chocolat,\" \"Memento\"), Hugo Weaving (\"The Lord of the Rings 1 & 2\"), Jada Pinkett Smith (\"Ali,\" \"Scream 2\"), Monica Bellucci (\"Tears of the Sun,\" \"Malena\") and Nona M. Gaye (\"Ali\").",
+            "radioStationUrl": "https://itunes.apple.com/station/idra.283218560"
+        },
+        {
+            "wrapperType": "track",
+            "kind": "feature-movie",
+            "collectionId": 426284587,
+            "trackId": 271469065,
+            "artistName": "Andy Wachowski",
+            "collectionName": "Matrix Collection",
+            "trackName": "The Matrix Revolutions",
+            "collectionCensoredName": "Matrix Collection",
+            "trackCensoredName": "The Matrix Revolutions",
+            "collectionArtistId": 199257486,
+            "collectionArtistViewUrl": "https://itunes.apple.com/us/artist/warner-bros.-entertainment/id199257486?uo=4",
+            "collectionViewUrl": "https://itunes.apple.com/us/movie/the-matrix-revolutions/id271469065?uo=4",
+            "trackViewUrl": "https://itunes.apple.com/us/movie/the-matrix-revolutions/id271469065?uo=4",
+            "previewUrl": "http://a1990.v.phobos.apple.com/us/r1000/039/Video/fe/1e/dd/mzm.sdwsyxun..640x356.h264lc.d2.p.m4v",
+            "artworkUrl30": "http://is1.mzstatic.com/image/thumb/Music/91/8b/f5/mzi.hdgwndzg.jpg/30x30bb-85.jpg",
+            "artworkUrl60": "http://is3.mzstatic.com/image/thumb/Music/91/8b/f5/mzi.hdgwndzg.jpg/60x60bb-85.jpg",
+            "artworkUrl100": "http://is3.mzstatic.com/image/thumb/Music/91/8b/f5/mzi.hdgwndzg.jpg/500x500bb-85.jpg",
+            "collectionPrice": 9.99,
+            "trackPrice": 9.99,
+            "trackRentalPrice": 2.99,
+            "collectionHdPrice": 14.99,
+            "trackHdPrice": 14.99,
+            "trackHdRentalPrice": 3.99,
+            "releaseDate": "2003-11-05T08:00:00Z",
+            "collectionExplicitness": "notExplicit",
+            "trackExplicitness": "notExplicit",
+            "discCount": 1,
+            "discNumber": 1,
+            "trackCount": 3,
+            "trackNumber": 3,
+            "trackTimeMillis": 7758017,
+            "country": "USA",
+            "currency": "USD",
+            "primaryGenreName": "Sci-Fi & Fantasy",
+            "contentAdvisoryRating": "R",
+            "shortDescription": "Provocative Futuristic Action Thriller. The Matrix Revolutions marks the final explosive chapter in",
+            "longDescription": "Everything that has a beginning has an end.\r\n\r\nIn this explosive final chapter of the Matrix trilogy, Neo, Morpheus and Trinity battle to defend Zion, the last real-world city, against the onslaught of the machines that have enslaved the human race. And, now as Neo learns more about his heroic powers--including the ability to see the codes of things and the people, he faces the consequences of the choice made in The Matrix Reloaded.",
+            "radioStationUrl": "https://itunes.apple.com/station/idra.271469065"
         }
     ];
     $scope.featured = featured;
 
     $scope.watchlist = watchlist;
 
-});
+    $scope.slickFeatureConfig = {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        variableWidth:true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true
+                }
+            }]
+    };
+
+    $scope.slickWatchlistConfig = {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        variableWidth:true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 5000
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true
+                }
+            }]
+    }
+})

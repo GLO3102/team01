@@ -2,10 +2,20 @@
     <div>
         <div class="col-md-1"></div>
         <div id="featured" class="col-md-10">
-            <slick infinite=true slides-to-show=3 slides-to-scroll=1 init-onload="true" autoplay="true"
-                   autoplay-speed="5000" data="featured" variable-width="true">
-                <div ng-repeat="feature in featured">
-                    <img ng-src="{{feature.artworkUrl100}}">
+            <slick settings="slickFeatureConfig" data="featured">
+                <div ng-repeat="feature in featured" class="slick-slide overlay-image" image-overlay>
+                    <!--<div popover="{{feature.longDescription | cut:true:100:'...'}}" popover-title="{{feature.artistName}}" popover-trigger="mouseenter" ng-attr-popover-placement="{{scope.tabindex == 0 && 'right' || 'left'}}">-->
+                        <!--&lt;!&ndash;<h2 >{{feature.artistName}}</h2>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p >{{feature.longDescription}}</p>&ndash;&gt;-->
+                        <!--<img ng-src="{{feature.artworkUrl100}}" >-->
+                    <!--</div>-->
+                    <div class="overlay">
+                        <h2>{{feature.trackName || feature.collectionName}}</h2>
+                        <!--<iframe width="90%" height="50%" ng-src="{{feature.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen></iframe>-->
+                        <youtube-video video-id="feature.previewUrl" player-width="'95%'" player-height="'50%'" ></youtube-video>
+                        <p>{{feature.longDescription|cut:true:200:'...'}}</p>
+                    </div>
+                    <img ng-src="{{feature.artworkUrl100}}" >
                 </div>
             </slick>
         </div>
@@ -14,8 +24,7 @@
         <h3 class="col-md-12">Watchlist</h3>
         <div class="col-md-1"></div>
         <div id="watchlist" class="col-md-10">
-            <slick infinite=false slides-to-show=3 slides-to-scroll=1 init-onload="true" autoplay="true"
-                   autoplay-speed="5000" data="featured" variable-width="true">
+            <slick settings="slickWatchlistConfig" data="watchlist" >
                 <div ng-repeat="movie in watchlist">
                     <img ng-src="{{movie.artworkUrl100}}">
                 </div>

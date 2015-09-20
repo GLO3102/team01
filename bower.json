@@ -11,7 +11,9 @@
     "angular-mocks": "~1.4.0",
     "angular-route": "~1.4.0",
     "angular-slick-carousel": "~3.0.9",
+    "angular-youtube-mb": "~1.1.0",
     "bootstrap": "~3.3.5",
+    "bootstrap-popover-x": "~1.4.1",
     "html5-boilerplate": "~5.2.0"
   }
 }

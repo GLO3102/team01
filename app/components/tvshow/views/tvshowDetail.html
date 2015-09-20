@@ -1,7 +1,9 @@
 <div class="panel">
     <div class="panel-body">
         <div class="detail header">
-            <h2>{{tvshow.collectionName}} <a class="btn btn-default" href="{{tvshow.collectionViewUrl}}">iTunes</a><a
+            <h2>{{tvshow.collectionName}} <a href="{{tvshow.collectionViewUrl}}">
+                <img ng-src="img/itunes.svg"/>
+            </a><a
                     class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"></a></h2>
         </div>
         <div class="detail body">
