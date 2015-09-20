@@ -1,41 +1,40 @@
 <div class="panel">
-    <div class="panel-body">
-        <div class="detail header">
-            <h2>{{actor.artistName}} <a class="btn btn-default" href="{{actor.artistLinkUrl}}"><img src="img/itunes-logo.png" width="75"/></a><a class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"></a></h2>
-        </div>
-        <div class="detail body">
-            <div class="row detail section">
-                <div class="detail preview">
-                  <div>
-                    <img ng-src="{{actor.}}"
-                  </div>
-                    <iframe class="" autoplay="true" src="{{movie.previewUrl | trusted}}" allowfullscreen
-                            seamless width="100%" height="100%"></iframe>
-                </div>
-                <div class="detail description">
-                    <ul>
-                        <li><h3>{{movie.trackName}}</h3></li>
-                        <li><label>Duration </label> <span>{{movie.trackTimeMillis}}</span></li>
-                        <li><label>Genre</label> <span>{{movie.primaryGenreName}}</span></li>
-                        <li><label>Release date</label> <span>{{movie.releaseDate | date:medium}}</span></li>
-                        <li><label>Director</label> <span>{{movie.artistName}}</span></li>
-                        <li><label>Rating</label> <span>{{movie.contentAdvisoryRating}}</span></li>
-                        <li><label>Description</label>
-                            <p>{{movie.longDescription}}</p></li>
-                    </ul>
-                    <h4 class="detail price">Price <span>{{movie.trackPrice}}$ {{movie.currency}}</span></h4>
-                </div>
-            </div>
-            <div class="row detail section">
-                <div class="detail comments">
-                    No comments
-                    <div class="comments" ng-repeat="comment in movie.comments">
-                    </div>
-                </div>
-                <div class="detail poster">
-                    <img src="{{movie.artworkUrl100}}" >
-                </div>
-            </div>
-        </div>
+  <div class="panel-body">
+    <div class="detail header">
+      <h2>{{actor.artistName}}
+        <a class="btn btn-default" href="{{actor.artistLinkUrl}}">
+          <img src="img/itunes-logo.png" width="75"/>
+        </a>
+        <a class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"/>
+      </h2>
+      <h3>
+        <label> Primary genre : </label> <span>{{actor.primaryGenreName}}</span>
+      </h3>
+
+
     </div>
-</div>
+
+    <div class="container-fluid">
+
+      <div class="row">
+
+        <div class="col-sm-4">
+          <img ng-src="img/sawyer.jpg" class="img-responsive"/>
+        </div>
+
+        <div id="featured" class="col-sm-8 detail description">
+          bla
+            <slick infinite=true slides-to-show=3 slides-to-scroll=1 init-onload="true" autoplay="true"
+                   autoplay-speed="5000" data="featured" variable-width="true">
+                <div ng-repeat="feature in featured">
+                    <img ng-src="{{featured.artworkUrl100}}">
+                </div>
+            </slick>
+        </div>
+
+      </div><!--row-->
+
+    </div><!--containerFluid-->
+
+  </div><!-- panel body-->
+</div><!-- panel -->
