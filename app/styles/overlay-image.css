@@ -1,0 +1,13 @@
+.overlay-image {
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.overlay {
+    background: #000;
+    color: #FFF;
+    padding: 10px;
+    position: absolute;
+    visibility: hidden;
+}
