@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My AngularJS App</title>
+    <title>UMovie</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/app.css">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
     <link rel="stylesheet" href="styles/slider.css">
-    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="styles/overlay-image.css">
 
 </head>
 <body class="main">
@@ -43,9 +43,9 @@
 
         <div class="navbar-form navbar-left" role="search">
           <div class="search-bar">
-            <input type="text" class="form-control" placeholder="Search">
+            <img src="img/search.png" width="35"/>
+            <input type="text" class="form-control" placeholder="Search" >
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
         </div>
 
         <div class="pull-right navbar-text">
@@ -75,6 +75,8 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/slick-carousel/slick/slick.js"></script>
     <script src="bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>
 
 
     <!-- Main application -->
@@ -82,6 +84,8 @@
 
     <!-- Commons component -->
     <script src="components/commons/scripts/filters/video-preview-filter.js"></script>
+    <script src="components/commons/scripts/filters/text-filter.js"></script>
+    <script src="components/commons/scripts/overlay/image-overlay.js"></script>
 
     <!--Home -->
     <script src="components/home/scripts/controller/home-controller.js"></script>
@@ -97,6 +101,9 @@
     <script src="components/tvshow/scripts/controllers/tvshow-details-controller.js"></script>
     <!-- Actor component-->
     <script src="components/actor/scripts/actor.js"></script>
+    <script src="components/actor/scripts/services/actorSelectionService.js"></script>
+    <script src="components/actor/scripts/controllers/actor-dashboard-controller.js"></script>
+    <script src="components/actor/scripts/controllers/actor-details-controller.js"></script>
 
     <!-- Route providers -->
     <script src="components/actor/scripts/actorRouteProvider.js"></script>
