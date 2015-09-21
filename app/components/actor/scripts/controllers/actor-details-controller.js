@@ -3,7 +3,7 @@
  */
 actorApp.controller("actor-detail-controller", function ($scope, actorSelectionService) {
 
-  var featured = [
+  var movies = [
       {
           "wrapperType": "track",
           "kind": "feature-movie",
@@ -12,7 +12,7 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
           "trackName": "Independence Day",
           "trackCensoredName": "Independence Day",
           "trackViewUrl": "https://itunes.apple.com/us/movie/independence-day/id272967721?uo=4",
-          "previewUrl": "mGeIsCLOI-U",
+          "previewUrl": "https://www.youtube.com/watch?v=mGeIsCLOI-U",
           "artworkUrl30": "http://is4.mzstatic.com/image/thumb/Video/a7/d5/47/mzl.peotbedu.jpg/30x30bb-85.jpg",
           "artworkUrl60": "http://is1.mzstatic.com/image/thumb/Video/a7/d5/47/mzl.peotbedu.jpg/60x60bb-85.jpg",
           "artworkUrl100": "http://is2.mzstatic.com/image/thumb/Video/a7/d5/47/mzl.peotbedu.jpg/500x500bb-85.jpg",
@@ -41,7 +41,7 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
           "trackName": "Kingsman: The Secret Service",
           "trackCensoredName": "Kingsman: The Secret Service",
           "trackViewUrl": "https://itunes.apple.com/us/movie/kingsman-the-secret-service/id957056432?uo=4",
-          "previewUrl": "kl8F-8tR8to",
+          "previewUrl": "https://www.youtube.com/watch?v=kl8F-8tR8to",
           "artworkUrl30": "http://is1.mzstatic.com/image/thumb/Video3/v4/f7/5b/b2/f75bb2dd-f38b-edf6-c726-6c5d31b6a29f/pr_source.lsr/30x30bb-85.jpg",
           "artworkUrl60": "http://is3.mzstatic.com/image/thumb/Video3/v4/f7/5b/b2/f75bb2dd-f38b-edf6-c726-6c5d31b6a29f/pr_source.lsr/60x60bb-85.jpg",
           "artworkUrl100": "http://is3.mzstatic.com/image/thumb/Video3/v4/f7/5b/b2/f75bb2dd-f38b-edf6-c726-6c5d31b6a29f/pr_source.lsr/500x500bb-85.jpg",
@@ -71,7 +71,7 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
           "trackName": "The LEGO Movie",
           "trackCensoredName": "The LEGO Movie",
           "trackViewUrl": "https://itunes.apple.com/us/movie/the-lego-movie/id805178535?uo=4",
-          "previewUrl": "fZ_JOBCLF-I",
+          "previewUrl": "https://www.youtube.com/watch?v=fZ_JOBCLF-I",
           "artworkUrl30": "http://is4.mzstatic.com/image/thumb/Video/v4/ed/99/d2/ed99d2d2-b008-9a4c-d3e9-bb32542d79ea/mza_2121069215807290323.jpg/30x30bb-85.jpg",
           "artworkUrl60": "http://is1.mzstatic.com/image/thumb/Video/v4/ed/99/d2/ed99d2d2-b008-9a4c-d3e9-bb32542d79ea/mza_2121069215807290323.jpg/60x60bb-85.jpg",
           "artworkUrl100": "http://is5.mzstatic.com/image/thumb/Video/v4/ed/99/d2/ed99d2d2-b008-9a4c-d3e9-bb32542d79ea/mza_2121069215807290323.jpg/500x500bb-85.jpg",
@@ -99,7 +99,7 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
           "trackName": "The Wizard of Oz",
           "trackCensoredName": "The Wizard of Oz",
           "trackViewUrl": "https://itunes.apple.com/us/movie/the-wizard-of-oz/id320384447?uo=4",
-          "previewUrl": "DylgNj4YQVc",
+          "previewUrl": "https://www.youtube.com/watch?v=DylgNj4YQVc",
           "artworkUrl30": "http://is4.mzstatic.com/image/thumb/Video6/v4/ff/db/f4/ffdbf41e-f221-edf5-22d0-0a2143b23601/mza_6155924764157454088.jpg/30x30bb-85.jpg",
           "artworkUrl60": "http://is1.mzstatic.com/image/thumb/Video6/v4/ff/db/f4/ffdbf41e-f221-edf5-22d0-0a2143b23601/mza_6155924764157454088.jpg/60x60bb-85.jpg",
           "artworkUrl100": "http://is4.mzstatic.com/image/thumb/Video6/v4/ff/db/f4/ffdbf41e-f221-edf5-22d0-0a2143b23601/mza_6155924764157454088.jpg/500x500bb-85.jpg",
@@ -124,7 +124,7 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
 
 
     $scope.actor = actorSelectionService.getSelectedActor();
-    $scope.featured = featured;
+    $scope.movies = movies;
 
     $scope.slickFeatureConfig = {
         slidesToShow: 3,
