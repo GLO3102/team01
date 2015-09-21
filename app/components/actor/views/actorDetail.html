@@ -19,15 +19,20 @@
       <div class="row">
 
         <div class="col-sm-4">
-          <img ng-src="img/sawyer.jpg" class="img-responsive"/>
+          <img ng-src="img/sawyer.jpg" class="img-responsive" id="test"/>
         </div>
         <h3><label>Movie</label></h3>
         <div id="featured" class="col-sm-8 detail description">
-            <slick infinite=true slides-to-show=3 slides-to-scroll=1 init-onload="true" autoplay="true"
-                   autoplay-speed="5000" data="featured" variable-width="true">
-                <div ng-repeat="feature in featured">
+          <slick settings="slickFeatureConfig" data="featured">
+              <div ng-repeat="feature in featured" class="slick-slide overlay-image" image-overlay>
+                  <div class="overlay">
+                      <h2>{{feature.trackName || feature.collectionName}}</h2>
+                      Release date : {{feature.releaseDate|cut:true:10:' '}}
+                      <youtube-video video-id="feature.previewUrl" player-width="'95%'" player-height="'50%'" ></youtube-video>
+                      <p>{{feature.longDescription|cut:true:200:'...'}}</p>
+                  </div>
                     <img ng-src="{{feature.artworkUrl100}}">
-                </div>
+              </div>
             </slick>
         </div>
 

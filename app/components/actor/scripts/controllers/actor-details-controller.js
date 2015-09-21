@@ -12,7 +12,7 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
           "trackName": "Independence Day",
           "trackCensoredName": "Independence Day",
           "trackViewUrl": "https://itunes.apple.com/us/movie/independence-day/id272967721?uo=4",
-          "previewUrl": "http://a451.v.phobos.apple.com/us/r1000/107/Video/37/22/6b/mzm.trflyzlm..640x362.h264lc.d2.p.m4v",
+          "previewUrl": "mGeIsCLOI-U",
           "artworkUrl30": "http://is4.mzstatic.com/image/thumb/Video/a7/d5/47/mzl.peotbedu.jpg/30x30bb-85.jpg",
           "artworkUrl60": "http://is1.mzstatic.com/image/thumb/Video/a7/d5/47/mzl.peotbedu.jpg/60x60bb-85.jpg",
           "artworkUrl100": "http://is2.mzstatic.com/image/thumb/Video/a7/d5/47/mzl.peotbedu.jpg/500x500bb-85.jpg",
@@ -41,7 +41,7 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
           "trackName": "Kingsman: The Secret Service",
           "trackCensoredName": "Kingsman: The Secret Service",
           "trackViewUrl": "https://itunes.apple.com/us/movie/kingsman-the-secret-service/id957056432?uo=4",
-          "previewUrl": "http://a617.v.phobos.apple.com/us/r1000/169/Video1/v4/50/d7/ad/50d7adfa-02fe-228f-f82b-efe947947a99/mzvf_7709454787995501286.640x352.h264lc.D2.p.m4v",
+          "previewUrl": "kl8F-8tR8to",
           "artworkUrl30": "http://is1.mzstatic.com/image/thumb/Video3/v4/f7/5b/b2/f75bb2dd-f38b-edf6-c726-6c5d31b6a29f/pr_source.lsr/30x30bb-85.jpg",
           "artworkUrl60": "http://is3.mzstatic.com/image/thumb/Video3/v4/f7/5b/b2/f75bb2dd-f38b-edf6-c726-6c5d31b6a29f/pr_source.lsr/60x60bb-85.jpg",
           "artworkUrl100": "http://is3.mzstatic.com/image/thumb/Video3/v4/f7/5b/b2/f75bb2dd-f38b-edf6-c726-6c5d31b6a29f/pr_source.lsr/500x500bb-85.jpg",
@@ -71,7 +71,7 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
           "trackName": "The LEGO Movie",
           "trackCensoredName": "The LEGO Movie",
           "trackViewUrl": "https://itunes.apple.com/us/movie/the-lego-movie/id805178535?uo=4",
-          "previewUrl": "http://a1364.v.phobos.apple.com/us/r1000/026/Video4/v4/b1/20/ef/b120ef72-6a24-c06a-ad72-0e9e618f2968/mzvf_3532520216975978054.640x354.h264lc.D2.p.m4v",
+          "previewUrl": "fZ_JOBCLF-I",
           "artworkUrl30": "http://is4.mzstatic.com/image/thumb/Video/v4/ed/99/d2/ed99d2d2-b008-9a4c-d3e9-bb32542d79ea/mza_2121069215807290323.jpg/30x30bb-85.jpg",
           "artworkUrl60": "http://is1.mzstatic.com/image/thumb/Video/v4/ed/99/d2/ed99d2d2-b008-9a4c-d3e9-bb32542d79ea/mza_2121069215807290323.jpg/60x60bb-85.jpg",
           "artworkUrl100": "http://is5.mzstatic.com/image/thumb/Video/v4/ed/99/d2/ed99d2d2-b008-9a4c-d3e9-bb32542d79ea/mza_2121069215807290323.jpg/500x500bb-85.jpg",
@@ -99,7 +99,7 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
           "trackName": "The Wizard of Oz",
           "trackCensoredName": "The Wizard of Oz",
           "trackViewUrl": "https://itunes.apple.com/us/movie/the-wizard-of-oz/id320384447?uo=4",
-          "previewUrl": "http://a1198.v.phobos.apple.com/us/r1000/000/Video/d8/07/7c/mzm.xqjocbrs..640x342.h264lc.d2.p.m4v",
+          "previewUrl": "DylgNj4YQVc",
           "artworkUrl30": "http://is4.mzstatic.com/image/thumb/Video6/v4/ff/db/f4/ffdbf41e-f221-edf5-22d0-0a2143b23601/mza_6155924764157454088.jpg/30x30bb-85.jpg",
           "artworkUrl60": "http://is1.mzstatic.com/image/thumb/Video6/v4/ff/db/f4/ffdbf41e-f221-edf5-22d0-0a2143b23601/mza_6155924764157454088.jpg/60x60bb-85.jpg",
           "artworkUrl100": "http://is4.mzstatic.com/image/thumb/Video6/v4/ff/db/f4/ffdbf41e-f221-edf5-22d0-0a2143b23601/mza_6155924764157454088.jpg/500x500bb-85.jpg",
@@ -125,5 +125,43 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
 
     $scope.actor = actorSelectionService.getSelectedActor();
     $scope.featured = featured;
+
+    $scope.slickFeatureConfig = {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        variableWidth:true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true
+                }
+            }]
+    };
 
 });
