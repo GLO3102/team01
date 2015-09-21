@@ -11,3 +11,41 @@
     position: absolute;
     visibility: hidden;
 }
+
+.youtube-container {
+    display: block;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
+}
+
+.youtube-player {
+    display: block;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    position: relative;
+}
+
+img.youtube-thumb {
+    bottom: 0;
+    display: block;
+    left: 0;
+    margin: auto;
+    max-width: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: auto
+}
+
+div.play-button {
+    height: 72px;
+    width: 72px;
+    left: 50%;
+    top: 50%;
+    margin-left: -36px;
+    margin-top: -36px;
+    position: absolute;
+    background: url("http://i.imgur.com/TxzC70f.png") no-repeat;
+}

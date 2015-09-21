@@ -3,17 +3,11 @@
         <div class="col-md-1"></div>
         <div id="featured" class="col-md-10">
             <slick settings="slickFeatureConfig" data="featured">
-                <div ng-repeat="feature in featured" class="slick-slide overlay-image" image-overlay>
-                    <!--<div popover="{{feature.longDescription | cut:true:100:'...'}}" popover-title="{{feature.artistName}}" popover-trigger="mouseenter" ng-attr-popover-placement="{{scope.tabindex == 0 && 'right' || 'left'}}">-->
-                        <!--&lt;!&ndash;<h2 >{{feature.artistName}}</h2>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<p >{{feature.longDescription}}</p>&ndash;&gt;-->
-                        <!--<img ng-src="{{feature.artworkUrl100}}" >-->
-                    <!--</div>-->
-                    <div class="overlay">
+                <div ng-repeat="feature in featured" class="overlay-image" image-overlay>
+                    <div class="overlay" id="overlay-feature-{{$index}}">
                         <h2>{{feature.trackName || feature.collectionName}}</h2>
-                        <!--<iframe width="90%" height="50%" ng-src="{{feature.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen></iframe>-->
-                        <youtube-video video-id="feature.previewUrl" player-width="'95%'" player-height="'50%'" ></youtube-video>
-                        <p>{{feature.longDescription|cut:true:200:'...'}}</p>
+                        <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%" src="{{feature.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
+                        <p ng-bind-html="feature.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
                     </div>
                     <img ng-src="{{feature.artworkUrl100}}" >
                 </div>
@@ -25,7 +19,12 @@
         <div class="col-md-1"></div>
         <div id="watchlist" class="col-md-10">
             <slick settings="slickWatchlistConfig" data="watchlist" >
-                <div ng-repeat="movie in watchlist">
+                <div ng-repeat="movie in watchlist" class="overlay-image" image-overlay>
+                    <div class="overlay" id="overlay-movie-{{$index}}">
+                        <h2>{{movie.trackName || movie.collectionName}}</h2>
+                        <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
+                        <p>{{movie.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode}}</p>
+                    </div>
                     <img ng-src="{{movie.artworkUrl100}}">
                 </div>
             </slick>
