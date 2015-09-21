@@ -24,14 +24,14 @@
         <h3><label>Movie</label></h3>
         <div id="featured" class="col-sm-8 detail description">
           <slick settings="slickFeatureConfig" data="featured">
-              <div ng-repeat="feature in featured" class="slick-slide overlay-image" image-overlay>
-                  <div class="overlay">
-                      <h2>{{feature.trackName || feature.collectionName}}</h2>
-                      Release date : {{feature.releaseDate|cut:true:10:' '}}
-                      <youtube-video video-id="feature.previewUrl" player-width="'95%'" player-height="'50%'" ></youtube-video>
-                      <p>{{feature.longDescription|cut:true:200:'...'}}</p>
+              <div ng-repeat="movie in movies" class="slick-slide overlay-image" image-overlay>
+                  <div class="overlay" id="overlay-movie-{{$index}}">
+                      <h2>{{movie.trackName || movie.collectionName}}</h2>
+                      Release date : {{movie.releaseDate|cut:true:10:' '}}
+                      <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
+                      <p ng-bind-html="movie.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
                   </div>
-                    <img ng-src="{{feature.artworkUrl100}}">
+                    <img ng-src="{{movie.artworkUrl100}}">
               </div>
             </slick>
         </div>
