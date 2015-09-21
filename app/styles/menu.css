@@ -40,7 +40,7 @@
 input[type=search]{
     background: url(../img/search-icon.png) no-repeat 2px center;
     background-color: #cccccc;
-    border: solid 1px #cccccc;
+    /*border: solid 1px #cccccc;*/
     padding-left: 20px;
     width: 25px;
 
