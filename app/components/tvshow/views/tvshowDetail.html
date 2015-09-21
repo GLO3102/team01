@@ -13,7 +13,7 @@
                             allowfullscreen
                             seamless width="100%" height="100%"></iframe>
                 </div>
-                <div class="detail description">
+                <div class="row detail description">
                     <ul>
                         <li><h3>{{tvshow.collectionName}}</h3></li>
                         <li><label>Genre</label> <span>{{tvshow.primaryGenreName}}</span></li>
@@ -28,26 +28,27 @@
                 </div>
             </div>
             <div class="row detail section">
-                <div class="detail col-md-8">
+                <div class="detail episodes">
                     <h3>Episodes :</h3>
 
-                    <div ng-repeat="episode in tvshowEpisodes.results" class="row">
-                        <span class="col-md-1"> <img ng-src="{{episode.artworkUrl30}}"></span>
-                        <!--<span class="col-md-2"> <iframe class="" autoplay="true" src="{{episode.previewUrl | trusted}}"-->
-                        <!--seamless></iframe></span>-->
-                        <span class="col-md-3">{{episode.trackNumber}} {{episode.trackName}}</span>
-                        <span class="col-md-6">{{episode.shortDescription}}</span>
-                        <span class="col-md-2">{{episode.releaseDate | date:medium}}</span>
+                    <div ng-repeat="episode in tvshowEpisodes.results">
+                        <div ng-class-odd="'odd'" ng-class-even="'even'">
+                            <span class="episodePic"> <img ng-src="{{episode.artworkUrl60}}"></span>
+                            <span class="episodeNumber"><p>{{episode.trackNumber}}</p></span>
+                            <span class="episodeName"><p>{{episode.trackName}}</p></span>
+                            <span class="episodeDesc"><p>{{episode.shortDescription}}</p></span>
+                            <span class="episodeRelease"><p>{{episode.releaseDate | date:medium}}</p></span>
+                        </div>
                     </div>
                 </div>
-                <div class="detail poster col-md-4">
+                <div class="detail poster">
                     <img ng-src="{{tvshow.artworkUrl100}}">
                 </div>
             </div>
-            <div class="row">
-                <div class="detail comments">
+            <div class="row detail section">
+                <div class="detail comments-episodes">
                     No comments
-                    <div class="comments" ng-repeat="comment in tvshow.comments">
+                    <div ng-repeat="comment in tvshow.comments">
                     </div>
                 </div>
             </div>
