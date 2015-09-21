@@ -14,8 +14,6 @@
 
 .detail.section {
     width: 96%;
-
-    /*height: calc(width*9/16);*/
     margin-left: 2%;
     margin-top: 10px;
     margin-right: 2%;
@@ -43,12 +41,9 @@
 
 .detail.price {
     position: relative;
-    /*top: inherit;*/
 }
 
 .detail.description ul li p {
-    /*text-overflow: clip;*/
-    /*overflow: hidden;*/
     text-align: justify;
     display: block;
 }
@@ -79,8 +74,6 @@
 
 .detail.poster {
     display: block;
-    /*height: 20em;*/
-
 }
 
 .detail.poster img {
@@ -149,7 +142,6 @@
     }
 
     .detail.section:first-child {
-        /*height: 50em;*/
     }
 
     .detail.section {
@@ -233,7 +225,6 @@
     }
 
     .detail.section:first-child {
-        /*height: 60em;*/
     }
 
     .detail.section {
