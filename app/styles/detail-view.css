@@ -1,3 +1,11 @@
+.panel {
+    background: transparent;
+}
+
+.panel-body {
+    background-color: rgba(188, 180, 186, 0.5);
+
+}
 
 .detail {
     display: block;
@@ -5,25 +13,25 @@
 }
 
 .detail.section {
-    width: 100%;
-    height: 35em;
-    /*height: calc(width*9/16);*/
-    margin-left: 0.5%;
+    width: 96%;
+    margin-left: 2%;
     margin-top: 10px;
-    margin-right: 0.5%;
+    margin-right: 2%;
+
 }
 
 .detail.preview {
-    display: inline;
+    display: inline-block;
     float: left;
-    width: 60%;
-    height: 100%;
-    margin-right: 0.5%;
+    width: 59%;
+    height: 35em;
+    margin-right: 1%;
 }
 
 .detail.description {
-    display: inline;
-
+    display: inline-block;
+    width: 39%;
+    margin-left: 1%;
 }
 
 .detail.description ul {
@@ -33,33 +41,90 @@
 
 .detail.price {
     position: relative;
-    top: inherit;
 }
 
 .detail.description ul li p {
-    text-overflow: clip;
-    overflow: hidden;
     text-align: justify;
+    display: block;
 }
 
 .detail.comments {
     float: left;
-    width: 60%;
+    width: 59%;
     height: 20em;
     border: 1px solid black;
-    margin-right: 0.5%;
+    margin-right: 1%;
+}
+
+.comments-episodes {
+    float: left;
+    width: 96%;
+    height: 20em;
+    border: 1px solid black;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+.detail.episodes {
+    float: left;
+    width: 56%;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 
 .detail.poster {
-    display: inline;
-    height: 20em;
+    display: block;
 }
 
 .detail.poster img {
     image-rendering: auto;
-    height: inherit;
-    margin-left: 5%;
+    width: 30%;
     margin-right: 5%;
+    margin-left: 5%;
+
+}
+
+.odd {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.episodePic {
+    margin-left: 0.5%;
+    margin-top: 0.5%;
+    vertical-align: text-top;
+    display: inline-block;
+    width: 5%;
+}
+
+.episodePic img {
+    width: 100%;
+}
+
+.episodeNumber {
+    display: inline-block;
+    text-overflow: clip;
+    vertical-align: text-top;
+    width: 5%;
+}
+
+.episodeName {
+    display: inline-block;
+    text-overflow: clip;
+    vertical-align: text-top;
+    width: 20%;
+}
+
+.episodeDesc {
+    display: inline-block;
+    vertical-align: text-top;
+    width: 50%;
+    text-overflow: clip;
+}
+
+.episodeRelease {
+    display: inline-block;
+    vertical-align: text-top;
+    width: 15%;
 }
 
 .panel {
@@ -81,7 +146,6 @@
     }
 
     .detail.section:first-child {
-        height: 50em;
     }
 
     .detail.section {
@@ -92,25 +156,61 @@
     }
 
     .detail.poster {
-        display: inline;
-        height: 20em;
-        margin-left: 4.5%;
-        margin-right: 4.5%;
+        display: block;
+        margin-top: 4%;
+        margin-left: 4%;
+        margin-right: 4%;
+        margin-bottom: 4%;
     }
 
     .detail.comments {
         float: left;
-        width: 60%;
+        width: 100%;
         height: 20em;
         border: 1px solid black;
-        margin-right: 0.5%;
+    }
+
+    .comments-episodes {
+        float: left;
+        width: 100%;
+        height: 20em;
+        border: 1px solid black;
     }
 
     .detail.poster img {
         image-rendering: auto;
-        height: inherit;
-        margin-left: 0;
-        margin-right: 0;
+        width: 50%;
+        margin-right: 25%;
+        margin-left: 25%;
+    }
+
+    .detail.episodes {
+        width: 96%;
+        margin-bottom: 4%;
+    }
+
+    .episodePic {
+        width: 10%;
+    }
+
+    .episodePic img {
+        width: 100%;
+    }
+
+    .episodeNumber {
+        width: 20%;
+    }
+
+    .episodeName {
+        width: 66%;
+    }
+
+    .episodeDesc {
+        display: none;
+    }
+
+    .episodeRelease {
+        display: none;
     }
 }
 
@@ -129,7 +229,6 @@
     }
 
     .detail.section:first-child {
-        height: 60em;
     }
 
     .detail.section {
@@ -141,16 +240,52 @@
 
     .detail.poster {
         display: block;
-        height: 20em;
-        margin-left: 17.5%;
-        margin-right: 17.5%;
+        margin-top: 4%;
+        margin-left: 4%;
+        margin-right: 4%;
+        margin-bottom: 4%;
     }
 
     .detail.comments {
-        float: none;
+        float: left;
         width: 100%;
         height: 20em;
         border: 1px solid black;
-        margin-right: 0.5%;
+    }
+
+    .comments-episodes {
+        float: left;
+        width: 100%;
+        height: 20em;
+        border: 1px solid black;
+    }
+
+    .episodes {
+        width: 96%;
+        margin-bottom: 4%;
+    }
+
+    .episodeDesc {
+        display: none;
+    }
+
+    .episodeRelease {
+        display: none;
+    }
+
+    .episodePic {
+        width: 20%;
+    }
+
+    .episodePic img {
+        width: 100%;
+    }
+
+    .episodeNumber {
+        width: 20%;
+    }
+
+    .episodeName {
+        width: 56%;
     }
 }
