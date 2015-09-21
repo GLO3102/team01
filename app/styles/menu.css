@@ -37,6 +37,37 @@
     }
 }
 
+input[type=search]{
+    background: url(../img/search-icon.png) no-repeat 2px center;
+    background-color: #cccccc;
+    border: solid 1px #cccccc;
+    padding-left: 20px;
+    width: 25px;
+
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+
+    color: transparent;
+    cursor: pointer;
+}
+
+input[type=search]:focus {
+    width: 130px;
+    padding-left: 32px;
+    color: #000000;
+    background-color: #ffffff;
+
+    cursor: auto;
+}
+
+input[type=search]:hover {
+    background-color: #ffffff;
+}
 
 /*A garder SVP MS venir me voir avant de supprimer :D yay un commentaire utile*/
 /*.container-fluid{
