@@ -3,7 +3,7 @@
 // Declare app level module which depends on views, and components
 var homeApp = angular.module('uMovie', [
     'ngRoute',
-    'youtube-embed',
+    'oblador.lazytube',
     'slickCarousel',
     'uMovie.movie',
     'uMovie.tvshow',
