@@ -21,7 +21,7 @@
                         <li><label>Rating</label> <span>{{tvshow.contentAdvisoryRating}}</span></li>
                         <li><label>Description</label>
 
-                            <p>{{tvshow.longDescription}}</p></li>
+                            <p>{{tvshow.longDescription|htmlToPlaintext|unicode}}</p></li>
                     </ul>
                     <h4 class="detail price">Price <span>SD: {{tvshow.collectionPrice}}$ HD: {{tvshow.collectionHdPrice}}$ {{tvshow.currency}}</span>
                     </h4>

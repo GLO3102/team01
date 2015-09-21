@@ -29,7 +29,7 @@
                       <h2>{{feature.trackName || feature.collectionName}}</h2>
                       Release date : {{feature.releaseDate|cut:true:10:' '}}
                       <youtube-video video-id="feature.previewUrl" player-width="'95%'" player-height="'50%'" ></youtube-video>
-                      <p>{{feature.longDescription|cut:true:200:'...'}}</p>
+                      <p>{{feature.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode}}</p>
                   </div>
                     <img ng-src="{{feature.artworkUrl100}}">
               </div>

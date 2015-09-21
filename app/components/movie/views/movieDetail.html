@@ -20,7 +20,7 @@
                         <li><label>Rating</label> <span>{{movie.contentAdvisoryRating}}</span></li>
                         <li><label>Description</label>
 
-                            <p>{{movie.longDescription}}</p></li>
+                            <p>{{movie.longDescription|htmlToPlaintext|unicode}}</p></li>
                     </ul>
                     <div class="btn-group" data-toggle="buttons">
 
