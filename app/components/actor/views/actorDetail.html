@@ -1,0 +1,44 @@
+<div class="panel">
+  <div class="panel-body">
+    <div class="detail header">
+      <h2>{{actor.artistName}}
+        <a class="btn btn-default" href="{{actor.artistLinkUrl}}">
+          <img src="img/itunes-logo.png" width="75"/>
+        </a>
+        <a class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"/>
+      </h2>
+      <h3>
+        <label> Primary genre : </label> <span>{{actor.primaryGenreName}}</span>
+      </h3>
+
+
+    </div>
+
+    <div class="container-fluid">
+
+      <div class="row">
+
+        <div class="col-sm-4">
+          <img ng-src="img/sawyer.jpg" class="img-responsive" id="test"/>
+        </div>
+        <h3><label>Movie</label></h3>
+        <div id="featured" class="col-sm-8 detail description">
+          <slick settings="slickFeatureConfig" data="featured">
+              <div ng-repeat="feature in featured" class="slick-slide overlay-image" image-overlay>
+                  <div class="overlay">
+                      <h2>{{feature.trackName || feature.collectionName}}</h2>
+                      Release date : {{feature.releaseDate|cut:true:10:' '}}
+                      <youtube-video video-id="feature.previewUrl" player-width="'95%'" player-height="'50%'" ></youtube-video>
+                      <p>{{feature.longDescription|cut:true:200:'...'}}</p>
+                  </div>
+                    <img ng-src="{{feature.artworkUrl100}}">
+              </div>
+            </slick>
+        </div>
+
+      </div><!--row-->
+
+    </div><!--containerFluid-->
+
+  </div><!-- panel body-->
+</div><!-- panel -->
