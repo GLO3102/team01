@@ -7,13 +7,12 @@
         <div class="detail body">
             <div class="row detail section">
                 <div class="detail preview">
-                    <iframe class="" autoplay="true" ng-src="{{movie.previewUrl | trusted}}" allowfullscreen
-                            seamless width="100%" height="100%"></iframe>
+                    <iframe ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen autoplay="true"></iframe>
                 </div>
                 <div class="detail description">
                     <ul>
                         <li><h3>{{movie.trackName}}</h3></li>
-                        <li><label>Duration </label> <span>{{movie.trackTimeMillis}}</span></li>
+                        <li><label>Duration </label> <span>{{movie.trackTimeMillis| duration}}</span></li>
                         <li><label>Genre</label> <span>{{movie.primaryGenreName}}</span></li>
                         <li><label>Release date</label> <span>{{movie.releaseDate | date:medium}}</span></li>
                         <li><label>Director</label> <span>{{movie.artistName}}</span></li>

@@ -16,7 +16,7 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
                 "trackName": "Saw",
                 "trackCensoredName": "Saw",
                 "trackViewUrl": "https://itunes.apple.com/us/movie/saw/id265727087?uo=4",
-                "previewUrl": "http://a978.v.phobos.apple.com/us/r1000/097/Video/a6/aa/f2/mzm.jszrvyyu..640x360.h264lc.D2.p.m4v",
+                "previewUrl": "https://www.youtube.com/watch?v=S-1QgOMQ-ls",
                 "artworkUrl30": "http://is4.mzstatic.com/image/thumb/Music/af/37/e2/dj.fsfobjrm.jpg/30x30bb-85.jpg",
                 "artworkUrl60": "http://is1.mzstatic.com/image/thumb/Music/af/37/e2/dj.fsfobjrm.jpg/60x60bb-85.jpg",
                 "artworkUrl100": "http://is3.mzstatic.com/image/thumb/Music/af/37/e2/dj.fsfobjrm.jpg/100x100bb-85.jpg",
