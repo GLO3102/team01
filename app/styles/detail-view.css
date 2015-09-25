@@ -13,6 +13,7 @@
 .detail {
     display: block;
     width: auto;
+    color: #ffffff;
 }
 
 .detail.section {
