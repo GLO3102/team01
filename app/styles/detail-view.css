@@ -19,7 +19,12 @@
     margin-right: 2%;
 
 }
-
+.detail.section.actor {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-right: 5%;
+}
 .detail.preview {
     display: inline-block;
     float: left;
@@ -154,7 +159,12 @@
         margin-top: 10px;
         margin-right: 0.5%;
     }
-
+    .detail.section.actor {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 10px;
+        margin-right: 5%;
+    }
     .detail.poster {
         display: block;
         margin-top: 4%;
@@ -237,7 +247,12 @@
         margin-top: 10px;
         margin-right: 0.5%;
     }
-
+    .detail.section.actor {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 10px;
+        margin-right: 5%;
+    }
     .detail.poster {
         display: block;
         margin-top: 4%;

@@ -11,7 +11,8 @@ actorApp.controller("actor-dashboard-controller", function ($scope, actorSelecti
         "amgArtistId": 122340,
         "primaryGenreName": "Tribute",
         "primaryGenreId": 100022,
-        "radioStationUrl": "https://itunes.apple.com/station/idra.253584821"
+        "radioStationUrl": "https://itunes.apple.com/station/idra.253584821",
+        "bio": "John Sawyer is an Oscar-winning actress who became popular after playing the title role in the \"Lara Croft\" blockbuster movies, as well as Mr. & Mrs. Smith (2005), Wanted (2008), Salt (2010) and Maleficent (2014). Off-screen, Jolie has become prominently involved in international charity projects, especially those involving refugees. She often appears on many \"most beautiful women\" lists, and she has a personal life that is avidly covered by the tabloid press."
     };
 
 

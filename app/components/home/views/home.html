@@ -2,7 +2,7 @@
     <div>
         <div class="col-md-1"></div>
         <div id="featured" class="col-md-10">
-            <slick settings="slickFeatureConfig" data="featured">
+            <slick settings="slickFeatureConfig" data="featured" center-mode="true">
                 <div ng-repeat="feature in featured" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-feature-{{$index}}">
                         <h2>{{feature.trackName || feature.collectionName}}</h2>
