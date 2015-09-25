@@ -475,6 +475,7 @@ homeApp.controller("home-controller", function ($scope) {
         autoplay: true,
         autoplaySpeed: 5000,
         variableWidth:true,
+        centerMode: true,
         responsive: [
             {
                 breakpoint: 1024,
@@ -513,6 +514,7 @@ homeApp.controller("home-controller", function ($scope) {
         autoplay: true,
         autoplaySpeed: 5000,
         variableWidth:true,
+        centerMode: true,
         responsive: [
             {
                 breakpoint: 1024,
