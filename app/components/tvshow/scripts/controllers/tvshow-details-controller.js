@@ -1,14 +1,17 @@
-/**
- * Created by Jean-Sebastien on 2015-09-17.
- */
 tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelectionService, $routeParams) {
+
     var tvShowId = $routeParams.tvShowId;
 
+    $scope.isHdPriceSelected = true;
+
     $scope.initTvShowDetail = function () {
+
         var selectedTvShow = tvshowSelectionService.getSelectedTvShow();
         var selectTvshowEpisodes = tvshowSelectionService.getSelectedTvShowEpisodes();
-
         if (Object.keys(selectedTvShow).length === 0) {
+            /**
+             * Created by Jean-Sebastien on 2015-09-17.
+             */
             selectedTvShow = {
                 "wrapperType": "collection",
                 "collectionType": "TV Season",
@@ -162,6 +165,9 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
         $scope.tvshow = selectedTvShow;
     }
 
+    $scope.showHdPrice = function(priceButtonState){
+        $scope.isHdPriceSelected = priceButtonState;
+    };
     $scope.initTvShowDetail();
 
 });

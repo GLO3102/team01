@@ -1,44 +1,53 @@
 <div class="panel">
-  <div class="panel-body">
-    <div class="detail header">
-      <h2>{{actor.artistName}}
-        <a class="btn btn-default" href="{{actor.artistLinkUrl}}">
-          <img src="img/itunes-logo.png" width="75"/>
-        </a>
-        <a class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"/>
-      </h2>
-      <h3>
-        <label> Primary genre : </label> <span>{{actor.primaryGenreName}}</span>
-      </h3>
+    <div class="panel-body">
+        <div class="detail header">
+            <h2>{{actor.artistName}}
+                <a class="btn btn-default" href="{{actor.artistLinkUrl}}">
+                    <img src="img/itunes-logo.png" width="75"/>
+                </a>
+                <a class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"/>
+            </h2>
+
+            <h3>
+                <label> Primary genre : </label> <span>{{actor.primaryGenreName}}</span>
+            </h3>
 
 
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-sm-4">
+                <img ng-src="img/sawyer.jpg" class="img-responsive" id="test"/>
+            </div>
+
+            <div id="featured" class="col-sm-8 detail">
+                <h3>Biography</h3>
+
+                <p>{{actor.bio}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div id="featured" class="detail section actor">
+                <h3>Movie</h3>
+                <slick settings="slickFeatureConfig" data="featured">
+                    <div ng-repeat="movie in movies" class="slick-slide overlay-image" image-overlay>
+                        <div class="overlay" id="overlay-movie-{{$index}}">
+                            <h2>{{movie.trackName || movie.collectionName}}</h2>
+                            Release date : {{movie.releaseDate|cut:true:10:' '}}
+                            <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%"
+                                    src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
+                                    enablejsapi="1"></iframe>
+                            <p ng-bind-html="movie.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
+                        </div>
+                        <img ng-src="{{movie.artworkUrl100}}">
+                    </div>
+                </slick>
+            </div>
+
+        </div>
+        <!--row-->
     </div>
-
-    <div class="container-fluid">
-
-      <div class="row">
-
-        <div class="col-sm-4">
-          <img ng-src="img/sawyer.jpg" class="img-responsive" id="test"/>
-        </div>
-        <h3><label>Movie</label></h3>
-        <div id="featured" class="col-sm-8 detail description">
-          <slick settings="slickFeatureConfig" data="featured">
-              <div ng-repeat="movie in movies" class="slick-slide overlay-image" image-overlay>
-                  <div class="overlay" id="overlay-movie-{{$index}}">
-                      <h2>{{movie.trackName || movie.collectionName}}</h2>
-                      Release date : {{movie.releaseDate|cut:true:10:' '}}
-                      <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
-                      <p ng-bind-html="movie.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
-                  </div>
-                    <img ng-src="{{movie.artworkUrl100}}">
-              </div>
-            </slick>
-        </div>
-
-      </div><!--row-->
-
-    </div><!--containerFluid-->
-
-  </div><!-- panel body-->
+    <!-- panel body-->
 </div><!-- panel -->

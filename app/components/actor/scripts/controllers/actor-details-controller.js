@@ -122,8 +122,25 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
       }
   ];
 
-
-    $scope.actor = actorSelectionService.getSelectedActor();
+    $scope.initActor = function(){
+        var selectedActor = actorSelectionService.getSelectedActor();
+        if( Object.keys(selectedActor).length === 0) {
+            var selectedActor = {
+                "wrapperType": "artist",
+                "artistType": "Artist",
+                "artistName": "John Sawyer",
+                "artistLinkUrl": "https://itunes.apple.com/us/artist/john-sawyer/id253584821?uo=4",
+                "artistId": 253584821,
+                "amgArtistId": 122340,
+                "primaryGenreName": "Tribute",
+                "primaryGenreId": 100022,
+                "radioStationUrl": "https://itunes.apple.com/station/idra.253584821",
+                "bio": "John Sawyer is an Oscar-winning actress who became popular after playing the title role in the \"Lara Croft\" blockbuster movies, as well as Mr. & Mrs. Smith (2005), Wanted (2008), Salt (2010) and Maleficent (2014). Off-screen, Jolie has become prominently involved in international charity projects, especially those involving refugees. She often appears on many \"most beautiful women\" lists, and she has a personal life that is avidly covered by the tabloid press."
+            };
+        }
+        $scope.actor = selectedActor;
+    };
+    $scope.initActor();
     $scope.movies = movies;
 
     $scope.slickFeatureConfig = {
