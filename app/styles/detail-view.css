@@ -3,10 +3,13 @@
 }
 
 .panel-body {
-    background-color: rgba(188, 180, 186, 0.5);
+    background-color: #222;
+    color: #ffffff;
 
 }
-
+.price-toggle{
+    color: #222;
+}
 .detail {
     display: block;
     width: auto;
