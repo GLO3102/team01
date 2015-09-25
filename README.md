@@ -30,4 +30,4 @@ npm install
 
 2. Type <code>npm start"</code>
 
-3. Be amaze :P
+3. Be amazed :P
