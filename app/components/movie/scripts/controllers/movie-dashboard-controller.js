@@ -1,7 +1,7 @@
 /**
  * Created by Antoine on 2015-09-15.
  */
-movieApp.controller("movie-dashboard-controller", function ($scope, movieSelectionService, genreResource) {
+movieApp.controller("movie-dashboard-controller", function ($scope, movieSelectionService, genreResource, movieSearchResource) {
 
     //var staticMovie = {
     //    "wrapperType": "track",
@@ -36,7 +36,9 @@ movieApp.controller("movie-dashboard-controller", function ($scope, movieSelecti
 
     $scope.genres = genreResource.query({"type": "movies"}, function onSuccess(){
         console.log($scope.genres[0].name);
-        $scope.moviesByGenre.add(moviesSearchResource.get())
+        $scope.moviesByGenre.add(movieSearchResource.query({"genreId": $scope.genres[0].id}, function onSuccess(data){
+            console.log(data);
+        }))
     });
     $scope.movies = [staticMovie];
 
