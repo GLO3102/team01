@@ -1,5 +1,8 @@
 <div class="panel">
-    <div class="panel-body">
+    <div class="ajax-loading" ng-show="isLoading">
+        <img src="img/cat-mouse.gif">
+    </div>
+    <div class="panel-body" ng-hide="isLoading">
         <div class="detail header">
             <h2>{{movie.trackName}} <a href="{{movie.trackViewUrl}}"> <img ng-src="img/itunes.svg"/></a><a
                     class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"></a></h2>

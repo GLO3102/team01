@@ -1,2 +1,15 @@
 <p class="detail">This is the partial for movie.</p>
-<a href="#/movies/someMovie" class="btn btn-default" ng-click="selectMovie()">someMovie</a>
+
+<div id="featured" class="col-md-10" ng-repeat="genre in genres">
+    <slick settings="slickFeatureConfig" data="featured" center-mode="true">
+        <div ng-repeat="feature in " class="overlay-image" image-overlay>
+            <div class="overlay" id="overlay-feature-{{$index}}">
+                <h2>{{feature.trackName || feature.collectionName}}</h2>
+                <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%" src="{{feature.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
+                <p ng-bind-html="feature.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
+            </div>
+            <img ng-src="{{feature.artworkUrl100}}" >
+            <a href="#/movies/{{movies[0].trackId}}" class="btn btn-default" ng-click="selectMovie()">View details</a>
+        </div>
+    </slick>
+</div>
