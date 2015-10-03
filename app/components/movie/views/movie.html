@@ -1,15 +1,20 @@
 <p class="detail">This is the partial for movie.</p>
-
-<div id="featured" class="col-md-10" ng-repeat="genre in genres">
-    <slick settings="slickFeatureConfig" data="featured" center-mode="true">
-        <div ng-repeat="feature in " class="overlay-image" image-overlay>
-            <div class="overlay" id="overlay-feature-{{$index}}">
-                <h2>{{feature.trackName || feature.collectionName}}</h2>
-                <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%" src="{{feature.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
-                <p ng-bind-html="feature.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
+<div ng-repeat="genre in moviesByGenre | limitTo:quantity" ng-if="verifyEmptyGenre(genre)">
+    <div id="featured" class="col-md-10" >
+        <h2>{{genres[$index].name}}</h2>
+        <slick settings="slickFeatureConfig" data="featured" center-mode="false" >
+            <div class="overlay-image" image-overlay ng-repeat="movie in genre.results">
+                <div class="overlay" id="overlay-feature-{{$index}}">
+                    <h2>{{movie.trackName || movie.collectionName}}</h2>
+                    <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
+                            src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
+                            enablejsapi="1"></iframe>
+                    <p ng-bind-html="movie.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
+                    <a href="#/movies/{{movie.trackId}}" class="btn btn-default" ng-click="selectMovie(movie)">View
+                        details</a>
+                </div>
+                <img ng-src="{{movie.artworkUrl100}}">
             </div>
-            <img ng-src="{{feature.artworkUrl100}}" >
-            <a href="#/movies/{{movies[0].trackId}}" class="btn btn-default" ng-click="selectMovie()">View details</a>
-        </div>
-    </slick>
+        </slick>
+    </div>
 </div>
