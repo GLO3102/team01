@@ -1,8 +1,9 @@
 <p class="detail">This is the partial for movie.</p>
+<button ng-click="initializeMoviesByGenre()" class="btn btn-default">I'm feeling lucky ;)</button>
 <div ng-repeat="genre in moviesByGenre | limitTo:quantity" ng-if="verifyEmptyGenre(genre)">
-    <div id="featured" class="col-md-10" >
+    <div id="featured" class="col-md-10">
         <h2>{{genres[$index].name}}</h2>
-        <slick settings="slickFeatureConfig" data="featured" center-mode="false" >
+        <slick settings="slickFeatureConfig" data="featured" center-mode="false">
             <div class="overlay-image" image-overlay ng-repeat="movie in genre.results">
                 <div class="overlay" id="overlay-feature-{{$index}}">
                     <h2>{{movie.trackName || movie.collectionName}}</h2>

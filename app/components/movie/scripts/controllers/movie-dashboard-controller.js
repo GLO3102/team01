@@ -9,23 +9,30 @@ movieApp.controller("movie-dashboard-controller", function ($scope, movieSelecti
     }
     $scope.moviesByGenre = [];
 
-    $scope.genres = genreResource.query({"type": "movies"}, function onSuccess(successData) {
-        $scope.genres = successData;
-        for (var i = 0; i < $scope.genres.length; i++) {
+    $scope.initializeMoviesByGenre = function () {
+        genreResource.query({"type": "movies"}, function onSuccess(successData) {
+            $scope.genres = successData;
 
-            movieSearchResource.query({
-                "genre": $scope.genres[i].id,
-                "q": getFirstWord($scope.genres[i].name)
-            }, function onSuccess(data) {
-                $scope.moviesByGenre.push( data);
-            });
-        }
-    });
+            movieSelectionService.setMovieSearchResults($scope.genres);
+
+            for (var i = 0; i < $scope.genres.length; i++) {
+
+                movieSearchResource.query({
+                    "genre": $scope.genres[i].id,
+                    "q": getFirstWord($scope.genres[i].name)
+                }, function onSuccess(data) {
+                    $scope.moviesByGenre.push(data);
+                });
+            }
+        });
+    };
+
+    $scope.genres = $scope.initializeMoviesByGenre();
     $scope.selectMovie = function (selectedMovie) {
         movieSelectionService.setSelectedMovie(selectedMovie);
     };
-    $scope.verifyEmptyGenre = function(genre){
-        if(genre.results.length === 0){
+    $scope.verifyEmptyGenre = function (genre) {
+        if (genre.results.length === 0) {
             $scope.quantity += 1;
             return false;
         }

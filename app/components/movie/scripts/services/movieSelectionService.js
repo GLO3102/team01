@@ -3,7 +3,15 @@
  */
 movieApp.service("movieSelectionService", function ($rootScope) {
     var movie = {};
+    var movieSearchResults = [];
 
+    var getMovieSearchResults = function (){
+        return movieSearchResults;
+    }
+
+    var setMovieSearchResults = function(cachedSearchResults){
+        movieSearchResults = cachedSearchResults;
+    }
     var getSelectedMovie = function () {
         return movie;
     };
@@ -14,6 +22,8 @@ movieApp.service("movieSelectionService", function ($rootScope) {
 
     return {
         getSelectedMovie: getSelectedMovie,
-        setSelectedMovie: setSelectedMovie
+        setSelectedMovie: setSelectedMovie,
+        getMovieSearchResults: getMovieSearchResults,
+        setMovieSearchResults: setMovieSearchResults
     };
 });
