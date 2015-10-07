@@ -1,4 +1,4 @@
-movieApp.service("searchSelectionService", function ($rootScope) {
+searchApp.service("searchSelectionService", function ($rootScope) {
     var movie = {};
 
     var getSelectedMovie = function () {

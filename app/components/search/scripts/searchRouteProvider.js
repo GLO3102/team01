@@ -5,6 +5,6 @@ tvShowApp.
             .when('/search',
             {
                 templateUrl: "components/search/views/search.html",
-                controller: "tvshow-dashboard-controller"
+                controller: "search-dashboard-controller"
             })
     }]);

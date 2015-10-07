@@ -40,22 +40,22 @@
                 </ul>
 
                 <div class="pull-right navbar-text">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jo Blo <span class="caret"/></a>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jo Blo <span class="caret"></span></a>
                         <img id="avatar" src="img/anonymous.gif">
                         <ul class="dropdown-menu pull-right">
                             <li><a href="#">My Watchlist</a></li>
-                            <li role="separator" class="divider"/>
+                            <li role="separator" class="divider"></li>
                             <li><a href="#">Settings</a></li>
-                            <li role="separator" class="divider"/>
+                            <li role="separator" class="divider"></li>
                             <li><a href="#">Logout</a></li>
                         </ul>
-                    </li>
+                    </div>
                 </div>
 
-                <div class="pull-right navbar-text">
-                    <form>
-                        <input type="search" placeholder="Search">
+                <div class="pull-right navbar-text" ng-controller="search-dashboard-controller" >
+                    <form ng-submit="initSearch()" name="search-form">
+                        <input class="search-input" type="search" name="query" ng-model="query"  placeholder="Search...">
                     </form>
                 </div>
             </div>
@@ -109,12 +109,20 @@
     <script src="components/actor/scripts/services/actorSelectionService.js"></script>
     <script src="components/actor/scripts/controllers/actor-dashboard-controller.js"></script>
     <script src="components/actor/scripts/controllers/actor-details-controller.js"></script>
+    <!-- Search component-->
+    <script src="components/search/scripts/search.js"></script>
+    <script src="components/search/scripts/searchRouteProvider.js"></script>
+    <script src="components/search/scripts/services/searchResource.js"></script>
+    <script src="components/search/scripts/services/searchSelectionService.js"></script>
+    <script src="components/search/scripts/controllers/search-dashboard-controller.js"></script>
+    <script src="components/search/scripts/controllers/search-details-controller.js"></script>
 
     <!-- Route providers -->
     <script src="components/actor/scripts/actorRouteProvider.js"></script>
     <script src="components/home/scripts/homeRouteProvider.js"></script>
     <script src="components/movie/scripts/movieRouteProvider.js"></script>
     <script src="components/tvshow/scripts/tvshowsRouteProvider.js"></script>
+    <script src="components/search/scripts/searchRouteProvider.js"></script>
 
 </div>
 </body>

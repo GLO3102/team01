@@ -3,7 +3,7 @@
  */
 homeApp.directive('price-resolution-toggle', function() {
     return {
-        restrict: 'E',ex
+        restrict: 'E',
         templateUrl: 'components/commons/views/priceResolutionToggle.html'
     };
 });
