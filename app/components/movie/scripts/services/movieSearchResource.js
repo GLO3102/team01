@@ -7,7 +7,8 @@ movieApp.factory('movieSearchResource', ["$resource", function ($resource) {
             method: "GET",
             isArray: false,
             params: {
-                "type": "movies"
+                "type": "movies",
+                "q":"movies"
             }
         }
 

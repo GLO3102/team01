@@ -2,40 +2,49 @@
  * Created by Antoine on 2015-09-15.
  */
 movieApp.controller("movie-dashboard-controller", function ($scope, movieSelectionService, genreResource, movieSearchResource) {
-
     $scope.quantity = 5;
-    var getFirstWord = function (wordToSplit) {
-        return wordToSplit.split(" ")[0];
-    }
+
+    $scope.isLoading = false;
+
     $scope.moviesByGenre = [];
 
     $scope.initializeMoviesByGenre = function () {
-        genreResource.query({"type": "movies"}, function onSuccess(successData) {
-            $scope.genres = successData;
+        $scope.isLoading = true;
 
-            movieSelectionService.setMovieSearchResults($scope.genres);
+        $scope.genres = movieSelectionService.getMovieSearchResults();
 
-            for (var i = 0; i < $scope.genres.length; i++) {
+        if ($scope.genres.length === 0) {
+            genreResource.query({"type": "movies"}, function onSuccess(successData) {
+                $scope.genres = successData;
 
-                movieSearchResource.query({
-                    "genre": $scope.genres[i].id,
-                    "q": getFirstWord($scope.genres[i].name)
-                }, function onSuccess(data) {
-                    $scope.moviesByGenre.push(data);
-                });
-            }
-        });
+                movieSelectionService.setMovieSearchResults($scope.genres);
+
+                loadMoviesByGenre($scope.genres);
+                $scope.isLoading = false;
+            });
+        }
+        else{
+            loadMoviesByGenre($scope.genres);
+            $scope.isLoading = false;
+        }
+    };
+    var loadMoviesByGenre = function(listOfGenres){
+
+        for (var i = 0; i < listOfGenres.length; i++) {
+
+            movieSearchResource.query({
+                "genre": listOfGenres[i].id
+            }, function onSuccess(data) {
+                console.log(data);
+                $scope.moviesByGenre.push(data);
+            });
+
+        }
     };
 
-    $scope.genres = $scope.initializeMoviesByGenre();
+    $scope.initializeMoviesByGenre();
+
     $scope.selectMovie = function (selectedMovie) {
         movieSelectionService.setSelectedMovie(selectedMovie);
     };
-    $scope.verifyEmptyGenre = function (genre) {
-        if (genre.results.length === 0) {
-            $scope.quantity += 1;
-            return false;
-        }
-        return true;
-    }
 });
