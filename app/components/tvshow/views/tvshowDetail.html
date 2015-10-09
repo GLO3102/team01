@@ -1,5 +1,8 @@
 <div class="panel">
-    <div class="panel-body">
+    <div class="ajax-loading" ng-show="isLoading">
+        <img src="img/cat-mouse.gif">
+    </div>
+    <div class="panel-body" ng-hide="isLoading">
         <div class="detail header">
             <h2>{{tvshow.collectionName}} <a href="{{tvshow.collectionViewUrl}}">
                 <img ng-src="img/itunes.svg"/>
