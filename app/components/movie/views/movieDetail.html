@@ -1,8 +1,8 @@
 <div class="panel">
-    <div class="ajax-loading" ng-show="isLoading">
+    <div class="ajax-loading" ng-if="isLoading">
         <img src="img/cat-mouse_Transparent.gif">
     </div>
-    <div class="panel-body" ng-hide="isLoading">
+    <div class="panel-body" ng-if="!isLoading">
         <div class="detail header">
             <h2>{{movie.trackName}} <a href="{{movie.trackViewUrl}}"> <img ng-src="img/itunes.svg"/></a><a
                     class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"></a></h2>
@@ -10,6 +10,7 @@
         <div class="detail body">
             <div class="row detail section">
                 <div class="detail preview">
+                    <youtube-preview movie="{{movie.trackName}}"></youtube-preview>
                     <iframe ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen autoplay="true"></iframe>
                 </div>
                 <div class="detail description">
@@ -30,7 +31,7 @@
                         <button class="btn price-toggle" ng-click="showHdPrice(true, this)">HD Price</button>
 
                     </div>
-<
+
                     <h4 class="detail price" ng-hide="isHdPriceSelected">Price SD <span>{{movie.trackPrice}}$ {{movie.currency}}</span>
                     </h4>
                     <h4 class="detail price" ng-show="isHdPriceSelected">Price HD <span>{{movie.trackHdPrice}}$ {{movie.currency}}</span>
@@ -44,7 +45,7 @@
                     </div>
                 </div>
                 <div class="detail poster">
-                    <img ng-src="{{movie.artworkUrl100}}">
+                    <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
                 </div>
             </div>
         </div>

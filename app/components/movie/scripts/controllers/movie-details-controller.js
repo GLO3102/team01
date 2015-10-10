@@ -10,7 +10,6 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
         if( Object.keys(selectedMovie).length === 0) {
             $scope.isLoading = true;
             movieResource.get({id:movieId}, function onSuccess(data){
-                console.log(data.results[0]);
                 selectedMovie = data.results[0];
 
                 $scope.movie = selectedMovie;
