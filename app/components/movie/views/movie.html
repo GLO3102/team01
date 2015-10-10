@@ -2,11 +2,11 @@
     <img src="img/cat-mouse.gif">
 </div>
 
-<div ng-repeat="genre in moviesByGenre | limitTo:quantity">
+<div ng-repeat="movieByGenre in moviesByGenre">
     <div id="featured" class="col-md-10">
-        <h2>{{genres[$index].name}}</h2>
-        <slick settings="slickFeatureConfig" data="featured" center-mode="true">
-            <div class="overlay-image" image-overlay ng-repeat="movie in genre.results">
+        <h2>{{movieByGenre.genre}}</h2>
+        <slick settings="slickFeatureConfig"  center-mode="true">
+            <div class="overlay-image" image-overlay ng-repeat="movie in movieByGenre.movies">
                 <div class="overlay" id="overlay-feature-{{$index}}">
                     <h2>{{movie.trackName || movie.collectionName}}</h2>
                     <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
