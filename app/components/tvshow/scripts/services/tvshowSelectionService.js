@@ -3,16 +3,16 @@
  */
 tvShowApp.service("tvshowSelectionService", function ($rootScope) {
     var tvshow = {};
-    //var tvshowSearchResults = [];
+    var tvshowSearchResults = [];
     var tvshowEpisodes = {};
 
-    //var getTvshowSearchResults = function (){
-    //    return tvshowSearchResults;
-    //};
-    //
-    //var setTvshowSearchResults = function(cachedSearchResults){
-    //    movieSearchResults = cachedSearchResults;
-    //};
+    var getTvshowSearchResults = function (){
+        return tvshowSearchResults;
+    };
+
+    var setTvshowSearchResults = function(cachedSearchResults){
+        movieSearchResults = cachedSearchResults;
+    };
 
     var getSelectedTvShow = function () {
         return tvshow;
@@ -34,8 +34,8 @@ tvShowApp.service("tvshowSelectionService", function ($rootScope) {
         getSelectedTvShow: getSelectedTvShow,
         getSelectedTvShowEpisodes: getSelectedTvShowEpisodes,
         setSelectedTvShow: setSelectedTvShow,
-        setSelectedTvShowEpisodes: setSelectedTvShowEpisodes
-        //getTvshowSearchResults: getTvshowSearchResults,
-        //setTvshowSearchResults: setTvshowSearchResults
+        setSelectedTvShowEpisodes: setSelectedTvShowEpisodes,
+        getTvshowSearchResults: getTvshowSearchResults,
+        setTvshowSearchResults: setTvshowSearchResults
     };
 });
