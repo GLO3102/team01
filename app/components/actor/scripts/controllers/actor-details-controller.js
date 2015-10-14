@@ -1,7 +1,7 @@
 /**
  * Created by pascal on 18/09/15.
  */
-actorApp.controller("actor-detail-controller", function ($scope, actorSelectionService, $routeParams) {
+actorApp.controller("actor-detail-controller", function ($scope, actorSelectionService, $routeParams, actorResource) {
     var actorId = $routeParams.actorId;
     $scope.isLoading = false;
 
@@ -9,12 +9,16 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
         var selectedActor = actorSelectionService.getSelectedActor();
         if( Object.keys(selectedActor).length === 0) {
             $scope.isLoading = true;
-            actorResource.get({id:movieId}, function onSuccess(data){
+            actorResource.get({id:272994458}, function onSuccess(data){
               console.log(data.results[0]);
               selectedActor = data.results[0];
-            })
-        }
-        $scope.actor = selectedActor;
+              $scope.isLoading = false;
+            }, function error(data){
+
+            });
+        }else{
+          $scope.actor = selectedActor;
+        }      
     };
 
     $scope.initActor();
