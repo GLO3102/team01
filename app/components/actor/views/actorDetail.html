@@ -1,5 +1,8 @@
 <div class="panel">
-    <div class="panel-body">
+  <div class="ajax-loading" ng-show="isLoading">
+        <img src="img/cat-mouse_Transparent.gif">
+    </div>
+    <div class="panel-body" ng-hide="isLoading">
         <div class="detail header">
             <h2>{{actor.artistName}}
                 <a class="btn btn-default" href="{{actor.artistLinkUrl}}">
@@ -7,27 +10,23 @@
                 </a>
                 <a class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"/>
             </h2>
-
             <h3>
                 <label> Primary genre : </label> <span>{{actor.primaryGenreName}}</span>
             </h3>
-
-
         </div>
-
-
         <div class="row">
-
             <div class="col-sm-4">
                 <img ng-src="img/sawyer.jpg" class="img-responsive" id="test"/>
             </div>
 
             <div id="featured" class="col-sm-8 detail">
                 <h3>Biography</h3>
-
                 <p>{{actor.bio}}</p>
             </div>
         </div>
+
+
+
         <div class="row">
             <div id="featured" class="detail section actor">
                 <h3>Movie</h3>
