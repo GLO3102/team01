@@ -41,12 +41,14 @@ movieApp.controller("movie-dashboard-controller",
                     }
                 });
             }
+            $scope.quantity = 5;
         };
 
-        var verifyGenreIsAlreadyInList = function(results){
+        var verifyGenreIsAlreadyInList = function (results) {
             var genre = results[0].primaryGenreName;
             for (var y = 0; y < $scope.moviesByGenre.length; y++) {
                 if ($scope.moviesByGenre[y].genre === genre) {
+                    $scope.quantity += 1;
                     break;
                 }
             }
@@ -56,7 +58,7 @@ movieApp.controller("movie-dashboard-controller",
         };
 
         $(window).scroll(function () {
-            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
                 loadMoviesByGenre($scope.genres);
             }
         });

@@ -16,7 +16,8 @@
     "angular-youtube-mb": "~1.1.0",
     "bootstrap": "~3.3.5",
     "bootstrap-popover-x": "~1.4.1",
-    "html5-boilerplate": "~5.2.0"
+    "html5-boilerplate": "~5.2.0",
+    "angular-bootstrap":"~0.13.3"
   },
   "resolutions": {
     "angular":"1.4.5"
