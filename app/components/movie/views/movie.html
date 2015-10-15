@@ -5,15 +5,16 @@
 <div class="dashboard-container" ng-repeat="movieByGenre in moviesByGenre">
     <div id="featured" class="col-md-10">
         <h2>{{movieByGenre.genre}}</h2>
-        <slick settings="slickFeatureConfig"  data="movieByGenre.movies" center-mode="true">
+        <slick settings="slickFeatureConfig" data="movieByGenre.movies" center-mode="true">
             <div class="overlay-image" image-overlay ng-repeat="movie in movieByGenre.movies">
                 <div class="overlay" id="overlay-feature-{{$index}}">
-                    <h2>{{movie.trackName || movie.collectionName}}</h2>
+                    <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
+                    <h2>{{movie.trackName || movie.collectionName}} </h2>
                     <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
                             src="{{movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
                             enablejsapi="1"></iframe>
                     <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
-                    <a  href="#/movies/{{movie.trackId}}" class="btn btn-default" ng-click="selectMovie(movie)">View
+                    <a href="#/movies/{{movie.trackId}}" class="btn btn-default" ng-click="selectMovie(movie)">View
                         details</a>
                 </div>
                 <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">

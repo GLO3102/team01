@@ -4,14 +4,19 @@
     </div>
     <div class="panel-body" ng-if="!isLoading">
         <div class="detail header">
-            <h2>{{movie.trackName}} <a href="{{movie.trackViewUrl}}"> <img ng-src="img/itunes.svg"/></a><a
-                    class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"></a></h2>
+            <h2>{{movie.trackName}} <a href="{{movie.trackViewUrl}}"> <img ng-src="img/itunes.svg"/></a>
+                <span class="pull-right">
+                    <user-watchlist-dropdown></user-watchlist-dropdown>
+                    <a class="glyphicon glyphicon-remove" href="" ng-click="dismiss()"></a>
+                </span>
+            </h2>
         </div>
         <div class="detail body">
             <div class="row detail section">
                 <div class="detail preview">
                     <youtube-preview movie="{{movie.trackName}}"></youtube-preview>
-                    <iframe ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen autoplay="true"></iframe>
+                    <iframe ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless
+                            frameborder="0" allowfullscreen autoplay="true"></iframe>
                 </div>
                 <div class="detail description">
                     <ul>
