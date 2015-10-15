@@ -6,3 +6,8 @@
 .dashboard-container #featured{
     width: 100%;
 }
+.btn.dashboard-detail{
+    position:absolute;
+    bottom:2%;
+    right:2%;
+}

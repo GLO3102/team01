@@ -12,20 +12,23 @@ movieApp.controller("movie-dashboard-controller",
         $scope.initializeMoviesByGenre = function () {
             $scope.isLoading = true;
 
-            $scope.genres = movieSelectionService.getMovieSearchResults();
+            $scope.genres = movieSelectionService.getMovieGenresResults();
 
             if ($scope.genres.length === 0) {
                 genreResource.query({"type": "movies"}, function onSuccess(successData) {
                     $scope.genres = successData;
 
-                    movieSelectionService.setMovieSearchResults($scope.genres);
+                    movieSelectionService.setMovieGenresResults($scope.genres);
 
                     loadMoviesByGenre($scope.genres);
                     $scope.isLoading = false;
                 });
             }
             else {
-                loadMoviesByGenre($scope.genres);
+                $scope.moviesByGenre = movieSelectionService.getMovieSearchResults();
+                if ($scope.moviesByGenre.length === 0) {
+                    loadMoviesByGenre($scope.genres);
+                }
                 $scope.isLoading = false;
             }
         };
@@ -54,11 +57,12 @@ movieApp.controller("movie-dashboard-controller",
             }
             if (y >= $scope.moviesByGenre.length) {
                 $scope.moviesByGenre.push({"movies": results, "genre": genre});
+                movieSelectionService.setMovieSearchResults($scope.moviesByGenre);
             }
         };
 
         $(window).scroll(function () {
-            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
+            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
                 loadMoviesByGenre($scope.genres);
             }
         });

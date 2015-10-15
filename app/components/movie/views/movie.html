@@ -1,5 +1,5 @@
-<div class="ajax-loading" ng-show="isLoading">
-    <img src="img/cat-mouse.gif">
+<div class="ajax-loading" ng-if="isLoading">
+    <img src="img/cat-mouse_Transparent.gif">
 </div>
 
 <div class="dashboard-container" ng-repeat="movieByGenre in moviesByGenre">
@@ -14,7 +14,7 @@
                             src="{{movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
                             enablejsapi="1"></iframe>
                     <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
-                    <a href="#/movies/{{movie.trackId}}" class="btn btn-default" ng-click="selectMovie(movie)">View
+                    <a href="#/movies/{{movie.trackId}}" class="btn btn-default dashboard-detail" ng-click="selectMovie(movie)">View
                         details</a>
                 </div>
                 <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
