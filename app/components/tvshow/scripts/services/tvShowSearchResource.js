@@ -7,7 +7,8 @@ tvShowApp.factory('tvShowSearchResource', ["$resource", function ($resource) {
             method: "GET",
             isArray: false,
             params: {
-                "type": "tvshows"
+                "type": "tvshows",
+                "q":"season"
             }
         }
     });

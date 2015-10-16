@@ -1,3 +1,6 @@
+
+
+
 tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource) {
 
     var tvShowId = $routeParams.tvshowId;
@@ -30,6 +33,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
                 $scope.tvshowEpisodes = selectTvshowEpisodes;
                 $scope.isLoading = false;
             }, function onError(data) {
+                
             });
         }
         else {

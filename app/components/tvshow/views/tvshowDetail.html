@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="ajax-loading" ng-show="isLoading">
-        <img src="img/cat-mouse.gif">
+        <img src="img/cat-mouse_Transparent.gif">
     </div>
     <div class="panel-body" ng-hide="isLoading">
         <div class="detail header">
@@ -47,7 +47,7 @@
                             <span class="episodePic"> <img ng-src="{{episode.artworkUrl60}}"></span>
                             <span class="episodeNumber"><p>{{episode.trackNumber}}</p></span>
                             <span class="episodeName"><p>{{episode.trackName}}</p></span>
-                            <span class="episodeDesc"><p>{{episode.shortDescription}}</p></span>
+                            <span class="episodeDesc"><p>{{episode.longDescription|cut:true:100:'...'}}</p></span>
                             <span class="episodeRelease"><p>{{episode.releaseDate | date:medium}}</p></span>
                         </div>
                     </div>

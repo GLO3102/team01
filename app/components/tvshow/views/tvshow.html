@@ -1,3 +1,24 @@
-<p class="detail">This is the partial for tvshow.</p>
-<a href="#/tvshows/279175900" class="btn btn-default" ng-click="selectTvShow()">someTvShow</a>
+<div class="ajax-loading" ng-show="isLoading">
+    <img src="img/cat-mouse_Transparent.gif">
+</div>
 
+<div ng-repeat="tvshowByGenre in tvshowsByGenre">
+    <div id="featured" class="col-md-10">
+        <h2>{{tvshowByGenre.genre}}</h2>
+        <slick class="marginCaroussel" settings="slickFeatureConfig" data="tvshowByGenre.tvshows" center-mode="true">
+            <div class="overlay-image" image-overlay ng-repeat="tvshow in tvshowByGenre.tvshows">
+                <div class="overlay" id="overlay-feature-{{$index}}">
+                    <h2>{{tvshow.trackName || tvshow.collectionName}}</h2>
+                    <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
+                            src="{{tvshow.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
+                            enablejsapi="1"></iframe>
+                    <youtube-preview movie="{{tvshow.trackName}}"></youtube-preview>
+                    <p ng-bind-html="tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
+                    <a href="#/tvshows/{{tvshow.collectionId}}" class="btn btn-default" ng-click="selectTvshow(movie)">View
+                        details</a>
+                </div>
+                <img ng-src="{{tvshow.artworkUrl100|imageSize:300:300 }}">
+            </div>
+        </slick>
+    </div>
+</div>
