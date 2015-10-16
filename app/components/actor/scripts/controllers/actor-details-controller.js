@@ -3,7 +3,8 @@
  */
 actorApp.controller("actor-detail-controller", function ($scope, actorSelectionService, $routeParams, actorResource, actorMovieResource) {
     //var actorId = $routeParams.actorId;
-    var actorId = 272994458;
+    //var actorId = 272994458;
+    var actorId = 63714;
     var movies = {};
     $scope.isLoading = false;
 
