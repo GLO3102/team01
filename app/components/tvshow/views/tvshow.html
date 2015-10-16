@@ -13,7 +13,7 @@
                             src="{{tvshow.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
                             enablejsapi="1"></iframe>
                     <p ng-bind-html="tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
-                    <a href="#/tvshows/{{tvshow.collectionId}}" class="btn btn-default" ng-click="selectTvshow(movie)">View
+                    <a href="#/tvshows/{{tvshow.collectionId}}" class="btn btn-default" ng-click="selectTvshow(tvshow)">View
                         details</a>
                 </div>
                 <img ng-src="{{tvshow.artworkUrl100|imageSize:300:300 }}">
