@@ -1,2 +1,24 @@
-<p class="detail">This is the partial for movie.</p>
-<a href="#/movies/someMovie" class="btn btn-default" ng-click="selectMovie()">someMovie</a>
+<div class="ajax-loading" ng-show="isLoading">
+    <img src="img/cat-mouse.gif">
+</div>
+
+<div class="dashboard-container" ng-repeat="movieByGenre in moviesByGenre">
+    <div id="featured" class="col-md-10">
+        <h2>{{movieByGenre.genre}}</h2>
+        <slick settings="slickFeatureConfig" data="movieByGenre.movies" center-mode="true">
+            <div class="overlay-image" image-overlay ng-repeat="movie in movieByGenre.movies">
+                <div class="overlay" id="overlay-feature-{{$index}}">
+                    <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
+                    <h2>{{movie.trackName || movie.collectionName}} </h2>
+                    <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
+                            src="{{movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
+                            enablejsapi="1"></iframe>
+                    <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
+                    <a href="#/movies/{{movie.trackId}}" class="btn btn-default" ng-click="selectMovie(movie)">View
+                        details</a>
+                </div>
+                <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
+            </div>
+        </slick>
+    </div>
+</div>

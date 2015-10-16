@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
     <link rel="stylesheet" href="styles/slider.css">
     <link rel="stylesheet" href="styles/overlay-image.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
 
 </head>
 <body class="main">
@@ -22,7 +23,8 @@
         <div class="container-fluid">
 
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -41,7 +43,8 @@
 
                 <div class="pull-right navbar-text">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jo Blo <span class="caret"/></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Jo Blo <span class="caret"/></a>
                         <img id="avatar" src="img/anonymous.gif">
                         <ul class="dropdown-menu pull-right">
                             <li><a href="#">My Watchlist</a></li>
@@ -72,9 +75,11 @@
     <script src="bower_components/slick-carousel/slick/slick.js"></script>
     <script src="bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="bower_components/angular-lazytube/angular-lazytube.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
 
-
+    <script src="components/user/scripts/directives/user-watchlist-dropdown.js"></script>
     <!-- Main application -->
     <script src="app.js"></script>
 
@@ -83,17 +88,29 @@
     <script src="components/commons/scripts/filters/text-filter.js"></script>
     <script src="components/commons/scripts/overlay/image-overlay.js"></script>
     <script src="components/commons/scripts/filters/html-plaintext-filter.js"></script>
+    <script src="components/commons/scripts/filters/image-size-filter.js"></script>
     <script src="components/commons/scripts/filters/unicode.js"></script>
     <script src="components/commons/scripts/filters/duration.js"></script>
+    <script src="components/commons/scripts/services/genreResource.js"></script>
+    <script src="components/commons/scripts/services/array-shuffler.js"></script>
+
     <!--Home -->
     <script src="components/home/scripts/controller/home-controller.js"></script>
+    <!-- User component     -->
+    <script src="components/user/scripts/user.js"></script>
+    <script src="components/user/scripts/controllers/user-controller.js"></script>
     <!-- Movie component-->
     <script src="components/movie/scripts/movie.js"></script>
+    <script src="components/movie/scripts/services/movieResource.js"></script>
+    <script src="components/movie/scripts/services/movieSearchResource.js"></script>
     <script src="components/movie/scripts/services/movieSelectionService.js"></script>
     <script src="components/movie/scripts/controllers/movie-dashboard-controller.js"></script>
     <script src="components/movie/scripts/controllers/movie-details-controller.js"></script>
     <!-- Tv show component-->
     <script src="components/tvshow/scripts/tvshow.js"></script>
+    <script src="components/tvshow/scripts/services/tvShowResource.js"></script>
+    <script src="components/tvshow/scripts/services/tvShowEpisodesResource.js"></script>
+    <script src="components/tvshow/scripts/services/tvShowSearchResource.js"></script>
     <script src="components/tvshow/scripts/services/tvshowSelectionService.js"></script>
     <script src="components/tvshow/scripts/controllers/tvshow-dashboard-controller.js"></script>
     <script src="components/tvshow/scripts/controllers/tvshow-details-controller.js"></script>
@@ -104,6 +121,7 @@
     <script src="components/actor/scripts/controllers/actor-details-controller.js"></script>
 
     <!-- Route providers -->
+    <script src="components/user/scripts/user-route-provider.js"></script>
     <script src="components/actor/scripts/actorRouteProvider.js"></script>
     <script src="components/home/scripts/homeRouteProvider.js"></script>
     <script src="components/movie/scripts/movieRouteProvider.js"></script>

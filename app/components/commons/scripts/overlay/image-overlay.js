@@ -23,7 +23,7 @@ homeApp.directive('imageOverlay', function () {
                         this.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
                     });
 
-                    $(this).children(".overlay").animate({"left": 0}, imgWidth);
+                    $(this).children(".overlay").stop().animate({"left": 0}, imgWidth);
                 },
                 function () {
 
@@ -36,7 +36,7 @@ homeApp.directive('imageOverlay', function () {
                         this.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
                     });
 
-                    $(this).children(".overlay").animate({"left": negImgWidth}, imgWidth);
+                    $(this).children(".overlay").stop().animate({"left": negImgWidth}, imgWidth);
                 });
         }
 

@@ -1,41 +1,109 @@
 /**
  * Created by Antoine on 2015-09-15.
  */
-movieApp.controller("movie-dashboard-controller", function ($scope, movieSelectionService) {
-    var staticMovie = {
-        "wrapperType": "track",
-        "kind": "feature-movie",
-        "trackId": 265727087,
-        "artistName": "James Wan",
-        "trackName": "Saw",
-        "trackCensoredName": "Saw",
-        "trackViewUrl": "https://itunes.apple.com/us/movie/saw/id265727087?uo=4",
-        "previewUrl": "https://www.youtube.com/watch?v=S-1QgOMQ-ls",
-        "artworkUrl30": "http://is4.mzstatic.com/image/thumb/Music/af/37/e2/dj.fsfobjrm.jpg/30x30bb-85.jpg",
-        "artworkUrl60": "http://is1.mzstatic.com/image/thumb/Music/af/37/e2/dj.fsfobjrm.jpg/60x60bb-85.jpg",
-        "artworkUrl100": "http://is3.mzstatic.com/image/thumb/Music/af/37/e2/dj.fsfobjrm.jpg/500x500bb-85.jpg",
-        "collectionPrice": 9.99,
-        "trackPrice": 9.99,
-        "trackRentalPrice": 2.99,
-        "collectionHdPrice": 12.99,
-        "trackHdPrice": 12.99,
-        "trackHdRentalPrice": 3.99,
-        "releaseDate": "2004-10-29T07:00:00Z",
-        "collectionExplicitness": "notExplicit",
-        "trackExplicitness": "notExplicit",
-        "trackTimeMillis": 6187486,
-        "country": "USA",
-        "currency": "USD",
-        "primaryGenreName": "Horror",
-        "contentAdvisoryRating": "R",
-        "longDescription": "Would you die to live? That's what two men, Adam (Leigh Whannell) and Gordon (Cary Elwes), have to ask themselves when they're paired up in a deadly situation. Abducted by a serial killer, they're trapped up in a prison constructed with such ingenuity that they may not be able to escape before their captor decides it's time to dismantle their bodies in his signature way. Attempting to break free may kill them, but staying definitely will.",
-        "radioStationUrl": "https://itunes.apple.com/station/idra.265727087"
-    };
+movieApp.controller("movie-dashboard-controller",
+    function ($scope, movieSelectionService, genreResource, movieSearchResource, arrayShuffler) {
+        $scope.quantity = 5;
 
-    $scope.movies = [staticMovie];
+        $scope.isLoading = false;
 
-    $scope.selectMovie = function (selectedMovie){
-        movieSelectionService.setSelectedMovie($scope.movies[0]);
-    };
+        $scope.moviesByGenre = [];
 
-});
+        $scope.initializeMoviesByGenre = function () {
+            $scope.isLoading = true;
+
+            $scope.genres = movieSelectionService.getMovieSearchResults();
+
+            if ($scope.genres.length === 0) {
+                genreResource.query({"type": "movies"}, function onSuccess(successData) {
+                    $scope.genres = successData;
+
+                    movieSelectionService.setMovieSearchResults($scope.genres);
+
+                    loadMoviesByGenre($scope.genres);
+                    $scope.isLoading = false;
+                });
+            }
+            else {
+                loadMoviesByGenre($scope.genres);
+                $scope.isLoading = false;
+            }
+        };
+        var loadMoviesByGenre = function (listOfGenres) {
+            arrayShuffler.shuffle(listOfGenres);
+            for (var i = 0; i < $scope.quantity; i++) {
+
+                movieSearchResource.query({
+                    "genre": listOfGenres[i].id
+                }, function onSuccess(data) {
+                    if (data.results.length > 0) {
+                        verifyGenreIsAlreadyInList(data.results);
+                    }
+                });
+            }
+            $scope.quantity = 5;
+        };
+
+        var verifyGenreIsAlreadyInList = function (results) {
+            var genre = results[0].primaryGenreName;
+            for (var y = 0; y < $scope.moviesByGenre.length; y++) {
+                if ($scope.moviesByGenre[y].genre === genre) {
+                    $scope.quantity += 1;
+                    break;
+                }
+            }
+            if (y >= $scope.moviesByGenre.length) {
+                $scope.moviesByGenre.push({"movies": results, "genre": genre});
+            }
+        };
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
+                loadMoviesByGenre($scope.genres);
+            }
+        });
+        $scope.initializeMoviesByGenre();
+
+        $scope.selectMovie = function (selectedMovie) {
+            movieSelectionService.setSelectedMovie(selectedMovie);
+        };
+
+        $scope.slickFeatureConfig = {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            variableWidth:true,
+            centerMode: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        autoplay: true
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        autoplay: true
+                    }
+                }]
+        };
+    });
