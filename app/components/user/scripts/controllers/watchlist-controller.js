@@ -45,10 +45,10 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
             }
         )
     }
-    $scope.removeWatchlist = function(watchlist){
+    $scope.removeWatchlist = function (watchlist) {
         watchlistResource.deleteWatchlist({
-            "id":watchlist.id
-        }, function onSuccess(){
+            "id": watchlist.id
+        }, function onSuccess() {
             $scope.userWatchlist.filter(function (watchlistInLocal) {
                 return watchlistInLocal.id == watchlist.id;
             }).pop();
@@ -69,6 +69,17 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
         userWatchlistContainer.setUserWatchlist($scope.userWatchlist);
     };
 
+    $scope.addWatchlist = function (name) {
+        watchlistResource.$save({}, {
+            "owner": {
+                "email": $scope.loggedUser
+            },
+            "name": name
+        }, function onSuccess(data) {
+            $scope.userWatchlist.push(data);
+        })
+    };
+    
     $scope.initLoggedUserWatchlist();
 
 });

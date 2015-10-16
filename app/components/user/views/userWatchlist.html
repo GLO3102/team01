@@ -2,8 +2,16 @@
     <img src="img/cat-mouse_Transparent.gif">
 </div>
 <div class="dashboard-header">
-    <h2>Watchlist of {{loggedUser}}<a class="glyphicon glyphicon-plus" role="button"
-                                      ng-click=""></a></h2>
+    <h2>Watchlist of {{loggedUser}}<span class="dropdown"><a
+            class="dropdown-toggle glyphicon glyphicon-plus" data-toggle="dropdown"
+            role="button" aria-haspopup="true"
+            aria-expanded="true"></a>
+    <ul class="dropdown-menu pull-right">
+        <li><label>Name</label> <input class="" type="text" value="name" placeholder="Watchlist name"></li>
+        <li role="separator" class="divider"/>
+        <li><button class="btn btn-primary" ng-click="addWatchlist(name)">Add</button></li>
+    </ul>
+</span></h2>
 </div>
 <div class="dashboard-container" ng-repeat="watchlist in userWatchlist">
     <div id="featured" class="col-md-10">
