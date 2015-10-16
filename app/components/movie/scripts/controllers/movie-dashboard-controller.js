@@ -67,4 +67,43 @@ movieApp.controller("movie-dashboard-controller",
         $scope.selectMovie = function (selectedMovie) {
             movieSelectionService.setSelectedMovie(selectedMovie);
         };
+
+        $scope.slickFeatureConfig = {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            variableWidth:true,
+            centerMode: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        autoplay: true
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        autoplay: true
+                    }
+                }]
+        };
     });
