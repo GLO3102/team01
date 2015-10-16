@@ -5,14 +5,15 @@
     <title>UMovie</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/app.css">
-    <link rel="stylesheet" href="styles/detail-view.css">
-    <link rel="stylesheet" href="styles/menu.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/detail-view.css">
+    <link rel="stylesheet" href="styles/menu.css">
     <link rel="stylesheet" href="styles/slider.css">
     <link rel="stylesheet" href="styles/overlay-image.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
 
 </head>
 <body class="main">
@@ -46,7 +47,7 @@
                            aria-expanded="false">Jo Blo <span class="caret"></span></a>
                         <img id="avatar" src="img/anonymous.gif">
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="#">My Watchlist</a></li>
+                            <li><a href="#/users/1234/watchlist">My Watchlist</a></li>
                             <li role="separator" class="divider"/>
                             <li><a href="#">Settings</a></li>
                             <li role="separator" class="divider"/>
@@ -60,7 +61,6 @@
                         <input class="search-input" type="search" name="query" ng-model="query" placeholder="Search...">
                     </form>
                 </div>
-
             </div>
         </div>
     </nav>
@@ -71,6 +71,7 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/slick-carousel/slick/slick.js"></script>
     <script src="bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>
@@ -78,7 +79,7 @@
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="bower_components/angular-lazytube/angular-lazytube.min.js"></script>
 
-
+    <script src="components/user/scripts/directives/user-watchlist-dropdown.js"></script>
     <!-- Main application -->
     <script src="app.js"></script>
 
@@ -97,6 +98,10 @@
     <script src="components/home/scripts/controller/home-controller.js"></script>
     <!-- User component-->
     <script src="components/user/scripts/user.js"></script>
+    <script src="components/user/scripts/services/logged-user-resource.js"></script>
+    <script src="components/user/scripts/services/user-watchlist-container-service.js"></script>
+    <script src="components/user/scripts/services/watchlist-resource.js"></script>
+    <script src="components/user/scripts/controllers/watchlist-controller.js"></script>
     <script src="components/user/scripts/directives/user-watchlist-dropdown.js"></script>
     <script src="components/user/scripts/user-route-provider.js"></script>
     <script src="components/user/scripts/controllers/user-controller.js"></script>
@@ -131,6 +136,7 @@
     <script src="components/actor/scripts/services/actorMovieResource.js"></script>
 
     <!-- Route providers -->
+    <script src="components/user/scripts/user-route-provider.js"></script>
     <script src="components/actor/scripts/actorRouteProvider.js"></script>
     <script src="components/home/scripts/homeRouteProvider.js"></script>
     <script src="components/movie/scripts/movieRouteProvider.js"></script>

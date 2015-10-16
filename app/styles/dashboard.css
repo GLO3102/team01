@@ -6,6 +6,17 @@
 .dashboard-container #featured{
     width: 100%;
 }
+.btn.dashboard-detail{
+    position:absolute;
+    bottom:2%;
+    right:2%;
+}
+.dashboard-container #featured h2, .dashboard-header h2{
+    color: lightgray;
+}
+.overlay .glyphicon{
+    color: lightgray;
+}
 .ajax-loading img {
     margin-left: 35%;
     margin-right: 35%;

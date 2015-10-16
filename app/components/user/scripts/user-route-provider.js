@@ -9,5 +9,9 @@ userApp.
             {
                 templateUrl: "components/user/views/userDashboard.html",
                 controller: "user-controller"
+            })
+            .when("/users/:userId/watchlist", {
+                templateUrl:"components/user/views/userWatchlist.html",
+                controller:"watchlist-controller"
             });
     }]);
