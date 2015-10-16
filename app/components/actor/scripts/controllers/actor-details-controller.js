@@ -2,28 +2,27 @@
  * Created by pascal on 18/09/15.
  */
 actorApp.controller("actor-detail-controller", function ($scope, actorSelectionService, $routeParams, actorResource, actorMovieResource) {
-    //var actorId = $routeParams.actorId;
-    //var actorId = 272994458;
-    var actorId = 63714;
+    var actorId = $routeParams.actorId;
+
     var movies = {};
     $scope.isLoading = false;
 
     $scope.initActor = function(){
-        var selectedActor = actorSelectionService.getSelectedActor();
-        if( Object.keys(selectedActor).length === 0) {
+        //var selectedActor = actorSelectionService.getSelectedActor();
+        //if( Object.keys(selectedActor).length === 0) {
             $scope.isLoading = true;
             actorResource.get({id:actorId}, function onSuccess(data){
               console.log(data.results[0]);
-              selectedActor = data.results[0];
+              var selectedActor = data.results[0];
               $scope.actor = selectedActor;
               //$scope.initMovieActor();
               $scope.isLoading = false;
             }, function error(data){
 
             });
-        }else{
-          $scope.actor = selectedActor;
-        }
+        //}else{
+        //  $scope.actor = selectedActor;
+        //}
     };
 
     $scope.initMovieActor = function(){

@@ -43,7 +43,7 @@
                                     enablejsapi="1"></iframe>
                             <p ng-bind-html="movie.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
                         </div>
-                        <img ng-src="{{movie.artworkUrl100}}">
+                        <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
                     </div>
                 </slick>
             </div>
