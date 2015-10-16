@@ -11,4 +11,3 @@ var homeApp = angular.module('uMovie', [
     'uMovie.tvshow',
     'uMovie.actor'
 ]);
-

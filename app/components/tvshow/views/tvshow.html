@@ -12,7 +12,6 @@
                     <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
                             src="{{tvshow.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
                             enablejsapi="1"></iframe>
-                    <youtube-preview movie="{{tvshow.trackName}}"></youtube-preview>
                     <p ng-bind-html="tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
                     <a href="#/tvshows/{{tvshow.collectionId}}" class="btn btn-default" ng-click="selectTvshow(movie)">View
                         details</a>
