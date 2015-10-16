@@ -1,4 +1,4 @@
-.dashboard-container{
+.dashboard-container , .dashboard-header{
     margin-left: 5%;
     margin-right: 5%;
     width: 90%;
@@ -10,4 +10,10 @@
     position:absolute;
     bottom:2%;
     right:2%;
+}
+.dashboard-container #featured h2, .dashboard-header h2{
+    color: lightgray;
+}
+.overlay .glyphicon{
+    color: lightgray;
 }
