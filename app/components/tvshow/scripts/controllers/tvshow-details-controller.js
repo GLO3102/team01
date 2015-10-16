@@ -33,6 +33,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
                 $scope.tvshowEpisodes = selectTvshowEpisodes;
                 $scope.isLoading = false;
             }, function onError(data) {
+                
             });
         }
         else {
