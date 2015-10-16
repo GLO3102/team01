@@ -3,6 +3,7 @@
         <img src="img/cat-mouse_Transparent.gif">
     </div>
     <div class="panel-body" ng-hide="isLoading">
+
         <div class="detail header">
             <h2>{{actor.artistName}}
                 <a class="btn btn-default" href="{{actor.artistLinkUrl}}">
@@ -14,15 +15,17 @@
                 <label> Primary genre : </label> <span>{{actor.primaryGenreName}}</span>
             </h3>
         </div>
+
         <div class="row">
             <div class="col-sm-4">
-                <img ng-src="{{actor.image}}" class="img-responsive" id="test"/>
+                <img ng-src="{{actor.image}}" class="img-responsive"/>
             </div>
 
             <div class="col-sm-8 detail">
                 <h3>Biography</h3>
-                <h1> Birthday: {{actor.birthday}}</h1>
-                <h1> Deathday: {{actor.deathday}}</h1>
+                <h5> Birthday: {{actor.birthday}}</h1>
+                <h5 ng-show="actor.deathday"> Deathday: {{actor.deathday}}</h1>
+                <h5> Place of birth: {{actor.placeOfBirth}}</h5>
                 <p>{{actor.biography|htmlToPlaintext|unicode}}</p>
             </div>
         </div>
@@ -30,7 +33,7 @@
         <div class="row">
             <div class="detail section actor" id="featured">
                 <h3>Movie</h3>
-                <slick settings="slickFeatureConfig" data="featured">
+                <slick settings="slickFeatureConfig" data="movies">
                     <div ng-repeat="movie in movies" class="slick-slide overlay-image" image-overlay>
                         <div class="overlay" id="overlay-movie-{{$index}}">
                             <h2>{{movie.trackName || movie.collectionName}}</h2>
@@ -44,9 +47,7 @@
                     </div>
                 </slick>
             </div>
+        </div><!--row-->
 
-        </div>
-        <!--row-->
-    </div>
-    <!-- panel body-->
+    </div><!-- panel body-->
 </div><!-- panel -->
