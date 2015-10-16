@@ -16,19 +16,19 @@
         </div>
         <div class="row">
             <div class="col-sm-4">
-                <img ng-src="img/sawyer.jpg" class="img-responsive" id="test"/>
+                <img ng-src="{{actor.image}}" class="img-responsive" id="test"/>
             </div>
 
-            <div id="featured" class="col-sm-8 detail">
+            <div class="col-sm-8 detail">
                 <h3>Biography</h3>
-                <p>{{actor.bio}}</p>
+                <h1> Birthday: {{actor.birthday}}</h1>
+                <h1> Deathday: {{actor.deathday}}</h1>
+                <p>{{actor.biography|htmlToPlaintext|unicode}}</p>
             </div>
         </div>
 
-
-
         <div class="row">
-            <div id="featured" class="detail section actor">
+            <div class="detail section actor" id="featured">
                 <h3>Movie</h3>
                 <slick settings="slickFeatureConfig" data="featured">
                     <div ng-repeat="movie in movies" class="slick-slide overlay-image" image-overlay>

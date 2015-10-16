@@ -3,8 +3,6 @@
  */
 actorApp.controller("actor-dashboard-controller", function ($scope, actorSelectionService, actorResource) {
 
-    $scope.actor = selectedActor;
-
     $scope.selectActor = function (selectedActor){
         actorSelectionService.setSelectedActor(selectedActor);
     };
