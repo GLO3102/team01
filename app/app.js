@@ -9,5 +9,6 @@ var homeApp = angular.module('uMovie', [
     'slickCarousel',
     'uMovie.movie',
     'uMovie.tvshow',
-    'uMovie.actor'
+    'uMovie.actor',
+    "uMovie.search"
 ]);

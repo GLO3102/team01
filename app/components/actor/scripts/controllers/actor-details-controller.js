@@ -8,21 +8,16 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
     $scope.isLoading = false;
 
     $scope.initActor = function(){
-        //var selectedActor = actorSelectionService.getSelectedActor();
-        //if( Object.keys(selectedActor).length === 0) {
             $scope.isLoading = true;
             actorResource.get({id:actorId}, function onSuccess(data){
               console.log(data.results[0]);
               var selectedActor = data.results[0];
               $scope.actor = selectedActor;
-              //$scope.initMovieActor();
               $scope.isLoading = false;
             }, function error(data){
 
             });
-        //}else{
-        //  $scope.actor = selectedActor;
-        //}
+
     };
 
     $scope.initMovieActor = function(){
