@@ -9,6 +9,8 @@ movieApp.controller("movie-dashboard-controller",
 
         $scope.moviesByGenre = [];
 
+        $scope.didScroll=false;
+
         $scope.initializeMoviesByGenre = function () {
             $scope.isLoading = true;
 
@@ -67,9 +69,18 @@ movieApp.controller("movie-dashboard-controller",
 
         $(window).scroll(function () {
             if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
-                loadMoviesByGenre($scope.genres);
+                //loadMoviesByGenre($scope.genres);
+                $scope.didScroll = true;
             }
         });
+
+        setInterval(function() {
+            if($scope.didScroll === true) {
+                $scope.didScroll = false;
+                loadMoviesByGenre($scope.genres);
+            }
+        }, 500);
+
         $scope.initializeMoviesByGenre();
 
         $scope.selectMovie = function (selectedMovie) {

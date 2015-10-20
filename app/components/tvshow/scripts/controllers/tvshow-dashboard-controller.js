@@ -9,6 +9,8 @@ tvShowApp.controller("tvshow-dashboard-controller",
 
         $scope.tvshowsByGenre = [];
 
+        $scope.didScroll=false;
+
         $scope.initializeTvShowsByGenre = function () {
             $scope.isLoading = true;
 
@@ -51,9 +53,20 @@ tvShowApp.controller("tvshow-dashboard-controller",
 
         $(window).scroll(function () {
             if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
-                loadTvshowByGenre($scope.genres);
+                $scope.didScroll = true;
+
             }
         });
+
+        setInterval(function() {
+            if($scope.didScroll === true) {
+                $scope.didScroll = false;
+                loadTvshowByGenre($scope.genres);
+            }
+        }, 500);
+
+
+
         $scope.initializeTvShowsByGenre();
         $scope.selectTvshow = function (selectedTvShow) {
             tvshowSelectionService.setSelectedTvShow(selectedTvShow);
