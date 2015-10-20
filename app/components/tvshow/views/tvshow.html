@@ -9,9 +9,6 @@
             <div class="overlay-image" image-overlay ng-repeat="tvshow in tvshowByGenre.tvshows">
                 <div class="overlay" id="overlay-feature-{{$index}}">
                     <h2>{{tvshow.trackName || tvshow.collectionName}}</h2>
-                    <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
-                            src="{{tvshow.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
-                            enablejsapi="1"></iframe>
                     <p ng-bind-html="tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
                     <a href="#/tvshows/{{tvshow.collectionId}}" class="btn btn-default" ng-click="selectTvshow(tvshow)">View
                         details</a>

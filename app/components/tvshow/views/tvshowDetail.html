@@ -12,7 +12,10 @@
         <div class="detail body">
             <div class="row detail section">
                 <div class="detail preview">
-                    <iframe ob-lazytube width="95%" height="50%" src="{{tvshowEpisodes.results[0].previewUrl|trusted}}" seamless frameborder="0" allowfullscreen autoplay="true"></iframe>
+                    <youtube-preview movie="{{tvshow.trackName}}"></youtube-preview>
+                    <iframe ob-lazytube width="95%" height="50%" src="{{tvshow.previewUrl|trusted}}" seamless
+                            frameborder="0" allowfullscreen autoplay="true"></iframe>
+
                 </div>
                 <div class="row detail description">
                     <ul>

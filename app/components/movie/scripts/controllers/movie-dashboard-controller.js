@@ -16,7 +16,8 @@ movieApp.controller("movie-dashboard-controller",
 
             if ($scope.genres.length === 0) {
                 genreResource.query({"type": "movies"}, function onSuccess(successData) {
-                    $scope.genres = successData;
+
+                    $scope.genres = arrayShuffler.shuffle(successData);
 
                     movieSelectionService.setMovieSearchResults($scope.genres);
 
@@ -30,32 +31,39 @@ movieApp.controller("movie-dashboard-controller",
             }
         };
         var loadMoviesByGenre = function (listOfGenres) {
-            arrayShuffler.shuffle(listOfGenres);
-            for (var i = 0; i < $scope.quantity; i++) {
-
-                movieSearchResource.query({
-                    "genre": listOfGenres[i].id
-                }, function onSuccess(data) {
-                    if (data.results.length > 0) {
-                        verifyGenreIsAlreadyInList(data.results);
-                    }
-                });
-            }
-            $scope.quantity = 5;
-        };
-
-        var verifyGenreIsAlreadyInList = function (results) {
-            var genre = results[0].primaryGenreName;
-            for (var y = 0; y < $scope.moviesByGenre.length; y++) {
-                if ($scope.moviesByGenre[y].genre === genre) {
-                    $scope.quantity += 1;
-                    break;
+            console.log(listOfGenres);
+            if (listOfGenres.length !== $scope.moviesByGenre.length) {
+                for (var i = $scope.moviesByGenre.length; i < Math.min($scope.moviesByGenre.length + $scope.quantity, listOfGenres.length); i++) {
+                    console.log(listOfGenres.length+"  i : "+i+" "+listOfGenres[i].name);
+                    makeCallAndFillmoviesByGenre(i, listOfGenres);
                 }
             }
-            if (y >= $scope.moviesByGenre.length) {
-                $scope.moviesByGenre.push({"movies": results, "genre": genre});
-            }
         };
+
+        var makeCallAndFillmoviesByGenre = function (i, listOfGenres) {
+            movieSearchResource.query({
+                "genre": listOfGenres[i].id
+            }, function onSuccess(data) {
+                console.log(listOfGenres[i].name);
+                console.log(data);
+                if ($scope.moviesByGenre.length < listOfGenres.length) {
+                    $scope.moviesByGenre.push({"movies": data.results, "genre": listOfGenres[i].name});
+                }
+            });
+        };
+
+        //var verifyGenreIsAlreadyInList = function (results) {
+        //    var genre = results[0].primaryGenreName;
+        //    for (var y = 0; y < $scope.moviesByGenre.length; y++) {
+        //        if ($scope.moviesByGenre[y].genre === genre) {
+        //            $scope.quantity += 1;
+        //            break;
+        //        }
+        //    }
+        //    if (y >= $scope.moviesByGenre.length) {
+        //        $scope.moviesByGenre.push({"movies": results, "genre": genre});
+        //    }
+        //};
 
         $(window).scroll(function () {
             if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
@@ -74,7 +82,7 @@ movieApp.controller("movie-dashboard-controller",
             infinite: true,
             autoplay: true,
             autoplaySpeed: 5000,
-            variableWidth:true,
+            variableWidth: true,
             centerMode: true,
             responsive: [
                 {

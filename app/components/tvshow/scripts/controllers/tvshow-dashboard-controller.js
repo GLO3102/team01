@@ -7,7 +7,6 @@ tvShowApp.controller("tvshow-dashboard-controller",
 
         $scope.isLoading = false;
 
-        $scope.selectedGenreName;
         $scope.tvshowsByGenre = [];
 
         $scope.initializeTvShowsByGenre = function () {
@@ -31,38 +30,24 @@ tvShowApp.controller("tvshow-dashboard-controller",
                 $scope.isLoading = false;
             }
         };
+
         var loadTvshowByGenre = function (listOfGenres) {
             if (listOfGenres.length !== $scope.tvshowsByGenre.length) {
-                console.log("2listeofgenres "+listOfGenres.length+" tvshowbygenre "+$scope.tvshowsByGenre.length);
-                console.log(Math.min($scope.tvshowsByGenre.length + $scope.quantity, listOfGenres.length));
                 for (var i = $scope.tvshowsByGenre.length; i < Math.min($scope.tvshowsByGenre.length + $scope.quantity, listOfGenres.length) ; i++) {
-                    console.log($scope.genres[i].name, "i : " + i);
-                    $scope.selectedGenreName = $scope.genres[i].genre;
-                    tvShowSearchResource.query({
-                        "genre": $scope.genres[i].id
-                    }, function onSuccess(data) {
-                        if (data.resultCount > 0 && $scope.tvshowsByGenre.length<listOfGenres.length) {
-                            $scope.tvshowsByGenre.push({"tvshows": data.results, "genre":  $scope.selectedGenreName});
-                            //verifyGenreIsAlreadyInList(data.results, $scope.genres[i].genre);      /// pas capable de passer le "name" comme il faut! requis pcq le primary genre est pas nécessairement le genre, donc ca compare les genre ensemble...
-                        }
-                    });
+                    makeCallAndFilltvShowsByGenre(i, listOfGenres);
                 }
-                $scope.quantity = 5;
             }
         };
 
-        //var verifyGenreIsAlreadyInList = function (results, genre) {
-        //    console.log(genre);
-        //    for (var y = 0; y < $scope.tvshowsByGenre.length; y++) {
-        //        if ($scope.tvshowsByGenre[y].genre === genre) {
-        //            //$scope.quantity += 1;
-        //            break;
-        //        }
-        //    }
-        //    if (y >= $scope.tvshowsByGenre.length) {
-        //        $scope.tvshowsByGenre.push({"tvshows": results, "genre": genre});
-        //    }
-        //};
+        var makeCallAndFilltvShowsByGenre = function(i, listOfGenres){
+            tvShowSearchResource.query({
+                "genre": listOfGenres[i].id
+            }, function onSuccess(data) {
+                if ($scope.tvshowsByGenre.length<listOfGenres.length) {
+                    $scope.tvshowsByGenre.push({"tvshows": data.results, "genre":  listOfGenres[i].name});
+                }
+            });
+        };
 
         $(window).scroll(function () {
             if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
