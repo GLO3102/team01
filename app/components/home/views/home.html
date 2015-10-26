@@ -1,31 +1,39 @@
-<div>
+<div class="ajax-loading" ng-show="isMovieLoading && isTvShowLoading">
+    <img src="img/cat-mouse_Transparent.gif">
+</div>
+<div ng-hide="isMovieLoading || isTvShowLoading">
     <div>
+        <h3 class="col-md-12 title">Popular Movies</h3>
         <div class="col-md-1"></div>
         <div id="featured" class="col-md-10">
-            <slick settings="slickFeatureConfig" data="featured" center-mode="true">
-                <div ng-repeat="feature in featured" class="overlay-image" image-overlay>
+            <slick settings="slickMoviesConfig" data="movies" center-mode="true">
+                <div ng-repeat="movie in movies" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-feature-{{$index}}">
-                        <h2>{{feature.trackName || feature.collectionName}}</h2>
-                        <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%" src="{{feature.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
-                        <p ng-bind-html="feature.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
+                        <h2>{{movie.trackName || movie.collectionName}}</h2>
+                        <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
+                        <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
+                        <a href="#/movies/{{movie.trackId}}" class="btn btn-default" ng-click="selectMovie(movie)">View
+                            details</a>
                     </div>
-                    <img ng-src="{{feature.artworkUrl100}}" >
+                    <img ng-src="{{movie.artworkUrl100 | imageSize:500:300}}" >
                 </div>
             </slick>
         </div>
     </div>
     <div>
-        <h3 class="col-md-12 title">Watchlist</h3>
+        <h3 class="col-md-12 title">Popular TvShows</h3>
         <div class="col-md-1"></div>
-        <div id="watchlist" class="col-md-10">
-            <slick settings="slickWatchlistConfig" data="watchlist" >
-                <div ng-repeat="movie in watchlist" class="overlay-image" image-overlay>
+        <div id="watchlist" class="col-md-10" >
+            <slick settings="slickTvShowsConfig" data="tvshows" >
+                <div ng-repeat="tvshow in tvshows" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-movie-{{$index}}">
-                        <h2>{{movie.trackName || movie.collectionName}}</h2>
-                        <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
-                        <p>{{movie.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode}}</p>
+                        <h2>{{tvshow.collectionName}}</h2>
+                        <iframe id="tvshow-{{$index}}" ob-lazytube width="95%" height="50%" src="{{tvshow.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
+                        <p>{{tvshow.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode}}</p>
+                        <a href="#/tvshows/{{tvshow.collectionId}}" class="btn btn-default" ng-click="selectTvshow(movie)">View
+                            details</a>
                     </div>
-                    <img ng-src="{{movie.artworkUrl100}}">
+                    <img ng-src="{{tvshow.artworkUrl100 | imageSize:300:300}}">
                 </div>
             </slick>
         </div>
