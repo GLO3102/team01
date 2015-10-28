@@ -19,52 +19,7 @@
 <body class="main">
 <div ng-app="uMovie">
 
-    <nav class="navbar navbar-inverse umovie-font">
-        <div class="container-fluid">
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="" href="#/home"><img ng-src="img/LogoClean2.png"></a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
-
-                <ul class="nav navbar-nav">
-                    <li><a href="#/movies">Movies</a></li>
-                    <li><a href="#/tvshows">Tv-Shows</a></li>
-                    <li><a href="#/actor">Actors</a></li>
-                </ul>
-
-                <div class="pull-right navbar-text">
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Jo Blo <span class="caret"></span></a>
-                        <img id="avatar" src="img/anonymous.gif">
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="#/users/1234/watchlist">My Watchlist</a></li>
-                            <li role="separator" class="divider"/>
-                            <li><a href="#">Settings</a></li>
-                            <li role="separator" class="divider"/>
-                            <li><a href="#">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="pull-right navbar-text" ng-controller="search-dashboard-controller">
-                    <form ng-submit="initSearch()" name="search-form">
-                        <input class="search-input" type="search" name="query" ng-model="query" placeholder="Search...">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+    <div ng-include src="'components/commons/views/menuTop.html'"></div>
     <div ng-view></div>
 
     <!-- Compiled files -->
