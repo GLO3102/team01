@@ -1,0 +1,22 @@
+.btn-add-watchlist{
+    float: right;
+    color: lightgray;
+    background-color: #366dde;
+    margin-right: 5px;
+}
+.btn-add-watchlist:hover{
+    background-color: #0040D0;
+}
+.watchlist-header .glyphicon.glyphicon-remove{
+    color: darkred;
+
+}
+.btn-modify-watchlist{
+    float: right;
+    color: lightgray;
+    background-color: #366dde;
+    margin-right: 5px;
+}
+.btn-modify-watchlist:hover{
+    background-color: #0040D0;
+}

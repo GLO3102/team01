@@ -46,13 +46,13 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
         watchlistResource.deleteWatchlist({
             "id": watchlist.id
         }, function onSuccess() {
-            $scope.userWatchlist.filter(function (watchlistInLocal) {
-                return watchlistInLocal.id == watchlist.id;
-            }).pop();
+            $scope.userWatchlist = $scope.userWatchlist.filter(function (watchlistInLocal) {
+                return watchlistInLocal.id != watchlist.id;
+            });
             userWatchlistContainer.setUserWatchlist($scope.userWatchlist);
-            $scope.$apply();
-        })
+        });
     }
+
     var updateLocalWatchlist = function (watchlist, movie) {
 
         var watchlistToModify = $scope.userWatchlist.filter(function (watchlistInLocal) {
@@ -64,19 +64,37 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
         movieToRemove.remove();
 
         userWatchlistContainer.setUserWatchlist($scope.userWatchlist);
+        $scope.$apply();
     };
 
     $scope.addWatchlist = function (name) {
-        watchlistResource.$save({}, {
+        watchlistResource.save({}, {
             "owner": {
                 "email": $scope.loggedUser
             },
             "name": name
         }, function onSuccess(data) {
             $scope.userWatchlist.push(data);
+            this.name = "";
         })
     };
-    
+
+    $scope.modifyWatchlistName = function (watchlist, newName, element){
+
+        watchlistResource.modifyWatchlist({id: watchlist.id}, {
+            name: newName,
+            movies: watchlist.movies
+        }, function onSuccess(data) {
+            watchlist.name = newName;
+            var parentElement = $(element.target).parent();
+            parentElement.find("input.watchlist-name").val("a");
+        }, function onError(data) {
+
+        });
+    };
+    $scope.isStringValid = function(newWatchlistName){
+        return newWatchlistName.length !== 0;
+    }
     $scope.initLoggedUserWatchlist();
 
 });
