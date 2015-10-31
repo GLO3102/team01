@@ -7,8 +7,8 @@
             role="button" aria-haspopup="true"
             aria-expanded="true"></a>
     <ul class="dropdown-menu pull-right">
-        <li><label>Name</label> <input class="" type="text" value="name" ng-model="watchlistName" ng-init="watchlistName = ''">
-            <button class="btn btn-add-watchlist" ng-click="addWatchlist(watchlistName)" ng-disabled="!isStringValid(watchlistName)">Add</button>
+        <li><label>Name</label> <input class="watchlist-name" type="text" value="name" ng-model="watchlistName" ng-init="watchlistName = ''">
+            <button class="btn btn-add-watchlist" ng-click="addWatchlist(watchlistName, $event)" ng-disabled="!isStringValid(watchlistName)">Add</button>
         </li>
     </ul>
 </span></h2>
@@ -39,7 +39,7 @@
         <slick settings="slickFeatureConfig" data="watchlist.movies" center-mode="true">
             <div class="overlay-image" image-overlay ng-repeat="movie in watchlist.movies">
                 <div class="overlay" id="overlay-feature-{{$index}}">
-                    <a class="glyphicon glyphicon-minus pull-right" role="button"
+                    <a class="glyphicon glyphicon-remove pull-right" role="button"
                        ng-click="removeMovieFromWatchlist(watchlist, movie)"></a>
 
                     <h2>{{movie.trackName || movie.collectionName}} </h2>
