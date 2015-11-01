@@ -41,11 +41,5 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
         }
     };
     $scope.initTvShowDetail();
-    $scope.isHdPriceSelected = true;
-
-    $scope.showHdPrice = function (priceButtonState) {
-        $scope.isHdPriceSelected = priceButtonState;
-    };
-
 
 });
