@@ -1,0 +1,11 @@
+.btn.price-toggle{
+    background-color: #598cb7;
+    color: lightgray;
+    border-radius: 5px;
+}
+.btn.price-toggle.active{
+    background-color: #2576b7;
+}
+.btn.price-toggle:hover{
+    background-color: #337ab7;
+}
