@@ -46,13 +46,13 @@
                 <div class="overlay" id="overlay-feature-{{$index}}">
                     <a class="glyphicon glyphicon-remove pull-right" role="button"
                        ng-click="removeMovieFromWatchlist(watchlist, movie)"></a>
-
-                    <h2>{{movie.trackName || movie.collectionName}} </h2>
+                    <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
+                        <h2>{{movie.trackName || movie.collectionName}} </h2></a>
                     <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
                             src="{{movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
                             enablejsapi="1"></iframe>
                     <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
-                    <a href="#/movies/{{movie.trackId}}" class="btn btn-default dashboard-detail"
+                    <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail"
                        ng-click="selectMovie(movie)">View
                         details</a>
                 </div>
