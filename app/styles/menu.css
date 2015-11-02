@@ -46,6 +46,19 @@ input[type=search]:focus {
 input[type=search]:hover {
     background-color: #ffffff;
 }
+.container-fluid{
+    background-color: black;
+}
+#navbar-collapse-1{
+    margin-top : 3px;
+    background: linear-gradient(to bottom, #222 0%,#222 50%,#000000 50%,black 50%,black 100%);
+    box-shadow: 0 0 5px #888;
+
+}
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover{
+    background: rgba(206, 208, 203, 0.3);
+    margin-bottom:0px;
+}
 
 /*A garder SVP MS venir me voir avant de supprimer :D yay un commentaire utile*/
 /*.container-fluid{
