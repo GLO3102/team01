@@ -1,0 +1,39 @@
+.btn-add-watchlist{
+    float: right;
+    color: lightgray;
+    background-color: #366dde;
+    margin-right: 5px;
+}
+.btn-add-watchlist:hover{
+    background-color: #0040D0;
+}
+.watchlist-header .glyphicon.glyphicon-remove, a.glyphicon.glyphicon-remove{
+    color: #b51514;
+
+}
+.watchlist-header .glyphicon.glyphicon-remove:hover, a.glyphicon.glyphicon-remove:hover{
+    color:darkred;
+}
+.btn-modify-watchlist{
+    float: right;
+    color: lightgray;
+    background-color: #5b83de;
+    margin-right: 5px;
+
+}
+.btn-modify-watchlist:hover{
+    background-color: #3673ff;
+}
+.dropdown-menu.watchlist-dropdown{
+    width: 310px;
+}
+.watchlist-dropdown .watchlist-name{
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    height: 30px;
+    color: #FFFFFF;
+    background-color: transparent;
+}
+#empty-watchlist-message{
+    color: lightgray;
+}

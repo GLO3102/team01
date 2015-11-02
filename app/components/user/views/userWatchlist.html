@@ -2,25 +2,49 @@
     <img src="img/cat-mouse_Transparent.gif">
 </div>
 <div class="dashboard-header">
-    <h2>Watchlist of {{loggedUser}}<span class="dropdown"><a
+    <h2>Watchlist of {{loggedUser}} <span class="dropdown"><a
             class="dropdown-toggle glyphicon glyphicon-plus" data-toggle="dropdown"
             role="button" aria-haspopup="true"
             aria-expanded="true"></a>
-    <ul class="dropdown-menu pull-right">
-        <li><label>Name</label> <input class="" type="text" value="name" placeholder="Watchlist name"></li>
-        <li role="separator" class="divider"/>
-        <li><button class="btn btn-primary" ng-click="addWatchlist(name)">Add</button></li>
+    <ul class="dropdown-menu watchlist-dropdown">
+        <li><label>Name</label> <input class="watchlist-name" type="text" value="name" ng-model="watchlistName"
+                                       ng-init="watchlistName = ''">
+            <button class="btn btn-add-watchlist" ng-click="addWatchlist(watchlistName, $event)"
+                    ng-disabled="!isStringValid(watchlistName)">Add
+            </button>
+        </li>
     </ul>
 </span></h2>
 </div>
 <div class="dashboard-container" ng-repeat="watchlist in userWatchlist">
     <div id="featured" class="col-md-10">
-        <h2>{{watchlist.name}} <a class="glyphicon glyphicon-remove" role="button"
-                                  ng-click="removeWatchlist(watchlist)"></a></h2>
+        <h2 class="watchlist-header">{{watchlist.name}}
+            <span class="dropdown"><a
+                    class="dropdown-toggle glyphicon glyphicon-pencil" data-toggle="dropdown"
+                    role="button" aria-haspopup="true"
+                    aria-expanded="true"></a>
+            <ul class="dropdown-menu watchlist-dropdown">
+                <li><label>Name</label> <input class="watchlist-name" type="text" value="name"
+                                               ng-model="newWatchlistName$index" ng-init="newWatchlistName$index = ''">
+                    <button class="btn btn-modify-watchlist"
+                            ng-click="modifyWatchlistName(watchlist, newWatchlistName$index, $event)"
+                            ng-disabled="!isStringValid(newWatchlistName$index)">
+                        Save
+                    </button>
+                </li>
+            </ul>
+            </span>
+            <a
+                    class="glyphicon glyphicon-remove" role="button"
+                    ng-click="removeWatchlist(watchlist)"></a></h2>
+
+        <div class="dashboard-container" ng-if="watchlist.movies.length == 0">
+            <h4 id="empty-watchlist-message">This watchlist is feeling lonely!</h4>
+        </div>
         <slick settings="slickFeatureConfig" data="watchlist.movies" center-mode="true">
             <div class="overlay-image" image-overlay ng-repeat="movie in watchlist.movies">
                 <div class="overlay" id="overlay-feature-{{$index}}">
-                    <a class="glyphicon glyphicon-minus pull-right" role="button"
+                    <a class="glyphicon glyphicon-remove pull-right" role="button"
                        ng-click="removeMovieFromWatchlist(watchlist, movie)"></a>
 
                     <h2>{{movie.trackName || movie.collectionName}} </h2>
