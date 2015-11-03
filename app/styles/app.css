@@ -6,7 +6,7 @@
     margin-bottom: 2em;
     padding: 0 0 0.5em;
 }
-a:hover, a:visited, a:checked, a:active{
+a:hover, a:visited, a:checked, a:active, a:focus{
     text-decoration: none;
 
 }
@@ -61,4 +61,17 @@ a:hover, a:visited, a:checked, a:active{
 }
 .ajax-loading .img {
     image-resolution: 300dppx;
+}
+
+button.btn, .btn{
+    background-color: #598cb7;
+    border-radius: 5px;
+    color: lightgray;
+}
+.btn:hover, .btn:active, .btn:focus{
+    background-color: #337ab7;
+    color: lightgray;
+}
+input{
+    padding-left: 5px;
 }
