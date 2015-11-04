@@ -11,7 +11,7 @@ tvShowApp.service("tvshowSelectionService", function ($rootScope) {
     };
 
     var setTvshowSearchResults = function(cachedSearchResults){
-        movieSearchResults = cachedSearchResults;
+        tvshowSearchResults = cachedSearchResults;
     };
 
     var getSelectedTvShow = function () {
