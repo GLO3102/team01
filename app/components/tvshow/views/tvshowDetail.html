@@ -12,7 +12,10 @@
         <div class="detail body">
             <div class="row detail section">
                 <div class="detail preview">
-                    <iframe ob-lazytube width="95%" height="50%" src="{{tvshowEpisodes.results[0].previewUrl|trusted}}" seamless frameborder="0" allowfullscreen autoplay="true"></iframe>
+                    <youtube-preview movie="{{tvshow.trackName}}"></youtube-preview>
+                    <iframe ob-lazytube width="95%" height="50%" src="{{tvshow.previewUrl|trusted}}" seamless
+                            frameborder="0" allowfullscreen autoplay="true"></iframe>
+
                 </div>
                 <div class="row detail description">
                     <ul>
@@ -24,18 +27,7 @@
 
                             <p>{{tvshow.longDescription|htmlToPlaintext|unicode}}</p></li>
                     </ul>
-
-                    <div class="btn-group" data-toggle="buttons">
-
-                        <button class="btn price-toggle" ng-click="showHdPrice(false, this)">SD Price</button>
-                        <button class="btn price-toggle" ng-click="showHdPrice(true, this)">HD Price</button>
-
-                    </div>
-
-                    <h4 class="detail price" ng-hide="isHdPriceSelected">Price SD <span>{{tvshow.collectionPrice}}$ {{tvshow.currency}}</span>
-                    </h4>
-                    <h4 class="detail price" ng-show="isHdPriceSelected">Price HD <span>{{tvshow.collectionHdPrice}}$ {{tvshow.currency}}</span>
-                    </h4>
+                    <price-toggle></price-toggle>
                 </div>
             </div>
             <div class="row detail section">

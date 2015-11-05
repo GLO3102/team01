@@ -23,11 +23,7 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
     };
 
     $scope.initMovieDetail();
-    $scope.isHdPriceSelected = true;
 
-    $scope.showHdPrice = function(priceButtonState){
-        $scope.isHdPriceSelected = priceButtonState;
-    };
     $scope.dismiss = function(){
 
     }

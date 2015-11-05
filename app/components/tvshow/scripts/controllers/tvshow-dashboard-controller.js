@@ -7,8 +7,9 @@ tvShowApp.controller("tvshow-dashboard-controller",
 
         $scope.isLoading = false;
 
-
         $scope.tvshowsByGenre = [];
+
+        $scope.didScroll=false;
 
         $scope.initializeTvShowsByGenre = function () {
             $scope.isLoading = true;
@@ -31,40 +32,41 @@ tvShowApp.controller("tvshow-dashboard-controller",
                 $scope.isLoading = false;
             }
         };
+
         var loadTvshowByGenre = function (listOfGenres) {
             if (listOfGenres.length !== $scope.tvshowsByGenre.length) {
-
-                for (var i = $scope.tvshowsByGenre.length; i < ($scope.tvshowsByGenre.length + $scope.quantity); i++) {
-                    console.log($scope.genres[i].id, "i : " + i);
-                    tvShowSearchResource.query({
-                        "genre": $scope.genres[i].id
-                    }, function onSuccess(data) {
-                        if (data.resultCount > 0) {
-                            verifyGenreIsAlreadyInList(data.results);
-                        }
-                    });
+                for (var i = $scope.tvshowsByGenre.length; i < Math.min($scope.tvshowsByGenre.length + $scope.quantity, listOfGenres.length) ; i++) {
+                    makeCallAndFilltvShowsByGenre(i, listOfGenres);
                 }
-                $scope.quantity = 5;
             }
         };
 
-        var verifyGenreIsAlreadyInList = function (results) {
-            var genre = results[0].primaryGenreName;
-            for (var y = 0; y < $scope.tvshowsByGenre.length; y++) {
-                if ($scope.tvshowsByGenre[y].genre === genre) {
-                    $scope.quantity += 1;
-                    break;
+        var makeCallAndFilltvShowsByGenre = function(i, listOfGenres){
+            tvShowSearchResource.query({
+                "genre": listOfGenres[i].id
+            }, function onSuccess(data) {
+                if ($scope.tvshowsByGenre.length<listOfGenres.length) {
+                    $scope.tvshowsByGenre.push({"tvshows": data.results, "genre":  listOfGenres[i].name});
                 }
-            }
-            if (y >= $scope.tvshowsByGenre.length) {
-                $scope.tvshowsByGenre.push({"tvshows": results, "genre": genre});
-            }
+            });
         };
+
         $(window).scroll(function () {
             if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
-                loadTvshowByGenre($scope.genres);
+                $scope.didScroll = true;
+
             }
         });
+
+        setInterval(function() {
+            if($scope.didScroll === true) {
+                $scope.didScroll = false;
+                loadTvshowByGenre($scope.genres);
+            }
+        }, 500);
+
+
+
         $scope.initializeTvShowsByGenre();
         $scope.selectTvshow = function (selectedTvShow) {
             tvshowSelectionService.setSelectedTvShow(selectedTvShow);
