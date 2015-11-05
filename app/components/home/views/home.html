@@ -1,18 +1,18 @@
 <div class="ajax-loading" ng-show="isMovieLoading && isTvShowLoading">
     <img src="img/cat-mouse_Transparent.gif">
 </div>
-<div ng-hide="isMovieLoading || isTvShowLoading">
-    <div>
-        <h3 class="col-md-12 title">Popular Movies</h3>
+<div class="dashboard-container" ng-hide="isMovieLoading || isTvShowLoading">
+    <div id="featured">
+        <h2 class="col-md-12 title">Popular Movies</h2>
         <div class="col-md-1"></div>
-        <div id="featured" class="col-md-10">
+        <div class="col-md-10">
             <slick settings="slickMoviesConfig" data="movies" center-mode="true">
                 <div ng-repeat="movie in movies" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-feature-{{$index}}">
                         <h2>{{movie.trackName || movie.collectionName}}</h2>
                         <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
                         <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
-                        <a href="#/movies/{{movie.trackId}}" class="btn btn-default" ng-click="selectMovie(movie)">View
+                        <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail" ng-click="selectMovie(movie)">View
                             details</a>
                     </div>
                     <img ng-src="{{movie.artworkUrl100 | imageSize:500:300}}" >
@@ -21,16 +21,15 @@
         </div>
     </div>
     <div>
-        <h3 class="col-md-12 title">Popular TvShows</h3>
+        <h2 class="col-md-12 title">Popular TvShows</h2>
         <div class="col-md-1"></div>
         <div id="watchlist" class="col-md-10" >
             <slick settings="slickTvShowsConfig" data="tvshows" >
                 <div ng-repeat="tvshow in tvshows" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-movie-{{$index}}">
                         <h2>{{tvshow.collectionName}}</h2>
-                        <iframe id="tvshow-{{$index}}" ob-lazytube width="95%" height="50%" src="{{tvshow.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
                         <p>{{tvshow.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode}}</p>
-                        <a href="#/tvshows/{{tvshow.collectionId}}" class="btn btn-default" ng-click="selectTvshow(movie)">View
+                        <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail" ng-click="selectTvshow(movie)">View
                             details</a>
                     </div>
                     <img ng-src="{{tvshow.artworkUrl100 | imageSize:300:300}}">
