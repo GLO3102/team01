@@ -39,7 +39,7 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
                 "id": watchlist.id,
                 "trackId": movie.trackId
             }, function onSuccess(data) {
-                updateLocalWatchlist(watchlist, movie);
+                updateLocalWatchlist(watchlist, data);
             }
         )
     }
@@ -54,17 +54,11 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
         });
     }
 
-    var updateLocalWatchlist = function (watchlist, movie) {
+    var updateLocalWatchlist = function (watchlist, newWatchlist) {
+        var watchlistIndex = $scope.userWatchlist.indexOf(watchlist);
 
-        var watchlistToModify = $scope.userWatchlist.filter(function (watchlistInLocal) {
-            return watchlistInLocal.id == watchlist.id;
-        }).pop();
-        var movieToRemove = watchlistToModify.movies.filter(function (movieInLocalWatchlist) {
-            return movieInLocalWatchlist.trackId == movie.trackId;
-        }).pop();
-        //movieToRemove.remove();
+        $scope.userWatchlist[watchlistIndex] = newWatchlist;
         userWatchlistContainer.setUserWatchlist($scope.userWatchlist);
-        //$scope.$apply();
     };
 
     $scope.addWatchlist = function (name, event) {
