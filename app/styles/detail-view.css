@@ -15,7 +15,10 @@
     width: auto;
     color: #ffffff;
 }
-
+.detail-inline{
+    display: inline;
+    color: #ffffff;
+}
 .detail.section {
     width: 96%;
     margin-left: 2%;

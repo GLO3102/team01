@@ -62,10 +62,9 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
         var movieToRemove = watchlistToModify.movies.filter(function (movieInLocalWatchlist) {
             return movieInLocalWatchlist.trackId == movie.trackId;
         }).pop();
-        movieToRemove.remove();
-
+        //movieToRemove.remove();
         userWatchlistContainer.setUserWatchlist($scope.userWatchlist);
-        $scope.$apply();
+        //$scope.$apply();
     };
 
     $scope.addWatchlist = function (name, event) {
@@ -109,7 +108,7 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
         autoplay: true,
         autoplaySpeed: 5000,
         variableWidth:true,
-        centerMode: true,
+
         responsive: [
             {
                 breakpoint: 1024,
@@ -127,7 +126,8 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
                     slidesToShow: 2,
                     slidesToScroll: 1,
                     infinite: true,
-                    autoplay: true
+                    autoplay: true,
+                    centerMode: true
                 }
             },
             {
@@ -136,7 +136,8 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     infinite: true,
-                    autoplay: true
+                    autoplay: true,
+                    centerMode: true
                 }
             }]
     };

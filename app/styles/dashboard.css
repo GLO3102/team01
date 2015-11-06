@@ -11,7 +11,7 @@
     bottom:2%;
     right:2%;
 }
-.dashboard-container #featured h2, .dashboard-header h2{
+.dashboard-container #featured h2, .dashboard-header h2, .movie-title{
     color: lightgray;
 }
 .overlay .glyphicon{
