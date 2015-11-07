@@ -13,7 +13,6 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
         if (Object.keys(selectedTvShow).length === 0) {
             $scope.isLoading = true;
             tvShowResource.get({id: tvShowId}, function onSuccess(data) {
-                console.log(data.results[0]);
                 selectedTvShow = data.results[0];
 
                 $scope.tvshow = selectedTvShow;
@@ -27,7 +26,6 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
 
         if (Object.keys(selectTvshowEpisodes).length === 0) {
             tvShowEpisodesResource.get({id: tvShowId}, function onSuccess(data) {
-                console.log(data);
                 selectTvshowEpisodes = data;
 
                 $scope.tvshowEpisodes = selectTvshowEpisodes;

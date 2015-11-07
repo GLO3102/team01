@@ -27,7 +27,7 @@
                         <li><label>Director</label> <span>{{movie.artistName}}</span></li>
                         <li><label>Rating</label> <span>{{movie.contentAdvisoryRating}}</span></li>
                         <li><label>Description</label>
-                            <p>{{movie.longDescription|htmlToPlaintext|unicode}}</p></li>
+                            <p ng-bind-html ="movie.longDescription|htmlToPlaintext|unicode"></p></li>
                     </ul>
                     <price-toggle></price-toggle>
                     <h4 class="detail price" ng-hide="isHdPriceSelected">Price SD <span>{{movie.trackPrice}}$ {{movie.currency}}</span>
