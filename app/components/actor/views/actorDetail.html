@@ -6,7 +6,7 @@
 
         <div class="detail header">
             <h2>{{actor.artistName}}
-                <a class="btn btn-default" href="{{actor.artistLinkUrl}}">
+                <a  href="{{actor.artistLinkUrl}}">
                     <img ng-src="img/itunes.svg"/>
                 </a>
                 <a class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"/>
@@ -32,28 +32,28 @@
             </div>
         </div>
 
-        <div class="row dashboard-container">
-            <div class="detail section actor" id="featured">
-                <h3>Movie</h3>
-                <slick settings="slickFeatureConfig" data="movies">
-                    <div ng-repeat="movie in movies" class="slick-slide overlay-image" image-overlay>
-                        <div class="overlay" id="overlay-movie-{{$index}}">
-                            <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
-                                <h2 class="movie-title">{{movie.trackName || movie.collectionName}} </h2></a>
-                            Release date : {{movie.releaseDate|cut:true:10:' '}}
-                            <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%"
-                                    src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
-                                    enablejsapi="1"></iframe>
-                            <p ng-bind-html="movie.longDescription|cut:true:150:'...'|htmlToPlaintext|unicode"></p>
-                            <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail"
-                               ng-click="selectMovie(movie)">View
-                                details</a>
-                        </div>
-                        <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
+
+        <div class="row detail section actor" id="featured">
+            <h3>Movie</h3>
+            <slick settings="slickFeatureConfig" data="movies">
+                <div ng-repeat="movie in movies" class="slick-slide overlay-image" image-overlay>
+                    <div class="overlay" id="overlay-movie-{{$index}}">
+                        <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
+                            <h2 class="movie-title">{{movie.trackName || movie.collectionName}} </h2></a>
+                        Release date : {{movie.releaseDate|cut:true:10:' '}}
+                        <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%"
+                                src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
+                                enablejsapi="1"></iframe>
+                        <p ng-bind-html="movie.longDescription|cut:true:150:'...'|htmlToPlaintext|unicode"></p>
+                        <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail"
+                           ng-click="selectMovie(movie)">View
+                            details</a>
                     </div>
-                </slick>
-            </div>
+                    <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
+                </div>
+            </slick>
         </div>
+
         <!--row-->
 
     </div>

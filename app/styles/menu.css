@@ -58,4 +58,8 @@ input[type=search]:hover {
     background: rgba(206, 208, 203, 0.3);
     margin-bottom:0px;
 }
-
+@media screen and (max-width: 800px) {
+    #navbar-collapse-1{
+        background: linear-gradient(to bottom, #222 0%,#222 50%,#222 50%, #222 50%, #222 100%);
+    }
+}
