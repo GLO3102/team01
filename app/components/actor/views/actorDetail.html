@@ -28,7 +28,7 @@
                 <h5 ng-show="actor.deathday"> Deathday: {{actor.deathday}}</h5>
                 <h5> Place of birth: {{actor.placeOfBirth}}</h5>
 
-                <p>{{actor.biography|htmlToPlaintext|unicode}}</p>
+                <p ng-bind-html="actor.biography|htmlToPlaintext|unicode"></p>
             </div>
         </div>
 

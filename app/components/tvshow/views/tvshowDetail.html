@@ -25,7 +25,7 @@
                         <li><label>Rating</label> <span>{{tvshow.contentAdvisoryRating}}</span></li>
                         <li><label>Description</label>
 
-                            <p>{{tvshow.longDescription|htmlToPlaintext|unicode}}</p></li>
+                            <p ng-bind-html="tvshow.longDescription|htmlToPlaintext|unicode"></p></li>
                     </ul>
 
                     <price-toggle></price-toggle>
@@ -44,7 +44,7 @@
                             <span class="episodePic"> <img ng-src="{{episode.artworkUrl60}}"></span>
                             <span class="episodeNumber"><p>{{episode.trackNumber}}</p></span>
                             <span class="episodeName"><p>{{episode.trackName}}</p></span>
-                            <span class="episodeDesc"><p>{{episode.longDescription|cut:true:100:'...'}}</p></span>
+                            <span class="episodeDesc"><p ng-bind-html="episode.longDescription|cut:true:100:'...'|htmlToPlaintext|unicode"></p></span>
                             <span class="episodeRelease"><p>{{episode.releaseDate | date:medium}}</p></span>
                         </div>
                     </div>

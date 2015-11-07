@@ -39,7 +39,6 @@ movieApp.controller("movie-dashboard-controller",
             console.log(listOfGenres);
             if (listOfGenres.length !== $scope.moviesByGenre.length) {
                 for (var i = $scope.moviesByGenre.length; i < Math.min($scope.moviesByGenre.length + $scope.quantity, listOfGenres.length); i++) {
-                    console.log(listOfGenres.length + "  i : " + i + " " + listOfGenres[i].name);
                     makeCallAndFillmoviesByGenre(i, listOfGenres);
                 }
             }
@@ -49,8 +48,6 @@ movieApp.controller("movie-dashboard-controller",
             movieSearchResource.query({
                 "genre": listOfGenres[i].id
             }, function onSuccess(data) {
-                console.log(listOfGenres[i].name);
-                console.log(data);
                 if ($scope.moviesByGenre.length < listOfGenres.length) {
                     $scope.moviesByGenre.push({"movies": data.results, "genre": listOfGenres[i].name});
                 }

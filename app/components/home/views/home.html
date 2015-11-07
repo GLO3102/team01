@@ -28,7 +28,7 @@
                 <div ng-repeat="tvshow in tvshows" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-movie-{{$index}}">
                         <h2>{{tvshow.collectionName}}</h2>
-                        <p>{{tvshow.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode}}</p>
+                        <p ng-bind-html="tvshow.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
                         <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail" ng-click="selectTvshow(movie)">View
                             details</a>
                     </div>
