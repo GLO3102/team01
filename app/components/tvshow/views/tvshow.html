@@ -8,9 +8,12 @@
         <slick settings="slickFeatureConfig" data="tvshowByGenre.tvshows" center-mode="true">
             <div class="overlay-image" image-overlay ng-repeat="tvshow in tvshowByGenre.tvshows">
                 <div class="overlay" id="overlay-feature-{{$index}}">
-                    <h2>{{tvshow.trackName || tvshow.collectionName}}</h2>
+                    <a href="#/tvshows/{{tvshow.collectionId}}"
+                       ng-click="selectTvshow(tvshow)"><h2>{{tvshow.trackName || tvshow.collectionName}}</h2></a>
+
                     <p ng-bind-html="tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
-                    <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail" ng-click="selectTvshow(tvshow)">View
+                    <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail"
+                       ng-click="selectTvshow(tvshow)">View
                         details</a>
                 </div>
                 <img ng-src="{{tvshow.artworkUrl100|imageSize:300:300 }}">
