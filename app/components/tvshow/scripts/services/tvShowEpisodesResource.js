@@ -2,7 +2,7 @@
  * Created by Jean-Sebastien on 2015-10-05.
  */
 tvShowApp.factory('tvShowEpisodesResource', ["$resource", function($resource){
-    return $resource("https://umovie-team01.herokuapp.com/unsecure/tvshows/season/:id/episodes",{} ,{
+    return $resource("https://umovie-team01-staging.herokuapp.com/unsecure/tvshows/season/:id/episodes",{} ,{
         get:{
             method:"GET",
             params:{
