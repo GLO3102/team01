@@ -6,8 +6,9 @@
         <div class="detail header">
             <h2>{{tvshow.collectionName}} <a href="{{tvshow.collectionViewUrl}}">
                 <img ng-src="img/itunes.svg"/>
-            </a><a
-                    class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"></a></h2>
+            </a>
+                <back-button></back-button>
+            </h2>
         </div>
         <div class="detail body">
             <div class="row detail section">
@@ -44,7 +45,8 @@
                             <span class="episodePic"> <img ng-src="{{episode.artworkUrl60}}"></span>
                             <span class="episodeNumber"><p>{{episode.trackNumber}}</p></span>
                             <span class="episodeName"><p>{{episode.trackName}}</p></span>
-                            <span class="episodeDesc"><p ng-bind-html="episode.longDescription|cut:true:100:'...'|htmlToPlaintext|unicode"></p></span>
+                            <span class="episodeDesc"><p
+                                    ng-bind-html="episode.longDescription|cut:true:100:'...'|htmlToPlaintext|unicode"></p></span>
                             <span class="episodeRelease"><p>{{episode.releaseDate | date:medium}}</p></span>
                         </div>
                     </div>
