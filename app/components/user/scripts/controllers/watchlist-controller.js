@@ -64,7 +64,7 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
     $scope.addWatchlist = function (name, event) {
         watchlistResource.save({}, {
             "owner": {
-                "email": $scope.loggedUser
+                "email": $scope.loggedUser.email
             },
             "name": name
         }, function onSuccess(data) {
