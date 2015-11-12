@@ -24,7 +24,7 @@ userApp.controller("watchlist-controller", function ($scope, loggedUserService, 
             var userWatchlist = [];
             for (var i = 0; i < data.length; i++) {
                 if (data[i].hasOwnProperty("owner")) {
-                    if (data[i].owner.email === $scope.loggedUser) {
+                    if (data[i].owner.email === $scope.loggedUser.email) {
                         userWatchlist.push(data[i]);
                     }
                 }
