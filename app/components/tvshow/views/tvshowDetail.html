@@ -40,7 +40,7 @@
 
                     <div ng-repeat="episode in tvshowEpisodes.results| filter:searchText">
                         <div class="episodeRow" ng-class-odd="'odd'" ng-class-even="'even'" ng-click='toggleModal(this.episode)'>
-                            <span class="episodePic"> <img ng-src="{{episode.artworkUrl100}}"></span>
+                            <span class="episodePic"> <img ng-src="{{episode.artworkUrl100 | imageSize:300:300}}"></span>
                             <span class="episodeNumber"><p>{{episode.trackNumber}}</p></span>
                             <span class="episodeName"><p>{{episode.trackName}}</p></span>
                             <span class="episodeDesc"><p ng-bind-html="episode.longDescription|cut:true:100:'...'|htmlToPlaintext|unicode"></p></span>
@@ -65,7 +65,7 @@
                 <youtube-preview movie="{{episodeModal.trackName}}"></youtube-preview>
                 <iframe ob-lazytube width="95%" height="50%" src="{{episodeModal.previewUrl|trusted}}" seamless
                         frameborder="0" allowfullscreen autoplay="true"></iframe>
-                <span class="episodePicModal" class="col-md-3"> <img ng-src="{{episodeModal.artworkUrl100}}"></span>
+                <span class="episodePicModal" class="col-md-3"> <img ng-src="{{episodeModal.artworkUrl100|imageSize:300:300}}"></span>
                 <span class="col-md-9"><p ng-bind-html="episodeModal.longDescription|htmlToPlaintext|unicode"></p>Duration : {{episodeModal.length}}</span>
 
             </modal-dialog>
