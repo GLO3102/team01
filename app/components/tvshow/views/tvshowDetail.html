@@ -36,9 +36,9 @@
             </div>
             <div class="row detail section">
                 <div class="detail episodes">
-                    <h3>Episodes :</h3>
+                    <h3>Episodes :</h3><h4 >Search: <input style="color: #404040;" class="search-input" ng-model="searchText"></h4>
 
-                    <div ng-repeat="episode in tvshowEpisodes.results">
+                    <div ng-repeat="episode in tvshowEpisodes.results| filter:searchText">
                         <div class="episodeRow" ng-class-odd="'odd'" ng-class-even="'even'" ng-click='toggleModal(this.episode)'>
                             <span class="episodePic"> <img ng-src="{{episode.artworkUrl100}}"></span>
                             <span class="episodeNumber"><p>{{episode.trackNumber}}</p></span>
@@ -47,8 +47,6 @@
                             <span class="episodeRelease"><p>{{episode.releaseDate | date:medium}}</p></span>
                         </div>
                     </div>
-
-
 
                 </div>
                 <div class="detail poster">
