@@ -1,6 +1,3 @@
-
-
-
 tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource) {
 
     var tvShowId = $routeParams.tvshowId;
@@ -44,9 +41,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
     $scope.toggleModal = function(item) {
         console.log(item);
         $scope.episodeModal = item;
-        $scope.episodeModal.artworkUrl100 = $scope.episodeModal.artworkUrl100;
         $scope.episodeModal.length =msToTime(item.trackTimeMillis);
-
         $scope.modalShown = !$scope.modalShown;
     };
 
