@@ -54,7 +54,6 @@ tvShowApp.controller("tvshow-dashboard-controller",
         $(window).scroll(function () {
             if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
                 $scope.didScroll = true;
-
             }
         });
 
@@ -63,7 +62,7 @@ tvShowApp.controller("tvshow-dashboard-controller",
                 $scope.didScroll = false;
                 loadTvshowByGenre($scope.genres);
             }
-        }, 500);
+        }, 2000);
 
 
 

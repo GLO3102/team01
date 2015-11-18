@@ -5,6 +5,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
 
     var tvShowId = $routeParams.tvshowId;
     $scope.isLoading = false;
+    $scope.modalShown = false;
 
     $scope.initTvShowDetail = function () {
         var selectedTvShow = tvshowSelectionService.getSelectedTvShow();
@@ -39,5 +40,25 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
         }
     };
     $scope.initTvShowDetail();
+
+    $scope.toggleModal = function(item) {
+        console.log(item);
+        $scope.episodeModal = item;
+        $scope.episodeModal.artworkUrl100 = $scope.episodeModal.artworkUrl100;
+        $scope.episodeModal.length =msToTime(item.trackTimeMillis);
+
+        $scope.modalShown = !$scope.modalShown;
+    };
+
+    function msToTime(s) {
+        var ms = s % 1000;
+        s = (s - ms) / 1000;
+        var secs = s % 60;
+        s = (s - secs) / 60;
+        var mins = s % 60;
+        var hrs = (s - mins) / 60;
+
+        return hrs + 'h ' + mins + 'min ' + secs + 'sec';
+    }
 
 });
