@@ -23,6 +23,7 @@
 <div ng-app="uMovie">
 
     <div ng-include src="'components/commons/views/menuTop.html'"></div>
+
     <div ng-view></div>
 
     <!-- Compiled files -->
@@ -98,16 +99,19 @@
     <script src="components/search/scripts/controllers/search-details-controller.js"></script>
     <script src="components/actor/scripts/services/actorResource.js"></script>
     <script src="components/actor/scripts/services/actorMovieResource.js"></script>
-    
+
     <!-- Login component -->
     <script src="components/login/scripts/login.js"></script>
     <script src="components/login/scripts/services/loginResource.js"></script>
     <script src="components/login/scripts/services/loginService.js"></script>
     <script src="components/login/scripts/controller/login-controller.js"></script>
-
+    <script src="components/login/scripts/unauthorizeInterceptor.js"></script>
 
     <!-- Register component -->
+    <script src="components/register/scripts/register.js"></script>
+    <script src="components/register/scripts/services/registerResource.js"></script>
     <script src="components/register/scripts/controller/register-controller.js"></script>
+
     <!-- Route providers -->
     <script src="components/user/scripts/user-route-provider.js"></script>
     <script src="components/actor/scripts/actorRouteProvider.js"></script>

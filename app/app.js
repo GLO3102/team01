@@ -11,5 +11,6 @@ var homeApp = angular.module('uMovie', [
     'uMovie.tvshow',
     'uMovie.actor',
     "uMovie.search",
-    "uMovie.login"
+    "uMovie.login",
+    "uMovie.register"
 ]);

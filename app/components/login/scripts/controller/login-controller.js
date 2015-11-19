@@ -9,7 +9,6 @@ loginApp.controller("login-controller", function ($scope, loginService, $locatio
       "password": $scope.password
     }
 
-    console.log(credentials);
     loginResource.post(credentials, function onSuccess(data){
 
       loginService.SetUser(data);

@@ -9,7 +9,7 @@ actorApp.controller("actor-detail-controller", function ($scope, $cookies, actor
 
     $scope.initActor = function(){
             $scope.isLoading = true;
-            actorResource.actor($cookies.get("user").token).get({id:actorId}, function onSuccess(data){
+            actorResource.get({id:actorId}, function onSuccess(data){
               var selectedActor = data.results[0];
               $scope.actor = selectedActor;
               $scope.isLoading = false;
