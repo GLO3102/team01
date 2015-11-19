@@ -1,7 +1,7 @@
 /**
  * Created by pascal on 18/09/15.
  */
-actorApp.controller("actor-detail-controller", function ($scope, actorSelectionService, $routeParams, actorResource, actorMovieResource) {
+actorApp.controller("actor-detail-controller", function ($scope, $cookies, actorSelectionService, $routeParams, actorResource, actorMovieResource) {
     var actorId = $routeParams.actorId;
 
     var movies = {};
@@ -9,7 +9,7 @@ actorApp.controller("actor-detail-controller", function ($scope, actorSelectionS
 
     $scope.initActor = function(){
             $scope.isLoading = true;
-            actorResource.get({id:actorId}, function onSuccess(data){
+            actorResource.actor($cookies.get("user").token).get({id:actorId}, function onSuccess(data){
               var selectedActor = data.results[0];
               $scope.actor = selectedActor;
               $scope.isLoading = false;

@@ -29,7 +29,7 @@
                     <div class="overlay" id="overlay-movie-{{$index}}">
                         <h2>{{tvshow.collectionName}}</h2>
                         <p ng-bind-html="tvshow.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
-                        <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail" ng-click="selectTvshow(movie)">View
+                        <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail" ng-click="selectTvshow(tvshow)">View
                             details</a>
                     </div>
                     <img ng-src="{{tvshow.artworkUrl100 | imageSize:300:300}}">
