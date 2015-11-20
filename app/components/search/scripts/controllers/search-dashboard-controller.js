@@ -1,13 +1,9 @@
 
-searchApp.controller("search-dashboard-controller", function ($scope, $location, searchMovieResource, searchTvshowResource, searchActorResource) {
+searchApp.controller("search-dashboard-controller", function ($scope, $location, movieSelectionService, tvshowSelectionService, searchResource) {
 
     $scope.query = "";
 
     $scope.maxQuantity = 10;
-
-    $scope.isLoading = false;
-
-    $scope.didScroll = false;
 
     $scope.moviesResult = [];
 
@@ -15,47 +11,73 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
 
     $scope.actorResult = [];
 
-    $scope.searchResult = [$scope.moviesResult, $scope.tvshowResult, $scope.actorResult];
+    $scope.isMovieLoading = false;
+
+    $scope.isTvShowLoading = false;
+
+    $scope.isActorLoading = false;
 
 
     $scope.initSearch = function () {
         $location.path('/search');
-
         $scope.clearResult();
+
         $scope.movieSearch();
         $scope.tvshowSearch();
         $scope.actorSearch();
-
     };
 
     $scope.clearResult = function () {
         $scope.moviesResult = [];
         $scope.tvshowResult = [];
         $scope.actorResult = [];
-        $scope.searchResult = [$scope.moviesResult, $scope.tvshowResult, $scope.actorResult];
-
-    };
+};
 
     $scope.movieSearch = function () {
-        searchMovieResource.query({"q": $scope.query}, function onSuccess(data) {
-            $scope.moviesResult.push({"movies": data.results});
+        $scope.isMovieLoading = true;
+
+        searchResource.searchMovie({
+            "q": $scope.query
+        }, function onSuccess(successData) {
+            $scope.moviesResult = successData.results;
             console.log($scope.moviesResult);
+            $scope.isMovieLoading = false;
         });
+
     };
 
     $scope.tvshowSearch = function () {
-        searchTvshowResource.query({"q": $scope.query}, function onSuccess(data) {
-            $scope.tvshowResult.push({"tvshow": data.results});
+        $scope.isTvShowLoading = true;
+
+        searchResource.searchTvShows({
+            "q": $scope.query
+        }, function onSuccess(successData) {
+            $scope.tvshowResult = successData.results;
             console.log($scope.tvshowResult);
+            $scope.isTvShowLoading = false;
         });
     };
 
     $scope.actorSearch = function () {
-        searchActorResource.query({"q": $scope.query}, function onSuccess(data) {
-            $scope.actorResult.push({"actor": data.results});
+        $scope.isActorLoading = true;
+
+        searchResource.searchActor({
+            "q": $scope.query
+        }, function onSuccess(successData) {
+            $scope.actorResult = successData.results;
             console.log($scope.actorResult);
+            $scope.isActorLoading = false;
         });
     };
+
+    $scope.selectMovie = function(movie){
+        movieSelectionService.setSelectedMovie(movie);
+    };
+
+    $scope.selectTvshow=function(tvshow){
+        tvshowSelectionService.setSelectedTvShow(tvshow);
+    };
+
 
     $(window).scroll(function () {
         if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
