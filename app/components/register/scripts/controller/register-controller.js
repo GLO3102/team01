@@ -7,8 +7,8 @@ registerApp.controller("register-controller", function ($scope, $location, regis
     var user = {
       "email": $scope.email,
       "password": $scope.password,
-      "firstname": $scope.firstname,
-      "name": $scope.lastname,
+      "firstname": $scope.firstName,
+      "name": $scope.lastName,
       "username": $scope.username,
       "genres": $scope.genres
     }
