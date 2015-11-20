@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="styles/watchlist.css">
     <link rel="stylesheet" href="styles/dropdown.css">
     <link rel="stylesheet" href="styles/price-toggle.css">
-
+    <link rel="stylesheet" href="styles/user-view.css">
 </head>
 <body class="main">
 <div ng-app="uMovie">
@@ -51,6 +51,7 @@
     <script src="components/commons/scripts/services/genreResource.js"></script>
     <script src="components/commons/scripts/filters/image-size-filter.js"></script>
     <script src="components/commons/scripts/services/array-shuffler.js"></script>
+    <script src="components/commons/scripts/directives/back-navigation-button.js"></script>
 
 
     <!--Home -->
@@ -60,13 +61,16 @@
 
     <!-- User component-->
     <script src="components/user/scripts/user.js"></script>
+    <script src="components/user/scripts/services/user-resource.js"></script>
     <script src="components/user/scripts/services/logged-user-resource.js"></script>
     <script src="components/user/scripts/services/user-watchlist-container-service.js"></script>
     <script src="components/user/scripts/services/watchlist-resource.js"></script>
+    <script src="components/user/scripts/controllers/user-menu-controller.js"></script>
     <script src="components/user/scripts/controllers/watchlist-controller.js"></script>
     <script src="components/user/scripts/directives/user-watchlist-dropdown.js"></script>
     <script src="components/user/scripts/user-route-provider.js"></script>
     <script src="components/user/scripts/controllers/user-controller.js"></script>
+
     <!-- Movie component-->
     <script src="components/movie/scripts/movie.js"></script>
     <script src="components/movie/scripts/services/movieResource.js"></script>

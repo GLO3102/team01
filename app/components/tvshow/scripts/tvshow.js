@@ -1,3 +1,3 @@
 'use strict';
 
-var tvShowApp = angular.module('uMovie.tvshow', ['ngRoute', 'priceToggle']);
+var tvShowApp = angular.module('uMovie.tvshow', ['ngRoute', 'priceToggle', 'backButton']);
