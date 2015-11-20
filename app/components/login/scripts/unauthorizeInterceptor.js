@@ -1,4 +1,4 @@
-homeApp.factory('authHttpResponseInterceptor',['$q','$location', function($q, $location){
+homeApp.factory('authHttpResponseInterceptor',['$q','$location', '$cookies','$rootScope', function($q, $location, $cookies, $rootScope){
   return {
         response: function(response){
             if (response.status === 401) {
@@ -9,6 +9,8 @@ homeApp.factory('authHttpResponseInterceptor',['$q','$location', function($q, $l
         responseError: function(rejection) {
             if (rejection.status === 401) {
                 console.log("Response Error 401",rejection);
+                $rootScope.user=undefined;
+                $cookies.remove('user');
                 $location.path('/login').search('returnTo', $location.path());
             }
             return $q.reject(rejection);
@@ -16,6 +18,5 @@ homeApp.factory('authHttpResponseInterceptor',['$q','$location', function($q, $l
     }
 }])
 .config(['$httpProvider',function($httpProvider) {
-    //Http Intercpetor to check auth failures for xhr requests
     $httpProvider.interceptors.push('authHttpResponseInterceptor');
 }]);

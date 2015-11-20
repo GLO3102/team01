@@ -1,9 +1,13 @@
 homeApp.
     config(['$routeProvider', function ($routeProvider) {
 
-        $routeProvider.when('/', {
+        $routeProvider.when('/login', {
             templateUrl: "components/login/views/login.html",
             controller: "login-controller"
-        }).otherwise({redirectTo: '/'});
+        })
+            .when('/', {
+            templateUrl: "components/login/views/login.html",
+            controller: "login-controller"
+        }).otherwise({redirectTo: '/home'});
 
     }]);
