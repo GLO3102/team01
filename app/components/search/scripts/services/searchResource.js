@@ -1,6 +1,6 @@
 
 movieApp.factory('searchResource', ["$resource", function ($resource) {
-    return $resource("https://umovie.herokuapp.com/unsecure/search/:type/:seasons", {}, {
+    return $resource("https://umovie-team01-staging.herokuapp.com/unsecure/search/:type/:seasons", {}, {
 
         searchMovie: {
             method: "GET",

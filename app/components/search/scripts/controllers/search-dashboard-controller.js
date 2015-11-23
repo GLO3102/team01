@@ -3,8 +3,6 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
 
     $scope.query = "";
 
-    $scope.time = new Date();
-
     $scope.maxQuantity = 10;
 
     $scope.movieResult = [];
@@ -21,20 +19,13 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
 
 
     $scope.initSearch = function () {
-        //$scope.clearResult();
 
         $scope.movieSearch();
         $scope.tvshowSearch();
-        $scope.actorSearch();
+        //$scope.actorSearch();
 
         $location.path("/search").replace();
-
-    };
-
-    $scope.clearResult = function () {
-        $scope.movieResult = [];
-        $scope.tvshowResult = [];
-        $scope.actorResult = [];
+        $scope.query = "";
     };
 
     $scope.loadResult = function () {
@@ -50,11 +41,11 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
             "q": $scope.query
         }, function onSuccess(successData) {
             for (var i = 0; i < successData.resultCount; i++) {
-                $scope.movieResult.push({"movies": successData.results[i], "genre": successData.results[i].primaryGenreName});
-                $scope.isMovieLoading = false;
+                $scope.movieResult.push({"movie": successData.results[i], "genre": successData.results[i].primaryGenreName});
             }
             searchService.setMovieResults($scope.movieResult);
             console.log($scope.movieResult);
+            $scope.isMovieLoading = false;
         });
 
     };
@@ -65,8 +56,11 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
         searchResource.searchTvShows({
             "q": $scope.query
         }, function onSuccess(successData) {
-            $scope.tvshowResult = successData.results;
+            for (var i = 0; i < successData.resultCount; i++) {
+                $scope.tvshowResult.push({"tvshow": successData.results[i], "genre": successData.results[i].primaryGenreName});
+            }
             searchService.setTvShowResults($scope.tvshowResult);
+            console.log($scope.tvshowResult);
             $scope.isTvShowLoading = false;
         });
     };
@@ -77,8 +71,9 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
         searchResource.searchActor({
             "q": $scope.query
         }, function onSuccess(successData) {
-            $scope.actorResult = successData.results;
-            searchService.setActorResults($scope.actorResult);
+            searchService.setActorResults(successData.results);
+            actorResult = successData.results;
+            console.log(successData.results);
             $scope.isActorLoading = false;
         });
     };

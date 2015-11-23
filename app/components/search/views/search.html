@@ -1,13 +1,13 @@
-<div class="ajax-loading" ng-show="isLoading">
+<div class="ajax-loading" ng-show="isMovieLoading && isTvShowLoading">
     <img src="img/cat-mouse_Transparent.gif">
 </div>
 
-<div class="dashboard-container">
-    <div id="featured" class="col-md-10">
-        <h2>{{movieResult.genre}}</h2>
-        <slick settings="slickFeatureConfig" data="movieResult.movies" center-mode="true">
-            <div class="overlay-image" image-overlay ng-repeat="movie in movieResult.movies">
-                <div class="overlay" id="overlay-feature-{{$index}}">
+<div class="dashboard-container" ng-hide="isMovieLoading || isTvShowLoading">
+    <div id="featured-movie" class="col-md-10">
+        <h2>{{movieResult.length}}</h2>
+        <slick settings="slickFeatureConfig" data="movieResult" center-mode="true">
+            <div class="overlay-image" image-overlay ng-repeat="(movie, genre) in movieResult">
+                <div class="overlay" id="overlay-feature-movie-{{$index}}">
                     <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
                     <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
                         <h2>{{movie.trackName || movie.collectionName}} </h2></a>
@@ -19,6 +19,26 @@
                         details</a>
                 </div>
                 <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
+            </div>
+        </slick>
+    </div>
+</div>
+
+<div class="dashboard-container" ng-hide="isMovieLoading || isTvShowLoading">
+    <div id="featured-tvshow" class="col-md-10">
+        <h2>{{tvshowResult.length}}</h2>
+        <slick settings="slickFeatureConfig" data="tvshowResult.tvshow" center-mode="true">
+            <div class="overlay-image" image-overlay ng-repeat="tvshow in tvshowResult.tvshow">
+                <div class="overlay" id="overlay-feature-tvshow-{{$index}}">
+                    <a href="#/tvshows/{{tvshow.collectionId}}"
+                       ng-click="selectTvshow(tvshow)"><h2>{{tvshow.trackName || tvshow.collectionName}}</h2></a>
+
+                    <p ng-bind-html="tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
+                    <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail"
+                       ng-click="selectTvshow(tvshow)">View
+                        details</a>
+                </div>
+                <img ng-src="{{tvshow.artworkUrl100|imageSize:300:300 }}">
             </div>
         </slick>
     </div>

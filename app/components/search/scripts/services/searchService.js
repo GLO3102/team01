@@ -26,7 +26,7 @@ searchApp.service("searchService", function ($rootScope) {
         return actorResult;
     };
 
-    var setdActorResults = function (cachedSearchResults) {
+    var setActorResults = function (cachedSearchResults) {
         actorResult = cachedSearchResults;
     };
 
@@ -36,6 +36,6 @@ searchApp.service("searchService", function ($rootScope) {
         getTvShowResults: getTvShowResults,
         setTvShowResults: setTvShowResults,
         getActorResults: getActorResults,
-        setActorResults: setdActorResults
+        setActorResults: setActorResults
     };
 });
