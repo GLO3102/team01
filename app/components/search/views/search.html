@@ -4,9 +4,9 @@
 
 <div class="dashboard-container">
     <div id="featured" class="col-md-10">
-        <h2>{Movie Result}</h2>
-        <slick settings="slickFeatureConfig" data="moviesResult" center-mode="true">
-            <div class="overlay-image" image-overlay ng-repeat="movie in moviesResult">
+        <h2>{{movieResult.genre}}</h2>
+        <slick settings="slickFeatureConfig" data="movieResult.movies" center-mode="true">
+            <div class="overlay-image" image-overlay ng-repeat="movie in movieResult.movies">
                 <div class="overlay" id="overlay-feature-{{$index}}">
                     <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
                     <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
