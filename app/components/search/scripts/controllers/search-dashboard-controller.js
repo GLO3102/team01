@@ -3,8 +3,6 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
 
     $scope.query = "";
 
-    $scope.maxQuantity = 10;
-
     $scope.movieResult = [];
 
     $scope.tvshowResult = [];
@@ -17,14 +15,17 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
 
     $scope.isActorLoading = false;
 
-
     $scope.initSearch = function () {
+        searchService.setMovieLoading(true);
+        searchService.setTvShowLoading(true);
+
+        //$scope.isActorLoading = true;
 
         $scope.movieSearch();
         $scope.tvshowSearch();
         //$scope.actorSearch();
 
-        $location.path("/search").replace();
+        $location.path("/search");
         $scope.query = "";
     };
 
@@ -34,8 +35,13 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
         $scope.actorResult = searchService.getActorResults();
     };
 
+    $scope.loadStatus = function () {
+        $scope.isMovieLoading = searchService.getMovieLoading();
+        $scope.isTvShowLoading = searchService.getTvShowLoading();
+        $scope.isActorLoading = searchService.getActorLoading();
+    };
+
     $scope.movieSearch = function () {
-        $scope.isMovieLoading = true;
 
         searchResource.searchMovie({
             "q": $scope.query
@@ -45,13 +51,12 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
             }
             searchService.setMovieResults($scope.movieResult);
             console.log($scope.movieResult);
-            $scope.isMovieLoading = false;
+            searchService.setMovieLoading(false);
         });
 
     };
 
     $scope.tvshowSearch = function () {
-        $scope.isTvShowLoading = true;
 
         searchResource.searchTvShows({
             "q": $scope.query
@@ -61,12 +66,11 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
             }
             searchService.setTvShowResults($scope.tvshowResult);
             console.log($scope.tvshowResult);
-            $scope.isTvShowLoading = false;
+            searchService.setTvShowLoading(false);
         });
     };
 
     $scope.actorSearch = function () {
-        $scope.isActorLoading = true;
 
         searchResource.searchActor({
             "q": $scope.query
@@ -74,7 +78,7 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
             searchService.setActorResults(successData.results);
             actorResult = successData.results;
             console.log(successData.results);
-            $scope.isActorLoading = false;
+            searchService.setActorLoading(false);
         });
     };
 
@@ -86,12 +90,14 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
         tvshowSelectionService.setSelectedTvShow(tvshow);
     };
 
-
     $(window).scroll(function () {
         if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
             $scope.didScroll = true;
         }
     });
+
+    $scope.loadResult();
+    $scope.loadStatus();
 
     $scope.slickFeatureConfig = {
         slidesToShow: 3,
@@ -127,5 +133,4 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
                 }
             }]
     };
-    $scope.loadResult();
 });

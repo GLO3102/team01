@@ -1,44 +1,41 @@
-<div class="ajax-loading" ng-show="isMovieLoading && isTvShowLoading">
+<div class="ajax-loading" ng-show="isMovieLoading || isTvShowLoading">
     <img src="img/cat-mouse_Transparent.gif">
 </div>
 
-<div class="dashboard-container" ng-hide="isMovieLoading || isTvShowLoading">
+<div class="dashboard-container" ng-hide="isMovieLoading">
     <div id="featured-movie" class="col-md-10">
         <h2>{{movieResult.length}}</h2>
         <slick settings="slickFeatureConfig" data="movieResult" center-mode="true">
-            <div class="overlay-image" image-overlay ng-repeat="(movie, genre) in movieResult">
+            <div class="overlay-image" image-overlay ng-repeat="result in movieResult">
                 <div class="overlay" id="overlay-feature-movie-{{$index}}">
                     <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
-                    <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
+                    <a href="#/movies/{{result.movie.trackId}}" ng-click="selectMovie(result.movie)">
                         <h2>{{movie.trackName || movie.collectionName}} </h2></a>
                     <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
-                            src="{{movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
+                            src="{{result.movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
                             enablejsapi="1"></iframe>
-                    <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
-                    <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail" ng-click="selectMovie(movie)">View
-                        details</a>
+                    <p ng-bind-html="result.movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
+                    <a href="#/movies/{{result.movie.trackId}}" class="btn dashboard-detail" ng-click="selectMovie(result.movie)">View details</a>
                 </div>
-                <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
+                <img ng-src="{{result.movie.artworkUrl100 | imageSize:300:300}}">
             </div>
         </slick>
     </div>
 </div>
 
-<div class="dashboard-container" ng-hide="isMovieLoading || isTvShowLoading">
+<div class="dashboard-container" ng-hide="isTvShowLoading">
     <div id="featured-tvshow" class="col-md-10">
         <h2>{{tvshowResult.length}}</h2>
-        <slick settings="slickFeatureConfig" data="tvshowResult.tvshow" center-mode="true">
-            <div class="overlay-image" image-overlay ng-repeat="tvshow in tvshowResult.tvshow">
+        <slick settings="slickFeatureConfig" data="tvshowResult" center-mode="true">
+            <div class="overlay-image" image-overlay ng-repeat="result in tvshowResult">
                 <div class="overlay" id="overlay-feature-tvshow-{{$index}}">
-                    <a href="#/tvshows/{{tvshow.collectionId}}"
-                       ng-click="selectTvshow(tvshow)"><h2>{{tvshow.trackName || tvshow.collectionName}}</h2></a>
-
-                    <p ng-bind-html="tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
-                    <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail"
-                       ng-click="selectTvshow(tvshow)">View
-                        details</a>
+                    <a href="#/tvshows/{{result.tvshow.collectionId}}"
+                       ng-click="selectTvshow(result.tvshow)"><h2>{{result.tvshow.trackName || result.tvshow.collectionName}}</h2></a>
+                    <p ng-bind-html="result.tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
+                    <a href="#/tvshows/{{result.tvshow.collectionId}}" class="btn dashboard-detail"
+                       ng-click="selectTvshow(result.tvshow)">View details</a>
                 </div>
-                <img ng-src="{{tvshow.artworkUrl100|imageSize:300:300 }}">
+                <img ng-src="{{result.tvshow.artworkUrl100|imageSize:300:300 }}">
             </div>
         </slick>
     </div>
