@@ -1,7 +1,9 @@
 
-searchApp.controller("search-dashboard-controller", function ($scope, $location, movieSelectionService, tvshowSelectionService, searchResource, searchService) {
+searchApp.controller("search-dashboard-controller", function ($scope, movieSelectionService, tvshowSelectionService, actorSelectionService, searchService, searchResource) {
 
     $scope.query = "";
+
+    $scope.queryFilter = ["Movies", "TvShows", "Actors"];
 
     $scope.movieResult = [];
 
@@ -9,76 +11,70 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
 
     $scope.actorResult = [];
 
+    $scope.userResult = [];
+
     $scope.isMovieLoading = false;
 
     $scope.isTvShowLoading = false;
 
     $scope.isActorLoading = false;
 
+    $scope.isUserLoading = false;
+
+    $scope.isMovieSearch = false;
+
+    $scope.isTvShowSearh = false;
+
+    $scope.isActorSearch = false;
+
+    $scope.isUserSearch= false;
+
     $scope.initSearch = function () {
-        searchService.setMovieLoading(true);
-        searchService.setTvShowLoading(true);
+        $scope.searchAll();
+    };
 
-        //$scope.isActorLoading = true;
-
+    $scope.searchAll = function () {
         $scope.movieSearch();
         $scope.tvshowSearch();
         //$scope.actorSearch();
-
-        $location.path("/search");
-        $scope.query = "";
-    };
-
-    $scope.loadResult = function () {
-        $scope.movieResult = searchService.getMovieResults();
-        $scope.tvshowResult = searchService.getTvShowResults();
-        $scope.actorResult = searchService.getActorResults();
-    };
-
-    $scope.loadStatus = function () {
-        $scope.isMovieLoading = searchService.getMovieLoading();
-        $scope.isTvShowLoading = searchService.getTvShowLoading();
-        $scope.isActorLoading = searchService.getActorLoading();
     };
 
     $scope.movieSearch = function () {
-
+        $scope.isMovieLoading = true;
         searchResource.searchMovie({
             "q": $scope.query
         }, function onSuccess(successData) {
             for (var i = 0; i < successData.resultCount; i++) {
                 $scope.movieResult.push({"movie": successData.results[i], "genre": successData.results[i].primaryGenreName});
             }
-            searchService.setMovieResults($scope.movieResult);
+            $scope.isMovieLoading = false;
             console.log($scope.movieResult);
-            searchService.setMovieLoading(false);
         });
-
     };
 
     $scope.tvshowSearch = function () {
-
+        $scope.isTvShowLoading = true;
         searchResource.searchTvShows({
             "q": $scope.query
         }, function onSuccess(successData) {
             for (var i = 0; i < successData.resultCount; i++) {
                 $scope.tvshowResult.push({"tvshow": successData.results[i], "genre": successData.results[i].primaryGenreName});
             }
-            searchService.setTvShowResults($scope.tvshowResult);
+            $scope.isTvShowLoading = false;
             console.log($scope.tvshowResult);
-            searchService.setTvShowLoading(false);
         });
     };
 
     $scope.actorSearch = function () {
-
+        $scope.isActorLoading = true;
         searchResource.searchActor({
             "q": $scope.query
         }, function onSuccess(successData) {
-            searchService.setActorResults(successData.results);
-            actorResult = successData.results;
-            console.log(successData.results);
-            searchService.setActorLoading(false);
+            for (var i = 0; i < successData.resultCount; i++) {
+                $scope.actorResult.push({"actor": successData.results[i]});
+            }
+            $scope.isActorLoading = false;
+            console.log($scope.actorResult);
         });
     };
 
@@ -86,8 +82,12 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
         movieSelectionService.setSelectedMovie(movie);
     };
 
-    $scope.selectTvshow=function(tvshow){
+    $scope.selectTvshow = function(tvshow){
         tvshowSelectionService.setSelectedTvShow(tvshow);
+    };
+
+    $scope.selectActor = function(actor){
+        tvshowSelectionService.setSelectedTvShow(actor);
     };
 
     $(window).scroll(function () {
@@ -96,8 +96,10 @@ searchApp.controller("search-dashboard-controller", function ($scope, $location,
         }
     });
 
-    $scope.loadResult();
-    $scope.loadStatus();
+    $scope.query = searchService.getQuery();
+    if ($scope.query !== ""){
+        $scope.initSearch();
+    }
 
     $scope.slickFeatureConfig = {
         slidesToShow: 3,
