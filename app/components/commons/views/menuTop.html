@@ -25,7 +25,7 @@
             </ul>
             <div class="navbar-text pull-right" ng-if="userIsLogged">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" >{{loggedUser.name}}<span class="caret"></span></a>
-                <img id="avatar" src="img/anonymous.gif">
+                <img id="avatar" gravatar-src={{loggedUser.email}} gravatar-size="45">
                 <ul class="dropdown-menu pull-right">
                     <li><a href="#/users/{{loggedUser.id}}">My Profile</a></li>
                     <li role="separator" class="divider"></li>
