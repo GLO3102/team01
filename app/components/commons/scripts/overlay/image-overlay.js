@@ -19,7 +19,7 @@ homeApp.directive('imageOverlay', function () {
                     $(this).children(".overlay").css("visibility", "visible");
                     var id = $(this).children(".overlay").attr('id');
                     var idSplitted = id.split("-");
-                    $('#'+idSplitted[1]+'-'+idSplitted[2]).children('iframe').each(function(){
+                    $('#'+idSplitted[0]+'-'+idSplitted[1]+'-'+idSplitted[2]).find('iframe').each(function(){
                         this.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
                     });
 
@@ -32,7 +32,7 @@ homeApp.directive('imageOverlay', function () {
                     var negImgWidth = imgWidth - imgWidth - imgWidth;
                     var id = $(this).children(".overlay").attr('id');
                     var idSplitted = id.split("-");
-                    $('#'+idSplitted[1]+'-'+idSplitted[2]).children('iframe').each(function(){
+                    $('#'+idSplitted[0]+'-'+idSplitted[1]+'-'+idSplitted[2]).find('iframe').each(function(){
                         this.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
                     });
 

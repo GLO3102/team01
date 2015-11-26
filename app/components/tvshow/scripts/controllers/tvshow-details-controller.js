@@ -9,6 +9,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
         var selectTvshowEpisodes = tvshowSelectionService.getSelectedTvShowEpisodes();
 
         if (Object.keys(selectedTvShow).length === 0) {
+          console.log(tvShowId);
             $scope.isLoading = true;
             tvShowResource.get({id: tvShowId}, function onSuccess(data) {
                 selectedTvShow = data.results[0];
@@ -19,6 +20,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
 
             });
         } else {
+          console.log("coucou tête de gland! :D")
             $scope.tvshow = selectedTvShow;
         }
 
@@ -29,7 +31,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
                 $scope.tvshowEpisodes = selectTvshowEpisodes;
                 $scope.isLoading = false;
             }, function onError(data) {
-                
+
             });
         }
         else {

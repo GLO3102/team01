@@ -1,7 +1,7 @@
 /**
  * Created by pascal on 18/09/15.
  */
-actorApp.controller("actor-detail-controller", function ($scope, actorSelectionService, $routeParams, actorResource, actorMovieResource) {
+actorApp.controller("actor-detail-controller", function ($scope, $cookies, actorSelectionService, $routeParams, actorResource, actorMovieResource) {
     var actorId = $routeParams.actorId;
 
     var movies = {};
