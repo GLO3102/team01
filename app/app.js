@@ -11,6 +11,7 @@ var homeApp = angular.module('uMovie', [
     'uMovie.tvshow',
     'uMovie.actor',
     "uMovie.search",
+    "uMovie.about",
     "ngModal",
     "ui.gravatar"
 ]);
