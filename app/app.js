@@ -14,4 +14,6 @@ var homeApp = angular.module('uMovie', [
     "uMovie.about",
     "ngModal",
     "ui.gravatar"
-]);
+]).config(function(ngModalDefaultsProvider) {
+    ngModalDefaultsProvider.set('closeButtonHtml', '<a class="glyphicon glyphicon-remove pull-right"></a>');
+});

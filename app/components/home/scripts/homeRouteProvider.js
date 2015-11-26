@@ -5,5 +5,4 @@ homeApp.
             templateUrl: "components/home/views/home.html",
             controller: "home-controller"
         }).otherwise({redirectTo: '/'});
-
     }]);
