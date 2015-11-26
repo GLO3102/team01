@@ -1,0 +1,136 @@
+<div class="panel">
+    <div class="panel-body" ng-hide="isLoading">
+        <div class="detail header">
+            <h2>About this project
+            </h2>
+        </div>
+        <div class="detail body">
+            <div class="row detail section">
+                <h3>Team 01</h3>
+
+
+                <li>Maxime Charron</li>
+                <li>Pascal Dumoulin</li>
+                <li>Antoine Lefrançois</li>
+                <li>Jean-Sébastien Roy</li>
+                <li>Martin Savoie</li>
+
+            </div>
+            <div class="row detail section">
+                <h3>Functionnality implemented :</h3>
+            </div>
+            <div class="row detail section">
+                <h4>New and improved API :</h4>
+
+                <div>
+                    <p>Our API was design using, of course, the one provided for the course. In addition to the
+                        functionnalities already available, we enhanced and added the following elements :</p>
+                    <ul>
+                        <li>Separate calls for the search that return differents objects containing grouped results
+                            (movies,
+                            tv shows, actors or users for instance)
+                        </li>
+                        <li>Automated calls to the YouTube API, providing the proper adress for the preview videos
+                            directly
+                            in the objects returned
+                        </li>
+                        <li>Differents calls to OMDB to flesh up the results of search (actor biography, similar movies,
+                            etc.)
+                        </li>
+                        <li>Integration of storage for movies reviews</li>
+                        <li>Scraping'n'shit of _____ to be able to extract ___'n'shit</li>
+                        <li>API monitoring using NewRelic informing us if any problems occur with the app, so that we
+                            can start it back!
+                        </li>
+                    </ul>
+                    <br/>
+
+                    <p>The source code for the API, if you are interested, is available [free of charge!] (if used, just
+                        cite Maxime Charron please, who did all the work!) : <a href>lien sur github</a></p>
+
+                    <p>The API itself is hosted here : <a
+                            href="umovie-team01.herokuapp.com">umovie-team01.herokuapp.com</a></p>
+                </div>
+            </div>
+            <div class="row detail section">
+                <h4>Movies review :</h4>
+
+                <div>
+                    <p>Movies reviews are possible by users. Most recent posts are shown, and live results/preview are
+                        displayed when typing a new review.</p>
+                </div>
+            </div>
+            <div class="row detail section">
+                <h4>Similar movies suggestions :</h4>
+
+                <div>
+                    <p>Extracted from OMBD, a new array gives us the possibility to display similar movies to the one
+                        selected.</p>
+                </div>
+            </div>
+            <div class="row detail section">
+                <h4>Search with autocomplete :</h4>
+
+                <div>
+                    <p>In the main search bar, autocompletion of search items is provided.</p>
+                </div>
+            </div>
+            <div class="row detail section">
+                <h4>Gravatar :</h4>
+
+                <div>
+                    <p>If you email is associated wit a proper Gravatar image, it is displayed in the top menu once
+                        logged
+                        in.</p>
+                </div>
+            </div>
+            <div class="row detail section">
+                <h4>And much much more (eye candy!) :</h4>
+
+                <div>
+                    <p>Many more features were included in this application :</p>
+                    <ul>
+                        <li>Front page : Popular movies and tvShows according to OMBD.</li>
+                        <li>In the Movies and Tv-Shows pages, a "dashboard" for each genre is displayed, show a
+                            selection of
+                            movies or tvshows of that particular genre, and uses lazy loading when scrolling down.
+                        </li>
+                        <li>The dashboards display lots of info, including a preview, for each item on hover (or click
+                            in
+                            cellphone mode).
+                        </li>
+                        <li>A nice homemade logo redirects you to the home page.</li>
+                        <li>Nice "custom" animation (<a href="https://dribbble.com/shots/1868423-Cat-and-Mouse-Loading">available
+                            here</a> thanks to Shea Lewis), and error message display (<a href="img/deadCat.png">available
+                            here</a>).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row detail section">
+                <h3>Using the application (french only)</h3>
+                <p>Si node et npm sont déjà installés vous pouvez vous rendre au point 4.
+                Si vous avez installé node ou npm en root ne pas oublier de faire les commandes avec sudo.</p>
+                <ol>
+                    <li>Installer Node selon votre système d'exploitation</li>
+                    <ol>
+                        <li>Sur Windows: http://nodejs.org/download/</li>
+                        <li>Sur Mac: http://nodejs.org/download/</li>
+                        <li>Sur Unbuntu 14.04: sudo apt-get update, sudo apt-get install nodejs, sudo apt-get install
+                            npm
+                        </li>
+                    </ol>
+                    <li> Vérifier que node est correctement installé: node -v</li>
+                    <li>Vérifier que npm est correctement installé: npm -v</li>
+                    <li>Installer les libraries node via la commande suivante dans répertoire du projet: npm install
+                    </li>
+                    <li>Pour lancer l'application, ouvrir un terminal dans le répertoire racine du projet. Écrire
+                        ensuite:
+                        npm start
+                    </li>
+                    <li>Ouvrir chrome et écrire: localhost:8080</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

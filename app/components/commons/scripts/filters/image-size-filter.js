@@ -3,8 +3,12 @@
  */
 homeApp.filter('imageSize', function () {
     return function (imageUrl, sizeX, sizeY) {
-
-        var newImageUrl = imageUrl.replace(/\d\d\dx\d\d\d(?=bb)/, sizeX+"x"+sizeY);
-        return newImageUrl;
+        if(imageUrl!=undefined) {
+            var newImageUrl = imageUrl.replace(/\d\d\dx\d\d\d(?=bb)/, sizeX + "x" + sizeY);
+            return newImageUrl;
+        }
+        else{
+            return imageUrl;
+        }
     };
 });

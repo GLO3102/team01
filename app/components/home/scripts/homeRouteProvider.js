@@ -1,9 +1,9 @@
 homeApp.
     config(['$routeProvider', function ($routeProvider) {
 
-        $routeProvider.when('/', {
+        $routeProvider.when('/home', {
             templateUrl: "components/home/views/home.html",
             controller: "home-controller"
-        }).otherwise({redirectTo: '/'});
 
+        });
     }]);
