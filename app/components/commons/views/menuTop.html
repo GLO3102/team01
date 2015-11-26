@@ -12,7 +12,11 @@
             </button>
             <div class="navbar-text" ng-controller="search-controller" >
                 <form ng-submit="initSearch()" name="search-form">
-                    <input class="search-input" type="search" name="query" ng-model="query"  placeholder="Search...">
+                    <input class="search-input" type="search" name="query" ng-model="query" placeholder="Search...">
+                    <select name="optionSelected" id="optionSelected"
+                            ng-options="option.name for option in queryType.availableOptions track by option.id"
+                            ng-model="queryType.selectedOption"></select>
+                    </select>
                 </form>
             </div>
         </div>

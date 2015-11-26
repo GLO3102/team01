@@ -3,7 +3,7 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
 
     $scope.query = "";
 
-    $scope.queryFilter = ["Movies", "TvShows", "Actors"];
+    $scope.queryType = [];
 
     $scope.movieResult = [];
 
@@ -21,22 +21,52 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
 
     $scope.isUserLoading = false;
 
-    $scope.isMovieSearch = false;
+    $scope.showMovieResult = false;
 
-    $scope.isTvShowSearh = false;
+    $scope.showTvShowResult = false;
 
-    $scope.isActorSearch = false;
+    $scope.showActorResult = false;
 
-    $scope.isUserSearch= false;
+    $scope.showUserResult = false;
+
 
     $scope.initSearch = function () {
-        $scope.searchAll();
+        for (var i = 0; i < $scope.queryType.length; i++) {
+            $scope.search($scope.queryType[i]);
+        }
     };
 
     $scope.searchAll = function () {
         $scope.movieSearch();
         $scope.tvshowSearch();
         //$scope.actorSearch();
+        //$scope.userSearch();
+    };
+
+    $scope.search = function (queryType) {
+        if (queryType === "1"){
+            $scope.showMovieResult = true;
+            $scope.showTvShowResult = true;
+            $scope.showActorResult = true;
+            $scope.showUserResult = true;
+            $scope.searchAll();
+        }
+        if (queryType === "2"){
+            $scope.showMovieResult = true;
+            $scope.movieSearch();
+        }
+        if (queryType === "3"){
+            $scope.showTvShowResult = true;
+            $scope.tvshowSearch();
+        }
+        if (queryType === "4"){
+            $scope.showActorResult = true;
+            $scope.actorSearch();
+        }
+        if (queryType === "5"){
+            $scope.showUserResult = true;
+            $scope.userSearch();
+        }
     };
 
     $scope.movieSearch = function () {
@@ -78,6 +108,9 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
         });
     };
 
+    $scope.userSearch = function () {
+    };
+
     $scope.selectMovie = function(movie){
         movieSelectionService.setSelectedMovie(movie);
     };
@@ -90,13 +123,11 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
         tvshowSelectionService.setSelectedTvShow(actor);
     };
 
-    $(window).scroll(function () {
-        if ($(window).scrollTop() >= $(document).height() - $(window).height() - 20) {
-            $scope.didScroll = true;
-        }
-    });
-
     $scope.query = searchService.getQuery();
+    $scope.queryType.push(searchService.getQueryType());
+
+    console.log($scope.queryType);
+
     if ($scope.query !== ""){
         $scope.initSearch();
     }
