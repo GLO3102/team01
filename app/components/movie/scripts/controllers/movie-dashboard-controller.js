@@ -70,7 +70,7 @@ movieApp.controller("movie-dashboard-controller",
                 $scope.didScroll = false;
                 loadMoviesByGenre($scope.genres);
             }
-        }, 500);
+        }, 2000);
 
         $scope.initializeMoviesByGenre();
 

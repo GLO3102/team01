@@ -5,7 +5,7 @@ loginApp.controller("login-controller", function ($scope, loginService, $locatio
     $scope.loginError = false;
 
     var credentials = {
-      "email": $scope.username,
+      "email": $scope.email,
       "password": $scope.password
     }
 

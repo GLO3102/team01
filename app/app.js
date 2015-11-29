@@ -12,22 +12,27 @@ var homeApp = angular.module('uMovie', [
     'uMovie.tvshow',
     'uMovie.actor',
     "uMovie.search",
+    "uMovie.about",
+    "ngModal",
+    "ui.gravatar",
     "uMovie.login",
     "uMovie.register"
-]).run(['$rootScope', '$cookies', '$location', function ($rootScope, $cookies, $location) {
+]).config(function(ngModalDefaultsProvider) {
+    ngModalDefaultsProvider.set('closeButtonHtml', '<a class="glyphicon glyphicon-remove pull-right"></a>');
+}).run(['$rootScope', '$cookies', '$location', function ($rootScope, $cookies, $location) {
 
     if ($cookies.getObject('user')!= null){
         $rootScope.user = $cookies.getObject('user');
     }
 
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+
         if ( $cookies.getObject('user') == null ) {
-            if ( next.templateUrl == "components/login/views/login.html" || next.templateUrl == "components/register/views/register.html" ) {
-                // already going to #login, no redirect needed
-            } else {
+            if ( next.templateUrl != "components/login/views/login.html" && next.templateUrl != "components/register/views/register.html" ) {
                 // not going to #login, we should redirect now
                 $location.path( "/login" );
             }
         }
     });
 }]);
+

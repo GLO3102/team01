@@ -1,5 +1,5 @@
 loginApp.factory('loginResource', ["$resource", function($resource){
-  return $resource("https://umovie-team01.herokuapp.com/login" , {}, {
+  return $resource("https://umovie-team01-staging.herokuapp.com/login" , {}, {
     post:{
       method:"POST",
       headers: {

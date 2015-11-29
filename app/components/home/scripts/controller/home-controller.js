@@ -1,4 +1,4 @@
-homeApp.controller("home-controller", function ($scope, movieSelectionService, tvshowSelectionService, homeResource) {
+homeApp.controller("home-controller", function ($scope, movieSelectionService, tvshowSelectionService, homeResource, loggedUserService) {
     $scope.movies = [];
 
     $scope.tvshows = [];
@@ -104,6 +104,7 @@ homeApp.controller("home-controller", function ($scope, movieSelectionService, t
                 }
             }]
     }
+
 
 
     $scope.initializeMovie();

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
+    <link rel="stylesheet" href="bower_components/ngModal/dist/ng-modal.css">
     <link rel="stylesheet" href="styles/app.css">
     <link rel="stylesheet" href="styles/detail-view.css">
     <link rel="stylesheet" href="styles/menu.css">
@@ -17,7 +18,7 @@
     <link rel="stylesheet" href="styles/watchlist.css">
     <link rel="stylesheet" href="styles/dropdown.css">
     <link rel="stylesheet" href="styles/price-toggle.css">
-
+    <link rel="stylesheet" href="styles/user-view.css">
 </head>
 <body class="main">
 <div ng-app="uMovie">
@@ -34,9 +35,11 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="components/commons/scripts/custom/customSlick.js"></script>
     <script src="bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>
+    <script src="bower_components/ngModal/dist/ng-modal.min.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="bower_components/angular-lazytube/angular-lazytube.min.js"></script>
+    <script src="bower_components/angular-gravatar/build/angular-gravatar.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
 
 
@@ -63,13 +66,16 @@
 
     <!-- User component-->
     <script src="components/user/scripts/user.js"></script>
+    <script src="components/user/scripts/services/user-resource.js"></script>
     <script src="components/user/scripts/services/logged-user-resource.js"></script>
     <script src="components/user/scripts/services/user-watchlist-container-service.js"></script>
     <script src="components/user/scripts/services/watchlist-resource.js"></script>
+    <script src="components/user/scripts/controllers/user-menu-controller.js"></script>
     <script src="components/user/scripts/controllers/watchlist-controller.js"></script>
     <script src="components/user/scripts/directives/user-watchlist-dropdown.js"></script>
     <script src="components/user/scripts/user-route-provider.js"></script>
     <script src="components/user/scripts/controllers/user-controller.js"></script>
+
     <!-- Movie component-->
     <script src="components/movie/scripts/movie.js"></script>
     <script src="components/movie/scripts/services/movieResource.js"></script>
@@ -100,6 +106,11 @@
     <script src="components/actor/scripts/services/actorResource.js"></script>
     <script src="components/actor/scripts/services/actorMovieResource.js"></script>
 
+    <!-- About component-->
+    <script src="components/about/scripts/about.js"></script>
+    <script src="components/about/scripts/controllers/about-controller.js"></script>
+
+
     <!-- Login component -->
     <script src="components/login/scripts/login.js"></script>
     <script src="components/login/scripts/services/loginResource.js"></script>
@@ -112,14 +123,18 @@
     <script src="components/register/scripts/services/registerResource.js"></script>
     <script src="components/register/scripts/controller/register-controller.js"></script>
 
+
     <!-- Route providers -->
     <script src="components/user/scripts/user-route-provider.js"></script>
     <script src="components/actor/scripts/actorRouteProvider.js"></script>
     <script src="components/home/scripts/homeRouteProvider.js"></script>
     <script src="components/movie/scripts/movieRouteProvider.js"></script>
     <script src="components/tvshow/scripts/tvshowsRouteProvider.js"></script>
+
+    <script src="components/about/scripts/about-route-provider.js"></script>
     <script src="components/login/scripts/loginRouteProvider.js"></script>
     <script src="components/register/scripts/registerRouteProvider.js"></script>
+
 
 </div>
 </body>

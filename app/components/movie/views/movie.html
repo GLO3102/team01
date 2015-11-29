@@ -3,7 +3,7 @@
 </div>
 
 <div class="dashboard-container" ng-repeat="movieByGenre in moviesByGenre">
-    <div id="featured" class="col-md-10">
+    <div id="featured" class="col-md-10" ng-show=movieByGenre.movies.length>
         <h2>{{movieByGenre.genre}}</h2>
         <slick settings="slickFeatureConfig" data="movieByGenre.movies" center-mode="true">
             <div class="overlay-image" image-overlay ng-repeat="movie in movieByGenre.movies">

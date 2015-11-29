@@ -145,6 +145,29 @@
   background-color: rgba(0, 0, 0, 0.5)!important;
 }
 
+.episodeRow:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.ng-modal-dialog {
+    background-color: rgba(62, 63, 64, 0.9)!important;
+}
+
+.episodePicModal{
+    margin-left: 0.5%;
+    margin-top: 0.5%;
+    vertical-align: text-top;
+    display: inline-block;
+    width: 20%;
+}
+
+.episodePicModal img {
+    width: 100%;
+    display : inline-block;
+}
+
+
 @media screen and (max-width: 800px) {
 
     .detail.preview {
@@ -231,6 +254,16 @@
     .episodeRelease {
         display: none;
     }
+
+    .episodePicModal{
+        margin-left: auto;
+        margin-top: auto;
+        width: 50%;
+    }
+
+    .episodePicModal img {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -311,5 +344,15 @@
 
     .episodeName {
         width: 56%;
+    }
+
+    .episodePicModal{
+        margin-left: auto;
+        margin-top: auto;
+        width: 50%;
+    }
+
+    .episodePicModal img {
+        width: 100%;
     }
 }
