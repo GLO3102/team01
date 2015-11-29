@@ -30,6 +30,19 @@
             <label>Confirm Password</label>
             <input type="password" name="confirmPassword" ng-model="confirmPassword" class="form-control"/>
         </div>
+        <h2>
+            Preferred Genres
+        </h2>
+        <div ng-repeat="genre in genres">
+                <input
+                        type="checkbox"
+                        name="selectedGenre[]"
+                        value="{{genre}}"
+                        ng-model="genre.selected"
+                        >
+            <label>{{genre.name}}
+            </label>
+        </div>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Register</button>
             <a href="#/login" class="btn btn-link">Cancel</a>

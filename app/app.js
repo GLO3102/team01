@@ -22,7 +22,7 @@ var homeApp = angular.module('uMovie', [
 
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
         if ( $cookies.getObject('user') == null ) {
-            if ( next.templateUrl == "partials/login.html" ) {
+            if ( next.templateUrl == "components/login/views/login.html" || next.templateUrl == "components/register/views/register.html" ) {
                 // already going to #login, no redirect needed
             } else {
                 // not going to #login, we should redirect now
