@@ -1,7 +1,7 @@
 /**
  * Created by Antoine on 2015-11-11.
  */
-userApp.controller("user-menu-controller", function ($scope,  loggedUserService) {
+userApp.controller("user-menu-controller", function ($scope,  loggedUserService, logoutResource, $location, loginService) {
 
     $scope.userIsLogged = false;
 
@@ -15,4 +15,10 @@ userApp.controller("user-menu-controller", function ($scope,  loggedUserService)
         }
     }
     $scope.verifyIfUserIsLogged();
+
+    $scope.logout = function(){
+        loginService.ClearUser();
+        logoutResource.logout();
+        $location.path("/login");
+    }
 });

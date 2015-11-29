@@ -22,4 +22,5 @@ loginApp.controller("login-controller", function ($scope, loginService, $locatio
 
     });
   }
+
 })

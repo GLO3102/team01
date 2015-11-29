@@ -1,5 +1,5 @@
 registerApp.factory('registerResource', ["$resource", function($resource){
-  return $resource("https://umovie-team01-staging.herokuapp.com/signup" , {}, {
+  return $resource("https://umovie-team01.herokuapp.com/signup" , {}, {
     post:{
       method:"POST",
       headers: {
