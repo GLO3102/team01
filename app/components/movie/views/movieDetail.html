@@ -40,7 +40,7 @@
 
                 <div class="detail comments">
 
-                    <form name="commentForm" role="form" ng-submit="addComment()">
+                    <form name="commentForm" role="form" ng-submit="addComment(userComment)">
                       <div class="form-group">
                         <input class="form-control" type="text" name="message" required ng-model="userComment"/>
                         <button type="submit" ng-disabled="commentForm.$invalid" class="btn btn-primary">Submit</button>

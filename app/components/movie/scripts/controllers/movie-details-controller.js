@@ -35,15 +35,15 @@ movieApp.controller("movie-detail-controller", function ($scope, $rootScope, mov
         $scope.initComment();
     };
 
-    $scope.addComment = function()
+    $scope.addComment = function(userComment)
     {
       var comment = {
         "username": $rootScope.user.username,
         "email": $rootScope.user.email,
         "id": movieId,
-        "content": $scope.userComment
+        "content": userComment
       }
-      console.log($scope.userComment + " 1");
+      console.log(userComment + " 1");
       //movieCommentResource.post(comment, function onSuccess(data){
 
         //$scope.initComment();
