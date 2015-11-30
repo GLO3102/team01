@@ -9,10 +9,10 @@
 }
 
 .ajax-loading {
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
 
-    width: 40%;
+    width: 30%;
 }
 .ajax-loading.ng-enter, .ajax-loading.ng-leave {
     transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
