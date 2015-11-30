@@ -36,7 +36,7 @@ movieApp.controller("movie-dashboard-controller",
             }
         };
         var loadMoviesByGenre = function (listOfGenres) {
-            console.log(listOfGenres);
+            //console.log(listOfGenres);
             if (listOfGenres.length !== $scope.moviesByGenre.length) {
                 for (var i = $scope.moviesByGenre.length; i < Math.min($scope.moviesByGenre.length + $scope.quantity, listOfGenres.length); i++) {
                     makeCallAndFillmoviesByGenre(i, listOfGenres);
