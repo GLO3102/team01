@@ -13,6 +13,20 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
 
     $scope.userResult = [];
 
+    $scope.movieGenre = {
+        availableOptions :[
+            {id: 42, name: 'All'}
+        ],
+        selectedOption: {id: 42, name: 'All'}
+    };
+
+    $scope.tvshowGenre = {
+        availableOptions :[
+            {id: 42, name: 'All'}
+        ],
+        selectedOption: {id: 42, name: 'All'}
+    };
+
     $scope.isMovieLoading = false;
 
     $scope.isTvShowLoading = false;
@@ -39,7 +53,7 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
     $scope.searchAll = function () {
         $scope.movieSearch();
         $scope.tvshowSearch();
-        //$scope.actorSearch();
+        $scope.actorSearch();
         //$scope.userSearch();
     };
 
@@ -75,6 +89,11 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             "q": $scope.query
         }, function onSuccess(successData) {
             for (var i = 0; i < successData.resultCount; i++) {
+                if (!$scope.isMovieGenrePresent(successData.results[i].primaryGenreName)){
+                    $scope.movieGenre.availableOptions.push({
+                        "id": i,
+                        "genre": successData.results[i].primaryGenreName});
+                }
                 $scope.movieResult.push({"movie": successData.results[i], "genre": successData.results[i].primaryGenreName});
             }
             $scope.isMovieLoading = false;
@@ -88,6 +107,11 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             "q": $scope.query
         }, function onSuccess(successData) {
             for (var i = 0; i < successData.resultCount; i++) {
+                if (!$scope.isTvshowGenrePresent(successData.results[i].primaryGenreName)) {
+                    $scope.tvshowGenre.availableOptions.push({
+                        "id": i,
+                        "genre": successData.results[i].primaryGenreName});
+                }
                 $scope.tvshowResult.push({"tvshow": successData.results[i], "genre": successData.results[i].primaryGenreName});
             }
             $scope.isTvShowLoading = false;
@@ -121,6 +145,44 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
 
     $scope.selectActor = function(actor){
         tvshowSelectionService.setSelectedTvShow(actor);
+    };
+
+    $scope.isMovieGenrePresent = function(genre){
+        var res = false;
+        if($.inArray(genre, $scope.movieGenre.availableOptions.name)>=0){
+            res = true;
+        }
+        return res
+    };
+
+    $scope.isTvshowGenrePresent = function(genre){
+        var res = false;
+        if($.inArray( genre, $scope.tvshowGenre.availableOptions.name)>=0){
+            res = true;
+        }
+        return res
+    };
+
+    $scope.movieFilter = function (result) {
+        var res = false;
+        if ($scope.movieGenre.selectedOption.name === "All"){
+            res = true;
+        }
+        else{
+            res = ($scope.movieGenre.selectedOption.name === result.genre)
+        }
+        return res
+    };
+
+    $scope.tvshowFilter = function (result) {
+        var res = false;
+        if ($scope.tvshowGenre.selectedOption.name === "All"){
+            res = true;
+        }
+        else{
+            res = ($scope.tvshowGenre.selectedOption.name === result.genre)
+        }
+        return res
     };
 
     $scope.query = searchService.getQuery();

@@ -1,14 +1,18 @@
-<div class="ajax-loading" ng-show="isMovieLoading && isTvShowLoading">
+<div class="ajax-loading" ng-show="isMovieLoading || isTvShowLoading || isActorLoading || isUserLoading">
     <img src="img/cat-mouse_Transparent.gif">
 </div>
-<div class="dashboard-container" ng-hide="isMovieLoading || isTvShowLoading || isActorLoading">
+<div class="dashboard-container" ng-hide="isMovieLoading || isTvShowLoading || isActorLoading || isUserLoading">
     <h1 class="detail ng-scope">Search results for : "{{query}}"</h1>
     <div id="movies" ng-show="showMovieResult">
         <h2 class="col-md-12 title">Movie results...</h2>
+        <select name="movieSelected" id="movieSelected"
+                ng-options="option.name for option in movieGenre.availableOptions track by option.id"
+                ng-model="movieGenre.selectedOption"></select>
+        </select>
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <slick settings="slickFeatureConfig" data="movieResult" center-mode="true">
-                <div class="overlay-image" image-overlay ng-repeat="result in movieResult">
+                <div class="overlay-image" image-overlay ng-repeat="result in movieResult | filter:movieFilter">
                     <div class="overlay" id="overlay-movies-{{$index}}">
                         <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
                         <a href="#/movies/{{result.movie.trackId}}" ng-click="selectMovie(result.movie)">
@@ -27,13 +31,17 @@
     </div>
     <div ng-show="showTvShowResult">
         <h2 class="col-md-12 title">Tvshow results...</h2>
-        <div class="col-md-1"></div>
+        <select name="tvshowSelected" id="tvshowSelected"
+                ng-options="option.name for option in tvshowGenre.availableOptions track by option.id"
+                ng-model="tvshowGenre.selectedOption"></select>
+        </select>
+        <div class="col-md-1">
+        </div>
         <div id="tvshows" class="col-md-10" >
             <slick settings="slickFeatureConfig" data="tvshowResult" center-mode="true">
-                <div class="overlay-image" image-overlay ng-repeat="result in tvshowResult">
+                <div class="overlay-image" image-overlay ng-repeat="result in tvshowResult | filter:tvshowFilter">
                     <div class="overlay" id="overlay-tvshows-{{$index}}">
-                        <a href="#/tvshows/{{result.tvshow.collectionId}}"
-                           ng-click="selectTvshow(tvshow)"><h2>{{result.tvshow.trackName || result.tvshow.collectionName}}</h2></a>
+                        <h2>{{result.tvshow.trackName || result.tvshow.collectionName}}</h2>
                         <p ng-bind-html="result.tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
                         <a href="#/tvshows/{{result.tvshow.collectionId}}" class="btn dashboard-detail"
                            ng-click="selectTvshow(result.tvshow)">View
