@@ -20,7 +20,8 @@
     "html5-boilerplate": "~5.2.0",
     "ngModal": "~1.2.0",
     "angular-gravatar":"~0.4.1",
-    "angular-cookies": "1.4.5"
+    "angular-cookies": "1.4.5",
+    "angular-validation-match": "~1.6"
   },
   "resolutions": {
     "angular": "1.4.5"

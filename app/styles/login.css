@@ -1,0 +1,10 @@
+input:required:invalid, input:focus:invalid {
+  background-image: url(/img/required.png);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+input:required:valid {
+  background-image: url(/img/valid.png);
+  background-position: right;
+  background-repeat: no-repeat;
+}

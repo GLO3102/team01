@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="styles/dropdown.css">
     <link rel="stylesheet" href="styles/price-toggle.css">
     <link rel="stylesheet" href="styles/user-view.css">
+    <link rel="stylesheet" href="styles/login.css">
 </head>
 <body class="main">
 <div ng-app="uMovie">
@@ -41,6 +42,7 @@
     <script src="bower_components/angular-lazytube/angular-lazytube.min.js"></script>
     <script src="bower_components/angular-gravatar/build/angular-gravatar.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
 
 
     <!-- Main application -->
@@ -81,6 +83,7 @@
     <script src="components/movie/scripts/movie.js"></script>
     <script src="components/movie/scripts/services/movieResource.js"></script>
     <script src="components/movie/scripts/services/movieSearchResource.js"></script>
+    <script src="components/movie/scripts/services/movieCommentResource.js"></script>
     <script src="components/movie/scripts/services/movieSelectionService.js"></script>
     <script src="components/movie/scripts/controllers/movie-dashboard-controller.js"></script>
     <script src="components/movie/scripts/controllers/movie-details-controller.js"></script>
@@ -124,7 +127,6 @@
     <script src="components/register/scripts/register.js"></script>
     <script src="components/register/scripts/services/registerResource.js"></script>
     <script src="components/register/scripts/controller/register-controller.js"></script>
-
 
     <!-- Route providers -->
     <script src="components/user/scripts/user-route-provider.js"></script>

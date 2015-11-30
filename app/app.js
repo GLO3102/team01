@@ -16,7 +16,8 @@ var homeApp = angular.module('uMovie', [
     "ngModal",
     "ui.gravatar",
     "uMovie.login",
-    "uMovie.register"
+    "uMovie.register",
+    "validation.match"
 ]).config(function (ngModalDefaultsProvider) {
     ngModalDefaultsProvider.set('closeButtonHtml', '<a class="glyphicon glyphicon-remove pull-right"></a>');
 }).run(['$rootScope', '$cookies', '$location', function ($rootScope, $cookies, $location) {

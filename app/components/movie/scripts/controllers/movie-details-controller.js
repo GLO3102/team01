@@ -1,10 +1,21 @@
 /**
  * Created by Antoine on 2015-09-14.
  */
-movieApp.controller("movie-detail-controller", function ($scope, movieSelectionService, $routeParams, movieResource) {
+movieApp.controller("movie-detail-controller", function ($scope, $rootScope, movieSelectionService, $routeParams, movieResource, movieCommentResource) {
     var movieId =  $routeParams.movieId;
     $scope.isLoading =false;
-    $scope.initMovieDetail = function(){
+
+    $scope.initComment = function(){
+      movieCommentResource.get({id:movieId}, function onSuccess(data){
+        $scope.movieComments = data;
+      }, function onError(data){
+
+      });
+    };
+
+
+    $scope.initMovieDetail = function()
+    {
         var selectedMovie = movieSelectionService.getSelectedMovie();
 
         if( Object.keys(selectedMovie).length === 0) {
@@ -20,7 +31,27 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
         }else{
             $scope.movie = selectedMovie;
         }
+
+        $scope.initComment();
     };
+
+    $scope.addComment = function()
+    {
+      var comment = {
+        "username": $rootScope.user.username,
+        "email": $rootScope.user.email,
+        "id": movieId,
+        "content": $scope.userComment
+      }
+      console.log($scope.userComment + " 1");
+      //movieCommentResource.post(comment, function onSuccess(data){
+
+        //$scope.initComment();
+
+      //}, function onError(data){
+
+    //  });
+    }
 
     $scope.initMovieDetail();
 

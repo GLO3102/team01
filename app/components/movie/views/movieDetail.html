@@ -37,11 +37,22 @@
                 </div>
             </div>
             <div class="row detail section">
+
                 <div class="detail comments">
-                    No comments
-                    <div class="comments" ng-repeat="comment in comments">
+
+                    <form name="commentForm" role="form" ng-submit="addComment()">
+                      <div class="form-group">
+                        <input class="form-control" type="text" name="message" required ng-model="userComment"/>
+                        <button type="submit" ng-disabled="commentForm.$invalid" class="btn btn-primary">Submit</button>
+                      </div>
+                    </form>
+
+                    <div class="comments" ng-repeat="comment in movieComments">
+                      <div class="comments">{{comment.author}} </div>
+                      <div class="comments">{{comment.content}} </div>
                     </div>
                 </div>
+
                 <div class="detail poster">
                     <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
                 </div>
