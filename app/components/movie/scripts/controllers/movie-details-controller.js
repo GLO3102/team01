@@ -43,14 +43,14 @@ movieApp.controller("movie-detail-controller", function ($scope, $rootScope, mov
         "id": movieId,
         "content": userComment
       }
-      console.log(userComment + " 1");
-      //movieCommentResource.post(comment, function onSuccess(data){
 
-        //$scope.initComment();
+      movieCommentResource.post(comment, function onSuccess(data){
 
-      //}, function onError(data){
+        $scope.initComment();
 
-    //  });
+      }, function onError(data){
+
+      });
     }
 
     $scope.initMovieDetail();

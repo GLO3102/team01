@@ -38,7 +38,7 @@
             </div>
             <div class="row detail section">
 
-                <div class="detail comments">
+                <div class="block-comment">
 
                     <form name="commentForm" role="form" ng-submit="addComment(userComment)">
                       <div class="form-group">
@@ -47,10 +47,13 @@
                       </div>
                     </form>
 
-                    <div class="comments" ng-repeat="comment in movieComments">
-                      <div class="comments">{{comment.author}} </div>
-                      <div class="comments">{{comment.content}} </div>
+                    <div class="inner-comment" style="overflow-y:scroll;">
+                      <div class="panel panel-default" ng-repeat="comment in movieComments">
+                        <div class="panel-body">{{comment.author}} </div>
+                        <div class="panel-body">{{comment.content}} </div>
+                      </div>
                     </div>
+
                 </div>
 
                 <div class="detail poster">
