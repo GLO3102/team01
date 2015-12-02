@@ -13,6 +13,9 @@ movieApp.controller("movie-detail-controller", function ($scope, $rootScope, mov
       });
     };
 
+    $scope.clearTextField = function(){
+            document.getElementById("commentTextArea").value='';
+}
 
     $scope.initMovieDetail = function()
     {
@@ -47,6 +50,7 @@ movieApp.controller("movie-detail-controller", function ($scope, $rootScope, mov
       movieCommentResource.post(comment, function onSuccess(data){
 
         $scope.initComment();
+        $scope.clearTextField();
 
       }, function onError(data){
 
