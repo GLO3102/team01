@@ -1,4 +1,4 @@
-loginApp.controller("login-controller", function ($scope, loginService, $location, loginResource) {
+loginApp.controller("login-controller", function ($scope, loginService, $location, loginResource, $auth) {
 
   $scope.login = function(){
     $scope.isLoading = true;
@@ -22,5 +22,9 @@ loginApp.controller("login-controller", function ($scope, loginService, $locatio
 
     });
   }
+
+  $scope.authenticate = function(provider) {
+    $auth.authenticate(provider);
+  };
 
 })

@@ -1,15 +1,15 @@
 /**
  * Created by Antoine on 2015-11-11.
  */
-userApp.controller("user-menu-controller", function ($scope,  loggedUserService, logoutResource, $location, loginService) {
+userApp.controller("user-menu-controller", function ($scope, logoutResource, $location, loginService) {
 
     $scope.userIsLogged = false;
 
 
     $scope.verifyIfUserIsLogged = function() {
-        var loggedUser = loggedUserService.getLoggedUser();
+        var loggedUser = loginService.getUser();
 
-        if (Object.keys(loggedUser).length > 0) {
+        if (loggedUser && Object.keys(loggedUser).length > 0) {
             $scope.userIsLogged = true;
             $scope.loggedUser = loggedUser;
         }
