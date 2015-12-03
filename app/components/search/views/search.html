@@ -7,7 +7,7 @@
         <h2 class="col-md-12 title">Movie results...</h2>
         <div class="col-md-12">
             <label class="title" for="movieSelected">Filter by genre :</label>
-            <select name="movieSelected" id="movieSelected" ng-options="genre for genre in movieGenre"
+            <select class="search-filter"  name="movieSelected" id="movieSelected" ng-options="genre for genre in movieGenre"
                     ng-model="movieFilterSelected" ng-change="setMovieFilter()"></select>
             </select>
         </div>
@@ -35,7 +35,7 @@
         <h2 class="col-md-12 title">Tvshow results...</h2>
         <div class="col-md-12">
             <label class="title" for="tvshoweSelected">Filter by genre :</label>
-            <select name="tvshowSelected" id="tvshoweSelected" ng-options="genre for genre in tvshowGenre"
+            <select class="search-filter" name="tvshowSelected" id="tvshoweSelected" ng-options="genre for genre in tvshowGenre"
                     ng-model="tvshowFilterSelected" ng-change="setTvshowFilter()">
             </select>
         </div>

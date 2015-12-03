@@ -56,26 +56,26 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
     };
 
     $scope.search = function (queryType) {
-        if (queryType === "1"){
+        if (queryType === "All"){
             $scope.showMovieResult = true;
             $scope.showTvShowResult = true;
             $scope.showActorResult = true;
             $scope.showUserResult = true;
             $scope.searchAll();
         }
-        if (queryType === "2"){
+        if (queryType === "Movies"){
             $scope.showMovieResult = true;
             $scope.movieSearch();
         }
-        if (queryType === "3"){
+        if (queryType === "TvShows"){
             $scope.showTvShowResult = true;
             $scope.tvshowSearch();
         }
-        if (queryType === "4"){
+        if (queryType === "Actors"){
             $scope.showActorResult = true;
             $scope.actorSearch();
         }
-        if (queryType === "5"){
+        if (queryType === "Users"){
             $scope.showUserResult = true;
             $scope.userSearch();
         }
