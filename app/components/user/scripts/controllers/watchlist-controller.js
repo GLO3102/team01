@@ -2,9 +2,9 @@
 /**
  * Created by Antoine on 2015-10-15.
  */
-userApp.controller("watchlist-controller", function ($scope, loggedUserService, watchlistResource, userWatchlistContainer) {
+userApp.controller("watchlist-controller", function ($scope, loginService, watchlistResource, userWatchlistContainer) {
 
-    $scope.loggedUser = loggedUserService.getLoggedUser();
+    $scope.loggedUser = loginService.getUser();
     $scope.userWatchlist = [];
 
     $scope.initLoggedUserWatchlist = function () {
