@@ -8,7 +8,7 @@ var loginApp = angular.module('uMovie.login', ['ngRoute', 'ngCookies', 'satelliz
     });
 
     $authProvider.google({
+        url: 'http://localhost:3000/auth/google',
         clientId: '482839083215-is2a3iqcbmuce08sjeeg71g4i4d4t3a4.apps.googleusercontent.com'
     });
-
 });
