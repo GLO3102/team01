@@ -44,7 +44,7 @@ movieApp.controller("movie-detail-controller", function ($scope, $rootScope, mov
         "username": $rootScope.user.username,
         "email": $rootScope.user.email,
         "id": movieId,
-        "content": userComment
+        "content": userComment,
       }
 
       movieCommentResource.post(comment, function onSuccess(data){

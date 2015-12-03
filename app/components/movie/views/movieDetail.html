@@ -36,9 +36,39 @@
                     </h4>
                 </div>
             </div>
-            <div class="row detail section">
 
-                <div class="block-comment">
+            <script>
+            var scrolled=0;
+
+            $("#downClick").on("click" ,function(){
+
+              if($("#inner-comment").scrollTop() + $("#inner-comment").innerHeight()>=$("#inner-comment")[0].scrollHeight)
+              {
+
+              }else{
+                scrolled = scrolled+200;
+              }
+
+        				$("#inner-comment").animate({
+        				        scrollTop:  scrolled
+        				   });
+      			});
+
+            $("#upClick").on("click" ,function(){
+              scrolled = scrolled - 200;
+              if(scrolled <= 0){
+                scrolled = 0;
+              }
+
+        				$("#inner-comment").animate({
+  				            scrollTop:  scrolled
+        				   });
+        			});
+
+            </script>
+
+            <div class="row">
+                <div class="col-md-8">
 
                     <form name="commentForm" role="form" ng-submit="addComment(userComment)">
                       <h3> Wanna make a comment?! </h3>
@@ -50,12 +80,16 @@
                       </div>
                     </form>
 
-                    <div class="inner-comment" style="overflow-y:scroll">
+                    <div class="button-fixed" style="text-align: center;">
+                      <button id="upClick" class="invisible-button"><img src="/img/up-arrow.png" height="35"/></button>
+                    </div>
+
+                    <div id="inner-comment" style="overflow-y:hidden; overflow-x:hidden;">
                       <div ng-repeat="comment in movieComments">
                         <div class="row top-buffer-30">
                             <div class="col-md-1">
                               <div display="block">
-                                <img src="/img/anonymous.gif" width="75px">
+                                <img gravatar-src="'{{comment.author_email}}'" gravatar-size="75">
                                 <h4>{{comment.author}}</h4>
                               </div>
                             </div>
@@ -73,10 +107,14 @@
                       </div>
                     </div>
 
+                    <div class="button-fixed" style="text-align: center; display:block; width:100%;">
+                      <button id="downClick" class="invisible-button"><img src="/img/down-arrow.png" height="35"/></button>
+                    </div>
+
                 </div>
 
-                <div class="detail poster">
-                    <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
+                <div class="col-md-4">
+                    <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}" width="450px">
                 </div>
             </div>
         </div>
