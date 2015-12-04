@@ -1,4 +1,4 @@
-homeApp.controller("home-controller", function ($scope, movieSelectionService, tvshowSelectionService, homeResource) {
+homeApp.controller("home-controller", function ($scope, movieSelectionService, tvshowSelectionService, homeResource, loginService) {
     $scope.movies = [];
 
     $scope.tvshows = [];
