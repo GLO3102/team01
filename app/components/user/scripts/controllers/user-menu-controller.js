@@ -1,7 +1,7 @@
 /**
  * Created by Antoine on 2015-11-11.
  */
-userApp.controller("user-menu-controller", function ($scope, logoutResource, $location, loginService) {
+userApp.controller("user-menu-controller", function ($scope, logoutResource, $location, loginService, $auth) {
 
     $scope.userIsLogged = false;
 

@@ -4,20 +4,20 @@
 
         <div class="navbar-header">
             <a class="pull-left" href="#/home"><img ng-src="img/LogoClean2.png"></a>
-            <button ng-show="user" type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+            <button ng-if="user && user != {}" type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div ng-show="user" class="navbar-text" ng-controller="search-dashboard-controller" >
+            <div ng-if="user && user != {}" class="navbar-text" ng-controller="search-dashboard-controller" >
                 <form ng-submit="initSearch()" name="search-form">
                     <input class="search-input" type="search" name="query" ng-model="query"  placeholder="Search...">
                 </form>
             </div>
         </div>
 
-        <div ng-show="user">
+        <div ng-if="user && user != {}">
         <div class="collapse nav navbar-collapse" id = "navbar-collapse-1" ng-controller="user-menu-controller">
 
             <ul class="nav navbar-nav">
@@ -28,7 +28,8 @@
 
             <div class="navbar-text pull-right" ng-if="userIsLogged">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{user.username}}<span class="caret"></span></a>
-                <img id="avatar" gravatar-src="'{{user.email}}'" gravatar-size="45">
+                <img ng-if="!user.picture" id="avatar" gravatar-src="'{{user.email}}'" gravatar-size="45">
+                <img ng-if="user.picture" id="avatar" ng-src="{{user.picture}}" size="45">
 
                 <ul class="dropdown-menu pull-right">
                     <li><a href="#/users/{{user.id}}">My Profile</a></li>

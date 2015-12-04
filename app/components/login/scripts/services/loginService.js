@@ -10,7 +10,7 @@ loginApp.factory('loginService', ["loginResource", "$cookies", "$rootScope", fun
     }
 
     function clearUser() {
-        $rootScope.user = {};
+        $rootScope.user = null;
         $cookies.remove('user');
     }
 
