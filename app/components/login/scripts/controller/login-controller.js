@@ -24,7 +24,11 @@ loginApp.controller("login-controller", function ($scope, loginService, $locatio
   }
 
   $scope.authenticate = function(provider) {
-    $auth.authenticate(provider);
+
+    $auth.authenticate(provider).then(function(response){
+      loginService.SetUser(response.data);
+      $location.path('/home');
+    });
   };
 
 })
