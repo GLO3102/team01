@@ -105,6 +105,11 @@
 
 }
 
+.avatar {
+    width:75px;
+    height: 75px;
+}
+
 .odd {
     background-color: rgba(255, 255, 255, 0.3);
 }

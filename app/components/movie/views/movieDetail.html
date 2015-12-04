@@ -89,7 +89,8 @@
                         <div class="row top-buffer-30">
                             <div class="col-md-1">
                               <div display="block">
-                                <img gravatar-src="'{{comment.author_email}}'" gravatar-size="75">
+                                  <img ng-if="!comment.author_picture" class="avatar" gravatar-src="'{{comment.author_email}}'" gravatar-size="75">
+                                  <img ng-if="comment.author_picture" class="avatar" ng-src="{{comment.author_picture}}" size="75">
                                 <h4>{{comment.author}}</h4>
                               </div>
                             </div>
