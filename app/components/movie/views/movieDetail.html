@@ -6,7 +6,7 @@
         <div class="detail header">
             <h2>{{movie.trackName}} <a href="{{movie.trackViewUrl}}"> <img ng-src="img/itunes.svg"/></a>
                 <span class="pull-right">
-                    <user-watchlist-dropdown ></user-watchlist-dropdown>
+                    <user-watchlist-dropdown></user-watchlist-dropdown>
                 <back-button></back-button>
                 </span>
             </h2>
@@ -27,7 +27,8 @@
                         <li><label>Director</label> <span>{{movie.artistName}}</span></li>
                         <li><label>Rating</label> <span>{{movie.contentAdvisoryRating}}</span></li>
                         <li><label>Description</label>
-                            <p ng-bind-html ="movie.longDescription|htmlToPlaintext|unicode"></p></li>
+
+                            <p ng-bind-html="movie.longDescription|htmlToPlaintext|unicode"></p></li>
                     </ul>
                     <price-toggle></price-toggle>
                     <h4 class="detail price" ng-hide="isHdPriceSelected">Price SD <span>{{movie.trackPrice}}$ {{movie.currency}}</span>
@@ -116,6 +117,31 @@
 
                 <div class="col-md-4">
                     <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}" width="450px">
+                </div>
+            </div>
+            <div class="row detail section" ng-if="similarMovies.length">
+                <h3>You might also like</h3>
+                <div class="ajax-loading" ng-if="isLoadingSimilar">
+                    <img src="img/cat-mouse_Transparent.gif">
+                </div>
+                <div ng-if="!isLoadingSimilar">
+                    <slick settings="slickFeatureConfig" data="similarMovies" center-mode="true">
+                        <div class="overlay-image" image-overlay ng-repeat="movie in similarMovies">
+                            <div class="overlay" id="overlay-feature-{{$index}}">
+                                <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
+                                <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
+                                    <h2>{{movie.trackName || movie.collectionName}} </h2></a>
+                                <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
+                                        src="{{movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
+                                        enablejsapi="1"></iframe>
+                                <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
+                                <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail"
+                                   ng-click="selectMovie(movie)">View
+                                    details</a>
+                            </div>
+                            <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
+                        </div>
+                    </slick>
                 </div>
             </div>
         </div>

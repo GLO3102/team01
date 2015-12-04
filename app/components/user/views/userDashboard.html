@@ -10,15 +10,14 @@
     </div>
     <div id="user-no-follower" ng-if="user.following.length === 0">
         <h2>Following</h2>
-
         <h3>I'm so lonely that even UMovie tell me so!</h3>
     </div>
     <div id="user-with-follower" ng-if="user.following.length > 0">
         <h2>Following</h2>
         <ul class="following-user">
             <li class="following-user-profile" ng-repeat="followingUser in user.following">
-                <span><a href="#/users/{{followingUser.id}}">{{followingUser.name}}</a> - <a
-                        href="mailto:{{followingUser.email}}"></a></span>
+                <span><a href="#/users/{{followingUser.id}}">{{followingUser.username}}</a> - <a
+                        href="mailto:{{followingUser.email}}">{{followingUser.email}}</a></span>
                 <a class="btn btn-view-watchlist" href="#/users/{{user.id}}/watchlist">See my friend watchlists</a>
             </li>
         </ul>
