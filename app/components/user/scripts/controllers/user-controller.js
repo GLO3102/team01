@@ -15,7 +15,9 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
     };
 
     fetchUserInformation();
+    $scope.removeFriend = function (user){
 
+    }
     $scope.addFriend = function (user) {
         userFollowingResource.follow({}, {id: user.id}, function onSuccess() {
             var loggedUser = loginService.getUser();

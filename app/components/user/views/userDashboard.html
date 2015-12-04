@@ -1,8 +1,8 @@
 <div class="ajax-loading" ng-show="isLoading">
     <img src="img/cat-mouse_Transparent.gif">
 </div>
-<div class="dashboard-container user-profile" >
-    <div class="dashboard-header user-header" ng-hide="isLoading">
+<div class="dashboard-container user-profile" ng-hide="isLoading">
+    <div class="dashboard-header user-header">
         <h2>{{user.username}}<button class="btn btn-add-friend pull-right" ng-click="addFriend(user)" ng-if="isNotLoggedUser(user) === true">Add friend</button></h2>
 
         <h3 id="user-email">Email : <a href="mailto:{{user.email}}">{{user.email}}</a></h3>
@@ -13,13 +13,13 @@
 
         <h3>I'm so lonely that even UMovie tell me so!</h3>
     </div>
-    <div id="user-with-follower" ng-if="user.following.length > 0" ng-hide="isLoading">
-        <h2>Following
+    <div id="user-with-follower" ng-if="user.following.length > 0">
+        <h2>Following</h2>
         <ul class="following-user">
             <li class="following-user-profile" ng-repeat="followingUser in user.following">
-                <span><a href="#/users/{{followingUser.id}}">{{followingUser.name}}</a> - <a
-                        href="mailto:{{followingUser.email}}"></a></span>
-                <a class="btn btn-view-watchlist" href="#/users/{{user.id}}/watchlist">See my friend watchlists</a>
+                <span><a href="#/users/{{followingUser.id}}">{{followingUser.username}}</a> - <a
+                        href="mailto:{{followingUser.email}}">{{followingUser.email}}</a></span>
+                <a class="btn btn-view-watchlist" href="#/users/{{followingUser.id}}/watchlist">See my friend watchlists</a>
             </li>
         </ul>
     </div>
