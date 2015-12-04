@@ -1,7 +1,7 @@
 /**
  * Created by Antoine on 2015-09-14.
  */
-movieApp.controller("movie-detail-controller", function ($scope, movieSelectionService, $routeParams, movieResource, movieSimilarResource, movieCommentResource) {
+movieApp.controller("movie-detail-controller", function ($scope, movieSelectionService, $routeParams, movieResource, movieSimilarResource, movieCommentResource, $rootScope) {
     var movieId = $routeParams.movieId;
     $scope.isLoading = false;
     $scope.isLoadingSimilar = false;
@@ -38,7 +38,7 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
         $scope.isLoadingSimilar = true;
         var ombdID = selectedMovie.omdbId;
 
-        movieSimilarResource.get({id: ombdID}, function onSucess(data) {
+        movieSimilarResource.get({id: ombdID}, function onSuccess(data) {
             $scope.similarMovies = data;
             $scope.isLoadingSimilar = false;
         }, function onError(data) {
@@ -74,8 +74,5 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
 
     $scope.initMovieDetail();
 
-    $scope.dismiss = function () {
-
-    }
 
 });
