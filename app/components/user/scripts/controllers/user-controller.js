@@ -36,9 +36,10 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
     };
     $scope.isInFollowing = function(user){
         var loggedUser = loginService.getUser();
-        if ( $scope.isNotLoggedUser(user)) {
+
+        if ($scope.isNotLoggedUser(user)) {
             for(var i = 0; i < loggedUser.following.length; i++){
-                if(loggedUser.following[i].id === user.id){
+                if(loggedUser.following[i]._id === user.id){
                     return true;
                 }
             }
@@ -62,11 +63,11 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
     $scope.slickFeatureConfig = {
         slidesToShow: 3,
         slidesToScroll: 1,
-        infinite: true,
+        infinite: false,
         autoplay: true,
         autoplaySpeed: 5000,
         variableWidth: true,
-        centerMode: true,
+
         responsive: [
             {
                 breakpoint: 1024,
