@@ -1,36 +1,47 @@
-
 /**
  * Created by Antoine on 2015-10-15.
  */
-userApp.controller("watchlist-controller", function ($scope, loginService, watchlistResource, userWatchlistContainer) {
+userApp.controller("watchlist-controller", function ($scope, loginService, watchlistResource, userWatchlistContainer, $routeParams, userResource) {
+    var userID = $routeParams.userId;
 
     $scope.loggedUser = loginService.getUser();
     $scope.userWatchlist = [];
+    $scope.userToShow = {};
+    $scope.isLoading = false;
 
     $scope.initLoggedUserWatchlist = function () {
-
-        var userWatchlist = userWatchlistContainer.getUserWatchlist();
-
-        if (Object.keys(userWatchlist).length == 0) {
-            fetchLoggedUserWatchlist();
+        fetchUserWatchlist();
+        if($scope.isViewingMyWatchlist()){
+            $scope.userToShow = $scope.loggedUser;
         }
-        else {
-            $scope.userWatchlist = userWatchlist.watchlists;
+        else{
+            $scope.isLoading = true;
+            userResource.get({userId:userID}, function onSuccess(data){
+                $scope.userToShow = data;
+                $scope.isLoading = false;
+            })
         }
     };
-
-    var fetchLoggedUserWatchlist = function () {
+    $scope.isViewingMyWatchlist = function () {
+        if (userID === $scope.loggedUser.id) {
+            return true;
+        }
+        return false;
+    }
+    var fetchUserWatchlist = function () {
+        $scope.isLoading = true;
         watchlistResource.query({}, function onSuccess(data) {
             var userWatchlist = [];
             for (var i = 0; i < data.length; i++) {
                 if (data[i].hasOwnProperty("owner")) {
-                    if (data[i].owner.email === $scope.loggedUser.email) {
+                    if (data[i].owner.id === userID) {
                         userWatchlist.push(data[i]);
                     }
                 }
             }
             userWatchlistContainer.setUserWatchlist(userWatchlist);
             $scope.userWatchlist = userWatchlist;
+            $scope.isLoading = false;
         })
     };
 
@@ -64,7 +75,8 @@ userApp.controller("watchlist-controller", function ($scope, loginService, watch
     $scope.addWatchlist = function (name, event) {
         watchlistResource.save({}, {
             "owner": {
-                "email": $scope.loggedUser.email
+                "email": $scope.loggedUser.email,
+                "id": $scope.loggedUser.id
             },
             "name": name
         }, function onSuccess(data) {
@@ -73,7 +85,7 @@ userApp.controller("watchlist-controller", function ($scope, loginService, watch
         })
     };
 
-    $scope.modifyWatchlistName = function (watchlist, newName, event){
+    $scope.modifyWatchlistName = function (watchlist, newName, event) {
 
         watchlistResource.modifyWatchlist({id: watchlist.id}, {
             name: newName,
@@ -85,7 +97,7 @@ userApp.controller("watchlist-controller", function ($scope, loginService, watch
 
         });
     };
-    $scope.isStringValid = function(newWatchlistName){
+    $scope.isStringValid = function (newWatchlistName) {
         return newWatchlistName.length !== 0;
     }
     $scope.initLoggedUserWatchlist();
@@ -101,7 +113,7 @@ userApp.controller("watchlist-controller", function ($scope, loginService, watch
         infinite: true,
         autoplay: true,
         autoplaySpeed: 5000,
-        variableWidth:true,
+        variableWidth: true,
 
         responsive: [
             {

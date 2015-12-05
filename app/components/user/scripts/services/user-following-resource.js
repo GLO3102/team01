@@ -9,7 +9,7 @@ userApp.factory('userFollowingResource', ['$resource', function($resource){
         deleteFriend:{
             method:"DELETE",
             params:{
-                "@id":"id"
+                "id":"@id"
             }
         }
     });

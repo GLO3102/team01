@@ -3,24 +3,40 @@
 </div>
 <div class="dashboard-container user-profile" ng-hide="isLoading">
     <div class="dashboard-header user-header">
-        <h2>{{user.username}}<button class="btn btn-add-friend pull-right" ng-click="addFriend(user)" ng-if="isNotLoggedUser(user) === true">Add friend</button></h2>
+        <img ng-if="!user.picture" class="dashboard-header avatar" gravatar-src="'{{user.email}}'" gravatar-size="300">
+        <img ng-if="user.picture" class="dashboard-header avatar" ng-src="{{user.picture | imageSize:100:100}}">
+        <h2>{{user.username}}
+            <button class="btn btn-add-friend pull-right" ng-click="addFriend(user)"
+                    ng-if="isNotLoggedUser(user) == true && isInFollowing(user) == false">Add friend
+            </button>
+            <button class="btn btn-add-friend pull-right" ng-click="deleteFriend(user)"
+                    ng-if="isInFollowing(user) == true">Remove friend
+            </button>
+        </h2>
 
         <h3 id="user-email">Email : <a href="mailto:{{user.email}}">{{user.email}}</a></h3>
         <a class="btn btn-view-watchlist" href="#/users/{{user.id}}/watchlist">See my watchlists</a>
     </div>
     <div id="user-no-follower" ng-if="user.following.length === 0">
         <h2>Following</h2>
+
         <h3>I'm so lonely that even UMovie tell me so!</h3>
     </div>
     <div id="user-with-follower" ng-if="user.following.length > 0">
         <h2>Following</h2>
-        <ul class="following-user">
-            <li class="following-user-profile" ng-repeat="followingUser in user.following">
-                <span><a href="#/users/{{followingUser.id}}">{{followingUser.username}}</a> - <a
-                        href="mailto:{{followingUser.email}}">{{followingUser.email}}</a></span>
-                <a class="btn btn-view-watchlist" href="#/users/{{followingUser.id}}/watchlist">See my friend watchlists</a>
-            </li>
-        </ul>
+        <slick settings="slickFeatureConfig" data="user.following" center-mode="true">
+            <div class="overlay-image" image-overlay ng-repeat="followingUser in user.following">
+                <div class="overlay" id="overlay-feature-{{$index}}">
+                    <h2><a href="#/users/{{followingUser.id}}">{{followingUser.username}}</a>
+                        <a class="glyphicon glyphicon-remove pull-right" href="" ng-click="deleteFriend(followingUser)"></a>
+                    </h2>
+                    <h4><a href="mailto:{{followingUser.email}}">{{followingUser.email}}</a></h4>
+                    <a href="#/users/{{followingUser.id}}/watchlists" class="btn dashboard-detail">See my friend watchlists</a>
+                </div>
+                <img ng-if="!followingUser.picture" class="avatar" gravatar-src="'{{followingUser.email}}'" gravatar-size="300">
+                <img ng-if="followingUser.picture" class="avatar" ng-src="{{followingUser.picture | imageSize:300:300}}">
+            </div>
+        </slick>
     </div>
 
 </div>

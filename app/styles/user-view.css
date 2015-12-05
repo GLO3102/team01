@@ -38,3 +38,12 @@
 .user-header{
     margin-bottom: 5%;
 }
+.dashboard-header.avatar{
+    border: 1px solid lightgray;
+    float: left;
+    border-radius: 5px;
+}
+.avatar{
+    width: 200px;
+    height: 200px;
+}
