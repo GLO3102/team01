@@ -13,9 +13,10 @@
         <div class="detail body">
             <div class="row detail section">
                 <div class="detail preview">
-                    <youtube-preview movie="{{tvshow.trackName}}"></youtube-preview>
-                    <iframe ob-lazytube width="95%" height="50%" src="{{tvshow.previewUrl|trusted}}" seamless
-                            frameborder="0" allowfullscreen autoplay="true"></iframe>
+                    <div class="embed-responsive embed-responsive-16by9">">
+                        <youtube-video class="embed-responsive-item" id="videoSeason"
+                                       video-url="tvshow.previewUrl"></youtube-video>
+                    </div>
                 </div>
                 <div class="row detail description">
                     <ul>
@@ -37,11 +38,14 @@
             </div>
             <div class="row detail section">
                 <div class="detail episodes">
-                    <h3>Episodes :</h3><h4 >Search: <input style="color: #404040;" class="search-input" ng-model="searchText"></h4>
+                    <h3>Episodes :</h3><h4>Search: <input style="color: #404040;" class="search-input"
+                                                          ng-model="searchText"></h4>
 
                     <div ng-repeat="episode in tvshowEpisodes.results| filter:searchText">
-                        <div class="episodeRow" ng-class-odd="'odd'" ng-class-even="'even'" ng-click='toggleModal(this.episode)'>
-                            <span class="episodePic"> <img ng-src="{{episode.artworkUrl100 | imageSize:300:300}}"></span>
+                        <div class="episodeRow" ng-class-odd="'odd'" ng-class-even="'even'"
+                             ng-click='toggleModal(this.episode)'>
+                            <span class="episodePic"> <img
+                                    ng-src="{{episode.artworkUrl100 | imageSize:300:300}}"></span>
                             <span class="episodeNumber"><p>{{episode.trackNumber}}</p></span>
                             <span class="episodeName"><p>{{episode.trackName}}</p></span>
                             <span class="episodeDesc"><p
@@ -62,13 +66,13 @@
                     </div>
                 </div>
             </div>
-            <modal-dialog show='modalShown' width= '90%' height='90%' dialog-title="Episode {{episodeModal.trackNumber}} : {{episodeModal.trackName}}">
+            <modal-dialog id="titleModal" show='modalShown' width='90%' height='90%'
+                          dialog-title="Episode {{episodeModal.trackNumber}} : {{episodeModal.trackName |cut:true:70:'...'}}">
                 <div><p>{{episodeModal.collectionName}} - Episode {{episodeModal.trackNumber}}</p></div>
-                <youtube-preview movie="{{episodeModal.trackName}}"></youtube-preview>
-                <iframe ob-lazytube width="95%" height="50%" src="{{episodeModal.previewUrl|trusted}}" seamless
-                        frameborder="0" allowfullscreen autoplay="true"></iframe>
-                <span class="episodePicModal" class="col-md-3"> <img ng-src="{{episodeModal.artworkUrl100|imageSize:300:300}}"></span>
-                <span class="col-md-9"><p ng-bind-html="episodeModal.longDescription|htmlToPlaintext|unicode"></p>Duration : {{episodeModal.length}}</span>
+                <div class="col-md-6 col-sm-12 col-xs-12"> <youtube-video  player="modalPlayer" id="modalPlayer" video-url="episodeModal.previewUrl" player-width="'100%'"></youtube-video></div>
+                <br>
+                <span class="col-md-6 col-sm-9 col-xs-9"><p ng-bind-html="episodeModal.shortDescription|htmlToPlaintext|unicode"></p>Duration : {{episodeModal.length}}</span>
+                <span class="episodePicModal col-md-6 col-sm-3 col-xs-3"> <img ng-src="{{episodeModal.artworkUrl100|imageSize:300:300}}"></span>
             </modal-dialog>
         </div>
     </div>
