@@ -1,4 +1,4 @@
-tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource) {
+tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource, $sce) {
 
     var tvShowId = $routeParams.tvshowId;
     $scope.isLoading = false;
@@ -9,18 +9,13 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
         var selectTvshowEpisodes = tvshowSelectionService.getSelectedTvShowEpisodes();
 
         if (Object.keys(selectedTvShow).length === 0) {
-          console.log(tvShowId);
             $scope.isLoading = true;
             tvShowResource.get({id: tvShowId}, function onSuccess(data) {
                 selectedTvShow = data.results[0];
-
                 $scope.tvshow = selectedTvShow;
-                $scope.isLoading = false;
             }, function onError(data) {
-
             });
         } else {
-          console.log("coucou tête de gland! :D")
             $scope.tvshow = selectedTvShow;
         }
 
@@ -36,15 +31,16 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
         }
         else {
             $scope.tvshowEpisodes = selectTvshowEpisodes;
+            $scope.isLoading = false;
         }
     };
     $scope.initTvShowDetail();
 
-    $scope.toggleModal = function(item) {
+    $scope.toggleModal = function (item) {
         console.log(item);
         $scope.episodeModal = item;
-        $scope.episodeModal.length =msToTime(item.trackTimeMillis);
-        $scope.modalShown = !$scope.modalShown;
+        $scope.episodeModal.length = msToTime(item.trackTimeMillis);
+        $scope.modalShown = true;
     };
 
     function msToTime(s) {
