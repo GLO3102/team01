@@ -2,10 +2,10 @@
     <img src="img/cat-mouse_Transparent.gif">
 </div>
 <div class="dashboard-header">
-    <h2>Watchlist of {{loggedUser.username}} <span class="dropdown"><a
+    <h2>Watchlist of {{userToShow.username}} <span class="dropdown"><a
             class="dropdown-toggle glyphicon glyphicon-plus" data-toggle="dropdown"
             role="button" aria-haspopup="true"
-            aria-expanded="true"></a>
+            aria-expanded="true" ng-if="isViewingMyWatchlist()"></a>
     <ul class="dropdown-menu watchlist-dropdown">
         <li><label>Name</label> <input class="watchlist-name" type="text" value="name" ng-model="watchlistName"
                                        ng-init="watchlistName = ''">
@@ -19,7 +19,7 @@
 <div class="dashboard-container" ng-repeat="watchlist in userWatchlist">
     <div id="featured" class="col-md-10">
         <h2 class="watchlist-header">{{watchlist.name}}
-            <span class="dropdown"><a
+            <span class="dropdown" ng-if="isViewingMyWatchlist()"><a
                     class="dropdown-toggle glyphicon glyphicon-pencil" data-toggle="dropdown"
                     role="button" aria-haspopup="true"
                     aria-expanded="true"></a>
@@ -34,9 +34,9 @@
                 </li>
             </ul>
             </span>
-            <a
-                    class="glyphicon glyphicon-remove" role="button"
-                    ng-click="removeWatchlist(watchlist)"></a></h2>
+            <a ng-if="isViewingMyWatchlist()"
+               class="glyphicon glyphicon-remove" role="button"
+               ng-click="removeWatchlist(watchlist)"></a></h2>
 
         <div class="dashboard-container" ng-if="watchlist.movies.length == 0">
             <h4 id="empty-watchlist-message">This watchlist is feeling lonely!</h4>

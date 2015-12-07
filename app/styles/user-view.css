@@ -1,6 +1,7 @@
 #user-email{
     color: lightgray;
     padding: 15px;
+    overflow: hidden;
 }
 #user-no-follower{
     margin-left: 2.5%;
@@ -37,4 +38,16 @@
 }
 .user-header{
     margin-bottom: 5%;
+}
+.dashboard-header.avatar{
+    border: 1px solid lightgray;
+    float: left;
+    border-radius: 5px;
+}
+.avatar{
+    width: 250px;
+    height: 250px;
+}
+.following-header, .following-email{
+    color: lightgray;
 }
