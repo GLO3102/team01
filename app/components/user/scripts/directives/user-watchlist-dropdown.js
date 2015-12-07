@@ -2,7 +2,8 @@
  * Created by Antoine on 2015-10-15.
  */
 angular.module('watchlistDropdown', []).directive('userWatchlistDropdown', function () {
-        var controller = ['$scope', 'loginService','watchlistResource', 'userWatchlistContainer',
+        var controller = ['$scope', 'loginService', 'watchlistResource', 'userWatchlistContainer',
+
             function ($scope, loginService, watchlistResource, userWatchlistContainer) {
 
                 $scope.loggedUser = loginService.getUser();

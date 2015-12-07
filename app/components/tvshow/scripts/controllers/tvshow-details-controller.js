@@ -37,11 +37,8 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
             $scope.isLoading = true;
             tvShowResource.get({id: tvShowId}, function onSuccess(data) {
                 selectedTvShow = data.results[0];
-
                 $scope.tvshow = selectedTvShow;
-                $scope.isLoading = false;
             }, function onError(data) {
-
             });
         } else {
             $scope.tvshow = selectedTvShow;
@@ -59,15 +56,17 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
         }
         else {
             $scope.tvshowEpisodes = selectTvshowEpisodes;
+            $scope.isLoading = false;
         }
         $scope.initComment();
     };
     $scope.initTvShowDetail();
 
-    $scope.toggleModal = function(item) {
+    $scope.toggleModal = function (item) {
+        console.log(item);
         $scope.episodeModal = item;
-        $scope.episodeModal.length =msToTime(item.trackTimeMillis);
-        $scope.modalShown = !$scope.modalShown;
+        $scope.episodeModal.length = msToTime(item.trackTimeMillis);
+        $scope.modalShown = true;
     };
 
     function msToTime(s) {

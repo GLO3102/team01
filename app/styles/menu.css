@@ -33,7 +33,7 @@ input[type=search]{
 }
 
 input[type=search]:focus {
-    width: 130px;
+    width: 150px;
     padding-left: 32px;
     color: #000000;
     background-color: #ffffff;
@@ -45,6 +45,34 @@ input[type=search]:focus {
 input[type=search]:hover {
     background-color: #ffffff;
 }
+
+#searchOptionSelect {
+    align-self: center;
+    text-align: center;
+    background: transparent;
+    width: 75px;
+    padding: 5px;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 34px;
+    -webkit-appearance: none;
+}
+
+#searchOptionSelect:focus {
+    outline: none;
+    background: rgba(206, 208, 203, 0.3);
+}
+
+#searchOptionSelect:hover {
+    outline: none;
+    background: rgba(206, 208, 203, 0.3);
+}
+
+.search-filters {
+    margin-top: 25px;
+}
+
 .container-fluid{
     background-color: black;
 }

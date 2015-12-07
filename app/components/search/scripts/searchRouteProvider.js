@@ -1,4 +1,4 @@
-tvShowApp.
+searchApp.
     config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider
@@ -6,5 +6,5 @@ tvShowApp.
             {
                 templateUrl: "components/search/views/search.html",
                 controller: "search-dashboard-controller"
-            })
+            });
     }]);

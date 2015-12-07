@@ -18,7 +18,8 @@ var homeApp = angular.module('uMovie', [
     "uMovie.login",
     "uMovie.register",
     "validation.match",
-    "satellizer"
+    "satellizer",
+    "youtube-embed"
 ]).config(function (ngModalDefaultsProvider) {
     ngModalDefaultsProvider.set('closeButtonHtml', '<a class="glyphicon glyphicon-remove pull-right"></a>');
 }).run(['$rootScope', '$cookies', '$location', function ($rootScope, $cookies, $location) {
