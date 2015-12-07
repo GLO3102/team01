@@ -1,15 +1,39 @@
-tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource) {
+tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource, tvshowCommentResource) {
 
     var tvShowId = $routeParams.tvshowId;
     $scope.isLoading = false;
     $scope.modalShown = false;
+
+    $scope.initComment = function () {
+        tvshowCommentResource.get({id: tvShowId}, function onSuccess(data) {
+        $scope.tvshowsComments = data;
+        }, function onError(data) {
+
+        });
+    };
+
+    $scope.clearTextField = function () {
+        document.getElementById("tvshowCommentTextArea").value = '';
+    }
+
+    $scope.addComment = function (userComment) {
+        var comment = {
+            "username": $rootScope.user.username,
+            "email": $rootScope.user.email,
+            "id": tvShowId,
+            "content": userComment,
+        }
+        tvshowCommentResource.post(comment, function onSuccess(data) {
+            $scope.initComment();
+            $scope.clearTextField();
+        }, function onError(data) {});
+    }
 
     $scope.initTvShowDetail = function () {
         var selectedTvShow = tvshowSelectionService.getSelectedTvShow();
         var selectTvshowEpisodes = tvshowSelectionService.getSelectedTvShowEpisodes();
 
         if (Object.keys(selectedTvShow).length === 0) {
-          console.log(tvShowId);
             $scope.isLoading = true;
             tvShowResource.get({id: tvShowId}, function onSuccess(data) {
                 selectedTvShow = data.results[0];
@@ -20,7 +44,6 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
 
             });
         } else {
-          console.log("coucou tête de gland! :D")
             $scope.tvshow = selectedTvShow;
         }
 
@@ -37,11 +60,11 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
         else {
             $scope.tvshowEpisodes = selectTvshowEpisodes;
         }
+        $scope.initComment();
     };
     $scope.initTvShowDetail();
 
     $scope.toggleModal = function(item) {
-        console.log(item);
         $scope.episodeModal = item;
         $scope.episodeModal.length =msToTime(item.trackTimeMillis);
         $scope.modalShown = !$scope.modalShown;

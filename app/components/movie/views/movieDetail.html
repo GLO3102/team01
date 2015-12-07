@@ -38,39 +38,21 @@
                 </div>
             </div>
 
-            <script>
-            var scrolled=0;
-
-            $("#downClick").on("click" ,function(){
-
-              if($("#inner-comment").scrollTop() + $("#inner-comment").innerHeight()>=$("#inner-comment")[0].scrollHeight)
-              {
-
-              }else{
-                scrolled = scrolled+200;
-              }
-
-        				$("#inner-comment").animate({
-        				        scrollTop:  scrolled
-        				   });
-      			});
-
-            $("#upClick").on("click" ,function(){
-              scrolled = scrolled - 200;
-              if(scrolled <= 0){
-                scrolled = 0;
-              }
-
-        				$("#inner-comment").animate({
-  				            scrollTop:  scrolled
-        				   });
-        			});
-
-            </script>
-
             <div class="row">
                 <div class="col-md-8">
-
+                  <script>
+                  var scrolled=0;
+                  $("#downClick").on("click" ,function(){
+                    if($("#inner-comment").scrollTop() + $("#inner-comment").innerHeight()>=$("#inner-comment")[0].scrollHeight)
+                    {}else{scrolled = scrolled+200;}
+                      $("#inner-comment").animate({scrollTop:  scrolled});
+                  });
+                  $("#upClick").on("click" ,function(){
+                    scrolled = scrolled - 200;
+                    if(scrolled <= 0){scrolled = 0;}
+                      $("#inner-comment").animate({scrollTop:  scrolled});
+                    });
+                  </script>
                     <form name="commentForm" role="form" ng-submit="addComment(userComment)">
                       <h3> Wanna make a comment?! </h3>
                       <div class="form-group">
