@@ -13,17 +13,13 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
 
     $scope.userResult = [];
 
-    $scope.movieGenre = [];
+    $scope.movieGenre = ["All"];
 
-    $scope.movieFilter = {};
+    $scope.movieFilterSelected = $scope.movieGenre[0];
 
-    $scope.movieFilterSelected = {};
+    $scope.tvshowGenre = ["All"];
 
-    $scope.tvshowGenre = [];
-
-    $scope.tvshowFilter = {};
-
-    $scope.tvshowFilterSelected = {};
+    $scope.tvshowFilterSelected =  $scope.tvshowGenre[0];
 
     $scope.isMovieLoading = false;
 
@@ -91,7 +87,6 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             }
             $scope.uniqueMovieGenre();
             $scope.isMovieLoading = false;
-            console.log($scope.movieResult);
         });
     };
 
@@ -105,7 +100,6 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             }
             $scope.uniqueTvshowGenre();
             $scope.isTvShowLoading = false;
-            console.log($scope.tvshowResult);
         });
     };
 
@@ -134,11 +128,10 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
     };
 
     $scope.selectActor = function(actor){
-        tvshowSelectionService.setSelectedTvShow(actor);
+        actorSelectionService.setSelectedActor(actor);
     };
 
     $scope.uniqueMovieGenre = function(){
-        $scope.movieGenre.push("All");
         $.each($scope.movieResult, function(index, value){
             if($.inArray(value.genre, $scope.movieGenre) === -1) {
                 $scope.movieGenre.push(value.genre);
@@ -147,7 +140,6 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
     };
 
     $scope.uniqueTvshowGenre = function(){
-        $scope.tvshowGenre.push("All");
         $.each($scope.tvshowResult, function(index, value){
             if($.inArray(value.genre, $scope.tvshowGenre) === -1) {
                 $scope.tvshowGenre.push(value.genre);
@@ -155,29 +147,50 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
         });
     };
 
-
-    $scope.setMovieFilter = function() {
-        if ($scope.movieFilterSelected === "All"){
-            $scope.movieFilter = {};
-        }
-        else {
-            $scope.movieFilter = $scope.movieFilterSelected;
-        }
+    $scope.uniqueActor = function(){
+        var uniqueActor = [];
+        $.each($scope.actorResult, function(index, value){
+            if($.inArray(value.actor.artistName, uniqueActor.actor.artistName) === -1) {
+                $scope.uniqueActor.push(value.actor);
+            }
+        });
+        $scope.actorResult = uniqueActor;
     };
 
-    $scope.setTvshowFilter = function() {
-        if ($scope.tvshowFilterSelected === "All"){
-            $scope.tvshowFilter = {};
+    $scope.filterMovieResult = function (genre) {
+        var filterResult = [];
+
+        if (genre === "All"){
+            filterResult = $scope.movieResult
         }
-        else {
-            $scope.tvshowFilter = $scope.tvshowFilterSelected;
+        else{
+            for (var i=0; i < $scope.movieResult.length; i++){
+                if ($scope.movieResult[i].genre === genre){
+                    filterResult.push($scope.movieResult[i])
+                }
+            }
         }
+        return filterResult
+    };
+
+    $scope.filterTvshowResult = function (genre) {
+        var filterResult = [];
+
+        if (genre === "All"){
+            filterResult = $scope.tvshowResult
+        }
+        else{
+            for (var i=0; i < $scope.tvshowResult.length; i++){
+                if ($scope.tvshowResult[i].genre === genre){
+                    filterResult.push($scope.tvshowResult[i])
+                }
+            }
+        }
+        return filterResult
     };
 
     $scope.query = searchService.getQuery();
     $scope.queryType.push(searchService.getQueryType());
-
-    console.log($scope.queryType);
 
     if ($scope.query !== ""){
         $scope.initSearch();

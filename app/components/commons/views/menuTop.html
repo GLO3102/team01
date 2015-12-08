@@ -1,5 +1,5 @@
 <div>
-<nav class="navbar navbar-inverse navbar-static-top umovie-font" role="navigation">
+<nav class="navbar navbar-inverse navbar-static-top umovie-font" role="navigation" ng-controller="menu-controller">
     <div class="container-fluid">
 
         <div class="navbar-header">
@@ -34,7 +34,6 @@
             <ul class="nav navbar-nav">
                 <li><a href="#/movies">Movies</a></li>
                 <li><a href="#/tvshows">Tv-Shows</a></li>
-                <li><a href="#/actor">Actors</a></li>
             </ul>
 
             <div class="navbar-text pull-right" ng-if="userIsLogged">
@@ -57,27 +56,3 @@
     </div>
 </nav>
 </div>
-<script>
-    $(document).ready(function($){
-
-        $('.search-filters').hide();
-
-        $('.search-input').on('click', function(){
-            if ($('.search-filters').is(":hidden")){
-                $('.search-filters').slideToggle();
-            }
-        });
-
-        $('.search-input').focusout(function(){
-            if ($('.search-filters').is(":visible")){
-                $('.search-filters').slideToggle();
-            }
-        });
-
-        $('.search-filters input[type="radio"]').on('click', function(){
-            var placeholder_text = $(this).closest('label').text();
-            $('.search-input').attr('placeholder', 'search: '+placeholder_text).focus();
-        });
-
-    });
-</script>

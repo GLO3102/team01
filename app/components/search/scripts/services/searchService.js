@@ -2,7 +2,7 @@ searchApp.service("searchService", function ($rootScope) {
 
     var query = "";
 
-    var queryType = "";
+    var queryType = "All";
 
     var getQuery = function () {
         return query;

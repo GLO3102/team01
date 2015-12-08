@@ -8,6 +8,7 @@ var homeApp = angular.module('uMovie', [
     'oblador.lazytube',
     'uMovie.user',
     'slickCarousel',
+    'uMovie.menu',
     'uMovie.movie',
     'uMovie.tvshow',
     'uMovie.actor',

@@ -1,15 +1,15 @@
 <div class="panel">
-    <div class="ajax-loading" ng-show="isLoading">
+    <div class="ajax-loading" ng-if="isLoading">
         <img src="img/cat-mouse_Transparent.gif">
     </div>
-    <div class="panel-body" ng-hide="isLoading">
+    <div class="panel-body" ng-if="!isLoading">
 
         <div class="detail header">
             <h2>{{actor.artistName}}
                 <a href="{{actor.artistLinkUrl}}">
                     <img ng-src="img/itunes.svg"/>
                 </a>
-                <a class="glyphicon glyphicon-remove pull-right" href="" ng-click="dismiss()"/>
+                <back-button></back-button>
             </h2>
 
             <h3>
