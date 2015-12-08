@@ -71,5 +71,17 @@
     </div>
     <div ng-show="showUserResult">
         <h2 class="col-md-12 title">Users results...</h2>
+        <div class="col-md-1"></div>
+        <div id="users" class="col-md-10" >
+            <slick settings="slickFeatureConfig" data="userResult" center-mode="true">
+                <div class="overlay-image" image-overlay ng-repeat="result in userResult">
+                    <div class="overlay" id="overlay-users-{{$index}}">
+                        <h2>{{result.name}}</h2>
+                        <a href="#/users/{{result.id}}" class="btn dashboard-detail">Follow</a>
+                    </div>
+                    <img ng-src="{{result.picture|imageSize:300:300 }}">
+                </div>
+            </slick>
+        </div>
     </div>
 </div>

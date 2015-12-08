@@ -1,5 +1,5 @@
 
-searchApp.controller("search-dashboard-controller", function ($scope, movieSelectionService, tvshowSelectionService, searchService, searchResource, actorSelectionService, actorResource) {
+searchApp.controller("search-dashboard-controller", function ($scope, movieSelectionService, tvshowSelectionService, searchService, searchResource) {
 
     $scope.query = "";
 
@@ -13,7 +13,7 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
 
     $scope.actorDetailsResult = [];
 
-    $scope.userResult = [];
+    $scope.userResult = {};
 
     $scope.movieGenre = ["All"];
 
@@ -50,7 +50,7 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
         $scope.movieSearch();
         $scope.tvshowSearch();
         $scope.actorSearch();
-        //$scope.userSearch();
+        $scope.userSearch();
     };
 
     $scope.search = function (queryType) {
@@ -75,7 +75,7 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
         }
         if (queryType === "Users"){
             $scope.showUserResult = true;
-            //$scope.userSearch();
+            $scope.userSearch();
         }
     };
 
@@ -113,32 +113,16 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             for (var i = 0; i < successData.resultCount; i++) {
                 $scope.actorResult.push({"actor": successData.results[i]});
             }
-            //$scope.actorDetailSearch();
             $scope.isActorLoading = false;
         });
     };
-
-    /*
-    $scope.actorDetailSearch = function () {
-        for (var i = 0; i < $scope.actorResult.length; i++){
-            actorResource.get({
-                "id": $scope.actorResult[i].actor.artistId
-            }, function onSuccess(successData) {
-                $scope.actorDetailsResult.push({"actor": successData.results});
-            })
-        }
-        $scope.isActorLoading = false;
-    };
-    */
 
     $scope.userSearch = function () {
         $scope.isUserLoading = true;
         searchResource.searchUser({
             "q": $scope.query
         }, function onSuccess(successData) {
-            for (var i = 0; i < successData.resultCount; i++) {
-                $scope.userResult.push({"user": successData.results[i]});
-            }
+            $scope.userResult = successData;
             $scope.isUserLoading = false;
             console.log($scope.userResult);
         });
@@ -149,10 +133,6 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
     };
 
     $scope.selectTvshow = function(tvshow){
-        tvshowSelectionService.setSelectedTvShow(tvshow);
-    };
-
-    $scope.selectActor = function(tvshow){
         tvshowSelectionService.setSelectedTvShow(tvshow);
     };
 
@@ -172,7 +152,6 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             }
         });
     };
-
 
     $scope.filterMovieResult = function (genre) {
         var filterResult = [];

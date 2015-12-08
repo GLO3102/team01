@@ -33,7 +33,7 @@ searchApp.factory('searchResource', ["$resource", function ($resource) {
 
         searchUser: {
             method: "GET",
-            isArray: false,
+            isArray: true,
             params: {
                 type: "users",
                 q: "query"
