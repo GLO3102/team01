@@ -11,9 +11,6 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
         userResource.get({userId: userID}, function onSuccess(data) {
             $scope.user = data;
             $scope.isLoading = false;
-            //$("slick").slick($scope.$eval( $scope.slickFeatureConfig));
-            //console.log($(".user-info"))
-            //$(".user-info").hide();
         });
     };
 
@@ -24,6 +21,7 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
         userFollowingResource.follow({}, {id: user.id}, function onSuccess() {
             var loggedUser = loginService.getUser();
             loggedUser.following.push(user);
+            console.log(loggedUser);
             loginService.SetUser(loggedUser);
             $scope.isLoading = false;
         });
