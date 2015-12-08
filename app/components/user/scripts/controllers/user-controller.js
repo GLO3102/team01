@@ -6,15 +6,18 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
 
     $scope.isLoading = true;
     var fetchUserInformation = function () {
+
         $scope.isLoading = true;
         userResource.get({userId: userID}, function onSuccess(data) {
             $scope.user = data;
             $scope.isLoading = false;
-
+            //$("slick").slick($scope.$eval( $scope.slickFeatureConfig));
+            //console.log($(".user-info"))
+            //$(".user-info").hide();
         });
     };
 
-    setTimeout(fetchUserInformation(), 1000);
+    setTimeout(fetchUserInformation, 200);
 
     $scope.addFriend = function (user) {
         $scope.isLoading = true;
@@ -27,7 +30,7 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
     };
     $scope.isNotLoggedUser = function (user) {
         var loggedUser = loginService.getUser();
-        console.log(loggedUser);
+
         if (user.id === loggedUser.id) {
             return false;
         }
@@ -55,7 +58,7 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
             else {
                 var loggedUser = loginService.getUser();
                 loggedUser.following = data.following;
-                console.log(loggedUser);
+
                 loginService.SetUser(loggedUser);
                 $scope.isLoading = false;
             }
@@ -67,9 +70,9 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
     };
 
     $scope.slickFeatureConfig = {
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
-        infinite: true,
+        infinite: false,
         autoplay: true,
         autoplaySpeed: 5000,
         variableWidth: true,
@@ -78,7 +81,7 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 1,
                     slidesToScroll: 1
                 }
             },

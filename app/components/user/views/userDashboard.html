@@ -24,9 +24,9 @@
     </div>
     <div id="user-with-follower" ng-if="user.following.length > 0">
         <h2 class="following-header">Following</h2>
-        <slick settings="slickFeatureConfig" data="user.following" center-mode="true">
-            <div class="overlay-image" image-overlay ng-repeat="followingUser in user.following">
-                <div class="overlay" id="overlay-feature-{{$index}}">
+        <slick settings="slickFeatureConfig" data="user.following"  init-onload=false  center-mode="true" >
+            <div class="overlay-image" image-overlay ng-repeat="followingUser in user.following" >
+                <div class="overlay " id="overlay-feature-{{$index}}" >
                     <h2><a href="#/users/{{followingUser.id}}">{{followingUser.username}}</a>
                         <a class="glyphicon glyphicon-remove pull-right" href=""
                            ng-click="deleteFriend(followingUser)"></a>
