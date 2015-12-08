@@ -15,7 +15,7 @@
 
                 <form ng-submit="initSearch()" name="search-form">
                     <div class="search-input-group">
-                        <input class="search-input" type="search" name="query" ng-model="query" autocomplete="off" placeholder="Search...">
+                        <input class="search-input typeahead" id="search-bar" data-provide="typeahead" type="search" name="query" ng-model="query" autocomplete="off" placeholder="Search...">
                         <div class="search-filters">
                             <label><input type="radio" name="filter" ng-model="queryType" value="All" checked="checked"/>All</label>
                             <label><input type="radio" name="filter" ng-model="queryType" value="Movies"/>Movies</label>
