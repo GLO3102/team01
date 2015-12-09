@@ -38,9 +38,9 @@
                     <a href="#/users/{{followingUser.id}}/watchlist" class="btn dashboard-detail">See my friend
                         watchlists</a>
                 </div>
-                <img ng-if="!followingUser.picture" class="avatar" gravatar-src="'{{followingUser.email}}'"
+                <img ng-if="!followingUser.picture" class="user-avatar" gravatar-src="'{{followingUser.email}}'"
                      gravatar-size="300">
-                <img ng-if="followingUser.picture" class="avatar"
+                <img ng-if="followingUser.picture" class="user-avatar"
                      ng-src="{{followingUser.picture | imageSize:300:300}}">
             </div>
         </slick>
