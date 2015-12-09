@@ -6,6 +6,17 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
     $scope.isLoading = false;
     $scope.isLoadingSimilar = false;
 
+    var callSimilar = function(ombdID){
+        $scope.isLoadingSimilar = true;
+
+        movieSimilarResource.get({id: ombdID}, function onSuccess(data) {
+            $scope.similarMovies = data;
+            $scope.isLoadingSimilar = false;
+        }, function onError(data) {
+        });
+    };
+
+
     $scope.initComment = function () {
         movieCommentResource.get({id: movieId}, function onSuccess(data) {
             $scope.movieComments = data;
@@ -27,22 +38,16 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
                 selectedMovie = data.results[0];
                 $scope.movie = selectedMovie;
                 $scope.isLoading = false;
+                callSimilar(selectedMovie.omdbId);
             }, function onError(data) {
 
             });
 
         } else {
             $scope.movie = selectedMovie;
-
+            callSimilar(selectedMovie.omdbId);
         }
-        $scope.isLoadingSimilar = true;
-        var ombdID = selectedMovie.omdbId;
 
-        movieSimilarResource.get({id: ombdID}, function onSuccess(data) {
-            $scope.similarMovies = data;
-            $scope.isLoadingSimilar = false;
-        }, function onError(data) {
-        });
         $scope.initComment();
 
     };
@@ -74,5 +79,39 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
 
     $scope.initMovieDetail();
 
+    $scope.slickFeatureConfig = {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        variableWidth: true,
+        centerMode: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    centerMode: false
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    centerMode: false
+                }
+            }]
+    };
 
 });
