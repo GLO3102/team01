@@ -11,4 +11,4 @@ var corsOptions = {
 
 app.use(express.static(__dirname+ '/app'));
 app.use(cors(corsOptions));
-var server = app.listen(process.env.PORT || 80);
+var server = app.listen(process.env.PORT || 8080);
