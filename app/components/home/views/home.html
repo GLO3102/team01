@@ -1,7 +1,7 @@
 <div class="ajax-loading" ng-show="isMovieLoading && isTvShowLoading">
     <img src="img/cat-mouse_Transparent.gif">
 </div>
-<div class="dashboard-container" ng-if="isMovieLoading || isTvShowLoading">
+<div class="dashboard-container" ng-if="!isMovieLoading && !isTvShowLoading">
     <div id="featured">
         <h2 class="col-md-12 title">Popular Movies</h2>
         <div class="col-md-1"></div>
