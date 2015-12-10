@@ -6,12 +6,12 @@ var morgan = require('morgan'); // formerly express.logger
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.set('views', path.join(__dirname, 'components'));
 app.engine('html', require('ejs').renderFile);
 
 // express/connect middleware
-app.use(favicon(__dirname + '/app/favicon.ico'));
+app.use(favicon(__dirname + '/app/img/favicon.ico'));
 app.use(morgan('dev'));
 
 // serve up static assets
