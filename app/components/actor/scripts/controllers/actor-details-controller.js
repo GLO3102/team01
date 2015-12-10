@@ -6,6 +6,7 @@ actorApp.controller("actor-detail-controller", function ($scope, $cookies, actor
 
     var movies = {};
     $scope.isLoading = false;
+    $scope.isMovieLoading = false;
 
     $scope.initActor = function(){
             $scope.isLoading = true;
@@ -21,10 +22,12 @@ actorApp.controller("actor-detail-controller", function ($scope, $cookies, actor
 
     $scope.initMovieActor = function(){
       var selectedMovies = {};
+        $scope.isMovieLoading = true;
       if(Object.keys(selectedMovies).length === 0){
         actorMovieResource.get({id:actorId}, function onSuccess(data){
           selectedMovies = data.results;
           $scope.movies = selectedMovies;
+          $scope.isMovieLoading = false;
         }, function error(data){
 
         });

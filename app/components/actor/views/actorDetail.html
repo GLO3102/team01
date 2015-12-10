@@ -33,7 +33,7 @@
         </div>
 
 
-        <div class="row detail section actor" id="featured">
+        <div class="row detail section actor" id="featured" ng-if="!isMovieLoading">
             <h3>Movie</h3>
             <slick settings="slickFeatureConfig" data="movies">
                 <div ng-repeat="movie in movies" class="slick-slide overlay-image" image-overlay>
