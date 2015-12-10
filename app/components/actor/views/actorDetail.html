@@ -1,8 +1,8 @@
 <div class="panel">
-    <div class="ajax-loading" ng-show="isLoading">
+    <div class="ajax-loading" ng-if="isLoading">
         <img src="img/cat-mouse_Transparent.gif">
     </div>
-    <div class="panel-body" ng-hide="isLoading">
+    <div class="panel-body" ng-if="!isLoading">
 
         <div class="detail header">
             <h2>{{actor.artistName}}
@@ -25,7 +25,7 @@
             <div class="col-md-8 detail-inline">
                 <h3>Biography</h3>
                 <h5> Birthday: {{actor.birthday}}</h5>
-                <h5 ng-show="actor.deathday"> Deathday: {{actor.deathday}}</h5>
+                <h5 ng-if="actor.deathday"> Deathday: {{actor.deathday}}</h5>
                 <h5> Place of birth: {{actor.placeOfBirth}}</h5>
 
                 <p ng-bind-html="actor.biography|htmlToPlaintext|unicode"></p>

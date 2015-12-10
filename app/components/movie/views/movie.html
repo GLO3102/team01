@@ -1,9 +1,9 @@
-<div class="ajax-loading" ng-show="isLoading">
+<div class="ajax-loading" ng-if="isLoading">
     <img src="img/cat-mouse_Transparent.gif">
 </div>
 
 <div class="dashboard-container" ng-repeat="movieByGenre in moviesByGenre">
-    <div id="featured" class="col-md-10" ng-show=movieByGenre.movies.length>
+    <div id="featured" class="col-md-10" ng-if=movieByGenre.movies.length>
         <h2>{{movieByGenre.genre}}</h2>
         <slick settings="slickFeatureConfig" data="movieByGenre.movies" center-mode="true">
             <div class="overlay-image" image-overlay ng-repeat="movie in movieByGenre.movies">

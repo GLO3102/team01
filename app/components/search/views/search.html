@@ -1,9 +1,9 @@
-<div class="ajax-loading" ng-show="isMovieLoading || isTvShowLoading || isActorLoading || isUserLoading">
+<div class="ajax-loading" ng-if="isMovieLoading || isTvShowLoading || isActorLoading || isUserLoading">
     <img src="img/cat-mouse_Transparent.gif">
 </div>
-<div class="dashboard-container" ng-hide="isMovieLoading || isTvShowLoading || isActorLoading || isUserLoading">
+<div class="dashboard-container" ng-if="!isMovieLoading && !isTvShowLoading && !isActorLoading && !isUserLoading">
     <h1 class="detail ng-scope">Search results for : "{{query}}"</h1>
-    <div id="movies" ng-show="showMovieResult">
+    <div id="movies" ng-if="showMovieResult">
         <h2 class="col-md-12 title">Movie results...</h2>
         <div class="col-md-12">
             <label class="title" for="movieSelected">Filter by genre :</label>
@@ -31,7 +31,7 @@
             </slick>
         </div>
     </div>
-    <div ng-show="showTvShowResult">
+    <div ng-if="showTvShowResult">
         <h2 class="col-md-12 title">Tvshow results...</h2>
         <div class="col-md-12">
             <label class="title" for="tvshoweSelected">Filter by genre :</label>
@@ -55,10 +55,10 @@
             </slick>
         </div>
     </div>
-    <div ng-show="showActorResult">
+    <div ng-if="showActorResult">
         <h2 class="col-md-12 title">Actors results...</h2>
     </div>
-    <div ng-show="showUserResult">
+    <div ng-if="showUserResult">
         <h2 class="col-md-12 title">Users results...</h2>
     </div>
 </div>
