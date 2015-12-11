@@ -5,9 +5,6 @@ homeApp.
             templateUrl: "components/login/views/login.html",
             controller: "login-controller"
         })
-            .when('/', {
-            templateUrl: "components/login/views/login.html",
-            controller: "login-controller"
-        }).otherwise({redirectTo: '/home'});
+            .otherwise({redirectTo: '/home'});
 
     }]);
