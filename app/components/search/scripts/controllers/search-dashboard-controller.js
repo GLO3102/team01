@@ -1,5 +1,5 @@
 
-searchApp.controller("search-dashboard-controller", function ($scope, movieSelectionService, tvshowSelectionService, actorSelectionService, searchService, searchResource) {
+searchApp.controller("search-dashboard-controller", function ($scope, movieSelectionService, tvshowSelectionService, searchService, searchResource) {
 
     $scope.query = "";
 
@@ -11,19 +11,17 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
 
     $scope.actorResult = [];
 
-    $scope.userResult = [];
+    $scope.actorDetailsResult = [];
 
-    $scope.movieGenre = [];
+    $scope.userResult = {};
 
-    $scope.movieFilter = {};
+    $scope.movieGenre = ["All"];
 
-    $scope.movieFilterSelected = {};
+    $scope.movieFilterSelected = $scope.movieGenre[0];
 
-    $scope.tvshowGenre = [];
+    $scope.tvshowGenre = ["All"];
 
-    $scope.tvshowFilter = {};
-
-    $scope.tvshowFilterSelected = {};
+    $scope.tvshowFilterSelected =  $scope.tvshowGenre[0];
 
     $scope.isMovieLoading = false;
 
@@ -41,6 +39,8 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
 
     $scope.showUserResult = false;
 
+    $scope.isErrorOnPage = false;
+
 
     $scope.initSearch = function () {
         for (var i = 0; i < $scope.queryType.length; i++) {
@@ -52,7 +52,7 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
         $scope.movieSearch();
         $scope.tvshowSearch();
         $scope.actorSearch();
-        //$scope.userSearch();
+        $scope.userSearch();
     };
 
     $scope.search = function (queryType) {
@@ -91,7 +91,9 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             }
             $scope.uniqueMovieGenre();
             $scope.isMovieLoading = false;
-            console.log($scope.movieResult);
+        }, function onError(error) {
+            $scope.isMovieLoading = false;
+            $scope.isErrorOnPage = true;
         });
     };
 
@@ -105,7 +107,9 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             }
             $scope.uniqueTvshowGenre();
             $scope.isTvShowLoading = false;
-            console.log($scope.tvshowResult);
+        }, function onError(error) {
+            $scope.isTvShowLoading = false;
+            $scope.isErrorOnPage = true;
         });
     };
 
@@ -118,11 +122,25 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
                 $scope.actorResult.push({"actor": successData.results[i]});
             }
             $scope.isActorLoading = false;
-            console.log($scope.actorResult);
-        });
+        }, function onError(error) {
+                $scope.isActorLoading = false;
+                $scope.isErrorOnPage = true;
+            }
+        );
     };
 
     $scope.userSearch = function () {
+        $scope.isUserLoading = true;
+        searchResource.searchUser({
+            "q": $scope.query
+        }, function onSuccess(successData) {
+            $scope.userResult = successData;
+            $scope.isUserLoading = false;
+        }, function onError(error) {
+            $scope.isUserLoading = false;
+            $scope.isErrorOnPage = true;
+
+        });
     };
 
     $scope.selectMovie = function(movie){
@@ -133,12 +151,8 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
         tvshowSelectionService.setSelectedTvShow(tvshow);
     };
 
-    $scope.selectActor = function(actor){
-        tvshowSelectionService.setSelectedTvShow(actor);
-    };
 
     $scope.uniqueMovieGenre = function(){
-        $scope.movieGenre.push("All");
         $.each($scope.movieResult, function(index, value){
             if($.inArray(value.genre, $scope.movieGenre) === -1) {
                 $scope.movieGenre.push(value.genre);
@@ -147,7 +161,6 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
     };
 
     $scope.uniqueTvshowGenre = function(){
-        $scope.tvshowGenre.push("All");
         $.each($scope.tvshowResult, function(index, value){
             if($.inArray(value.genre, $scope.tvshowGenre) === -1) {
                 $scope.tvshowGenre.push(value.genre);
@@ -155,29 +168,40 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
         });
     };
 
+    $scope.filterMovieResult = function (genre) {
+        var filterResult = [];
 
-    $scope.setMovieFilter = function() {
-        if ($scope.movieFilterSelected === "All"){
-            $scope.movieFilter = {};
+        if (genre === "All"){
+            filterResult = $scope.movieResult
         }
-        else {
-            $scope.movieFilter = $scope.movieFilterSelected;
+        else{
+            for (var i=0; i < $scope.movieResult.length; i++){
+                if ($scope.movieResult[i].genre === genre){
+                    filterResult.push($scope.movieResult[i])
+                }
+            }
         }
+        return filterResult
     };
 
-    $scope.setTvshowFilter = function() {
-        if ($scope.tvshowFilterSelected === "All"){
-            $scope.tvshowFilter = {};
+    $scope.filterTvshowResult = function (genre) {
+        var filterResult = [];
+
+        if (genre === "All"){
+            filterResult = $scope.tvshowResult
         }
-        else {
-            $scope.tvshowFilter = $scope.tvshowFilterSelected;
+        else{
+            for (var i=0; i < $scope.tvshowResult.length; i++){
+                if ($scope.tvshowResult[i].genre === genre){
+                    filterResult.push($scope.tvshowResult[i])
+                }
+            }
         }
+        return filterResult
     };
 
     $scope.query = searchService.getQuery();
     $scope.queryType.push(searchService.getQueryType());
-
-    console.log($scope.queryType);
 
     if ($scope.query !== ""){
         $scope.initSearch();

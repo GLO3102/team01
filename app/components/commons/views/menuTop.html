@@ -1,5 +1,5 @@
 <div>
-<nav class="navbar navbar-inverse navbar-static-top umovie-font" role="navigation">
+<nav class="navbar navbar-inverse navbar-static-top umovie-font" role="navigation" ng-controller="menu-controller">
     <div class="container-fluid">
 
         <div class="navbar-header">
@@ -11,11 +11,11 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <div ng-if="user && user != {}" class="navbar-text" ng-controller="search-controller" >
+            <div ng-show="user && user != {}" class="navbar-text" ng-controller="search-controller" >
 
                 <form ng-submit="initSearch()" name="search-form">
                     <div class="search-input-group">
-                        <input class="search-input" type="search" name="query" ng-model="query" autocomplete="off" placeholder="Search...">
+                        <input class="search-input" id="search-bar" data-provide="typeahead" type="search" name="query" ng-model="query" autocomplete="off" placeholder="Search...">
                         <div class="search-filters">
                             <label><input type="radio" name="filter" ng-model="queryType" value="All" checked="checked"/>All</label>
                             <label><input type="radio" name="filter" ng-model="queryType" value="Movies"/>Movies</label>
@@ -34,7 +34,6 @@
             <ul class="nav navbar-nav">
                 <li><a href="#/movies">Movies</a></li>
                 <li><a href="#/tvshows">Tv-Shows</a></li>
-                <li><a href="#/actor">Actors</a></li>
             </ul>
 
             <div class="navbar-text pull-right" ng-if="userIsLogged">
@@ -57,27 +56,3 @@
     </div>
 </nav>
 </div>
-<script>
-    $(document).ready(function($){
-
-        $('.search-filters').hide();
-
-        $('.search-input').on('click', function(){
-            if ($('.search-filters').is(":hidden")){
-                $('.search-filters').slideToggle();
-            }
-        });
-
-        $('.search-input').focusout(function(){
-            if ($('.search-filters').is(":visible")){
-                $('.search-filters').slideToggle();
-            }
-        });
-
-        $('.search-filters input[type="radio"]').on('click', function(){
-            var placeholder_text = $(this).closest('label').text();
-            $('.search-input').attr('placeholder', 'search: '+placeholder_text).focus();
-        });
-
-    });
-</script>

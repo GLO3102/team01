@@ -1,6 +1,6 @@
 
 searchApp.factory('searchResource', ["$resource", function ($resource) {
-    return $resource("https://umovie.herokuapp.com/unsecure/search/:type/:seasons", {}, {
+    return $resource("https://umovie-team01.herokuapp.com/search/:type/:seasons", {}, {
 
         searchMovie: {
             method: "GET",
@@ -26,6 +26,16 @@ searchApp.factory('searchResource', ["$resource", function ($resource) {
             isArray: false,
             params: {
                 type: "actors",
+                limit : "10",
+                q: "query"
+            }
+        },
+
+        searchUser: {
+            method: "GET",
+            isArray: true,
+            params: {
+                type: "users",
                 q: "query"
             }
         }

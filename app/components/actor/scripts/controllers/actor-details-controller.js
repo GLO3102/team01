@@ -1,7 +1,5 @@
-/**
- * Created by pascal on 18/09/15.
- */
-actorApp.controller("actor-detail-controller", function ($scope, $cookies, $location, actorSelectionService, $routeParams, actorResource, actorMovieResource) {
+
+actorApp.controller("actor-detail-controller", function ($scope, $cookies, $location, $routeParams, actorResource, actorMovieResource) {
     var actorId = $routeParams.actorId;
 
     var movies = {};
@@ -17,25 +15,23 @@ actorApp.controller("actor-detail-controller", function ($scope, $cookies, $loca
             }, function error(data){
               $location.path("/lost");
             });
-
+        
     };
 
     $scope.initMovieActor = function(){
-      var selectedMovies = {};
-        $scope.isMovieLoading = true;
-      if(Object.keys(selectedMovies).length === 0){
-        actorMovieResource.get({id:actorId}, function onSuccess(data){
-          selectedMovies = data.results;
-          $scope.movies = selectedMovies;
-          $scope.isMovieLoading = false;
-        }, function error(data){
-          $scope.movieError = true;
-          $scope.isMovieLoading = false;
-        });
-      }else{
-        $scope.movies = selectedMovies;
-      }
-    }
+          var selectedMovies = {};
+          if(Object.keys(selectedMovies).length === 0){
+            actorMovieResource.get({id:actorId}, function onSuccess(data){
+              selectedMovies = data.results;
+              $scope.movies = selectedMovies;
+            }, function error(data){
+                $scope.movieError = true;
+                $scope.isMovieLoading = false;
+            });
+          } else{
+            $scope.movies = selectedMovies;
+          }
+    };
 
     $scope.initActor();
     $scope.initMovieActor();
