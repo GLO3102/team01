@@ -31,9 +31,8 @@ menuApp.controller("menu-controller", function () {
                     url: "https://itunes.apple.com/search",
                     dataType: "jsonp",
                     data:{
-                        //entity: "movie,tvSeason,tvEpisode,movieArtist",
-                        //attribute: "actorTerm,titleTerm",
-                        //media: "movie,tvShow",
+                        entity: "movie,tvSeason",
+                        media: "movie,tvShow",
                         limit: "10",
                         term: query
                     },
