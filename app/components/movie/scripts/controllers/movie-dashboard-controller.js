@@ -78,7 +78,7 @@ movieApp.controller("movie-dashboard-controller",
             movieSelectionService.setSelectedMovie(selectedMovie);
         };
 
-        $scope.slickFeatureConfig = {
+       $scope.slickFeatureConfig = {
             slidesToShow: 3,
             slidesToScroll: 1,
             infinite: true,

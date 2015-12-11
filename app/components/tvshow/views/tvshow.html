@@ -2,7 +2,7 @@
     <img src="img/cat-mouse_Transparent.gif">
 </div>
 
-<div class="dashboard-container" ng-repeat="tvshowByGenre in tvshowsByGenre">
+<div class="dashboard-container" ng-repeat="tvshowByGenre in tvshowsByGenre" ng-if="!tvShowsError">
     <div id="featured" class="col-md-10" ng-if=tvshowByGenre.tvshows.length>
         <h2>{{tvshowByGenre.genre}}</h2>
         <slick settings="slickFeatureConfig" data="tvshowByGenre.tvshows" center-mode="true">
@@ -20,4 +20,7 @@
             </div>
         </slick>
     </div>
+</div>
+<div class="dashboard-container" ng-if="tvShowsError">
+    <h2>We're so so sorry. An occured and cat died somewhere. Our best monkeys are working on it!</h2>
 </div>

@@ -1,8 +1,11 @@
 <div class="panel">
-    <div class="ajax-loading" ng-if="isLoading">
+    <div class="ajax-loading" ng-show="isLoading">
         <img src="img/cat-mouse_Transparent.gif">
     </div>
-    <div class="panel-body" ng-hide="isLoading">
+    <div ng-show="tvShowError">
+        <h2>We're so so sorry. An occured and cat died somewhere. Our best monkeys are working on it!</h2>
+    </div>
+    <div class="panel-body" ng-hide="isLoading || tvShowError">
         <div class="detail header">
             <h2>{{tvshow.collectionName}} <a href="{{tvshow.collectionViewUrl}}">
                 <img ng-src="img/itunes.svg"/>
@@ -36,7 +39,10 @@
                     </h4>
                 </div>
             </div>
-            <div class="row detail section">
+            <div class="row detail section episodes" ng-show="episodesError">
+                <h2>We're so so sorry. An occured and cat died somewhere. The episodes list in unavailable!</h2>
+            </div>
+            <div class="row detail section" ng-hide="episodesError">
                 <div class="detail episodes">
                     <h3>Episodes :</h3><h4>Search: <input style="color: #404040;" class="search-input"
                                                           ng-model="searchText"></h4>
@@ -115,6 +121,33 @@
                   <button id="downClick" class="invisible-button"><img src="/img/down-arrow.png" height="35"/></button>
                 </div>
 
+            </div>
+            <div class="row detail section" ng-show="similarTvshowError">
+                <h2>We're so so sorry. An occured and cat died somewhere. Our best monkeys are working on it - no similar tv shows for now!</h2>
+            </div>
+            <div class="row detail section" ng-if="similarTvshows.length && !similarTvshowError">
+                <h3>You might also like</h3>
+                <div class="ajax-loading" ng-if="isLoadingSimilar">
+                    <img src="img/cat-mouse_Transparent.gif">
+                </div>
+                <div ng-if="!isLoadingSimilar">
+                    <slick settings="slickFeatureConfig" data="similarMovies" center-mode="true">
+                        <div class="overlay-image" image-overlay ng-repeat="tvshow in similarTvshows">
+                            <div class="overlay" id="overlay-feature-{{$index}}">
+                                <a href="#/movies/{{tvshow.collectionId}}" ng-click="selectMovie(tvshow)">
+                                    <h2>{{tvshow.trackName || movie.collectionName}} </h2></a>
+                                <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
+                                        src="{{tvshow.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
+                                        enablejsapi="1"></iframe>
+                                <p ng-bind-html="tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
+                                <a href="#/movies/{{tvshow.collectionId}}" class="btn dashboard-detail"
+                                   ng-click="selectTvshow(tvshow)">View
+                                    details</a>
+                            </div>
+                            <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
+                        </div>
+                    </slick>
+                </div>
             </div>
             <modal-dialog id="titleModal" show='modalShown' width='90%' height='90%'
                           dialog-title="Episode {{episodeModal.trackNumber}} : {{episodeModal.trackName |cut:true:70:'...'}}">

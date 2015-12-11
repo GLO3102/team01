@@ -7,6 +7,8 @@ tvShowApp.controller("tvshow-dashboard-controller",
 
         $scope.isLoading = false;
 
+        $scope.tvShowsError = false;
+
         $scope.tvshowsByGenre = [];
 
         $scope.didScroll=false;
@@ -24,8 +26,10 @@ tvShowApp.controller("tvshow-dashboard-controller",
                     loadTvshowByGenre($scope.genres);
 
                     $scope.isLoading = false;
+                }, function onError(errorData){
+                    $scope.tvShowsError = true;
+                    $scope.isLoading = false;
                 });
-
             }
             else {
                 loadTvshowByGenre($scope.genres);
@@ -48,7 +52,10 @@ tvShowApp.controller("tvshow-dashboard-controller",
                 if ($scope.tvshowsByGenre.length<listOfGenres.length) {
                     $scope.tvshowsByGenre.push({"tvshows": data.results, "genre":  listOfGenres[i].name});
                 }
-            });
+            }, function onError(errorData){
+                    $scope.tvShowsError = true;
+                }
+            );
         };
 
         $(window).scroll(function () {
