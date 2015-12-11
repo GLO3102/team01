@@ -1,7 +1,7 @@
 /**
  * Created by Antoine on 2015-09-14.
  */
-movieApp.controller("movie-detail-controller", function ($scope, movieSelectionService, $routeParams, movieResource, movieSimilarResource, movieCommentResource, $rootScope) {
+movieApp.controller("movie-detail-controller", function ($scope, movieSelectionService, $routeParams, movieResource, movieSimilarResource, movieCommentResource, $rootScope, $location) {
     var movieId = $routeParams.movieId;
     $scope.isLoading = false;
     $scope.isLoadingSimilar = false;
