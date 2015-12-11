@@ -24,32 +24,15 @@ homeApp.factory('404HttpResponseInterceptor',['$q','$location','$rootScope', fun
         return response || $q.when(response);
     },
     responseError: function(rejection) {
-        if(rejection.status === 500){
+        if(rejection.status >= 500){
           console.log("Response error 500", rejection);
           $location.path('/problem');
         }
         return $q.reject(rejection);
     }
   }
-}]).factory('503HttpResponseInterceptor',['$q','$location','$rootScope', function($q, $location, $rootScope){
-        return {
-            response: function(response){
-                if(response.status === 503){
-                    console.log("Response 503")
-                }
-                return response || $q.when(response);
-            },
-            responseError: function(rejection) {
-                if(rejection.status === 503){
-                    console.log("Response error 503", rejection);
-                    $location.path('/problem');
-                }
-                return $q.reject(rejection);
-            }
-        }
-    }])
+}])
 .config(['$httpProvider',function($httpProvider) {
     $httpProvider.interceptors.push('404HttpResponseInterceptor');
     $httpProvider.interceptors.push('500HttpResponseInterceptor');
-        $httpProvider.interceptors.push('503HttpResponseInterceptor');
 }]);
