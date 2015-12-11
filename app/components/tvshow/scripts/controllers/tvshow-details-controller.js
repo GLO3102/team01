@@ -1,8 +1,29 @@
-tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource, $sce) {
+tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource,tvShowSimilarResource, $sce) {
 
     var tvShowId = $routeParams.tvshowId;
     $scope.isLoading = false;
     $scope.modalShown = false;
+
+    $scope.tvShowError = false;
+    $scope.episodesError = false;
+    $scope.similarTvshowError = false;
+
+    var callSimilar = function(ombdID){
+        $scope.isLoadingSimilar = true;
+
+        tvShowSimilarResource.get({id: ombdID}, function onSuccess(data) {
+            $scope.similarTvshows = data;
+            $scope.isLoadingSimilar = false;
+        }, function onError(data) {
+            $scope.similarTvshowError = true;
+            $scope.isLoadingSimilar = false;
+        });
+    };
+
+    $scope.selectTvshow = function (selectedTvShow) {
+        movieSelectionService.setSelectedTvShow(selectedTvShow);
+        $scope.initTvShowDetail();
+    };
 
     $scope.initTvShowDetail = function () {
         var selectedTvShow = tvshowSelectionService.getSelectedTvShow();
@@ -13,10 +34,15 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
             tvShowResource.get({id: tvShowId}, function onSuccess(data) {
                 selectedTvShow = data.results[0];
                 $scope.tvshow = selectedTvShow;
-            }, function onError(data) {
+                console.log(selectedTvShow.omdbId);
+                callSimilar(selectedTvShow.omdbId);
+            }, function onError(errorData){
+                $scope.tvShowError = true;
+                $scope.isLoading = false;
             });
         } else {
             $scope.tvshow = selectedTvShow;
+            callSimilar(selectedTvShow.omdbId);
         }
 
         if (Object.keys(selectTvshowEpisodes).length === 0) {
@@ -25,8 +51,9 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
 
                 $scope.tvshowEpisodes = selectTvshowEpisodes;
                 $scope.isLoading = false;
-            }, function onError(data) {
-
+            }, function onError(errorData){
+                $scope.episodesError = true;
+                $scope.isLoading = false;
             });
         }
         else {
@@ -54,4 +81,38 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
         return hrs + 'h ' + mins + 'min ' + secs + 'sec';
     }
 
+    $scope.slickFeatureConfig = {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        variableWidth: true,
+        centerMode: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    centerMode: false
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    centerMode: false
+                }
+            }]
+    };
 });

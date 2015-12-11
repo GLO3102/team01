@@ -1,5 +1,5 @@
 <div class="panel">
-    <div class="ajax-loading" ng-if="isLoading">
+    <div class="ajax-loading" ng-show="isLoading">
         <img src="img/cat-mouse_Transparent.gif">
     </div>
     <div class="panel-body" ng-hide="isLoading">
@@ -64,6 +64,30 @@
                     No comments
                     <div ng-repeat="comment in tvshow.comments">
                     </div>
+                </div>
+            </div>
+            <div class="row detail section" ng-if="similarTvshows.length">
+                <h3>You might also like</h3>
+                <div class="ajax-loading" ng-if="isLoadingSimilar">
+                    <img src="img/cat-mouse_Transparent.gif">
+                </div>
+                <div ng-if="!isLoadingSimilar">
+                    <slick settings="slickFeatureConfig" data="similarMovies" center-mode="true">
+                        <div class="overlay-image" image-overlay ng-repeat="tvshow in similarTvshows">
+                            <div class="overlay" id="overlay-feature-{{$index}}">
+                                <a href="#/movies/{{tvshow.collectionId}}" ng-click="selectMovie(tvshow)">
+                                    <h2>{{tvshow.trackName || movie.collectionName}} </h2></a>
+                                <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
+                                        src="{{tvshow.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
+                                        enablejsapi="1"></iframe>
+                                <p ng-bind-html="tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
+                                <a href="#/movies/{{tvshow.collectionId}}" class="btn dashboard-detail"
+                                   ng-click="selectTvshow(tvshow)">View
+                                    details</a>
+                            </div>
+                            <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
+                        </div>
+                    </slick>
                 </div>
             </div>
             <modal-dialog id="titleModal" show='modalShown' width='90%' height='90%'
