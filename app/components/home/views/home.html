@@ -4,19 +4,22 @@
 <div class="dashboard-container" ng-if="!isMovieLoading && !isTvShowLoading">
     <div id="featured">
         <h2 class="col-md-12 title">Popular Movies</h2>
+
         <div class="col-md-1"></div>
         <div class="col-md-10" ng-if="!isMovieLoading && !movieError">
             <slick settings="slickMoviesConfig" data="movies" center-mode="true">
                 <div ng-repeat="movie in movies" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-feature-{{$index}}">
-                        <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
+                        <user-watchlist-dropdown class="pull-right" movie="{{movie}}"></user-watchlist-dropdown>
                         <h2>{{movie.trackName || movie.collectionName}}</h2>
-                        <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
+                        <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%"
+                                src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
+                                enablejsapi="1"></iframe>
                         <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
                         <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail" ng-click="selectMovie(movie)">View
                             details</a>
                     </div>
-                    <img ng-src="{{movie.artworkUrl100 | imageSize:500:300}}" >
+                    <img ng-src="{{movie.artworkUrl100 | imageSize:500:300}}">
                 </div>
             </slick>
         </div>
@@ -26,15 +29,18 @@
     </div>
     <div>
         <h2 class="col-md-12 title">Popular TvShows</h2>
+
         <div class="col-md-1"></div>
         <div id="watchlist" class="col-md-10" ng-if="!isTvShowLoading && !tvError">
-            <slick settings="slickTvShowsConfig" data="tvshows" >
+            <slick settings="slickTvShowsConfig" data="tvshows">
                 <div ng-repeat="tvshow in tvshows" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-movie-{{$index}}">
                         <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
                         <h2>{{tvshow.collectionName}}</h2>
+
                         <p ng-bind-html="tvshow.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
-                        <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail" ng-click="selectTvshow(tvshow)">View
+                        <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail"
+                           ng-click="selectTvshow(tvshow)">View
                             details</a>
                     </div>
                     <img ng-src="{{tvshow.artworkUrl100 | imageSize:300:300}}">
