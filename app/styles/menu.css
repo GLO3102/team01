@@ -73,6 +73,10 @@ input[type=search]:hover {
     margin-top: 25px;
 }
 
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+
 .container-fluid{
     background-color: black;
 }
