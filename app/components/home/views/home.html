@@ -9,6 +9,7 @@
             <slick settings="slickMoviesConfig" data="movies" center-mode="true">
                 <div ng-repeat="movie in movies" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-feature-{{$index}}">
+                        <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
                         <h2>{{movie.trackName || movie.collectionName}}</h2>
                         <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
                         <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
@@ -30,6 +31,7 @@
             <slick settings="slickTvShowsConfig" data="tvshows" >
                 <div ng-repeat="tvshow in tvshows" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-movie-{{$index}}">
+                        <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
                         <h2>{{tvshow.collectionName}}</h2>
                         <p ng-bind-html="tvshow.longDescription|cut:true:300:'...'|htmlToPlaintext|unicode"></p>
                         <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail" ng-click="selectTvshow(tvshow)">View
