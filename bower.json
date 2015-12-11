@@ -20,11 +20,13 @@
     "angular-youtube-mb": "~1.1.0",
     "bootstrap": "~3.3.5",
     "bootstrap-popover-x": "~1.4.1",
+    "devbridge-autocomplete": "~1.2.24",
     "html5-boilerplate": "~5.2.0",
     "ngModal": "~1.2.0",
     "satellizer": "~0.13.1"
   },
   "resolutions": {
-    "angular": "1.4.5"
+    "angular": "1.4.5",
+    "jquery": "~2.1.4"
   }
 }
