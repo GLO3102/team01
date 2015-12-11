@@ -63,11 +63,11 @@
                       </div>
                     </form>
 
-                    <div class="button-fixed btn-comment" ng-if="movieComments.length">
+                    <div class="button-fixed btn-comment" ng-show="movieComments.length">
                         <button id="upClick" class="invisible-button"><img src="/img/up-arrow.png" height="35"/></button>
                     </div>
 
-                    <div id="inner-comment" style="overflow-y:hidden; overflow-x:hidden;">
+                    <div id="inner-comment">
                       <div ng-repeat="comment in movieComments">
                         <div class="row top-buffer-30">
                             <div class="col-md-1">
@@ -91,7 +91,7 @@
                       </div>
                     </div>
 
-                    <div class="button-fixed btn-comment" ng-if="movieComments.length">
+                    <div class="button-fixed btn-comment" ng-show="movieComments.length">
                         <button id="downClick" class="invisible-button"><img src="/img/down-arrow.png" height="35"/></button>
                     </div>
 
