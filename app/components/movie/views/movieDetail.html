@@ -14,9 +14,8 @@
         <div class="detail body">
             <div class="row detail section">
                 <div class="detail preview">
-                    <youtube-preview movie="{{movie.trackName}}"></youtube-preview>
-                    <iframe ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless
-                            frameborder="0" allowfullscreen autoplay="true"></iframe>
+                    <youtube-video class="embed-responsive-item" id="videoSeason"
+                                   video-url="movie.previewUrl"></youtube-video>
                 </div>
                 <div class="detail description">
                     <ul>

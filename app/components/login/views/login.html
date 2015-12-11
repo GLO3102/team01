@@ -1,5 +1,5 @@
-<div class="col-md-6 col-md-offset-3 panel-body" ng-controller="login-controller">
-    <div ng-if="!isLoading">
+<div class="col-md-6 col-md-offset-3 panel-body">
+    <div ng-show="!isLoading">
         <div>
             <h2>Login</h2>
 
@@ -24,9 +24,12 @@
             </form>
 
             <h2 class="error-message">Or</h2>
+
             <div class="row error-message">
-                <button ng-click="authenticate('facebook')" class="invisible-button"><img src="/img/sign-in-facebook.png" width="250px"></button>
-                <button ng-click="authenticate('google')" class="invisible-button"><img src="/img/google-login-register.png" width="250px"></button>
+                <button ng-click="authenticate('facebook')" class="invisible-button"><img
+                        src="/img/sign-in-facebook.png" width="250px"></button>
+                <button ng-click="authenticate('google')" class="invisible-button"><img
+                        src="/img/google-login-register.png" width="250px"></button>
             </div>
         </div>
         <div class="ajax-loading" ng-show="isLoading">
