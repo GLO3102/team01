@@ -1,4 +1,4 @@
-tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource, tvShowSimilarResource, tvshowCommentResource) {
+tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource, tvShowSimilarResource, tvshowCommentResource, $location) {
 
     var tvShowId = $routeParams.tvshowId;
     $scope.isLoading = false;
@@ -8,7 +8,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
     $scope.episodesError = false;
     $scope.similarTvshowError = false;
 
-    var callSimilar = function(ombdID){
+    var callSimilar = function (ombdID) {
         $scope.isLoadingSimilar = true;
 
         tvShowSimilarResource.get({id: ombdID}, function onSuccess(data) {
@@ -26,7 +26,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
     };
     $scope.initComment = function () {
         tvshowCommentResource.get({id: tvShowId}, function onSuccess(data) {
-        $scope.tvshowsComments = data;
+            $scope.tvshowsComments = data;
         }, function onError(data) {
 
         });
@@ -46,7 +46,8 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
         tvshowCommentResource.post(comment, function onSuccess(data) {
             $scope.initComment();
             $scope.clearTextField();
-        }, function onError(data) {});
+        }, function onError(data) {
+        });
     }
 
     $scope.initTvShowDetail = function () {
@@ -56,11 +57,16 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
         if (Object.keys(selectedTvShow).length === 0) {
             $scope.isLoading = true;
             tvShowResource.get({id: tvShowId}, function onSuccess(data) {
-                selectedTvShow = data.results[0];
-                $scope.tvshow = selectedTvShow;
-                console.log(selectedTvShow.omdbId);
-                callSimilar(selectedTvShow.omdbId);
-            }, function onError(errorData){
+                if (data.resultCount) {
+                    selectedTvShow = data.results[0];
+                    $scope.tvshow = selectedTvShow;
+                    console.log(selectedTvShow.omdbId);
+                    callSimilar(selectedTvShow.omdbId);
+                }
+                else {
+                    $location.path("/lost");
+                }
+            }, function onError(errorData) {
                 $scope.tvShowError = true;
                 $scope.isLoading = false;
             });
@@ -71,11 +77,15 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
 
         if (Object.keys(selectTvshowEpisodes).length === 0) {
             tvShowEpisodesResource.get({id: tvShowId}, function onSuccess(data) {
-                selectTvshowEpisodes = data;
+                if (data.resultCount) {
+                    selectTvshowEpisodes = data;
 
-                $scope.tvshowEpisodes = selectTvshowEpisodes;
-                $scope.isLoading = false;
-            }, function onError(errorData){
+                    $scope.tvshowEpisodes = selectTvshowEpisodes;
+                    $scope.isLoading = false;
+                } else {
+                    $location.path("/lost");
+                }
+            }, function onError(errorData) {
                 $scope.episodesError = true;
                 $scope.isLoading = false;
             });
