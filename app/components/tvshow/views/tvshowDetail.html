@@ -89,11 +89,11 @@
                   </div>
                 </form>
 
-                <div class="button-fixed" style="text-align: center;">
+                <div class="button-fixed btn-comment" ng-if="tvshowsComments.length">
                   <button id="upClick" class="invisible-button"><img src="/img/up-arrow.png" height="35"/></button>
                 </div>
 
-                <div id="inner-comment" style="overflow-y:hidden; overflow-x:hidden;">
+                <div id="inner-comment" >
                   <div ng-repeat="comment in tvshowsComments">
                     <div class="row top-buffer-30">
                         <div class="col-md-1">
@@ -117,7 +117,7 @@
                   </div>
                 </div>
 
-                <div class="button-fixed" style="text-align: center; display:block; width:100%;">
+                <div class="button-fixed btn-comment" ng-if="tvshowsComments.length">
                   <button id="downClick" class="invisible-button"><img src="/img/down-arrow.png" height="35"/></button>
                 </div>
 
@@ -131,20 +131,17 @@
                     <img src="img/cat-mouse_Transparent.gif">
                 </div>
                 <div ng-if="!isLoadingSimilar">
-                    <slick settings="slickFeatureConfig" data="similarMovies" center-mode="true">
+                    <slick settings="slickFeatureConfig" data="similarTvshows" center-mode="true">
                         <div class="overlay-image" image-overlay ng-repeat="tvshow in similarTvshows">
                             <div class="overlay" id="overlay-feature-{{$index}}">
-                                <a href="#/movies/{{tvshow.collectionId}}" ng-click="selectMovie(tvshow)">
-                                    <h2>{{tvshow.trackName || movie.collectionName}} </h2></a>
-                                <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
-                                        src="{{tvshow.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
-                                        enablejsapi="1"></iframe>
+                                <a href="#/tvshows/{{tvshow.collectionId}}" ng-click="selectTvShow(tvshow)">
+                                    <h2>{{tvshow.trackName || tvshow.collectionName}} </h2></a>
                                 <p ng-bind-html="tvshow.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
-                                <a href="#/movies/{{tvshow.collectionId}}" class="btn dashboard-detail"
+                                <a href="#/tvshows/{{tvshow.collectionId}}" class="btn dashboard-detail"
                                    ng-click="selectTvshow(tvshow)">View
                                     details</a>
                             </div>
-                            <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
+                            <img ng-src="{{tvshow.artworkUrl100 | imageSize:300:300}}">
                         </div>
                     </slick>
                 </div>
