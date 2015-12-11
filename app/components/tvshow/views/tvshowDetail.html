@@ -66,11 +66,61 @@
                 </div>
             </div>
             <div class="row detail section">
-                <div class="detail comments-episodes">
-                    No comments
-                    <div ng-repeat="comment in tvshow.comments">
+              <script>
+              var scrolled=0;
+              $("#downClick").on("click" ,function(){
+                if($("#inner-comment").scrollTop() + $("#inner-comment").innerHeight()>=$("#inner-comment")[0].scrollHeight)
+                {}else{scrolled = scrolled+200;}
+                  $("#inner-comment").animate({scrollTop:  scrolled});
+              });
+              $("#upClick").on("click" ,function(){
+                scrolled = scrolled - 200;
+                if(scrolled <= 0){scrolled = 0;}
+                  $("#inner-comment").animate({scrollTop:  scrolled});
+                });
+              </script>
+                <form name="commentForm" role="form" ng-submit="addComment(userComment)">
+                  <h3> Wanna make a comment?! </h3>
+                  <div class="form-group">
+                    <textarea rows="5" class="form-control resize-none" id="tvshowCommentTextArea" type="text" name="message" required ng-model="userComment"/>
+                    <div class="top-buffer-15">
+                      <button type="submit" ng-disabled="commentForm.$invalid" class="btn btn-primary">Add comment</button>
                     </div>
+                  </div>
+                </form>
+
+                <div class="button-fixed" style="text-align: center;">
+                  <button id="upClick" class="invisible-button"><img src="/img/up-arrow.png" height="35"/></button>
                 </div>
+
+                <div id="inner-comment" style="overflow-y:hidden; overflow-x:hidden;">
+                  <div ng-repeat="comment in tvshowsComments">
+                    <div class="row top-buffer-30">
+                        <div class="col-md-1">
+                          <div display="block">
+                              <img ng-if="!comment.author_picture" class="avatar" gravatar-src="'{{comment.author_email}}'" gravatar-size="75">
+                              <img ng-if="comment.author_picture" class="avatar" ng-src="{{comment.author_picture}}" size="75">
+                            <h4>{{comment.author}}</h4>
+                          </div>
+                        </div>
+                        <div class="col-md-11">
+                          <div class="dialogbox">
+                            <div class="body">
+                              <span class="tip tip-left"></span>
+                              <div class="message">
+                                <span>{{comment.content}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="button-fixed" style="text-align: center; display:block; width:100%;">
+                  <button id="downClick" class="invisible-button"><img src="/img/down-arrow.png" height="35"/></button>
+                </div>
+
             </div>
             <div class="row detail section" ng-show="similarTvshowError">
                 <h2>We're so so sorry. An occured and cat died somewhere. Our best monkeys are working on it - no similar tv shows for now!</h2>

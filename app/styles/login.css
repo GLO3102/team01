@@ -1,5 +1,5 @@
 input:required:invalid, input:focus:invalid {
-  background-image: url(/img/required.png);
+  background-image: url(/img/required-icon.png);
   background-position: right;
   background-repeat: no-repeat;
 }

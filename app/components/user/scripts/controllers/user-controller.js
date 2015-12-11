@@ -4,42 +4,42 @@
 userApp.controller("user-controller", function ($scope, $routeParams, userResource, loginService, userFollowingResource) {
     var userID = $routeParams.userId;
 
-    $scope.isLoading = false;
-
+    $scope.isLoading = true;
     var fetchUserInformation = function () {
+
         $scope.isLoading = true;
         userResource.get({userId: userID}, function onSuccess(data) {
             $scope.user = data;
             $scope.isLoading = false;
-        })
+        });
     };
 
-    fetchUserInformation();
-    $scope.removeFriend = function (user) {
+    setTimeout(fetchUserInformation, 200);
 
-    }
     $scope.addFriend = function (user) {
         $scope.isLoading = true;
         userFollowingResource.follow({}, {id: user.id}, function onSuccess() {
             var loggedUser = loginService.getUser();
             loggedUser.following.push(user);
+            console.log(loggedUser);
             loginService.SetUser(loggedUser);
             $scope.isLoading = false;
         });
     };
     $scope.isNotLoggedUser = function (user) {
         var loggedUser = loginService.getUser();
-        if (user.username === loggedUser.username) {
+
+        if (user.id === loggedUser.id) {
             return false;
         }
         return true;
     };
-    $scope.isInFollowing = function(user){
+    $scope.isInFollowing = function (user) {
         var loggedUser = loginService.getUser();
 
         if ($scope.isNotLoggedUser(user)) {
-            for(var i = 0; i < loggedUser.following.length; i++){
-                if(loggedUser.following[i]._id === user.id){
+            for (var i = 0; i < loggedUser.following.length; i++) {
+                if (loggedUser.following[i].id === user.id) {
                     return true;
                 }
             }
@@ -49,11 +49,18 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
     $scope.deleteFriend = function (user) {
         $scope.isLoading = true;
         userFollowingResource.deleteFriend({id: user.id}, function onSuccess(data) {
-            if(!$scope.isNotLoggedUser($scope.user)){
+            if (!$scope.isNotLoggedUser($scope.user)) {
+                console.log(data);
                 $scope.user = data;
             }
-            loginService.SetUser(data);
-            $scope.isLoading = false;
+            else {
+                var loggedUser = loginService.getUser();
+                loggedUser.following = data.following;
+
+                loginService.SetUser(loggedUser);
+                $scope.isLoading = false;
+            }
+
         }, function onError(data) {
             $scope.isLoading = false;
         });
@@ -61,7 +68,7 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
     };
 
     $scope.slickFeatureConfig = {
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
         infinite: false,
         autoplay: true,
@@ -72,7 +79,7 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 1,
                     slidesToScroll: 1
                 }
             },

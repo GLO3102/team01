@@ -1,7 +1,7 @@
 <div class="col-md-6 col-md-offset-3 panel-body">
   <div ng-if="notRegister">
     <h2>Register</h2>
-    <form name="form" role="form" ng-submit="register()">
+    <form name="form" role="form" ng-submit="register()" autocomplete="off">
         <div class="form-group">
             <label>First name</label>
             <input type="text" name="firstName" ng-model="firstName" class="form-control"/>
@@ -40,27 +40,10 @@
             <span class="help-block" ng-if="form.confirmPassword.$error.match && !form.confirmPassword.$pristine">Password do not match!</span>
         </div>
 
-        <h2>
-            Preferred Genres
-        </h2>
-        <div ng-repeat="genre in genres">
-                <input
-                        type="checkbox"
-                        name="selectedGenre[]"
-                        value="{{genre}}"
-                        ng-model="genre.selected"
-                        >
-            <label>{{genre.name}}
-            </label>
-        </div>
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid || form.confirmEmail.$error.match" class="btn btn-primary">Register</button>
             <a href="#/login" class="btn btn-link">Cancel</a>
         </div>
     </form>
-  </div>
-  <div ng-if="!notRegister">
-    <p> Click below for login </p>
-      <a href="#/login" class="btn btn-link">login</a>
   </div>
 </div>

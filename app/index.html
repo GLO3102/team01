@@ -5,6 +5,9 @@
     <title>UMovie</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon"
+          type="image/png"
+          href="img/favicon.ico">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
@@ -62,6 +65,7 @@
     <script src="components/commons/scripts/filters/image-size-filter.js"></script>
     <script src="components/commons/scripts/services/array-shuffler.js"></script>
     <script src="components/commons/scripts/directives/back-navigation-button.js"></script>
+    <script src="components/commons/scripts/error/errorInterceptor.js"></script>
 
     <!--Home -->
     <script src="components/home/scripts/controller/home-controller.js"></script>
@@ -87,16 +91,17 @@
     <script src="components/movie/scripts/services/movieSearchResource.js"></script>
     <script src="components/movie/scripts/services/movieCommentResource.js"></script>
     <script src="components/movie/scripts/services/movieSimilarResource.js"></script>
-
     <script src="components/movie/scripts/services/movieSelectionService.js"></script>
     <script src="components/movie/scripts/controllers/movie-dashboard-controller.js"></script>
     <script src="components/movie/scripts/controllers/movie-details-controller.js"></script>
+
     <!-- Tv show component-->
     <script src="components/tvshow/scripts/tvshow.js"></script>
     <script src="components/tvshow/scripts/services/tvShowResource.js"></script>
     <script src="components/tvshow/scripts/services/tvShowEpisodesResource.js"></script>
     <script src="components/tvshow/scripts/services/tvShowSearchResource.js"></script>
     <script src="components/tvshow/scripts/services/tvShowSimilarResource.js"></script>
+    <script src="components/tvshow/scripts/services/tvshowCommentResource.js"></script>
     <script src="components/tvshow/scripts/services/tvshowSelectionService.js"></script>
     <script src="components/tvshow/scripts/controllers/tvshow-dashboard-controller.js"></script>
     <script src="components/tvshow/scripts/controllers/tvshow-details-controller.js"></script>
@@ -139,10 +144,10 @@
     <script src="components/home/scripts/homeRouteProvider.js"></script>
     <script src="components/movie/scripts/movieRouteProvider.js"></script>
     <script src="components/tvshow/scripts/tvshowsRouteProvider.js"></script>
-
     <script src="components/about/scripts/about-route-provider.js"></script>
     <script src="components/login/scripts/loginRouteProvider.js"></script>
     <script src="components/register/scripts/registerRouteProvider.js"></script>
+    <script src="components/commons/scripts/error/errorRouteProvider.js"></script>
 
 
 </div>

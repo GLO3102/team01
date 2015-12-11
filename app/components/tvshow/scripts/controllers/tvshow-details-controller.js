@@ -1,4 +1,4 @@
-tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource,tvShowSimilarResource, $sce) {
+tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource, tvShowSimilarResource, tvshowCommentResource) {
 
     var tvShowId = $routeParams.tvshowId;
     $scope.isLoading = false;
@@ -24,6 +24,30 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
         movieSelectionService.setSelectedTvShow(selectedTvShow);
         $scope.initTvShowDetail();
     };
+    $scope.initComment = function () {
+        tvshowCommentResource.get({id: tvShowId}, function onSuccess(data) {
+        $scope.tvshowsComments = data;
+        }, function onError(data) {
+
+        });
+    };
+
+    $scope.clearTextField = function () {
+        document.getElementById("tvshowCommentTextArea").value = '';
+    }
+
+    $scope.addComment = function (userComment) {
+        var comment = {
+            "username": $rootScope.user.username,
+            "email": $rootScope.user.email,
+            "id": tvShowId,
+            "content": userComment,
+        }
+        tvshowCommentResource.post(comment, function onSuccess(data) {
+            $scope.initComment();
+            $scope.clearTextField();
+        }, function onError(data) {});
+    }
 
     $scope.initTvShowDetail = function () {
         var selectedTvShow = tvshowSelectionService.getSelectedTvShow();
@@ -60,6 +84,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, tvshowSelecti
             $scope.tvshowEpisodes = selectTvshowEpisodes;
             $scope.isLoading = false;
         }
+        $scope.initComment();
     };
     $scope.initTvShowDetail();
 

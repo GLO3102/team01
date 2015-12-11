@@ -1,7 +1,7 @@
 /**
  * Created by pascal on 18/09/15.
  */
-actorApp.controller("actor-detail-controller", function ($scope, $cookies, actorSelectionService, $routeParams, actorResource, actorMovieResource) {
+actorApp.controller("actor-detail-controller", function ($scope, $cookies, $location, actorSelectionService, $routeParams, actorResource, actorMovieResource) {
     var actorId = $routeParams.actorId;
 
     var movies = {};
@@ -15,7 +15,7 @@ actorApp.controller("actor-detail-controller", function ($scope, $cookies, actor
               $scope.actor = selectedActor;
               $scope.isLoading = false;
             }, function error(data){
-
+              $location.path("/lost");
             });
 
     };
@@ -29,7 +29,8 @@ actorApp.controller("actor-detail-controller", function ($scope, $cookies, actor
           $scope.movies = selectedMovies;
           $scope.isMovieLoading = false;
         }, function error(data){
-
+          $scope.movieError = true;
+          $scope.isMovieLoading = false;
         });
       }else{
         $scope.movies = selectedMovies;
