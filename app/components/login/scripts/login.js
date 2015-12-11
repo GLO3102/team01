@@ -5,7 +5,7 @@ var loginApp = angular.module('uMovie.login', ['ngRoute', 'ngCookies', 'satelliz
 
     $authProvider.facebook({
         url: 'http://umovie-team01.herokuapp.com/auth/facebook',
-        clientId: '1238688256158355'
+        clientId: '1242276809132833'
     });
 
     $authProvider.google({
