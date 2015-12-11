@@ -39,6 +39,8 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
 
     $scope.showUserResult = false;
 
+    $scope.isErrorOnPage = false;
+
 
     $scope.initSearch = function () {
         for (var i = 0; i < $scope.queryType.length; i++) {
@@ -89,6 +91,9 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             }
             $scope.uniqueMovieGenre();
             $scope.isMovieLoading = false;
+        }, function onError(error) {
+            $scope.isMovieLoading = false;
+            $scope.isErrorOnPage = true;
         });
     };
 
@@ -102,6 +107,9 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             }
             $scope.uniqueTvshowGenre();
             $scope.isTvShowLoading = false;
+        }, function onError(error) {
+            $scope.isTvShowLoading = false;
+            $scope.isErrorOnPage = true;
         });
     };
 
@@ -114,7 +122,11 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
                 $scope.actorResult.push({"actor": successData.results[i]});
             }
             $scope.isActorLoading = false;
-        });
+        }, function onError(error) {
+                $scope.isActorLoading = false;
+                $scope.isErrorOnPage = true;
+            }
+        );
     };
 
     $scope.userSearch = function () {
@@ -125,6 +137,10 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
             $scope.userResult = successData;
             $scope.isUserLoading = false;
             console.log($scope.userResult);
+        }, function onError(error) {
+            $scope.isUserLoading = false;
+            $scope.isErrorOnPage = true;
+
         });
     };
 

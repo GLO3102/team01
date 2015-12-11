@@ -21,7 +21,6 @@ menuApp.controller("menu-controller", function () {
             var placeholder_text = $(this).closest('label').text();
             $('.search-input').attr('placeholder', 'search: ' + placeholder_text).focus();
         });
-
     });
 
 
