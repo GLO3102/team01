@@ -102,7 +102,9 @@
 .detail.poster {
     display: block;
 }
-
+.poster-image{
+    width: 100%;
+}
 .detail.poster img {
     image-rendering: auto;
     width: 30%;
