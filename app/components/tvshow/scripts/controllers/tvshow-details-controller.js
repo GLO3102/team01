@@ -1,4 +1,4 @@
-tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource, tvShowSimilarResource, tvshowCommentResource, $location) {
+tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource, tvShowSimilarResource, tvshowCommentResource,tvShowVideoResource, $location) {
 
     var tvShowId = $routeParams.tvshowId;
     $scope.isLoading = false;
@@ -7,6 +7,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
     $scope.tvShowError = false;
     $scope.episodesError = false;
     $scope.similarTvshowError = false;
+    $scope.videoModalError = false;
 
     var callSimilar = function (ombdID) {
         $scope.isLoadingSimilar = true;
@@ -60,7 +61,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
                 if (data.resultCount) {
                     selectedTvShow = data.results[0];
                     $scope.tvshow = selectedTvShow;
-                    console.log(selectedTvShow.omdbId);
+                    console.log(selectedTvShow);
                     callSimilar(selectedTvShow.omdbId);
                 }
                 else {
@@ -72,6 +73,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
             });
         } else {
             $scope.tvshow = selectedTvShow;
+            console.log(selectedTvShow);
             callSimilar(selectedTvShow.omdbId);
         }
 
@@ -94,13 +96,25 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
             $scope.tvshowEpisodes = selectTvshowEpisodes;
             $scope.isLoading = false;
         }
+
         $scope.initComment();
     };
     $scope.initTvShowDetail();
 
     $scope.toggleModal = function (item) {
         console.log(item);
+        var regex = /\d$/;
+        var seasonNumberExtract = regex.exec(item.collectionName);
+        console.log("SEASON "+seasonNumberExtract + " OMBD "+ $scope.tvshow.omdbId + " TRACKNUM "+item.trackNumber);
         $scope.episodeModal = item;
+        tvShowVideoResource.get({id:$scope.tvshow.omdbId,seasonNumber: seasonNumberExtract, episodeNumber : item.trackNumber },
+            function onSuccess(data) {
+                console.log(data);
+                $scope.episodeModal.previewUrl = data.previewUrl;
+            }
+        , function onError(errorData) {
+            $scope.videoModalError = true;
+        });
         $scope.episodeModal.length = msToTime(item.trackTimeMillis);
         $scope.modalShown = true;
     };
