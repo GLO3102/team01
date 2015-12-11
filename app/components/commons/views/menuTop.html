@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <div ng-if="user && user != {}" class="navbar-text" ng-controller="search-controller" >
+            <div ng-show="user && user != {}" class="navbar-text" ng-controller="search-controller" >
 
                 <form ng-submit="initSearch()" name="search-form">
                     <div class="search-input-group">

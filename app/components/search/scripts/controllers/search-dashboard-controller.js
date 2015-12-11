@@ -136,7 +136,6 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
         }, function onSuccess(successData) {
             $scope.userResult = successData;
             $scope.isUserLoading = false;
-            console.log($scope.userResult);
         }, function onError(error) {
             $scope.isUserLoading = false;
             $scope.isErrorOnPage = true;
