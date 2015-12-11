@@ -7,7 +7,7 @@ homeApp.factory('404HttpResponseInterceptor',['$q','$location','$rootScope', fun
             return response || $q.when(response);
         },
         responseError: function(rejection) {
-            if(rejection.status === 404){
+            if(rejection.status === 404 && (rejection.config.url.indexOf('localhost') >=0 || rejection.config.url.indexOf('umovie-team01-client') >= 0)){
               console.log("Response error 404", rejection);
               $location.path('/lost');
             }
@@ -31,8 +31,25 @@ homeApp.factory('404HttpResponseInterceptor',['$q','$location','$rootScope', fun
         return $q.reject(rejection);
     }
   }
-}])
+}]).factory('503HttpResponseInterceptor',['$q','$location','$rootScope', function($q, $location, $rootScope){
+        return {
+            response: function(response){
+                if(response.status === 503){
+                    console.log("Response 503")
+                }
+                return response || $q.when(response);
+            },
+            responseError: function(rejection) {
+                if(rejection.status === 503){
+                    console.log("Response error 503", rejection);
+                    $location.path('/problem');
+                }
+                return $q.reject(rejection);
+            }
+        }
+    }])
 .config(['$httpProvider',function($httpProvider) {
     $httpProvider.interceptors.push('404HttpResponseInterceptor');
     $httpProvider.interceptors.push('500HttpResponseInterceptor');
+        $httpProvider.interceptors.push('503HttpResponseInterceptor');
 }]);
