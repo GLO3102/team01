@@ -7,7 +7,6 @@ tvShowApp.controller("tvshow-dashboard-controller",
 
         $scope.isLoading = false;
 
-        $scope.tvGenreListError = false;
         $scope.tvShowsError = false;
 
         $scope.tvshowsByGenre = [];
@@ -28,7 +27,7 @@ tvShowApp.controller("tvshow-dashboard-controller",
 
                     $scope.isLoading = false;
                 }, function onError(errorData){
-                    $scope.tvGenreListError = true;
+                    $scope.tvShowsError = true;
                     $scope.isLoading = false;
                 });
             }

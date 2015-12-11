@@ -9,6 +9,5 @@ tvShowApp.factory('tvShowEpisodesResource', ["$resource", function($resource){
                 id:"@id"
             }
         }
-
     });
 }]);

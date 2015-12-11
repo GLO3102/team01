@@ -2,7 +2,10 @@
     <div class="ajax-loading" ng-show="isLoading">
         <img src="img/cat-mouse_Transparent.gif">
     </div>
-    <div class="panel-body" ng-hide="isLoading">
+    <div ng-show="tvShowError">
+        <h2>We're so so sorry. An occured and cat died somewhere. Our best monkeys are working on it!</h2>
+    </div>
+    <div class="panel-body" ng-hide="isLoading || tvShowError">
         <div class="detail header">
             <h2>{{tvshow.collectionName}} <a href="{{tvshow.collectionViewUrl}}">
                 <img ng-src="img/itunes.svg"/>
@@ -36,7 +39,10 @@
                     </h4>
                 </div>
             </div>
-            <div class="row detail section">
+            <div class="row detail section episodes" ng-show="episodesError">
+                <h2>We're so so sorry. An occured and cat died somewhere. The episodes list in unavailable!</h2>
+            </div>
+            <div class="row detail section" ng-hide="episodesError">
                 <div class="detail episodes">
                     <h3>Episodes :</h3><h4>Search: <input style="color: #404040;" class="search-input"
                                                           ng-model="searchText"></h4>
@@ -66,7 +72,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row detail section" ng-if="similarTvshows.length">
+            <div class="row detail section" ng-show="similarTvshowError">
+                <h2>We're so so sorry. An occured and cat died somewhere. Our best monkeys are working on it - no similar tv shows for now!</h2>
+            </div>
+            <div class="row detail section" ng-if="similarTvshows.length && !similarTvshowError">
                 <h3>You might also like</h3>
                 <div class="ajax-loading" ng-if="isLoadingSimilar">
                     <img src="img/cat-mouse_Transparent.gif">
