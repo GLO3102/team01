@@ -8,3 +8,8 @@ input:required:valid {
   background-position: right;
   background-repeat: no-repeat;
 }
+.login-panel{
+  margin-left: 25%;
+  margin-right: 25%;
+
+}
