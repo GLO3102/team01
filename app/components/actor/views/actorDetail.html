@@ -32,8 +32,10 @@
             </div>
         </div>
 
-
-        <div class="row detail section actor" id="featured" ng-if="!isMovieLoading">
+        <div class="row" ng-if="movieError">
+            <h2>We're so so sorry. An occured and cat died somewhere. Our best monkeys are working on it!</h2>
+        </div>
+        <div class="row detail section actor" id="featured" ng-if="!isMovieLoading && !movieError">
             <h3>Movie</h3>
             <slick settings="slickFeatureConfig" data="movies">
                 <div ng-repeat="movie in movies" class="slick-slide overlay-image" image-overlay>
