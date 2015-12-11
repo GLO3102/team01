@@ -11,7 +11,7 @@ homeApp.factory('authHttpResponseInterceptor',['$q','$location', '$cookies','$ro
                 console.log("Response Error 401",rejection);
                 $rootScope.user=undefined;
                 $cookies.remove('user');
-                $location.path('/login').search('returnTo', $location.path());
+                $location.path('/login');
             }
             return $q.reject(rejection);
         }
