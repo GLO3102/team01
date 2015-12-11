@@ -1,5 +1,24 @@
 
-menuApp.controller("menu-controller", function () {
+menuApp.controller("menu-controller", function (){
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex ;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
 
     $(document).ready(function ($) {
 
@@ -24,8 +43,9 @@ menuApp.controller("menu-controller", function () {
         });
 
         $("#search-bar").autocomplete({
-            minChars : 4,
+            minChars : 2,
             lookup : function (query, done) {
+                var resultsAjax = [];
                 $.ajax({
                     type: "get",
                     url: "https://itunes.apple.com/search",
@@ -37,15 +57,31 @@ menuApp.controller("menu-controller", function () {
                         term: query
                     },
                     success : function (data){
-                        var results ={
-                            suggestions: []
-                        };
                         for (var i = 0; i < data.resultCount; i++) {
-                            var name = data.results[i].trackName || data.results[i].collectionName || data.results[i].artistName;
-                            results.suggestions.push({value:name, data: name});
+                            var name = data.results[i].trackName || data.results[i].collectionName;
+                            resultsAjax.push({value:name, data: name});
                         }
-                        console.log(results);
-                        done(results);
+                        $.ajax({
+                            type: "get",
+                            url: "https://itunes.apple.com/search",
+                            dataType: "jsonp",
+                            data:{
+                                entity: "movieArtist",
+                                media: "movie",
+                                limit: "10",
+                                term: query
+                            },
+                            success : function (data){
+                                for (var i = 0; i < data.resultCount; i++) {
+                                    var name = data.results[i].artistName;
+                                    resultsAjax.push({value:name, data: name});
+                                }
+                                resultsAjax = shuffle(resultsAjax);
+                                resultsAjax.splice(10,10);
+                                var suggestion = { suggestions : resultsAjax};
+                                done(suggestion);
+                            }
+                        });
                     }
                 });
             }
