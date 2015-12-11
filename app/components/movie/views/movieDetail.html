@@ -63,8 +63,8 @@
                       </div>
                     </form>
 
-                    <div class="button-fixed" style="text-align: center;">
-                      <button id="upClick" class="invisible-button"><img src="/img/up-arrow.png" height="35"/></button>
+                    <div class="button-fixed btn-comment" ng-if="movieComments.length">
+                        <button id="upClick" class="invisible-button"><img src="/img/up-arrow.png" height="35"/></button>
                     </div>
 
                     <div id="inner-comment" style="overflow-y:hidden; overflow-x:hidden;">
@@ -91,8 +91,8 @@
                       </div>
                     </div>
 
-                    <div class="button-fixed" style="text-align: center; display:block; width:100%;">
-                      <button id="downClick" class="invisible-button"><img src="/img/down-arrow.png" height="35"/></button>
+                    <div class="button-fixed btn-comment" ng-if="movieComments.length">
+                        <button id="downClick" class="invisible-button"><img src="/img/down-arrow.png" height="35"/></button>
                     </div>
 
                 </div>

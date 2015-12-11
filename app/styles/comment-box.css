@@ -85,4 +85,9 @@
   width: 100%;
   max-height: 33em;
   margin-right: 2%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.btn-comment{
+  text-align: center;
 }
