@@ -1,6 +1,12 @@
 registerApp.controller("register-controller", function ($scope, $location, registerResource) {
     $scope.notRegister = true;
 
+    $scope.email ="";
+    $scope.password ="";
+    $scope.firstName="";
+    $scope.lastName="";
+    $scope.username=""
+
     $scope.register = function () {
         var genres = [];
         for (var genre in $scope.genres)
@@ -14,7 +20,7 @@ registerApp.controller("register-controller", function ($scope, $location, regis
             "lastname": $scope.lastName,
             "username": $scope.username,
         }
-
+        console.log(user);
         registerResource.post(user, function onSuccess(data) {
 
           $location.path("/login");

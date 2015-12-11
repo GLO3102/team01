@@ -1,9 +1,12 @@
 loginApp.controller("login-controller", function ($scope, loginService, $location, loginResource, $auth) {
 
+  $scope.email="";
+  $scope.password="";
+
   $scope.login = function(){
     $scope.isLoading = true;
     $scope.loginError = false;
-
+    
     var credentials = {
       "email": $scope.email,
       "password": $scope.password
