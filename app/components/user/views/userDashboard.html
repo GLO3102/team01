@@ -29,7 +29,7 @@
                 <div class="overlay " id="overlay-feature-{{$index}}" >
                     <h2><a href="#/users/{{followingUser.id}}">{{followingUser.username |cut:true:20:'...'}}</a>
                         <a class="glyphicon glyphicon-remove pull-right" href=""
-                           ng-click="deleteFriend(followingUser)"></a>
+                           ng-click="deleteFriend(followingUser)" ng-if="!isNotLoggedUser(user)"></a>
                     </h2>
 
                     <h4><label class="following-email">Send him an email</label><a
