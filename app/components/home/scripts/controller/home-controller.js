@@ -7,12 +7,19 @@ homeApp.controller("home-controller", function ($scope, movieSelectionService, t
 
     $scope.isTvShowLoading = false;
 
+    $scope.movieError = false;
+
+    $scope.tvError = false;
+
     $scope.initializeMovie = function () {
         $scope.isMovieLoading = true;
 
         homeResource.getPopularMovies({},function onSuccess(successData) {
             $scope.movies = successData;
 
+            $scope.isMovieLoading = false;
+        }, function onError(errorData){
+            $scope.movieError = true;
             $scope.isMovieLoading = false;
         });
     };
@@ -31,6 +38,9 @@ homeApp.controller("home-controller", function ($scope, movieSelectionService, t
         homeResource.getPopularTvShows({},function onSuccess(successData) {
             $scope.tvshows = successData;
 
+            $scope.isTvShowLoading = false;
+        }, function onError(errorData){
+            $scope.tvError = true;
             $scope.isTvShowLoading = false;
         });
     };

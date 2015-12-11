@@ -17,6 +17,12 @@
 
             </div>
             <div class="row detail section">
+                <h3>Having a problem with the API behing the app? </h3>
+                <div>
+                    <p>Contact Maxime Charron at <a href="mailto:maxime.charron.4@ulaval.ca?Subject=HELP" target="_top">maxime.charron.4@ulaval.ca</a> so he can get it back on if it's not already done!</p>
+                </div>
+            </div>
+            <div class="row detail section">
                 <h3>Functionnality implemented :</h3>
             </div>
             <div class="row detail section">
@@ -34,22 +40,33 @@
                             directly
                             in the objects returned
                         </li>
-                        <li>Differents calls to OMDB to flesh up the results of search (actor biography, similar movies,
+                        <li>Differents calls to TheMovieDatabase to flesh up the results of search (actor biography, similar movies,
                             etc.)
                         </li>
+                        <li>
+                            Caching of TheMovieDatabase data using MongoDB to avoid busting the 40 calls per 10 seconds quota
+                        </li>
                         <li>Integration of storage for movies reviews</li>
-                        <li>Scraping'n'shit of _____ to be able to extract ___'n'shit</li>
                         <li>API monitoring using NewRelic informing us if any problems occur with the app, so that we
                             can start it back!
+                        </li>
+                        <li>
+                            Expose login through Facebook and Google
                         </li>
                     </ul>
                     <br/>
 
-                    <p>The source code for the API, if you are interested, is available [free of charge!] (if used, just
-                        cite Maxime Charron please, who did all the work!) : <a href>lien sur github</a></p>
+                    <p>The source code for the API, if you are interested, is available [free of charge!] Just contact Maxime Charron to gain access to it. </p>
 
                     <p>The API itself is hosted here : <a
                             href="umovie-team01.herokuapp.com">umovie-team01.herokuapp.com</a></p>
+                </div>
+            </div>
+            <div class="row detail section">
+                <h4>Hosting :</h4>
+
+                <div>
+                    <p>We offer you the opportunity to test this app hosted instead of using localhost. Just go <a href="umovie-team01-client.herokuapp.com">here</a>!</p>
                 </div>
             </div>
             <div class="row detail section">
@@ -64,7 +81,7 @@
                 <h4>Similar movies suggestions :</h4>
 
                 <div>
-                    <p>Extracted from OMBD, a new array gives us the possibility to display similar movies to the one
+                    <p>Extracted from TheMovieDatabase, a new array gives us the possibility to display similar movies to the one
                         selected.</p>
                 </div>
             </div>
@@ -90,7 +107,7 @@
                 <div>
                     <p>Many more features were included in this application :</p>
                     <ul>
-                        <li>Front page : Popular movies and tvShows according to OMBD.</li>
+                        <li>Front page : Popular movies and tvShows according to TheMovieDatabase.</li>
                         <li>In the Movies and Tv-Shows pages, a "dashboard" for each genre is displayed, show a
                             selection of
                             movies or tvshows of that particular genre, and uses lazy loading when scrolling down.

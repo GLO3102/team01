@@ -25,7 +25,7 @@
             <div class="col-md-8 detail-inline">
                 <h3>Biography</h3>
                 <h5> Birthday: {{actor.birthday}}</h5>
-                <h5 ng-show="actor.deathday"> Deathday: {{actor.deathday}}</h5>
+                <h5 ng-if="actor.deathday"> Deathday: {{actor.deathday}}</h5>
                 <h5> Place of birth: {{actor.placeOfBirth}}</h5>
 
                 <p ng-bind-html="actor.biography|htmlToPlaintext|unicode"></p>
@@ -33,7 +33,7 @@
         </div>
 
 
-        <div class="row detail section actor" id="featured">
+        <div class="row detail section actor" id="featured" ng-if="!isMovieLoading">
             <h3>Movie</h3>
             <slick settings="slickFeatureConfig" data="movies">
                 <div ng-repeat="movie in movies" class="slick-slide overlay-image" image-overlay>

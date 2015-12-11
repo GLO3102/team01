@@ -1,17 +1,19 @@
 
-actorApp.controller("actor-detail-controller", function ($scope, $cookies, $routeParams, actorResource, actorMovieResource) {
+actorApp.controller("actor-detail-controller", function ($scope, $cookies, actorSelectionService, $routeParams, actorResource, actorMovieResource) {
     var actorId = $routeParams.actorId;
+
     var movies = {};
     $scope.isLoading = false;
+    $scope.isMovieLoading = false;
 
     $scope.initActor = function(){
-
-        $scope.isLoading = true;
-        actorResource.get({id:actorId}, function onSuccess(data){
-            $scope.actor = data.results[0];
-            $scope.isLoading = false;
-        }, function error(data) {
-
+            $scope.isLoading = true;
+            actorResource.get({id:actorId}, function onSuccess(data){
+              var selectedActor = data.results[0];
+              $scope.actor = selectedActor;
+              $scope.isLoading = false;
+            }, function error(data){
+                
             })
     };
 

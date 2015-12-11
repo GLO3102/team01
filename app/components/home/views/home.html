@@ -1,11 +1,11 @@
-<div class="ajax-loading" ng-show="isMovieLoading && isTvShowLoading">
+<div class="ajax-loading" ng-if="isMovieLoading && isTvShowLoading && !movieError && !tvError">
     <img src="img/cat-mouse_Transparent.gif">
 </div>
-<div class="dashboard-container" ng-hide="isMovieLoading || isTvShowLoading">
+<div class="dashboard-container" ng-if="!isMovieLoading && !isTvShowLoading">
     <div id="featured">
         <h2 class="col-md-12 title">Popular Movies</h2>
         <div class="col-md-1"></div>
-        <div class="col-md-10">
+        <div class="col-md-10" ng-if="!isMovieLoading && !movieError">
             <slick settings="slickMoviesConfig" data="movies" center-mode="true">
                 <div ng-repeat="movie in movies" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-feature-{{$index}}">
@@ -19,11 +19,14 @@
                 </div>
             </slick>
         </div>
+        <div class="col-md-10" ng-if="movieError">
+            <h2>We're so so sorry. An occured and cat died somewhere. Our best monkeys are working on it!</h2>
+        </div>
     </div>
     <div>
         <h2 class="col-md-12 title">Popular TvShows</h2>
         <div class="col-md-1"></div>
-        <div id="watchlist" class="col-md-10" >
+        <div id="watchlist" class="col-md-10" ng-if="!isTvShowLoading && !tvError">
             <slick settings="slickTvShowsConfig" data="tvshows" >
                 <div ng-repeat="tvshow in tvshows" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-movie-{{$index}}">
@@ -35,6 +38,9 @@
                     <img ng-src="{{tvshow.artworkUrl100 | imageSize:300:300}}">
                 </div>
             </slick>
+        </div>
+        <div class="col-md-10" ng-if="tvError">
+            <h2>We're so so sorry. An occured and a cat died somewhere. Our best monkeys are working on it!</h2>
         </div>
     </div>
 </div>
