@@ -1,7 +1,10 @@
 <div class="ajax-loading" ng-show="isLoading">
     <img src="img/cat-mouse_Transparent.gif">
 </div>
-<div class="dashboard-container user-profile" ng-if="!isLoading">
+<div class="dashboard-container" ng-if="errorMessage.length">
+    <h2>{{errorMessage}}</h2>
+</div>
+<div class="dashboard-container user-profile" ng-if="!isLoading && errorMessage.length === 0">
     <div class="dashboard-header user-header">
         <img ng-if="!user.picture" class="dashboard-header avatar" gravatar-src="'{{user.email}}'" gravatar-size="300">
         <img ng-if="user.picture" class="dashboard-header avatar" ng-src="{{user.picture | imageSize:100:100}}">
@@ -20,13 +23,14 @@
     </div>
     <div id="user-no-follower" ng-if="user.following.length === 0">
         <h2>Following</h2>
+
         <h3>I'm so lonely that even UMovie tell me so!</h3>
     </div>
     <div id="user-with-follower" ng-if="user.following.length > 0">
         <h2 class="following-header">Following</h2>
         <slick settings="slickFeatureConfig" data="user.following">
-            <div class="overlay-image" image-overlay ng-repeat="followingUser in user.following" >
-                <div class="overlay " id="overlay-feature-{{$index}}" >
+            <div class="overlay-image" image-overlay ng-repeat="followingUser in user.following">
+                <div class="overlay " id="overlay-feature-{{$index}}">
                     <h2><a href="#/users/{{followingUser.id}}">{{followingUser.username |cut:true:20:'...'}}</a>
                         <a class="glyphicon glyphicon-remove pull-right" href=""
                            ng-click="deleteFriend(followingUser)" ng-if="!isNotLoggedUser(user)"></a>

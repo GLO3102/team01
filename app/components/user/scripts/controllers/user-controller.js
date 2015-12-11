@@ -1,9 +1,9 @@
 /**
  * Created by Antoine on 2015-10-15.
  */
-userApp.controller("user-controller", function ($scope, $routeParams, userResource, loginService, userFollowingResource) {
+userApp.controller("user-controller", function ($scope, $routeParams, userResource, loginService, userFollowingResource, $location) {
     var userID = $routeParams.userId;
-
+    $scope.errorMessage = "";
     $scope.isLoading = true;
     var fetchUserInformation = function () {
 
@@ -11,6 +11,8 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
         userResource.get({userId: userID}, function onSuccess(data) {
             $scope.user = data;
             $scope.isLoading = false;
+        }, function onError(data) {
+            $location.path("/lost");
         });
     };
 
@@ -23,6 +25,9 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
             loggedUser.following.push(user);
             loginService.SetUser(loggedUser);
             $scope.isLoading = false;
+        }, function onError(data) {
+            $scope.isLoading = false;
+            $scope.errorMessage = "You cannot add this friend currently, cats are scratching the server right now";
         });
     };
     $scope.isNotLoggedUser = function (user) {
@@ -49,7 +54,6 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
         $scope.isLoading = true;
         userFollowingResource.deleteFriend({id: user.id}, function onSuccess(data) {
             var loggedUser = loginService.getUser();
-            console.log(data);
             loggedUser.following = data.following;
             loginService.SetUser(loggedUser);
             if (!$scope.isNotLoggedUser($scope.user)) {
@@ -59,6 +63,7 @@ userApp.controller("user-controller", function ($scope, $routeParams, userResour
 
         }, function onError(data) {
             $scope.isLoading = false;
+            $scope.errorMessage = "You cannot delete this friend right now, cats are scratching the server right now";
         });
 
     };
