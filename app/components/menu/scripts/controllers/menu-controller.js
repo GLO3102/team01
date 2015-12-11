@@ -38,22 +38,15 @@ menuApp.controller("menu-controller", function () {
                         term: query
                     },
                     success : function (data){
-                        console.log(data);
-                        done(data);
-                    },
-                    transformResult: function(suggestion){
                         var results ={
                             suggestions: []
                         };
-                        for (var i = 0; i < suggestion.resultCount; i++) {
-                            var name = suggestion.results[i].trackName || suggestion.results[i].collectionName || suggestion.results[i].artistName;
+                        for (var i = 0; i < data.resultCount; i++) {
+                            var name = data.results[i].trackName || data.results[i].collectionName || data.results[i].artistName;
                             results.suggestions.push({value:name, data: name});
                         }
-                        return results
-                    }
-                    ,
-                    onSelect: function (suggestion) {
-                        $("#search-form").submit();
+                        console.log(results);
+                        done(results);
                     }
                 });
             }
