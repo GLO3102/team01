@@ -36,6 +36,8 @@ var homeApp = angular.module('uMovie', [
                 // not going to #login, we should redirect now
                 $location.path("/login");
             }
+        } else if (next.templateUrl == "components/login/views/login.html"){
+            $location.path("/home");
         }
     });
 }]);
