@@ -41,7 +41,7 @@
         <div class="dashboard-container" ng-if="watchlist.movies.length == 0">
             <h4 id="empty-watchlist-message">This watchlist is feeling lonely!</h4>
         </div>
-        <slick settings="slickFeatureConfig" data="watchlist.movies" center-mode="true">
+        <slick settings="slickFeatureConfig" data="watchlist.movies" >
             <div class="overlay-image" image-overlay ng-repeat="movie in watchlist.movies">
                 <div class="overlay" id="overlay-feature-{{$index}}">
                     <a class="glyphicon glyphicon-remove pull-right" role="button"

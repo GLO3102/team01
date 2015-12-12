@@ -133,7 +133,7 @@ userApp.controller("watchlist-controller", function ($scope, loginService, watch
                     slidesToScroll: 1,
                     infinite: true,
                     autoplay: true,
-                    centerMode: true
+                    centerMode: false
                 }
             },
             {
@@ -143,7 +143,7 @@ userApp.controller("watchlist-controller", function ($scope, loginService, watch
                     slidesToScroll: 1,
                     infinite: true,
                     autoplay: true,
-                    centerMode: true
+                    centerMode: false
                 }
             }]
     };

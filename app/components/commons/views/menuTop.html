@@ -13,9 +13,9 @@
 
             <div ng-show="user && user != {}" class="navbar-text" ng-controller="search-controller" >
 
-                <form ng-submit="initSearch()" name="search-form">
+                <form ng-submit="initSearch()" name="search-form" id="search-form">
                     <div class="search-input-group">
-                        <input class="search-input" id="search-bar" data-provide="typeahead" type="search" name="query" ng-model="query" autocomplete="off" placeholder="Search...">
+                        <input class="autocomplete-suggestions search-input" id="autocomplete" data-provide="typeahead" type="search" name="query" ng-model="query" placeholder="Search...">
                         <div class="search-filters">
                             <label><input type="radio" name="filter" ng-model="queryType" value="All" checked="checked"/>All</label>
                             <label><input type="radio" name="filter" ng-model="queryType" value="Movies"/>Movies</label>
@@ -23,6 +23,7 @@
                             <label><input type="radio" name="filter" ng-model="queryType" value="Actors"/>Actors</label>
                             <label><input type="radio" name="filter" ng-model="queryType" value="Users"/>Users</label>
                         </div>
+                        <input type="submit" class="submit" id="falseSubmit" style="display: none" />
                     </div>
                 </form>
             </div>

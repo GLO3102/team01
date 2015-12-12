@@ -19,15 +19,20 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div ng-repeat="genre in movieGenre">
-                <slick settings="slickFeatureConfig" data="movieResult" center-mode="true" ng-if="genre === movieFilterSelected">
+                <slick settings="slickFeatureConfig" data="movieResult" ng-if="genre === movieFilterSelected">
                     <div class="overlay-image" image-overlay ng-repeat="result in filterMovieResult(genre)">
                         <div class="overlay" id="overlay-movies-{{$index}}">
                             <user-watchlist-dropdown class="pull-right" movie="{{result.movie}}"></user-watchlist-dropdown>
                             <a href="#/movies/{{result.movie.trackId}}" ng-click="selectMovie(result.movie)">
                                 <h2>{{result.movie.trackName || result.movie.collectionName}} </h2></a>
-                            <iframe id="movies-{{$index}}" ob-lazytube width="95%" height="50%"
+                            <div ng-show="result.movie.previewUrl.indexOf('youtube') > -1">
+                                <iframe id="movies-{{$index}}" ob-lazytube width="95%" height="50%"
                                     src="{{result.movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
                                     enablejsapi="1"></iframe>
+                            </div>
+                            <div ng-show="result.movie.previewUrl.indexOf('youtube') == -1">
+                                <h4 class="noMovie">We're sorry! There is no preview available for that movie :(</h4>
+                            </div>
                             <p ng-bind-html="result.movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
                             <a href="#/movies/{{result.movie.trackId}}" class="btn dashboard-detail" ng-click="selectMovie(result.movie)">View
                                 details</a>
@@ -53,7 +58,7 @@
         <div class="col-md-1"></div>
         <div id="tvshows" class="col-md-10" >
             <div ng-repeat="genre in tvshowGenre">
-                <slick settings="slickFeatureConfig" data="tvshowResult" center-mode="true" ng-if="genre === tvshowFilterSelected">
+                <slick settings="slickFeatureConfig" data="tvshowResult" ng-if="genre === tvshowFilterSelected">
                     <div class="overlay-image" image-overlay ng-repeat="result in filterTvshowResult(genre)">
                         <div class="overlay" id="overlay-tvshows-{{$index}}">
                             <h2>{{result.tvshow.trackName || result.tvshow.collectionName}}</h2>
@@ -90,7 +95,7 @@
         <h2 class="col-md-12 title">Users results...</h2>
         <div class="col-md-1"></div>
         <div id="users" class="col-md-10" >
-            <slick settings="slickFeatureConfig" data="userResult" center-mode="true">
+            <slick settings="slickFeatureConfig" data="userResult" >
                 <div class="overlay-image" image-overlay ng-repeat="result in userResult">
                     <div class="overlay" id="overlay-users-{{$index}}">
                         <h2>{{result.name}}</h2>

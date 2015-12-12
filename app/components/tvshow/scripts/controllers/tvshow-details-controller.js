@@ -137,7 +137,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
         autoplay: true,
         autoplaySpeed: 5000,
         variableWidth: true,
-        centerMode: true,
+        centerMode: false,
         responsive: [
             {
                 breakpoint: 1024,

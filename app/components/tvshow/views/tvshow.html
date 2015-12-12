@@ -5,7 +5,7 @@
 <div class="dashboard-container" ng-repeat="tvshowByGenre in tvshowsByGenre" ng-if="!tvShowsError">
     <div id="featured" class="col-md-10" ng-if=tvshowByGenre.tvshows.length>
         <h2>{{tvshowByGenre.genre}}</h2>
-        <slick settings="slickFeatureConfig" data="tvshowByGenre.tvshows" center-mode="true">
+        <slick settings="slickFeatureConfig" data="tvshowByGenre.tvshows" >
             <div class="overlay-image" image-overlay ng-repeat="tvshow in tvshowByGenre.tvshows">
                 <div class="overlay" id="overlay-feature-{{$index}}">
                     <a href="#/tvshows/{{tvshow.collectionId}}"
