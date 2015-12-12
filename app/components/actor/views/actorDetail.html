@@ -43,9 +43,14 @@
                         <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
                             <h2 class="movie-title">{{movie.trackName || movie.collectionName}} </h2></a>
                         Release date : {{movie.releaseDate|cut:true:10:' '}}
-                        <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%"
-                                src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
-                                enablejsapi="1"></iframe>
+                        <div>
+                            <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%"
+                                    src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
+                                    enablejsapi="1"></iframe>
+                        </div>
+                        <div ng-show="movie.previewUrl.indexOf('youtube') == -1">
+                            <h4 class="noMovie">We're sorry! There is no preview available for that movie :(</h4>
+                        </div>
                         <p ng-bind-html="movie.longDescription|cut:true:150:'...'|htmlToPlaintext|unicode"></p>
                         <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail"
                            ng-click="selectMovie(movie)">View

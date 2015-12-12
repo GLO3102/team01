@@ -43,3 +43,7 @@ button.btn, .btn{
 input{
     padding-left: 5px;
 }
+.noMovie{
+    color: darkred;
+    margin-bottom: 20px;
+}

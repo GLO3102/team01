@@ -6,11 +6,16 @@
         <h2 class="col-md-12 title">Popular Movies</h2>
         <div class="col-md-1"></div>
         <div class="col-md-10" ng-if="!isMovieLoading && !movieError">
-            <slick settings="slickMoviesConfig" data="movies" center-mode="true">
+            <slick settings="slickMoviesConfig" data="movies">
                 <div ng-repeat="movie in movies" class="overlay-image" image-overlay>
                     <div class="overlay" id="overlay-feature-{{$index}}">
                         <h2>{{movie.trackName || movie.collectionName}}</h2>
-                        <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
+                        <div ng-show="movie.previewUrl.indexOf('youtube') > -1">
+                            <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen enablejsapi="1"></iframe>
+                        </div>
+                        <div ng-show="movie.previewUrl.indexOf('youtube') == -1">
+                            <h4 class="noMovie">We're sorry! There is no preview available for that movie :(</h4>
+                        </div>
                         <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
                         <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail" ng-click="selectMovie(movie)">View
                             details</a>

@@ -15,8 +15,14 @@
             <div class="row detail section">
                 <div class="detail preview">
                     <youtube-preview movie="{{movie.trackName}}"></youtube-preview>
-                    <iframe ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless
-                            frameborder="0" allowfullscreen autoplay="true"></iframe>
+                    <div ng-show="movie.previewUrl.indexOf('youtube') >-1">
+                        <iframe ob-lazytube width="95%" height="50%" src="{{movie.previewUrl|trusted}}" seamless
+                                frameborder="0" allowfullscreen autoplay="true"></iframe>
+                    </div>
+
+                    <div ng-show="result.movie.previewUrl.indexOf('youtube') == -1">
+                        <h4 class="noMovie">We're sorry! There is no preview available for that movie :(</h4>
+                    </div>
                 </div>
                 <div class="detail description">
                     <ul>
@@ -107,15 +113,21 @@
                     <img src="img/cat-mouse_Transparent.gif">
                 </div>
                 <div ng-if="!isLoadingSimilar">
-                    <slick settings="slickFeatureConfig" data="similarMovies" center-mode="true">
+                    <slick settings="slickFeatureConfig" data="similarMovies">
                         <div class="overlay-image" image-overlay ng-repeat="movie in similarMovies">
                             <div class="overlay" id="overlay-feature-{{$index}}">
                                 <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
                                 <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
                                     <h2>{{movie.trackName || movie.collectionName}} </h2></a>
-                                <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
-                                        src="{{movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
-                                        enablejsapi="1"></iframe>
+                                <div ng-show="movie.previewUrl.indexOf('youtube') >-1">
+                                    <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
+                                            src="{{movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
+                                            enablejsapi="1"></iframe>
+                                </div>
+
+                                <div ng-show="movie.previewUrl.indexOf('youtube') == -1">
+                                    <h4 class="noMovie">We're sorry! There is no preview available for that movie :(</h4>
+                                </div>
                                 <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
                                 <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail"
                                    ng-click="selectMovie(movie)">View

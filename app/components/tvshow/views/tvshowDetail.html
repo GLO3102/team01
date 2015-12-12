@@ -16,9 +16,13 @@
         <div class="detail body">
             <div class="row detail section">
                 <div class="detail preview">
-                    <div class="embed-responsive embed-responsive-16by9">">
+                    <div class="embed-responsive embed-responsive-16by9" ng-show="tvshow.previewUrl.indexOf('youtube') > -1 ">
                         <youtube-video class="embed-responsive-item" id="videoSeason"
                                        video-url="tvshow.previewUrl"></youtube-video>
+
+                    </div>
+                    <div ng-show="tvshow.previewUrl.indexOf('youtube') == -1">
+                        <h4 class="noMovie">We're sorry! There is no preview available for that movie :(</h4>
                     </div>
                 </div>
                 <div class="row detail description">
@@ -131,7 +135,7 @@
                     <img src="img/cat-mouse_Transparent.gif">
                 </div>
                 <div ng-if="!isLoadingSimilar">
-                    <slick settings="slickFeatureConfig" data="similarMovies" center-mode="true">
+                    <slick settings="slickFeatureConfig" data="similarMovies" >
                         <div class="overlay-image" image-overlay ng-repeat="tvshow in similarTvshows">
                             <div class="overlay" id="overlay-feature-{{$index}}">
                                 <a href="#/movies/{{tvshow.collectionId}}" ng-click="selectMovie(tvshow)">
@@ -152,7 +156,10 @@
             <modal-dialog id="titleModal" show='modalShown' width='90%' height='90%'
                           dialog-title="Episode {{episodeModal.trackNumber}} : {{episodeModal.trackName |cut:true:70:'...'}}">
                 <div><p>{{episodeModal.collectionName}} - Episode {{episodeModal.trackNumber}}</p></div>
-                <div class="col-md-6 col-sm-12 col-xs-12"> <youtube-video  player="modalPlayer" id="modalPlayer" video-url="episodeModal.previewUrl" player-width="'100%'"></youtube-video></div>
+                <div class="col-md-6 col-sm-12 col-xs-12" ng-show="episodeModal.previewUrl.indexOf('youtube') > -1"> <youtube-video  player="modalPlayer" id="modalPlayer" video-url="episodeModal.previewUrl" player-width="'100%'"></youtube-video></div>
+                <div ng-show="episodeModal.previewUrl.indexOf('youtube') == -1">
+                    <h4 class="noMovie">We're sorry! There is no preview available for that movie :(</h4>
+                </div>
                 <br>
                 <span class="col-md-6 col-sm-9 col-xs-9"><p ng-bind-html="episodeModal.shortDescription|htmlToPlaintext|unicode"></p>Duration : {{episodeModal.length}}</span>
                 <span class="episodePicModal col-md-6 col-sm-3 col-xs-3"> <img ng-src="{{episodeModal.artworkUrl100|imageSize:300:300}}"></span>

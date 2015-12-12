@@ -84,7 +84,7 @@ tvShowApp.controller("tvshow-dashboard-controller",
             autoplay: true,
             autoplaySpeed: 5000,
             variableWidth: true,
-            centerMode: true,
+            centerMode: false,
             responsive: [
                 {
                     breakpoint: 1024,
