@@ -13,6 +13,17 @@
     color: #FFFFFF;
 }
 
+
+.search-focus {
+    width: 150px!important;
+    padding-left: 32px!important;
+    color: #000000!important;
+    background-color: #ffffff!important;
+
+    outline: none!important;
+    cursor: auto!important;
+}
+
 input[type=search]{
     background: url(../img/search-icon.png) no-repeat 2px center;
     background-color: #cccccc;
@@ -32,15 +43,6 @@ input[type=search]{
     cursor: pointer;
 }
 
-input[type=search]:focus {
-    width: 150px;
-    padding-left: 32px;
-    color: #000000;
-    background-color: #ffffff;
-
-    outline: none;
-    cursor: auto;
-}
 
 input[type=search]:hover {
     background-color: #ffffff;

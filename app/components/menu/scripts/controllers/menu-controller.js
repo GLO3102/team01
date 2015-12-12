@@ -25,24 +25,7 @@ function shuffle(array) {
         $(".search-filters").hide();
         $(".search-suggestions").hide();
 
-        $('.search-input').on('click', function () {
-            if ($('.search-filters').is(":hidden")) {
-                $('.search-filters').slideToggle();
-            }
-        });
-
-        $('.search-input').focusout(function () {
-            if ($('.search-filters').is(":visible")) {
-                $('.search-filters').slideToggle();
-            }
-        });
-
-        $('.search-filters input[type="radio"]').on('click', function () {
-            var placeholder_text = $(this).closest('label').text();
-            $('.search-input').attr('placeholder', 'search: ' + placeholder_text).focus();
-        });
-
-        $("#search-bar").autocomplete({
+        $("#autocomplete").autocomplete({
             minChars : 2,
             lookup : function (query, done) {
                 var resultsAjax = [];
@@ -84,7 +67,35 @@ function shuffle(array) {
                         });
                     }
                 });
+
+                },
+            onSelect: function(suggestion){
+                console.log("suggestion");
+                $('#autocomplete').val(suggestion.value);
+                $('#falseSubmit', $(event.target.form)).click();
             }
         });
+
+        $('.search-input').on('click', function () {
+            if ($('.search-filters').is(":hidden")) {
+                $('.search-filters').slideToggle();
+                $('.search-input').addClass("search-focus");
+            }
+        });
+
+        $('.search-input').blur(function () {
+            if ($('.search-filters').is(":visible")) {
+                $('.search-filters').slideToggle();
+                $('.search-input').removeClass('search-focus');
+                $("#autocomplete").autocomplete().hide();
+            }
+        });
+
+        $('.search-filters input[type="radio"]').on('click', function () {
+            var placeholder_text = $(this).closest('label').text();
+            $('.search-input').attr('placeholder', 'search: ' + placeholder_text).focus();
+        });
+
+
     });
 });
