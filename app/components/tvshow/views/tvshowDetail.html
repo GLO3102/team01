@@ -153,7 +153,7 @@
             <modal-dialog id="titleModal" show='modalShown' width='90%' height='90%'
                           dialog-title="Episode {{episodeModal.trackNumber}} : {{episodeModal.trackName |cut:true:70:'...'}}">
                 <div><p>{{episodeModal.collectionName}} - Episode {{episodeModal.trackNumber}}</p></div>
-                <div class="col-md-6 col-sm-12 col-xs-12" ng-show="episodeModal.previewUrl.indexOf('youtube') > -1"> <youtube-video  player="modalPlayer" id="modalPlayer" video-url="episodeModal.previewUrl" player-width="'100%'"></youtube-video></div>
+                <div class="col-md-6 col-sm-12 col-xs-12" ng-show="!isLoadingModal && episodeModal.previewUrl.indexOf('youtube') > -1"> <youtube-video  player="modalPlayer" id="modalPlayer" video-url="episodeModal.previewUrl" player-width="'100%'"></youtube-video></div>
                 <div ng-show="episodeModal.previewUrl.indexOf('youtube') == -1">
                     <h4 class="noMovie">We're sorry! There is no preview available for that movie :(</h4>
                 </div>
