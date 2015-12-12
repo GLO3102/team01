@@ -8,7 +8,7 @@
         <slick settings="slickFeatureConfig" data="movieByGenre.movies">
             <div class="overlay-image" image-overlay ng-repeat="movie in movieByGenre.movies">
                 <div class="overlay" id="overlay-feature-{{$index}}">
-                    <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
+                    <user-watchlist-dropdown class="pull-right" movie="{{movie}}"></user-watchlist-dropdown>
                     <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
                         <h2>{{movie.trackName || movie.collectionName}} </h2></a>
                     <div ng-show="movie.previewUrl.indexOf('youtube') > -1">

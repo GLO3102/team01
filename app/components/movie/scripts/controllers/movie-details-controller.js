@@ -1,12 +1,12 @@
 /**
  * Created by Antoine on 2015-09-14.
  */
-movieApp.controller("movie-detail-controller", function ($scope, movieSelectionService, $routeParams, movieResource, movieSimilarResource, movieCommentResource, $rootScope) {
+movieApp.controller("movie-detail-controller", function ($scope, movieSelectionService, $routeParams, movieResource, movieSimilarResource, movieCommentResource, $rootScope, $location) {
     var movieId = $routeParams.movieId;
     $scope.isLoading = false;
     $scope.isLoadingSimilar = false;
 
-    var callSimilar = function(ombdID){
+    var callSimilar = function (ombdID) {
         $scope.isLoadingSimilar = true;
 
         movieSimilarResource.get({id: ombdID}, function onSuccess(data) {
@@ -35,10 +35,14 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
         if (Object.keys(selectedMovie).length === 0) {
             $scope.isLoading = true;
             movieResource.get({id: movieId}, function onSuccess(data) {
-                selectedMovie = data.results[0];
-                $scope.movie = selectedMovie;
-                $scope.isLoading = false;
-                callSimilar(selectedMovie.omdbId);
+                if (data.resultCount) {
+                    selectedMovie = data.results[0];
+                    $scope.movie = selectedMovie;
+                    $scope.isLoading = false;
+                    callSimilar(selectedMovie.omdbId);
+                } else {
+                    $location.path("/lost");
+                }
             }, function onError(data) {
 
             });

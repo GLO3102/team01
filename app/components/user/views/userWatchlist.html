@@ -45,7 +45,7 @@
             <div class="overlay-image" image-overlay ng-repeat="movie in watchlist.movies">
                 <div class="overlay" id="overlay-feature-{{$index}}">
                     <a class="glyphicon glyphicon-remove pull-right" role="button"
-                       ng-click="removeMovieFromWatchlist(watchlist, movie)"></a>
+                       ng-click="removeMovieFromWatchlist(watchlist, movie)" ng-if="isViewingMyWatchlist()"></a>
                     <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
                         <h2>{{movie.trackName || movie.collectionName}} </h2></a>
                     <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"

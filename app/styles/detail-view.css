@@ -9,18 +9,22 @@
     color: #ffffff;
 
 }
-.price-toggle{
+
+.price-toggle {
     color: #222;
 }
+
 .detail {
     display: block;
     width: auto;
     color: #ffffff;
 }
-.detail-inline{
+
+.detail-inline {
     display: inline;
     color: #ffffff;
 }
+
 .detail.section {
     width: 96%;
     margin-left: 2%;
@@ -28,12 +32,14 @@
     margin-right: 2%;
 
 }
+
 .detail.section.actor {
     width: 90%;
     margin-left: 5%;
     margin-top: 10px;
     margin-right: 5%;
 }
+
 .detail.preview {
     display: inline-block;
     float: left;
@@ -70,11 +76,11 @@
     margin-right: 1%;
 }
 
-.block-comment{
-  float: left;
-  width: 59%;
-  height: 50em;
-  margin-right: 1%;
+.block-comment {
+    float: left;
+    width: 59%;
+    height: 50em;
+    margin-right: 1%;
 }
 
 .comments-episodes {
@@ -96,7 +102,9 @@
 .detail.poster {
     display: block;
 }
-
+.poster-image{
+    width: 100%;
+}
 .detail.poster img {
     image-rendering: auto;
     width: 30%;
@@ -106,7 +114,7 @@
 }
 
 .avatar {
-    width:75px;
+    width: 75px;
     height: 75px;
 }
 
@@ -154,7 +162,7 @@
 }
 
 .panel {
-  background-color: rgba(0, 0, 0, 0.5)!important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .episodeRow:hover {
@@ -163,10 +171,10 @@
 }
 
 .ng-modal-dialog {
-    background-color: rgba(62, 63, 64, 0.9)!important;
+    background-color: rgba(62, 63, 64, 0.9) !important;
 }
 
-.episodePicModal{
+.episodePicModal {
     margin-left: 0.5%;
     margin-top: 0.5%;
     vertical-align: text-top;
@@ -179,7 +187,7 @@
 
 .episodePicModal img {
     width: 100%;
-    display : inline-block;
+    display: inline-block;
 }
 
 
@@ -206,12 +214,14 @@
         margin-top: 10px;
         margin-right: 0.5%;
     }
+
     .detail.section.actor {
         width: 90%;
         margin-left: 5%;
         margin-top: 10px;
         margin-right: 5%;
     }
+
     .detail.poster {
         display: block;
         margin-top: 4%;
@@ -270,7 +280,7 @@
         display: none;
     }
 
-    .episodePicModal{
+    .episodePicModal {
         margin-left: auto;
         margin-top: auto;
     }
@@ -303,12 +313,14 @@
         margin-top: 10px;
         margin-right: 0.5%;
     }
+
     .detail.section.actor {
         width: 90%;
         margin-left: 5%;
         margin-top: 10px;
         margin-right: 5%;
     }
+
     .detail.poster {
         display: block;
         margin-top: 4%;
@@ -360,7 +372,7 @@
         width: 56%;
     }
 
-    .episodePicModal{
+    .episodePicModal {
         margin-left: auto;
         margin-top: auto;
         width: 25%;
@@ -370,11 +382,11 @@
         width: 100%;
     }
 
-    #modalPlayer{
+    #modalPlayer {
         height: 200px;
     }
 
-    #titleModal{
+    #titleModal {
         font-size: 12px;
     }
 }

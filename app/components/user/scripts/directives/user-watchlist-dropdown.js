@@ -14,6 +14,7 @@ angular.module('watchlistDropdown', []).directive('userWatchlistDropdown', funct
                     var userWatchlist = userWatchlistContainer.getUserWatchlist();
 
                     if (Object.keys(userWatchlist).length == 0) {
+
                         fetchLoggedUserWatchlist();
                     }
                     else {
@@ -25,8 +26,9 @@ angular.module('watchlistDropdown', []).directive('userWatchlistDropdown', funct
                     watchlistResource.query({}, function onSuccess(data) {
                         var userWatchlist = [];
                         for (var i = 0; i < data.length; i++) {
+
                             if (data[i].hasOwnProperty("owner")) {
-                                if (data[i].owner.email === $scope.loggedUser) {
+                                if (data[i].owner.email === $scope.loggedUser.email) {
                                     userWatchlist.push(data[i]);
                                 }
                             }
@@ -58,6 +60,9 @@ angular.module('watchlistDropdown', []).directive('userWatchlistDropdown', funct
 
         return {
             restrict: 'E',
+            scope :{
+              movie :"@"
+            },
             templateUrl: 'components/user/views/watchlistDropdown.html',
             controller: controller
         };

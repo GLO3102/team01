@@ -1,4 +1,4 @@
-tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource, tvShowSimilarResource, tvshowCommentResource) {
+tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, tvshowSelectionService, $routeParams, tvShowResource, tvShowEpisodesResource, tvShowSimilarResource, tvshowCommentResource,tvShowVideoResource, $location) {
 
     var tvShowId = $routeParams.tvshowId;
     $scope.isLoading = false;
@@ -7,8 +7,9 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
     $scope.tvShowError = false;
     $scope.episodesError = false;
     $scope.similarTvshowError = false;
+    $scope.videoModalError = false;
 
-    var callSimilar = function(ombdID){
+    var callSimilar = function (ombdID) {
         $scope.isLoadingSimilar = true;
 
         tvShowSimilarResource.get({id: ombdID}, function onSuccess(data) {
@@ -26,7 +27,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
     };
     $scope.initComment = function () {
         tvshowCommentResource.get({id: tvShowId}, function onSuccess(data) {
-        $scope.tvshowsComments = data;
+            $scope.tvshowsComments = data;
         }, function onError(data) {
 
         });
@@ -46,7 +47,8 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
         tvshowCommentResource.post(comment, function onSuccess(data) {
             $scope.initComment();
             $scope.clearTextField();
-        }, function onError(data) {});
+        }, function onError(data) {
+        });
     }
 
     $scope.initTvShowDetail = function () {
@@ -56,26 +58,36 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
         if (Object.keys(selectedTvShow).length === 0) {
             $scope.isLoading = true;
             tvShowResource.get({id: tvShowId}, function onSuccess(data) {
-                selectedTvShow = data.results[0];
-                $scope.tvshow = selectedTvShow;
-                console.log(selectedTvShow.omdbId);
-                callSimilar(selectedTvShow.omdbId);
-            }, function onError(errorData){
+                if (data.resultCount) {
+                    selectedTvShow = data.results[0];
+                    $scope.tvshow = selectedTvShow;
+                    console.log(selectedTvShow);
+                    callSimilar(selectedTvShow.omdbId);
+                }
+                else {
+                    $location.path("/lost");
+                }
+            }, function onError(errorData) {
                 $scope.tvShowError = true;
                 $scope.isLoading = false;
             });
         } else {
             $scope.tvshow = selectedTvShow;
+            console.log(selectedTvShow);
             callSimilar(selectedTvShow.omdbId);
         }
 
         if (Object.keys(selectTvshowEpisodes).length === 0) {
             tvShowEpisodesResource.get({id: tvShowId}, function onSuccess(data) {
-                selectTvshowEpisodes = data;
+                if (data.resultCount) {
+                    selectTvshowEpisodes = data;
 
-                $scope.tvshowEpisodes = selectTvshowEpisodes;
-                $scope.isLoading = false;
-            }, function onError(errorData){
+                    $scope.tvshowEpisodes = selectTvshowEpisodes;
+                    $scope.isLoading = false;
+                } else {
+                    $location.path("/lost");
+                }
+            }, function onError(errorData) {
                 $scope.episodesError = true;
                 $scope.isLoading = false;
             });
@@ -84,13 +96,25 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
             $scope.tvshowEpisodes = selectTvshowEpisodes;
             $scope.isLoading = false;
         }
+
         $scope.initComment();
     };
     $scope.initTvShowDetail();
 
     $scope.toggleModal = function (item) {
         console.log(item);
+        var regex = /\d$/;
+        var seasonNumberExtract = regex.exec(item.collectionName);
+        console.log("SEASON "+seasonNumberExtract + " OMBD "+ $scope.tvshow.omdbId + " TRACKNUM "+item.trackNumber);
         $scope.episodeModal = item;
+        tvShowVideoResource.get({id:$scope.tvshow.omdbId,seasonNumber: seasonNumberExtract, episodeNumber : item.trackNumber },
+            function onSuccess(data) {
+                console.log(data);
+                $scope.episodeModal.previewUrl = data.previewUrl;
+            }
+        , function onError(errorData) {
+            $scope.videoModalError = true;
+        });
         $scope.episodeModal.length = msToTime(item.trackTimeMillis);
         $scope.modalShown = true;
     };

@@ -46,4 +46,9 @@ input{
 .noMovie{
     color: darkred;
     margin-bottom: 20px;
+.error-message{
+    text-align: center;
+}
+.lost-cat-image{
+    width: 50%;
 }

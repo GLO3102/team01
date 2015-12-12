@@ -6,7 +6,7 @@
         <div class="detail header">
             <h2>{{movie.trackName}} <a href="{{movie.trackViewUrl}}"> <img ng-src="img/itunes.svg"/></a>
                 <span class="pull-right">
-                    <user-watchlist-dropdown></user-watchlist-dropdown>
+                    <user-watchlist-dropdown movie="{{movie}}"></user-watchlist-dropdown>
                 <back-button></back-button>
                 </span>
             </h2>
@@ -69,11 +69,11 @@
                       </div>
                     </form>
 
-                    <div class="button-fixed" style="text-align: center;">
-                      <button id="upClick" class="invisible-button"><img src="/img/up-arrow.png" height="35"/></button>
+                    <div class="button-fixed btn-comment" ng-show="movieComments.length">
+                        <button id="upClick" class="invisible-button"><img src="/img/up-arrow.png" height="35"/></button>
                     </div>
 
-                    <div id="inner-comment" style="overflow-y:hidden; overflow-x:hidden;">
+                    <div id="inner-comment">
                       <div ng-repeat="comment in movieComments">
                         <div class="row top-buffer-30">
                             <div class="col-md-1">
@@ -97,14 +97,14 @@
                       </div>
                     </div>
 
-                    <div class="button-fixed" style="text-align: center; display:block; width:100%;">
-                      <button id="downClick" class="invisible-button"><img src="/img/down-arrow.png" height="35"/></button>
+                    <div class="button-fixed btn-comment" ng-show="movieComments.length">
+                        <button id="downClick" class="invisible-button"><img src="/img/down-arrow.png" height="35"/></button>
                     </div>
 
                 </div>
 
                 <div class="col-md-4">
-                    <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}" width="450px">
+                    <img class="poster-image" ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
                 </div>
             </div>
             <div class="row detail section" ng-if="similarMovies.length">

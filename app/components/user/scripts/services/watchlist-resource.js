@@ -2,7 +2,7 @@
  * Created by Antoine on 2015-10-15.
  */
 userApp.factory('watchlistResource', ["$resource", function ($resource) {
-    return $resource("https://umovie-team01.herokuapp.com/unsecure/watchlists/:id/:type/:trackId", {}, {
+    return $resource("https://umovie-team01.herokuapp.com/watchlists/:id/:type/:trackId", {}, {
         query: {
             method: "GET",
             isArray: true
