@@ -22,7 +22,7 @@
                 <img ng-src="{{actor.image}}" class="img-responsive"/>
             </div>
 
-            <div class="col-md-8 detail-inline">
+            <div class="col-md-8 detail-inline" ng-show="actor.biography">
                 <h3>Biography</h3>
                 <h5> Birthday: {{actor.birthday}}</h5>
                 <h5 ng-if="actor.deathday"> Deathday: {{actor.deathday}}</h5>
