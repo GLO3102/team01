@@ -5,7 +5,7 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
     var movieId = $routeParams.movieId;
     $scope.isLoading = false;
     $scope.isLoadingSimilar = false;
-
+    $scope.isSimilarError = false;
     var callSimilar = function (ombdID) {
         $scope.isLoadingSimilar = true;
 
@@ -13,6 +13,9 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
             $scope.similarMovies = data;
             $scope.isLoadingSimilar = false;
         }, function onError(data) {
+
+            $scope.isSimilarError = true;
+            $scope.isLoadingSimilar = false;
         });
     };
 
@@ -84,7 +87,7 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
     $scope.initMovieDetail();
 
     $scope.slickFeatureConfig = {
-        slidesToShow: 3,
+        slidesToShow: 5,
         slidesToScroll: 1,
         infinite: true,
         autoplay: true,
@@ -95,7 +98,7 @@ movieApp.controller("movie-detail-controller", function ($scope, movieSelectionS
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3
+                    slidesToShow: 5
 
                 }
             },

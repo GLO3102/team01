@@ -41,18 +41,18 @@ actorApp.controller("actor-detail-controller", function ($scope, $cookies, $loca
     $scope.initMovieActor();
 
     $scope.slickFeatureConfig = {
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 1,
         infinite: true,
         autoplay: true,
         autoplaySpeed: 5000,
-        variableWidth:true,
+        variableWidth:false,
         centerMode: false,
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 4
+                    slidesToShow: 5
                 }
             },
             {
