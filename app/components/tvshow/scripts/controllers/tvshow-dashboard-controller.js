@@ -78,7 +78,7 @@ tvShowApp.controller("tvshow-dashboard-controller",
             tvshowSelectionService.setSelectedTvShow(selectedTvShow);
         };
         $scope.slickFeatureConfig = {
-            slidesToShow: 3,
+            slidesToShow: 5,
             slidesToScroll: 1,
             infinite: true,
             autoplay: true,
@@ -89,7 +89,7 @@ tvShowApp.controller("tvshow-dashboard-controller",
                 {
                     breakpoint: 1024,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 5,
                         slidesToScroll: 1
                     }
                 },

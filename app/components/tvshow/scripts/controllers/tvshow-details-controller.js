@@ -131,7 +131,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
     }
 
     $scope.slickFeatureConfig = {
-        slidesToShow: 3,
+        slidesToShow: 5,
         slidesToScroll: 1,
         infinite: true,
         autoplay: true,
@@ -142,7 +142,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 5,
                     slidesToScroll: 1
 
                 }

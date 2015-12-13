@@ -113,29 +113,34 @@
                     <img src="img/cat-mouse_Transparent.gif">
                 </div>
                 <div ng-if="!isLoadingSimilar">
-                    <slick settings="slickFeatureConfig" data="similarMovies">
-                        <div class="overlay-image" image-overlay ng-repeat="movie in similarMovies">
-                            <div class="overlay" id="overlay-feature-{{$index}}">
-                                <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
-                                <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
-                                    <h2>{{movie.trackName || movie.collectionName}} </h2></a>
-                                <div ng-show="movie.previewUrl.indexOf('youtube') >-1">
-                                    <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
-                                            src="{{movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
-                                            enablejsapi="1"></iframe>
-                                </div>
+                    <div ng-show="!isSimilarError">
+                        <slick settings="slickFeatureConfig" data="similarMovies">
+                            <div class="overlay-image" image-overlay ng-repeat="movie in similarMovies">
+                                <div class="overlay" id="overlay-feature-{{$index}}">
+                                    <user-watchlist-dropdown class="pull-right"></user-watchlist-dropdown>
+                                    <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
+                                        <h2>{{movie.trackName || movie.collectionName}} </h2></a>
+                                    <div ng-show="movie.previewUrl.indexOf('youtube') >-1">
+                                        <iframe id="feature-{{$index}}" ob-lazytube width="95%" height="50%"
+                                                src="{{movie.previewUrl | trusted}}" seamless frameborder="0" allowfullscreen
+                                                enablejsapi="1"></iframe>
+                                    </div>
 
-                                <div ng-show="movie.previewUrl.indexOf('youtube') == -1">
-                                    <h4 class="noMovie">We're sorry! There is no preview available for that movie :(</h4>
+                                    <div ng-show="movie.previewUrl.indexOf('youtube') == -1">
+                                        <h4 class="noMovie">We're sorry! There is no preview available for that movie :(</h4>
+                                    </div>
+                                    <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
+                                    <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail"
+                                       ng-click="selectMovie(movie)">View
+                                        details</a>
                                 </div>
-                                <p ng-bind-html="movie.longDescription|cut:true:200:'...'|htmlToPlaintext|unicode"></p>
-                                <a href="#/movies/{{movie.trackId}}" class="btn dashboard-detail"
-                                   ng-click="selectMovie(movie)">View
-                                    details</a>
+                                <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
                             </div>
-                            <img ng-src="{{movie.artworkUrl100 | imageSize:300:300}}">
-                        </div>
-                    </slick>
+                        </slick>
+                    </div>
+                    <div ng-show="isSimilarError">
+                        <h4 class="error-message">We're sorry. Similar movies are not available for this movie.</h4>
+                    </div>
                 </div>
             </div>
         </div>

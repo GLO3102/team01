@@ -79,7 +79,7 @@ movieApp.controller("movie-dashboard-controller",
         };
 
        $scope.slickFeatureConfig = {
-            slidesToShow: 3,
+            slidesToShow: 5,
             slidesToScroll: 1,
             infinite: true,
             autoplay: true,
@@ -90,7 +90,7 @@ movieApp.controller("movie-dashboard-controller",
                 {
                     breakpoint: 1024,
                     settings: {
-                        slidesToShow: 3
+                        slidesToShow: 5
                     }
                 },
                 {
