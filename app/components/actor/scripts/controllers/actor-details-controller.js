@@ -46,7 +46,7 @@ actorApp.controller("actor-detail-controller", function ($scope, $cookies, $loca
         infinite: true,
         autoplay: true,
         autoplaySpeed: 5000,
-        variableWidth:false,
+        variableWidth:true,
         centerMode: false,
         responsive: [
             {
