@@ -1,5 +1,5 @@
 
-menuApp.controller("menu-controller", function (){
+menuApp.controller("menu-controller", function ($scope){
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex ;
@@ -70,10 +70,10 @@ function shuffle(array) {
 
                 },
             onSelect: function(suggestion){
-                console.log("suggestion");
-                $('#autocomplete').val(suggestion.value);
-                $('#falseSubmit', $(event.target.form)).click();
+                $('#autocomplete').val(suggestion.value).trigger('input');
+                $(event.target.form).submit();
             }
+
         });
 
         $('.search-input').on('click', function () {
@@ -95,7 +95,6 @@ function shuffle(array) {
             var placeholder_text = $(this).closest('label').text();
             $('.search-input').attr('placeholder', 'search: ' + placeholder_text).focus();
         });
-
 
     });
 });

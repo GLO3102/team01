@@ -211,6 +211,7 @@ searchApp.controller("search-dashboard-controller", function ($scope, movieSelec
     };
 
     $scope.query = searchService.getQuery();
+    console.log(searchService.getQuery());
     $scope.queryType.push(searchService.getQueryType());
 
     if ($scope.query !== ""){
