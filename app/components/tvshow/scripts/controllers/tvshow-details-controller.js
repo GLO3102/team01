@@ -102,19 +102,7 @@ tvShowApp.controller("tvshow-detail-controller", function ($scope, $rootScope, t
     $scope.initTvShowDetail();
 
     $scope.toggleModal = function (item) {
-        console.log(item);
-        var regex = /\d$/;
-        var seasonNumberExtract = regex.exec(item.collectionName);
-        console.log("SEASON "+seasonNumberExtract + " OMBD "+ $scope.tvshow.omdbId + " TRACKNUM "+item.trackNumber);
         $scope.episodeModal = item;
-        tvShowVideoResource.get({id:$scope.tvshow.omdbId,seasonNumber: seasonNumberExtract, episodeNumber : item.trackNumber },
-            function onSuccess(data) {
-                console.log(data);
-                $scope.episodeModal.previewUrl = data.previewUrl;
-            }
-        , function onError(errorData) {
-            $scope.videoModalError = true;
-        });
         $scope.episodeModal.length = msToTime(item.trackTimeMillis);
         $scope.modalShown = true;
     };
