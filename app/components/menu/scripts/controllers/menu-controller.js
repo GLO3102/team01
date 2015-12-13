@@ -1,5 +1,5 @@
 
-menuApp.controller("menu-controller", function ($scope){
+menuApp.controller("menu-controller", function (){
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex ;
