@@ -43,7 +43,7 @@
                         <a href="#/movies/{{movie.trackId}}" ng-click="selectMovie(movie)">
                             <h2 class="movie-title">{{movie.trackName || movie.collectionName}} </h2></a>
                         Release date : {{movie.releaseDate|cut:true:10:' '}}
-                        <div>
+                        <div ng-show="movie.previewUrl.indexOf('youtube') > -1">
                             <iframe id="movie-{{$index}}" ob-lazytube width="95%" height="50%"
                                     src="{{movie.previewUrl|trusted}}" seamless frameborder="0" allowfullscreen
                                     enablejsapi="1"></iframe>
