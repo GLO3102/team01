@@ -99,7 +99,7 @@
                 <div class="overlay-image" image-overlay ng-repeat="result in userResult">
                     <div class="overlay" id="overlay-users-{{$index}}">
                         <h2>{{result.name}}</h2>
-                        <a href="#/users/{{result.id}}" class="btn dashboard-detail">Follow</a>
+                        <a href="#/users/{{result.id}}" class="btn dashboard-detail">View user</a>
                     </div>
                     <img ng-if="!result.picture" class="user-avatar" gravatar-src="'{{result.email}}'"
                          gravatar-size="300">
