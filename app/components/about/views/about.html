@@ -17,7 +17,7 @@
 
             </div>
             <div class="row detail section">
-                <h3>Having a problem with the API behing the app? </h3>
+                <h3>Having a problem with the API behind the app? </h3>
                 <div>
                     <p>Contact Maxime Charron at <a href="mailto:maxime.charron.4@ulaval.ca?Subject=HELP" target="_top">maxime.charron.4@ulaval.ca</a> so he can get it back on if it's not already done!</p>
                 </div>
@@ -29,29 +29,36 @@
                 <h4>New and improved API :</h4>
 
                 <div>
-                    <p>Our API was design using, of course, the one provided for the course. In addition to the
+                    <p>Our API was designed using, of course, the one provided for the course. In addition to the
                         functionnalities already available, we enhanced and added the following elements :</p>
                     <ul>
-                        <li>Separate calls for the search that return differents objects containing grouped results
-                            (movies,
-                            tv shows, actors or users for instance)
-                        </li>
                         <li>Automated calls to the YouTube API, providing the proper adress for the preview videos
                             directly
                             in the objects returned
+                        <ul>
+                            <li>
+                                To do so, we used an heuristic that makes the call to the Youtube search API with the title of the movie/tv show/episodes and adding "Trailer" to the end of it. It doesn't always get perfect results but it's good enough for this project.
+                            </li>
+                            </ul>
                         </li>
-                        <li>Differents calls to TheMovieDatabase to flesh up the results of search (actor biography, similar movies,
-                            etc.)
+                        <li>
+                            Differents calls to TheMovieDatabase to flesh up the results including actor biography, similar movies, similar tv shows, youtube videos ID, popular movies, popular tv shows, actor pictures
                         </li>
                         <li>
                             Caching of TheMovieDatabase data using MongoDB to avoid busting the 40 calls per 10 seconds quota
+                           <ul> <li>
+                                To do so, we made a javascript crawler using the js-crawler Node library. The crawler is set to only make 35 calls per 10 seconds to ensure we do not burst the rate limiting imposed by TheMovieDatabase.
+                            </li>
+                            <li>
+                                We used MongoDB with the WiredTiger storage engine to limit as much as possible the space used by all these movies and tvshows.
+                            </li></ul>
                         </li>
-                        <li>Integration of storage for movies reviews</li>
+                        <li>Integration of storage for movies and tv shows reviews</li>
                         <li>API monitoring using NewRelic informing us if any problems occur with the app, so that we
                             can start it back!
                         </li>
                         <li>
-                            Expose login through Facebook and Google
+                            Integration of Facebook and Google login API
                         </li>
                     </ul>
                     <br/>
@@ -59,29 +66,29 @@
                     <p>The source code for the API, if you are interested, is available [free of charge!] Just contact Maxime Charron to gain access to it. </p>
 
                     <p>The API itself is hosted here : <a
-                            href="umovie-team01.herokuapp.com">umovie-team01.herokuapp.com</a></p>
+                            href="https://umovie-team01.herokuapp.com">umovie-team01.herokuapp.com</a></p>
                 </div>
             </div>
             <div class="row detail section">
                 <h4>Hosting :</h4>
 
                 <div>
-                    <p>We offer you the opportunity to test this app hosted instead of using localhost. Just go <a href="umovie-team01-client.herokuapp.com">here</a>!</p>
+                    <p>We offer you the opportunity to test this app hosted instead of using localhost. Just go <a href="https://umovie-team01-client.herokuapp.com">here</a>!</p>
                 </div>
             </div>
             <div class="row detail section">
                 <h4>Movies review :</h4>
 
                 <div>
-                    <p>Movies reviews are possible by users. Most recent posts are shown, and live results/preview are
+                    <p>Movies and tv shows reviews are possible by users. Live results/preview are
                         displayed when typing a new review.</p>
                 </div>
             </div>
             <div class="row detail section">
-                <h4>Similar movies suggestions :</h4>
+                <h4>Similar movies and tvshows suggestions :</h4>
 
                 <div>
-                    <p>Extracted from TheMovieDatabase, a new array gives us the possibility to display similar movies to the one
+                    <p>Extracted from TheMovieDatabase, a new array gives us the possibility to display similar movies and tvshows to the one
                         selected.</p>
                 </div>
             </div>
@@ -89,7 +96,7 @@
                 <h4>Search with autocomplete :</h4>
 
                 <div>
-                    <p>In the main search bar, autocompletion of search items is provided.</p>
+                    <p>In the main search bar, autocompletion of search items is provided. The autocompletion queries the iTunes API to get possible completions. </p>
                 </div>
             </div>
             <div class="row detail section">
@@ -98,7 +105,7 @@
                 <div>
                     <p>If you email is associated wit a proper Gravatar image, it is displayed in the top menu once
                         logged
-                        in.</p>
+                        in. If you logged with Facebook or Google, it is instead your profile picture that is used. </p>
                 </div>
             </div>
             <div class="row detail section">
@@ -123,30 +130,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div class="row detail section">
-                <h3>Using the application (french only)</h3>
-                <p>Si node et npm sont déjà installés vous pouvez vous rendre au point 4.
-                Si vous avez installé node ou npm en root ne pas oublier de faire les commandes avec sudo.</p>
-                <ol>
-                    <li>Installer Node selon votre système d'exploitation</li>
-                    <ol>
-                        <li>Sur Windows: http://nodejs.org/download/</li>
-                        <li>Sur Mac: http://nodejs.org/download/</li>
-                        <li>Sur Unbuntu 14.04: sudo apt-get update, sudo apt-get install nodejs, sudo apt-get install
-                            npm
-                        </li>
-                    </ol>
-                    <li> Vérifier que node est correctement installé: node -v</li>
-                    <li>Vérifier que npm est correctement installé: npm -v</li>
-                    <li>Installer les libraries node via la commande suivante dans répertoire du projet: npm install
-                    </li>
-                    <li>Pour lancer l'application, ouvrir un terminal dans le répertoire racine du projet. Écrire
-                        ensuite:
-                        npm start
-                    </li>
-                    <li>Ouvrir chrome et écrire: localhost:8080</li>
-                </ol>
             </div>
         </div>
     </div>
